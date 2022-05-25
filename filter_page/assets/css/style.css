@@ -1,0 +1,390 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato&family=MuseoModerno:wght@200;300;500&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Lato', sans-serif;
+    font-family: 'MuseoModerno', cursive;
+    font-weight: 300;
+}
+
+
+html {
+    animation: transitionIn 1.5s;
+}
+
+
+body::-webkit-scrollbar {
+    width: 10px;
+}
+
+body::-webkit-scrollbar-track {
+    background-color: transparent;
+}
+
+body::-webkit-scrollbar-thumb {
+    background-color: rgba(179, 179, 179, 0.7);
+    border-radius: 20px;
+    border: 6px solid transparent;
+}
+
+
+.filter-box {
+    display: flex;
+    justify-content: center;
+}
+
+.filter-basic-container, .filter-advanced-container {
+    border: none;
+    outline: none;
+    border-radius: 30px;
+	padding: 15px;
+    width: 100%;
+    background-color: white;
+    box-shadow: 0 0 12px rgba(0,0,0,0.07);
+    display: none;
+    opacity: 0;
+    transition: ease-in-out 0.3s;
+}
+
+.filter-advanced-container {
+    margin-bottom: 50px
+}
+
+.filter-basic-container.active {
+    display: block;
+    opacity: 1;
+    transition: ease-in-out 0.3s;
+}
+
+.filter-advanced-container.active {
+    display: block;
+    opacity: 1;
+    transition: ease-in-out 0.3s;
+}
+
+.filter-basic-header, .filter-advanced-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: none;
+    outline: none;
+    border-radius: 30px;
+	padding: 15px 20px;
+    margin: 20px 0;
+    width: 100%;
+    background-color: white;
+    box-shadow: 0 0 12px rgba(0,0,0,0.07);
+}
+
+.filter-basic-header:hover, .filter-advanced-header:hover {
+    /* background-color: #fafafa; */
+    box-shadow: 0 0 12px rgb(0 152 121 / 20%);
+    transition: ease-in-out 0.2s;
+}
+
+.filter-basic-header .title, .filter-advanced-header .title {
+    font-size: 120%;
+    font-weight: bold;
+}
+
+.filter-basic-header i, .filter-advanced-header i {
+    border-radius: 50%;
+    font-size: 140%;
+    text-align: center;
+}
+
+
+.filter-container {
+    margin-top: 120px;
+    display: block;
+    width: 75%;
+}
+
+
+.filter-score {
+    position: relative;
+    overflow: hidden;
+    padding: 20px 10px;
+}
+
+.filter-score-container {
+    margin-top: 20px;
+    float: left;
+}
+
+.filter-detail-container {
+    overflow: hidden;
+}
+
+.filter-score h3, .filter-detail-container h3 {
+    font-weight: bold;
+}
+
+.score-maths, .score-literature, .score-english, .score-average, .filter-year-select, .filter-year-list,
+.filter-district-select, .filter-district-list, .filter-wish-select, .filter-wish-list,
+.filter-year-advanced-select, .filter-year-advanced-list, .filter-wish-advanced-select, .filter-wish-advanced-list {
+    border: none;
+    outline: none;
+    border-radius: 10px;
+	padding: 8px;
+    height: 35px;
+    width: 140px;
+    background-color: white;
+    box-shadow: 0 0 12px rgba(0,0,0,0.07);
+    margin-right: 10px;
+    padding-left: 15px;
+}
+
+.score-cal {
+    border: none;
+    outline: none;
+    border-radius: 10px;
+	padding: 8px;
+    height: 35px;
+    width: 140px;
+    box-shadow: 0 0 12px rgba(0,0,0,0.07);
+    margin-right: 10px;
+    padding-left: 15px;
+    background-color: rgba(0, 152, 121, 1);
+    text-align: center;
+    font-weight: bold;
+    color:white;
+}
+
+
+.score-cal:hover {
+    background-color: rgb(0, 133, 106);
+    transition: ease-in;
+    cursor: pointer;
+}
+
+
+.filter-score-container input::placeholder {
+    color: rgba(0, 0, 0, 0.35);
+}
+
+.filter-score-container input[class=score-average]:hover {
+    cursor: not-allowed;
+}
+
+.filter-score-container input[class=score-average]::placeholder {
+    color: rgba(0, 152, 121, 0.5);
+}
+
+
+.filter-year, .filter-district, .filter-wish, .filter-year-advanced, .filter-wish-advanced {
+    margin-top: 40px;
+    padding: 20px 10px;
+    float: left;
+}
+
+.filter-year-advanced, .filter-wish-advanced {
+    margin-top: 0px;
+    padding: 0;
+}
+
+.filter-year-select, .filter-district-select, .filter-wish-select,
+.filter-year-advanced-select, .filter-wish-advanced-select {
+    margin-top: 20px;
+    height: 40px;
+    border-radius: 10px;
+    line-height: 1.8;
+    position: relative;
+    margin-right: 40px;
+}
+
+.filter-year-advanced-select, .filter-year-advanced-list, .filter-wish-advanced-select, .filter-wish-advanced-list {
+    margin-right: 10px;
+}
+
+.filter-year-advanced-select, .filter-wish-advanced-select {
+    margin-top: 0px;
+}
+
+.filter-year-select:hover, .filter-district-select:hover, .filter-wish-select:hover,
+.filter-year-advanced-select:hover, .filter-wish-advanced-select:hover {
+    box-shadow: 0 0 12px rgba(0, 152, 121, 0.25);
+    transition: ease-in-out 0.2s;
+}
+
+.filter-district-select, .filter-district-list {
+    width: 180px;
+}
+
+.filter-wish-select, .filter-wish-list,
+.filter-wish-advanced-select, .filter-wish-advanced-list {
+    width: 200px;
+}
+
+.filter-year-select:hover, .filter-district-select:hover, .filter-wish-select:hover, .filter-year-advanced-select:hover, .filter-wish-advanced-select:hover {
+    cursor: pointer;
+}
+
+
+.filter-year-select i, .filter-district-select i, .filter-wish-select i,
+.filter-year-advanced i, .filter-wish-advanced i {
+    position: absolute;
+    right: 8px;
+}
+
+.filter-year-list, .filter-district-list, .filter-wish-list, 
+.filter-year-advanced-list, .filter-wish-advanced-list {
+    position: relative;
+    background-color: white;
+    box-shadow: 0 0 12px rgba(0,0,0,0.1);
+    margin-top: 8px;
+    border-radius: 10px;
+    opacity: 0;
+    transition: opacity 0.2s linear;
+    overflow: hidden;
+    height: 140px;
+    pointer-events: none;
+}
+
+.filter-year-list .year, .filter-district-list .district, .filter-wish-list .wish,
+.filter-year-advanced-list .year, .filter-wish-advanced-list .wish{
+    padding: 5px;
+    padding-left: 20px;
+}
+
+.filter-year-list .year:hover, .filter-district-list .district:hover, .filter-wish-list .wish:hover,
+.filter-year-advanced-list .year:hover, .filter-wish-advanced-list .wish:hover {
+    background-color: #f3f3f3;
+    background-clip: border-box;
+}
+
+.filter-year-list.active, .filter-district-list.active, .filter-wish-list.active,
+.filter-year-advanced-list.active, .filter-wish-advanced-list.active{
+    max-height: 105px;
+    opacity: 1;
+    overflow-y: scroll;
+    cursor: pointer;
+    pointer-events: auto;
+}
+
+.filter-year-list::-webkit-scrollbar, .filter-district-list::-webkit-scrollbar, .filter-wish-list::-webkit-scrollbar,
+.filter-year-advanced-list::-webkit-scrollbar, .filter-wish-advanced-list::-webkit-scrollbar {
+    background-color: white;
+    width: 8px;
+    border-radius: 8px;
+}
+
+.filter-year-list::-webkit-scrollbar-thumb, .filter-district-list::-webkit-scrollbar-thumb, .filter-wish-list::-webkit-scrollbar-thumb,
+.filter-year-advanced-list::-webkit-scrollbar-thumb, .filter-wish-advanced-list::-webkit-scrollbar-thumb {
+    background-color: rgba(179, 179, 179, 0.7);
+    border-radius: 8px;
+}
+
+.filter-between-box, .filter-more-box {
+    position: relative;
+    top: -120px;
+}
+
+
+.filter-between, .filet-top {
+    overflow: hidden;
+    padding: 10px;
+}
+
+.filter-between h3, .filter-tool-box h3, .filter-top h3 {
+    margin: 30px 0;
+    padding-left: 10px;
+    font-weight: bold;
+}
+
+.filter-above-average, .filter-below-average {
+    margin-top: 90px ;
+}
+
+.filter-between .start, .filter-between .end, .filter-between .between-search,
+.filter-top .top, .filter-above-average .above, .filter-below-average .below {
+    border: none;
+    outline: none;
+    border-radius: 10px;
+    padding: 8px;
+    height: 40px;
+    width: 140px;
+    background-color: white;
+    box-shadow: 0 0 12px rgb(0 0 0 / 7%);
+    margin-right: 10px;
+    padding-left: 15px;
+    float: left;
+}
+
+.filter-between .between-search {
+    background-color: rgba(0, 152, 121, 1);
+    color:white;
+    text-align: center;
+    font-weight: bold;
+}
+
+.filter-between .between-search:hover {
+    background-color: rgb(0, 133, 106);
+    transition: ease-in;
+    cursor: pointer;
+}
+
+.filter-above-average .above, .filter-below-average .below {
+    background-color: white;
+    color: black;
+    text-align: center;
+    font-weight: bold;
+    width: 180px;
+    cursor: pointer;
+}
+
+.filter-above-average .above.active, .filter-below-average .below.active {
+    background-color: rgba(0, 152, 121, 1);
+    color: white;
+}
+
+.submit-btn {
+    display: flex;
+    justify-content: center;
+}
+
+.submit-btn.inactive {
+    display: none;
+}
+
+#submit {
+    border: none;
+    outline: none;
+    border-radius: 20px;
+    padding: 8px;
+    height: 50px;
+    width: 180px;
+    box-shadow: 0 0 12px rgb(0 0 0 / 7%);
+    padding-left: 15px;
+    background-color: rgba(0, 152, 121, 1);
+    text-align: center;
+    font-weight: bold;
+    color: white;
+    font-size: 110%;
+    line-height: 35px;
+    margin-bottom: 50px;
+}
+
+#submit:hover {
+    background-color: rgb(0, 133, 106);
+    transition: ease-in-out 0.2s;
+    box-shadow: 0 0 25px rgba(0, 173, 139, 0.4);
+    cursor: pointer;
+
+}
+
+#search-result {
+    display: flex;
+    justify-content: center;
+}
+
+
+@keyframes transitionIn {
+    from {
+        opacity: 0;
+    } to {
+        opacity: 1;
+    }
+}
