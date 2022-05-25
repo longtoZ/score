@@ -467,6 +467,7 @@ body::-webkit-scrollbar-thumb {
     height: 50px;
     width: 100%;
     font-size: 30px;
+    color: #8699a6;
     letter-spacing: 5px;
     text-align: center;
     padding-top: 10px;

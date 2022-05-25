@@ -1,0 +1,204 @@
+<html>
+    <footer class="footer">
+        <div class="container">
+            <div class="brand-container" style="position:relative">
+                <div class="brand">
+                    <div class="title-container">
+                        <h3 class="title">Multi-search</h3>
+                    </div>
+                    <p class="description">Đây là một công cụ lọc điểm .... or whatever idk what to write here</p>
+                    <div class="connect">
+                        <a href="https://www.facebook.com/its.longto/" target="_blank"><i class="fi fi-brands-facebook"></i></a>
+                        <a href="https://www.instagram.com/longto_/" target="_blank"><i class="fi fi-brands-instagram"></i></a>
+                        <a href="https://www.pinterest.com/longtoXP/" target="_blank"><i class="fi fi-brands-pinterest"></i></a>
+                        <a href="https://github.com/ThanhLongTo" target="_blank"><i class="fi fi-brands-github"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="info-container">
+                <div class="links-box" style="position:relative">
+                    <div class="title-container">
+                        <h3 class="title">Hỗ trợ</h3>
+                    </div>
+                    <a href="#">Liên hệ</a>
+                    <br>
+                    <a href="#">Bảo mật</a>
+                    <br>
+                    <a href="#">Điều khoản</a>
+                </div>
+                <div class="about-box" style="position:relative">
+                    <div class="title-container">
+                        <h3 class="title">Thông tin</h3>
+                    </div>
+                    <a href="#">Giới thiệu</a>
+                    <br>
+                    <a href="#">Công cụ</a>
+                </div>
+            </div>
+
+            <div class="contact-container" style="position:relative">
+                <div class="title-container">
+                    <h3 class="title">Liên hệ chúng tôi</h3>
+                </div>				
+                <div class="location">
+                    <i class="fi fi-rr-marker"></i>
+                    <a href="https://goo.gl/maps/7Q9t2QPYLRgXXyGb7" target="_blank">11 Đoàn Kết, Bình Thọ, Thành Phố Thủ Đức, Thành phố Hồ Chí Minh, Việt Nam</a>
+                </div>
+                <div class="email">
+                    <i class="fi fi-rr-at"></i>
+                    <a href="mailto:longto.xp@gmail.com">longto.xp@gmail.com</a></div>
+            </div>
+        </div>
+    </footer>
+
+    <style>
+        .footer {
+            width: 100%;
+            height: 300px;
+            margin-top: 300px;
+            padding: 0 10%;
+            background-color: #262626;
+            color: white;
+        }
+
+        .footer .container {
+            display: flex;
+            justify-content: center;
+            padding: 40px 20px 0;
+            overflow: hidden;
+        }
+
+
+        .footer .container .title-container {
+            position: relative;
+            margin: 30px 0;
+        }
+
+        .footer .container h3 {
+            font-size: 140%;
+        }
+
+        .footer .title-container .title:hover {
+            cursor: pointer;
+        }
+
+
+        .footer .title-container .title:hover::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            width: 80%;
+            height: 1px;
+            background-color: white;
+            animation: animate 6s infinite linear;
+            transition: ease-in-out 0.1s;
+        }
+
+
+        .brand-container, .info-container, .contact-container {
+            width: 20%;
+            margin: 0 65px;
+        }
+        .brand .connect {
+            margin-top: 20px;
+        }
+
+        .brand .connect i {
+            font-size: 150%;
+            margin-right: 10px;
+        }
+
+        .footer .container a , .footer .container p, .footer .container i{
+            opacity: 0.6;
+            text-decoration: none;
+            color: white
+        }
+
+        .info-container {
+            display: flex;
+            justify-content: space-between;
+            width: 22%;
+        }
+
+        .info-container a {
+            line-height: 2;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .info-container a:hover {
+            display: inline-block;
+            transform: scale(1.1);
+            opacity: 1;
+            color: #cfcba8
+            
+        }
+
+        .info-container .links-box, .info-container .about-box {
+            margin: 0 30px;
+        }
+
+        .contact-container div {
+            margin: 10px 0;
+        }
+
+        .email:hover > a {
+            animation: rainbow-colors 2s linear infinite;
+            transition: ease-in-out 0.2s;
+        }
+
+        .location a {
+            transition: ease-in-out 0.2s;
+        }
+
+        .location a:hover {
+            opacity: 1;
+        }
+
+        @keyframes rainbow-colors {
+            0% { color: hsl(197, 97%, 66%, 1); }
+            25% { color: hsl(0, 100%, 100%, 1); }
+            50% { color: hsl(348, 83%, 81%, 1); }
+            75% { color: hsl(.75turn, 90%, 65%); }
+            100% { color: hsl(1turn, 90%, 65%); }
+        }
+
+        @keyframes animate{
+            0%{
+                transform-origin: left;
+                transform: scaleX(0);
+            }
+            25%{
+                transform-origin: left;
+                transform: scaleX(1);
+            }
+            26%{
+                transform-origin: right;
+                transform: scaleX(1);
+            }
+            50%{
+                transform-origin: right;
+                transform: scaleX(0);
+            }
+
+            51%{
+                transform-origin: right;
+                transform: scaleX(0);
+            }
+            75%{
+                transform-origin: right;
+                transform: scaleX(1);
+            }
+            76%{
+                transform-origin: left;
+                transform: scaleX(1);
+            }
+            100%{
+                transform-origin: left;
+                transform: scaleX(0);
+            }
+        }
+    </style>
+</html>

@@ -97,9 +97,9 @@ if (mysqli_num_rows($result) > 0){?>
 				<th>STT</th>
 				<th>TÊN TRƯỜNG</th>
 				<th>TÊN QUẬN</th>
-				<th onclick="sortTable(3)">ĐIỂM NV1</th>
-				<th onclick="sortTable(4)">ĐIỂM NV2</th>
-				<th onclick="sortTable(5)">ĐIỂM NV3</th>
+				<th onclick="sortTable(3)">ĐIỂM NV1  ⇧</th>
+				<th onclick="sortTable(4)">ĐIỂM NV2  ⇧</th>
+				<th onclick="sortTable(5)">ĐIỂM NV3  ⇧</th>
 			</tr>
 		</thead>
 
@@ -159,55 +159,7 @@ if (mysqli_num_rows($result) > 0){?>
 
 	</table>
 
-    <script>
-        var clicked = false;
-        function sortTable(col_num) {
-            var table, rows, switching, i, x, y, shouldSwitch;
-            table = document.querySelector(".search-table");
-            switching = true;
-
-            while (switching) {
-
-                switching = false;
-                rows = table.rows;
-
-                for (i = 1; i < (rows.length - 1); i++) {
-
-                    shouldSwitch = false;
-
-                    x = rows[i].getElementsByTagName("TD")[col_num];
-                    y = rows[i + 1].getElementsByTagName("TD")[col_num];
-
-                    if (!clicked) {
-                        if (parseFloat(x.innerHTML) < parseFloat(y.innerHTML)) {
-                            shouldSwitch = true;
-                            break;
-                        }
-                    } else {
-                        if (parseFloat(x.innerHTML) > parseFloat(y.innerHTML)) {
-                            shouldSwitch = true;
-                            break;
-                        }
-                    }
-                    
-                }
-                if (shouldSwitch) {
-
-                    rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
-                    switching = true;
-                }
-            }
-
-
-            if (!clicked) {
-                clicked = true;
-            } else {
-                clicked = false
-            }
-            
-
-        }
-    </script>
+    <script src="./js/sort.js"></script>
 
 <?php
 } else {

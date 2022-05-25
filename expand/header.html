@@ -1,0 +1,54 @@
+<html>
+    <header>
+        <nav>
+            <div class="navbar">
+                <div class="navbar-select">
+                    <a href="../main_page/index.php">Tra điểm</a>
+                </div>
+                <div class="navbar-select">
+                    <a href="../filter_page/index.php">Lọc điểm</a>
+                </div>
+                <div class="navbar-select">
+                    <a href="#">Thống kê</a>
+                </div>
+            </div>
+        </nav>          
+    </header>
+
+    <style>
+        header {
+            display: flex;
+            justify-content: center;
+            background-color: white;
+            padding: 20px 10% 10px;
+            box-shadow: 0 0 20px rgb(0 0 0 / 10%);
+            position: sticky;
+            top: 0;
+            z-index: 5;
+        }
+
+        .navbar-select {
+            padding: 0 20px;
+            margin: 0 10px;
+            float: left;
+
+        }
+
+        .navbar-select a {
+            line-height: 2.5;
+            text-decoration: none;
+            color: black;
+            font-size: 120%;
+        }
+
+        .navbar-select:hover {
+            background-color: #009879;
+            box-shadow: 0 0 12px rgba(0,0,0,0.07);
+            border-radius: 30px;
+        }
+
+        .navbar-select:hover > a {
+            color: white;
+        }
+    </style>
+</html>

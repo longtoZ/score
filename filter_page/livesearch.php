@@ -13,86 +13,7 @@ $result = mysqli_query($con,$query);
 
 if (mysqli_num_rows($result) > 0){?>
 
-
-	<style>
-
-		.search-table {
-			box-shadow: 0 0 20px rgba(0, 0, 0, 0.08);
-			border-collapse: collapse;
-			width: 1200px;
-			/* border-radius: 10px 10px 0 0;
-			overflow: hidden; */
-			margin-bottom: 100px;
-			opacity: 1;
-			animation-name: fadeInOpacity;
-			animation-timing-function: ease-in;
-			animation-duration: 0.15s;
-		}
-
-		@keyframes fadeInOpacity {
-			0% {
-				opacity: 0;
-			}
-			100% {
-				opacity: 1;
-			}
-		}
-
-		.search-table thead {
-			background-color: #009879;
-			color: #ffffff;
-			text-align: left;
-			font-weight: bold;
-			box-shadow: 0 0 20px rgba(0, 152, 121, 0.3);
-		}
-
-		.search-table thead tr th:nth-of-type(3),
-		.search-table thead tr th:nth-of-type(4),
-		.search-table thead tr th:nth-of-type(5),
-		.search-table thead tr th:nth-of-type(6) {
-			text-align: center;
-		}
-
-		.search-table th, .search-table td {
-			padding: 12px 15px;
-		}
-
-		.search-table tr {
-			cursor: pointer;
-		}
-
-		.search-table tbody tr:nth-of-type(even) {
-			background-color: #f3f3f3
-			outline: none;
-		}
-
-		.search-table tbody tr td:first-of-type {
-			color: #009879;
-			font-weight: bold;
-		}
-
-		.search-table tbody tr:last-of-type {
-			border-bottom: 2px solid #009879;
-		}
-
-		.search-table tbody tr td:nth-of-type(3),
-		.search-table tbody tr td:nth-of-type(4),
-		.search-table tbody tr td:nth-of-type(5),
-		.search-table tbody tr td:nth-of-type(6) {
-			text-align: center;
-		}
-
-		.search-table tbody tr:hover {
-			transform: scale(1.02);
-			box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
-			background-color: #FFF9C2;
-			font-size: 110%;
-			font-weight: bold;
-			transition: ease-in-out 0.15s;
-		}
-
-
-	</style>
+	<link rel="stylesheet" type="text/css" href="./assets/css/table.css">
 
 
 	<table class="search-table">
@@ -101,9 +22,9 @@ if (mysqli_num_rows($result) > 0){?>
 				<th>STT</th>
 				<th>TÊN TRƯỜNG</th>
 				<th>TÊN QUẬN</th>
-				<th>ĐIỂM NV1</th>
-				<th>ĐIỂM NV2</th>
-				<th>ĐIỂM NV3</th>
+				<th onclick="sortTable(3)">ĐIỂM NV1  ⇩</th>
+				<th onclick="sortTable(4)">ĐIỂM NV2  ⇩</th>
+				<th onclick="sortTable(5)">ĐIỂM NV3  ⇩</th>
 			</tr>
 		</thead>
 
@@ -162,6 +83,8 @@ if (mysqli_num_rows($result) > 0){?>
 		</tbody>
 
 	</table>
+
+	<script src="./js/sort.js"></script>
 
 
 <?php 
