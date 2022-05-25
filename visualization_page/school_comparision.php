@@ -1,10 +1,10 @@
 <?php
-    $connect = mysqli_connect("localhost", "root", "", "search_project");
+    include("../config/config.php");
     $year = $_POST['year'];
     $district = $_POST['district'];
     $sql = "SELECT * FROM `search_score_$year` WHERE `TÊN QUẬN` LIKE '%$district%';";
 
-    $result = mysqli_query($connect,$sql);
+    $result = mysqli_query($con,$sql);
     $datas = array();
 
     if (mysqli_num_rows($result) > 0) {

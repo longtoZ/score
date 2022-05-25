@@ -1,6 +1,6 @@
 <?php 
 
-include("config.php");
+include("../config/config.php");
 
 $average= $_POST['average'];
 $year = $_POST['year'];

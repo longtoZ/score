@@ -1,5 +1,5 @@
 <?php
-$con = mysqli_connect("localhost", "root", "", "search_project");
+include("../config/config.php");
 $start = $_POST['start'];
 $end = $_POST['end'];
 $year = $_POST['year'];

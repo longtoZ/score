@@ -1,5 +1,5 @@
 <?php
-$con = mysqli_connect("localhost", "root", "", "search_project");
+include("../config/config.php");
 $input = $_POST['input'];
 $year = $_POST['year'];
 $wish = $_POST['wish'];

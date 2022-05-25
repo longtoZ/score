@@ -1,10 +1,10 @@
 <?php
-    $connect = mysqli_connect("localhost", "root", "", "search_project");
+    include("../config/config.php");
     $school = $_POST['title'];
     $sql = "SELECT * FROM `ti_le_choi` WHERE `TÊN TRƯỜNG` LIKE '%$school%';";
 
     $year = $_POST['year'];
-    $result = mysqli_query($connect,$sql);
+    $result = mysqli_query($con,$sql);
     $datas = array();
 
     if (mysqli_num_rows($result) > 0) {

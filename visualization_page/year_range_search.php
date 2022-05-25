@@ -1,5 +1,5 @@
 <?php
-    $connect = mysqli_connect("localhost", "root", "", "search_project");
+    include("../config/config.php");
     $school = $_POST['title'];
     $sql = <<<EOD
     SELECT
@@ -23,7 +23,7 @@
     WHERE `search_score_2020`.`TÊN TRƯỜNG` LIKE '%$school%';
     EOD;
 
-    $result = mysqli_query($connect,$sql);
+    $result = mysqli_query($con,$sql);
     $datas = array();
 
     if (mysqli_num_rows($result) > 0) {

@@ -2,7 +2,7 @@ var exams_date = []
 var exams_month = 0
 var exams_year = 0
 
-fetch("../exams_date/exams.json")
+fetch("../json/exams.json")
     .then(response => response.json())
     .then(data => {
         console.log(data)

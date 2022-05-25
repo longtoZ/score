@@ -1,6 +1,6 @@
 <?php 
 
-include("config.php");
+include("../config/config.php");
 if (isset($_POST['input'], $_POST['year'])) {
 
 	$input = $_POST['input'];
