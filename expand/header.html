@@ -1,5 +1,14 @@
 <html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="../expand/css/style.css">
+        <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-bold-rounded/css/uicons-bold-rounded.css'>
+    </head>
     <header>
+        <div class="logo">
+            <a href="../home_page/index.html">
+                <img src="../img/logo-full-light (2).png" alt="" class="brand-logo" height="50px" width="auto">
+            </a>
+        </div>
         <nav>
             <div class="navbar">
                 <div class="navbar-select">
@@ -12,20 +21,117 @@
                     <a href="../visualization_page/index.php">Thống kê</a>
                 </div>
             </div>
-        </nav>          
+        </nav>
+        <div class="switcher">
+            
+            <div class="mode">
+                <div class="light">
+                    <i class="fi fi-br-sun"></i>
+                </div>
+                <div class="dark">
+                    <i class="fi fi-br-moon"></i>
+                </div>
+            </div>
+            <div class="toggle-box"></div>
+
+        </div> 
+
+        <input type="checkbox" name="" id="nav-input" hidden>
+
+        <label for="nav-input" class="nav-bar-btn">
+            <i class="fi fi-br-menu-burger"></i>
+        </label>    
+
+        <label for="nav-input" class="nav-overlay"></label>
+        <div class="nav-mobile">
+            <label for="nav-input" class="nav-close">
+                <i class="fi fi-br-cross"></i>
+            </label>
+            <span class="nav-title">Score.</span>
+            <div class="nav-line-top"></div>
+            <ul class="nav-list">
+                <li>
+                    <a href="../home_page/index.html" class="nav-links">Trang chủ</a>
+                </li>
+                <li>
+                    <a href="../main_page/index.php" class="nav-links">Tra điểm</a>
+                </li>
+                <li>
+                    <a href="../filter_page/index.php" class="nav-links">Lọc điểm</a>
+                </li>
+                <li>
+                    <a href="../visualization_page/index.php" class="nav-links">Thống kê</a>
+                </li>
+            </ul>
+        </div>
     </header>
 
     <style>
+
         header {
             display: flex;
-            justify-content: center;
-            background-color: white;
-            padding: 20px 10% 10px;
-            box-shadow: 0 0 20px rgb(0 0 0 / 10%);
-            position: sticky;
+            justify-content: space-between;
+            background-color: var(--header-color);
+            padding: 15px 4%;
+            box-shadow: var(--box-shadow);
+            position: fixed;
+            right: 0;
+            left: 0;
             top: 0;
             z-index: 5;
         }
+
+
+        .switcher {
+            width: 100px;
+            height: 40px;
+            border-radius: 40px;
+            background-color: var(--switcher-color);
+            overflow: hidden;
+            margin-top: 10px;
+        }
+
+        .toggle-box {
+            width: 50px;
+            height: 40px;
+            border-radius: 40px;
+            background-color: var(--primary-color);
+            overflow: hidden;
+            margin-top: 10px;
+            position: absolute;
+            top: 15px;
+            box-shadow: var(--box-shadow);
+            z-index: 1;
+        }
+
+        .mode {
+            width: 100%;
+        }
+
+        .mode .light {
+            font-size: 120%;
+            float: left;
+            width: 50%;
+            text-align: center;
+            line-height: 45px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .mode .dark {
+            font-size: 120%;
+            float: right;
+            width: 50%;
+            text-align: center;
+            line-height: 45px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .nav-bar-btn, .nav-overlay, .nav-mobile {
+            display: none;
+        }
+
 
         .navbar-select {
             padding: 0 20px;
@@ -37,18 +143,141 @@
         .navbar-select a {
             line-height: 2.5;
             text-decoration: none;
-            color: black;
+            color: var(--text-color);
             font-size: 120%;
         }
 
         .navbar-select:hover {
-            background-color: #009879;
-            box-shadow: 0 0 12px rgba(0,0,0,0.07);
+            background-color: var(--hover-color);
+            box-shadow: var(--box-shadow);
             border-radius: 30px;
         }
 
         .navbar-select:hover > a {
-            color: white;
+            color: var(--primary-color);
+        }
+
+        @media only screen and (max-width: 46.1875em) {
+
+            header {
+                padding: 8px 4%;
+            }
+
+            .toggle-box {
+                top: 8px;
+            }
+
+            .nav-title {
+                position: absolute;
+                right: 20px;
+                top: 20px;
+                font-size: 200%;
+                font-weight: 500;
+                letter-spacing: 2px;
+            }
+
+            .nav-line-top {
+                border: 1px solid rgb(129, 129, 129);
+                position: absolute;
+                margin-top: 90px;
+                right: 20px;
+                left: 30px;
+            }
+
+            .nav-bar-btn {
+                display: block;
+                width: 28px;
+                height: 28px;
+                padding-top: 10px;
+                font-size: 170%;
+            }
+
+            .contact-us, nav {
+                display: none;
+            }
+
+            .nav-overlay {
+                position: fixed;
+                top: 0;
+                right: 0;
+                left: 0;
+                bottom: 0;
+                background-color: rgba(0,0,0,0.3);
+                display: none;
+                animation: swipIn linear 0.3s;
+                
+            }
+
+            .nav-mobile {
+                display: block;
+                position: fixed;
+                top: 0;
+                bottom: 0;
+                right: 0;
+                background-color: var(--primary-color);
+                width: 60%;
+                transform: translateX(100%);
+                transition: transform ease-in-out 0.3s, opacity linear 0.3s;
+                opacity: 0;
+                border-radius: 30px 0 0 25px;
+                z-index: 3;
+            }
+
+            .nav-list {
+                margin-top: 110px;
+                list-style-type: none;
+                font-size: 120%;
+            }
+
+            .nav-links {
+                text-decoration: none;
+                color: var(--text-color);
+                display: block;
+                padding: 10px 22px;
+                text-align: right;
+                font-weight: 400;
+            }
+
+            .nav-list li {
+                margin: 0 10px;
+            }
+
+            .nav-list li:hover {
+                background-color: rgba(0,0,0,0.03);
+                border-radius: 20px;
+                transition: all ease-in-out 0.2s;
+            }
+
+            .nav-close {
+                color: var(--text-color);
+                position: absolute;
+                top: 32px;
+                left: 20px;
+                width: 20px;
+                height: 20px;
+                font-size: 120%;
+            }
+
+            #nav-input:checked ~ .nav-overlay {
+                display: block;
+            }
+
+            #nav-input:checked ~ .nav-mobile {
+                transform: translateX(0%);
+                opacity: 1;
+            }
+
+
+            @keyframes swipeIn {
+                from {
+                    opacity: 0;
+                } to {
+                    opacity: 1;
+                }
+            }
+
         }
     </style>
+
+    <script src="../expand/js/toggle-mode.js"></script>
 </html>

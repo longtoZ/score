@@ -4,6 +4,7 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" type="text/css" href="./assets/css/style.css">
+	<link rel="stylesheet" type="text/css" href="../expand/css/style.css">
 	<link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-regular-rounded/css/uicons-regular-rounded.css'>
 	<link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-brands/css/uicons-brands.css'>
 	<!-- <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css'> -->
@@ -79,6 +80,11 @@
 					url:"livesearch.php",
 					method:"POST",
 					data:{input:input,year:year},
+					beforeSend:function() {
+						$(function(){
+							$("#search-result").load("../expand/loader.html"); 
+						});
+					},
 					success:function(data){
 						$("#search-result").html(data);
 					}
@@ -88,14 +94,18 @@
 					url:"livesearch.php",
 					method:"POST",
 					data:{input:'',year:year},
+					beforeSend:function() {
+						$(function(){
+							$("#search-result").load("../expand/loader.html"); 
+						});
+					},
 					success:function(data){
 						$("#search-result").html(data);
 					}
 				});
 
 			} else if (input!="" && document.querySelector('.dropdown-select .select').innerHTML =="Chọn năm"){
-				alert("Vui lòng chọn năm!");
-				
+				alert("Vui lòng chọn năm!");		
 
 			} else {
 				$("#search-result").css("display","none");

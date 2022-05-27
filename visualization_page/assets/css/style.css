@@ -117,10 +117,11 @@ body::-webkit-scrollbar-thumb {
 
 .school-title .main-title {
     font-size: 30px;
-    font-weight: bold;
     letter-spacing: 3px;
     margin: 0 15px;
+    font-weight: 500;
 }
+
 
 .school-title .main-desc {
     font-size: 15px;
@@ -163,7 +164,8 @@ body::-webkit-scrollbar-thumb {
     outline: none;
     border-radius: 25px;
 	padding: 8px;
-    height: 480px;
+    padding-bottom: 50px;
+    height: auto;
     width: 90%;
     background-color: white;
     box-shadow: 0 0 30px rgba(0,0,0,0.07);
@@ -229,6 +231,7 @@ body::-webkit-scrollbar-thumb {
     background-color: white;
     box-shadow: 0 0 30px rgba(0,0,0,0.07);
     margin: 25px 30px;
+    overflow: hidden;
 }
 
 .comparision-data {
@@ -377,23 +380,18 @@ body::-webkit-scrollbar-thumb {
 .more-info-data {
     margin: 15px 0;
     width: 95%;
-    border: none;
-    outline: none;
-    border-radius: 25px;
-    background-color: white;
-    box-shadow: 0 0 15px rgba(0,0,0,0.1);
 }
 
 .school-links {
     margin-top: 35px;
 }
 
-.main-page-container, .fanpage-container {
+.main-page-container, .fanpage-container, .curriculum-page-container {
     overflow: hidden;
     padding-left: 10px;
 }
 
-.main-page, .fanpage {
+.main-page, .fanpage, .curriculum-page{
     margin: 15px 0;
     width: 95%;
     height: 100px;
@@ -421,24 +419,24 @@ body::-webkit-scrollbar-thumb {
     line-height: 100px;
 }
 
-.main-page .detail, .fanpage .detail {
+.main-page .detail, .fanpage .detail, .curriculum-page .detail {
     float: left;
     width: 70%;
     padding: 10px;
 }
 
-.main-page .detail .title, .fanpage .detail .title {
+.main-page .detail .title, .fanpage .detail .title, .curriculum-page .detail .title {
     line-height: 2;
     font-size: 150%;
     font-weight: 600;
 }
 
-.main-page .detail .desc, .fanpage .detail .desc {
+.main-page .detail .desc, .fanpage .detail .desc, .curriculum-page .detail .desc {
     font-size: 75%;
     opacity: 0.5;
 }
 
-.main-page .visit, .fanpage .visit {
+.main-page .visit, .fanpage .visit, .curriculum-page .visit {
     float: left;
     width: 10%;
     line-height: 100px;
@@ -463,6 +461,22 @@ body::-webkit-scrollbar-thumb {
     cursor: pointer;
 }
 
+.curriculum-page .logo {
+    font-size: 200%;
+    color: khaki;
+    float: left;
+    width: 20%;
+    text-align: center;
+    line-height: 100px;
+}
+
+.curriculum-page:hover, .curriculum-page:hover > .logo{
+    background-color: khaki;
+    color: white;
+    transition: ease-in-out 0.2s;
+    cursor: pointer;
+}
+
 .live-clock {
     height: 50px;
     width: 100%;
@@ -481,4 +495,93 @@ body::-webkit-scrollbar-thumb {
     } to {
         opacity: 1;
     }
+}
+
+@media only screen and (max-width: 46.1875em) {
+
+    .main-data-box {
+        padding: 0;
+    }
+
+    .left-container, .right-container {
+        width: 100%;
+    }
+
+    .title-box {
+        margin-bottom: 30px;
+    }
+
+    .school-title .main-title, .school-title .main-desc {
+        margin: 0;
+    }
+
+    .school-search-box, .school-search-box .school-search{
+        width: 100%;
+        padding: 10px;
+    }
+
+    .school-search-box i {
+        right: 20px;
+        top: 44px;
+    }
+
+    .year-range-data .filter-box {
+        margin: 20px 5px;
+    }
+
+    .detail-data {
+        margin: 0 0;
+        width: 100%
+    }
+
+    .win-ratio-data, .comparision-data {
+        height: auto;
+        width: 90%;
+        margin: auto;
+        margin-top: 30px;
+    }
+
+    .win-ratio-display {
+        top: -100px !important;
+    }
+
+    .win-ratio-graph-container, .win-ratio-detail, .comparision-graph-container, .comparision-detail-container {
+        float: none;
+        width: 100%;
+    }
+
+    .win-ratio-data .year-box {
+        margin: 20px 20px 0!important;
+    }
+
+    .win-ratio-data .year-box h3 {
+        margin-right: 20px !important;
+    }
+
+    .filter-year .filter-year-select {
+        margin-right: 0 !important;
+    }
+
+    .firgue .firgue1 {
+        font-size: 400% !important;
+    }
+
+    .firgue .firgue2 {
+        font-size: 110% !important;
+    }
+
+    .filter-detail .filter-year, .filter-detail .filter-district {
+        width: 50%;
+    }
+
+    .filter-district .filter-district-select, .filter-district .filter-district-list {
+        width: 140px;
+    }
+
+    .school-list {
+        top: -100px;
+        max-height: 250px;
+    }
+
+
 }

@@ -30,10 +30,23 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.1/dist/chart.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script>
 
-<div class="bar-graph" style="height: 470px; width:100%">
+<div class="bar-graph">
     <canvas id="myChartBarComparision"></canvas>  
 </div>
 
+<style>
+    .bar-graph {
+        height: 470px;
+        width:100%
+    }
+
+    @media only screen and (max-width: 46.1875em) {
+        .bar-graph {
+            width: 95%;
+        }
+    }
+    
+</style>
 
 <script>
     function randomRGB() {

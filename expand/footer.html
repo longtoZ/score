@@ -4,7 +4,8 @@
             <div class="brand-container" style="position:relative">
                 <div class="brand">
                     <div class="title-container">
-                        <h3 class="title">Multi-search</h3>
+                        <!-- <h3 class="title">Multi-search</h3> -->
+                        <img src="../img/logo-title-dark (2).png" alt="logo" class="brand-logo" width="auto" height="50px">
                     </div>
                     <p class="description">Đây là một công cụ lọc điểm .... or whatever idk what to write here</p>
                     <div class="connect">
@@ -55,9 +56,10 @@
     <style>
         .footer {
             width: 100%;
-            height: 300px;
+            padding-bottom: 30px;
             margin-top: 300px;
             padding: 0 10%;
+            padding-bottom: 5%;
             background-color: #262626;
             color: white;
         }
@@ -199,6 +201,37 @@
                 transform-origin: left;
                 transform: scaleX(0);
             }
+        }
+
+        @media only screen and (max-width: 46.1875em) {
+            /* Footer */
+
+            .footer {
+                padding: 0 6%;
+            }
+
+            .footer .container {
+                flex-direction: column;
+                padding: 40px 0;
+            }
+
+            .brand-container {
+                padding: 0 10px;
+            }
+
+            .info-container {
+                position: relative;
+                right: 6%;
+            }
+
+            .brand-container, .info-container, .contact-container {
+                width: 100%;
+                margin: 20px 0;
+            }
+
+
+
+            
         }
     </style>
 </html>

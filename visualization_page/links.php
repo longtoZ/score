@@ -79,6 +79,23 @@
                 </div>
             </a>
         </div>
+        <div class="curriculum-page-container">
+            <a href="https://hcm.edu.vn/homehcm" target="_blank" style="text-decoration: none; color: black;">
+                <div class="curriculum-page">
+                    <div class="logo">
+                    <i class="fi fi-sr-graduation-cap"></i>
+                    </div>
+                    <div class="detail">
+                        <span class="title">Cổng thông tin</span>
+                        <br>
+                        <span class="desc">Giáo dục và Đào tạo Thành phố...</span>
+                    </div>
+                    <div class="visit">
+                        <i class="fi fi-br-angle-right"></i>
+                    </div>
+                </div>
+            </a>
+        </div>
     
     <?php
     } else {

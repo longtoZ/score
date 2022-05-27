@@ -12,87 +12,8 @@ if (isset($_POST['input'], $_POST['year'])) {
 
 	if (mysqli_num_rows($result) > 0){?>
 
-		<style>
-			
-
-			.search-table {
-				box-shadow: 0 0 20px rgba(0, 0, 0, 0.08);
-				border-collapse: collapse;
-				/* border-radius: 10px 10px 0 0;
-				overflow: hidden; */
-				width: 80%;
-				margin-bottom: 100px;
-				opacity: 1;
-				animation-name: fadeInOpacity;
-				animation-timing-function: ease-in;
-				animation-duration: 0.15s;
-			}
-
-			@keyframes fadeInOpacity {
-				0% {
-					opacity: 0;
-				}
-				100% {
-					opacity: 1;
-				}
-			}
-
-			.search-table thead {
-				background-color: #009879;
-				color: #ffffff;
-				text-align: left;
-				font-weight: bold;
-				box-shadow: 0 0 20px rgba(0, 152, 121, 0.3);
-			}
-
-			.search-table thead tr th:nth-of-type(3),
-			.search-table thead tr th:nth-of-type(4),
-			.search-table thead tr th:nth-of-type(5),
-			.search-table thead tr th:nth-of-type(6) {
-				text-align: center;
-			}
-
-			.search-table th, .search-table td {
-				padding: 12px 15px;
-			}
-
-			.search-table tr {
-				cursor: pointer;
-			}
-
-			.search-table tbody tr:nth-of-type(even) {
-				background-color: #f3f3f3
-				outline: none;
-			}
-
-			.search-table tbody tr td:first-of-type {
-				color: #009879;
-				font-weight: bold;
-			}
-
-			.search-table tbody tr:last-of-type {
-				border-bottom: 2px solid #009879;
-			}
-
-			.search-table tbody tr td:nth-of-type(3),
-			.search-table tbody tr td:nth-of-type(4),
-			.search-table tbody tr td:nth-of-type(5),
-			.search-table tbody tr td:nth-of-type(6) {
-				text-align: center;
-			}
-
-			.search-table tbody tr:hover {
-				transform: scale(1.02);
-				box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
-				background-color: #FFF9C2;
-				font-size: 110%;
-				font-weight: bold;
-				transition: ease-in-out 0.15s;
-			}
-
-
-		</style>
-
+		<link rel="stylesheet" type="text/css" href="./assets/css/table.css">
+		<link rel="stylesheet" type="text/css" href="../expand/css/style.css">
 
 		<table class="search-table">
 			<thead>

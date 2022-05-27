@@ -13,6 +13,9 @@ html {
     animation: transitionIn 1.5s;
 }
 
+body {
+    background-color: var(--primary-color);
+}
 
 
 body::-webkit-scrollbar {
@@ -24,14 +27,14 @@ body::-webkit-scrollbar-track {
 }
 
 body::-webkit-scrollbar-thumb {
-    background-color: rgba(179, 179, 179, 0.7);
+    background-color: var(--thumb-color);
     border-radius: 20px;
-    border: 6px solid transparent;
 }
 
 
+
 .main-title {
-    margin-top: 100px;
+    margin-top: 130px;
     text-align: center;
 }
 
@@ -41,21 +44,24 @@ body::-webkit-scrollbar-thumb {
     justify-content: center;
 }
 
+.form-control, .dropdown-container {
+    width: 60%;
+}
 
 .form-control, .dropdown-select {
+    color: var(--text-color);
     border: none;
     outline: none;
     border-radius: 10px;
 	padding: 8px;
-    width: 450px;
     height: 50px;
-    background-color: white;
-    box-shadow: 0 0 12px rgba(0,0,0,0.1);
+    background-color: var(--second-primary-color);
+    box-shadow: var(--box-shadow);
     padding-left: 25px;
 }
 
-.form-control:focus, .dropdown-select:hover {
-    box-shadow: 0 0 12px rgba(0, 152, 121, 0.25);
+.form-control:hover, .dropdown-select:hover {
+    box-shadow: var(--hover-color);
     transition: ease-in-out 0.2s;
 }
 
@@ -102,13 +108,14 @@ body::-webkit-scrollbar-thumb {
 
 .dropdown-list {
     position: relative;
-    background-color: white;
-    box-shadow: 0 0 12px rgba(0,0,0,0.1);
+    background-color: var(--second-primary-color);
+    box-shadow: var(--box-shadow);
     margin-top: 8px;
     border-radius: 10px;
     opacity: 0;
     transition: opacity 0.2s linear;
     overflow: hidden;
+    height: 110px;
 }
 
 .dropdown-list .year {
@@ -117,23 +124,22 @@ body::-webkit-scrollbar-thumb {
 }
 
 .dropdown-list .year:hover {
-    background-color: #f3f3f3;
+    background-color: var(--primary-color);
 }
 
 .dropdown-list.active {
-    max-height: 105px;
     opacity: 1;
     overflow-y: scroll;
 }
 
 .dropdown-list::-webkit-scrollbar {
-    background-color: white;
+    background-color: var(--primary-color);
     width: 8px;
     border-radius: 8px;
 }
 
 .dropdown-list::-webkit-scrollbar-thumb {
-    background-color: rgba(179, 179, 179, 0.7);
+    background-color: var(--thumb-color);
     border-radius: 8px;
 }
 

@@ -1,0 +1,35 @@
+:root {
+    --primary-color: #ffffff;
+    --second-primary-color: #ffffff;
+    --third-primary-color: #c0c0c0;
+    --fourth-primary-color: #7a7a7a;
+
+    --switcher-color: #E5E5E5;
+    --header-color: #ffffff;
+    --hover-color: 0 0 12px rgba(0, 152, 121, 0.25);
+    --thumb-color: rgba(179, 179, 179, 0.7);
+    --box-shadow: 0 0 20px rgb(0 0 0 / 10%);
+    --text-color: #000000;
+
+    --table-odd-color: #ffffff;
+    --table-even-color: #f3f3f3;
+}
+
+.dark-mode {
+    --primary-color: #1e1e1e;
+    --second-primary-color:	#252526;
+    --third-primary-color: #2d2d30;
+    --fourth-primary-color: #3e3e42;
+
+    --header-color: #262626;
+    --switcher-color: #2d2d30;
+    --switcher-color: #2d2d30;
+    --hover-color: none;
+    --thumb-color: rgba(75, 75, 75, 0.7);
+    --box-shadow: 0 0 20px rgb(0 0 0 / 30%);
+    --text-color: #ffffff;
+    color: white !important;
+
+    --table-odd-color: #1e1e1e;
+    --table-even-color: #252526;
+}

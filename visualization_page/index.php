@@ -8,6 +8,7 @@
         <link rel="stylesheet" type="text/css" href="./assets/css/calendar.css">
         <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-regular-rounded/css/uicons-regular-rounded.css'>
         <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-solid-straight/css/uicons-solid-straight.css'>
+        <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-solid-rounded/css/uicons-solid-rounded.css'>
         <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-bold-rounded/css/uicons-bold-rounded.css'>
         <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-brands/css/uicons-brands.css'>
         <title>Thống kê</title>
@@ -84,7 +85,7 @@
                                 <div class="comparision-detail">
                                     <div class="comparision-detail-container">
                                         <div class="filter-box">
-                                            <h3 style="text-align:center; margin-top: 40px;">Trường trong khu vực</h3>
+                                            <h3 style="text-align:center; font-weight: bold; margin-top: 40px;">Trường trong khu vực</h3>
                                             <div class="filter-detail">
                                                 <div class="filter-year" style="float: left">
                                                     <h4 class="year-title" style="text-align:center">Chọn năm</h4>
@@ -152,40 +153,43 @@
                     <div class="right-container">
                         <div class="more-info-data">
 
-                            <div class="calendar-container">
-                                <div class="calendar">
-                                    <div class="calendar-title">
-                                        <span class="title">Lịch</span>
-                                    </div>
-                                    <div class="calendar-header">
-                                        <span class="month-picker" id="month-picker">February</span>
-                                        <div class="year-picker">
-                                            <span class="year-change" id="prev-year">
-                                                <pre><</pre>
-                                            </span>
-                                            <span id="year">2021</span>
-                                            <span class="year-change" id="next-year">
-                                                <pre>></pre>
-                                            </span>
+                            <div class="calendar-box">
+                                <div class="calendar-container">
+                                    <div class="calendar">
+                                        <div class="calendar-title">
+                                            <span class="title">Lịch</span>
                                         </div>
-                                    </div>
-                                    <div class="calendar-body">
-                                        <div class="calendar-week-day">
-                                            <div>Sun</div>
-                                            <div>Mon</div>
-                                            <div>Tue</div>
-                                            <div>Wed</div>
-                                            <div>Thu</div>
-                                            <div>Fri</div>
-                                            <div>Sat</div>
+                                        <div class="calendar-header">
+                                            <span class="month-picker" id="month-picker">February</span>
+                                            <div class="year-picker">
+                                                <span class="year-change" id="prev-year">
+                                                    <pre><</pre>
+                                                </span>
+                                                <span id="year">2021</span>
+                                                <span class="year-change" id="next-year">
+                                                    <pre>></pre>
+                                                </span>
+                                            </div>
                                         </div>
-                                        <div class="calendar-days"></div>
+                                        <div class="calendar-body">
+                                            <div class="calendar-week-day">
+                                                <div>Sun</div>
+                                                <div>Mon</div>
+                                                <div>Tue</div>
+                                                <div>Wed</div>
+                                                <div>Thu</div>
+                                                <div>Fri</div>
+                                                <div>Sat</div>
+                                            </div>
+                                            <div class="calendar-days"></div>
+                                        </div>
+                                        
+                                        <div class="month-list"></div>
                                     </div>
-                                    
-                                    <div class="month-list"></div>
+                                    <div id="clockDisplay"class="live-clock" onload="showTime()"></div>
                                 </div>
-                                <div id="clockDisplay"class="live-clock" onload="showTime()"></div>
                             </div>
+                            
                         
                         </div>
 

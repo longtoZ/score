@@ -42,24 +42,7 @@
 ?>
 
 
-<i id="arrow-left" class="fi fi-br-angle-left" style="
-    display: flex;
-    align-items: center;
-    height: 100%;
-    position: absolute;
-    /* top: 0; */
-    left: 0;
-    font-size: 200%;"></i>
 
-
-<i id="arrow-right" class="fi fi-br-angle-right" style="
-    display: flex;
-    align-items: center;
-    height: 100%;
-    position: absolute;
-    /* top: 0; */
-    right: 0;
-    font-size: 200%;"></i>
 
 
 <div class="bar-graph1" style="height: 380px; width:auto; margin: 0 30px; display:block">
@@ -70,12 +53,55 @@
     <canvas id="myChartBar2"></canvas>  
 </div>
 
+<i id="arrow-left" class="fi fi-br-angle-left" style="
+    display: flex;
+    align-items: center;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-size: 200%;"></i>
+
+
+<i id="arrow-right" class="fi fi-br-angle-right" style="
+    display: flex;
+    align-items: center;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-size: 200%;"></i>
+
 <style>
     i:hover {
         cursor: pointer;
         color: #009879;
         opacity: 0.7;
         transition: ease-in-out 0.2s
+    }
+
+    @media only screen and (max-width: 46.1875em) {
+        #arrow-left, #arrow-right {
+            position: relative !important;
+            top: 5px !important;
+            display: inline-block !important;
+            margin-top: 20px !important;
+            height: auto !important;
+        }
+
+        #arrow-left {
+            left: 80px !important;
+            float: left;
+        }
+
+        #arrow-right {
+            right: 80px !important;
+            float: right
+        }
+
+        .bar-graph1, .bar-graph2 {
+            margin: 0 5px !important;
+        }
     }
 </style>
 
@@ -120,6 +146,12 @@
 <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-trendline"></script>
 
 <script>
+    var mediaQuery = window.matchMedia('(max-width: 46.1875em)')
+    var isHidden = false
+    if (mediaQuery.matches) {
+        isHidden = true
+    }
+
     var ctx_bar1 = document.getElementById('myChartBar1');
     var myChartBar1 = new Chart(ctx_bar1, {
         plugins: [ChartDataLabels],
@@ -139,6 +171,7 @@
                 },
                 {
                     label: 'NV2',
+                    hidden: isHidden,
                     data: nv2,
                     backgroundColor: [
                         'rgb(54, 162, 235)',
@@ -150,6 +183,7 @@
                 },
                 {
                     label: 'NV3',
+                    hidden: isHidden,
                     data: nv3,
                     backgroundColor: [
                         'rgb(255, 206, 86)',
@@ -189,7 +223,8 @@
                     align: 'top',
                     offet: 0,
                     font: {
-                        weight: 'bold'
+                        weight: 'bold',
+                        size: '10px'
                     }
                                  
                 }
@@ -241,6 +276,7 @@
                 },
                 {
                     label: 'NV2',
+                    hidden: isHidden,
                     data: nv2Per,
                     backgroundColor: [
                         'rgb(54, 162, 235)',
@@ -257,6 +293,7 @@
                 },
                 {
                     label: 'NV3',
+                    hidden: isHidden,
                     data: nv3Per,
                     backgroundColor: [
                         'rgb(255, 206, 86)',
@@ -301,7 +338,8 @@
                     align: 'top',
                     offet: 0,
                     font: {
-                        weight: 'bold'
+                        weight: 'bold',
+                        size: '10px'
                     }
                                  
                 }

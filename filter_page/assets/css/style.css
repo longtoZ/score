@@ -256,8 +256,7 @@ body::-webkit-scrollbar-thumb {
 }
 
 .filter-year-list.active, .filter-district-list.active, .filter-wish-list.active,
-.filter-year-advanced-list.active, .filter-wish-advanced-list.active{
-    max-height: 105px;
+.filter-year-advanced-list.active, .filter-wish-advanced-list.active {
     opacity: 1;
     overflow-y: scroll;
     cursor: pointer;
@@ -387,4 +386,102 @@ body::-webkit-scrollbar-thumb {
     } to {
         opacity: 1;
     }
+}
+
+@media only screen and (max-width: 46.1875em) {
+
+    .filter-detail-container {
+        height: 36.5em;
+    }
+
+    .score-maths, .score-literature, .score-english, .score-average, 
+    .filter-year-advanced-select, .filter-year-advanced-list, .filter-wish-advanced-select, .filter-wish-advanced-list {
+        width: 100%;
+        margin: 10px 0;
+        text-align: center;
+        padding: 0 5px;
+    }
+
+    .score-cal {
+        margin-top: 20px;
+        width: 100%;
+    }
+
+    .filter-year, .filter-district{
+        width: 100%;
+    }
+
+    .filter-district {
+        position: relative;
+        top: -40px;
+    }
+
+    .filter-wish {
+        position: relative;
+        top: -90px;
+        width: 100%;
+    }
+
+    .filter-year-select, .filter-year-list, 
+    .filter-district-select, .filter-district-list,
+    .filter-wish-select, .filter-wish-list {
+        width: 100%;
+        margin-right: 0;
+    }
+
+    .filter-year-list, .filter-district-list, .filter-year-advanced-list, .filter-wish-advanced-list {
+        opacity: 1;
+        display: none;
+    }
+
+    .filter-year-list.active, .filter-district-list.active, .filter-year-advanced-list.active, .filter-wish-advanced-list.active {
+        display: block;
+    }
+
+    .filter-tool-box {
+        flex-direction: column;
+    }
+
+    .filter-year-advanced-select, .filter-wish-advanced-select {
+        padding: 8px;
+    }
+
+    .filter-between-box {
+        top: 0;
+    }
+
+    .filter-between h3, .filter-tool-box h3, .filter-top h3 {
+        padding-left: 0;
+    }
+
+    .filter-between .start, .filter-between .end, .filter-between .between-search {
+        width: 100%;
+        margin: 10px 0 !important;
+        text-align: center;
+    }
+
+    .filter-more-box {
+        flex-direction: column;
+        top: 0;
+        margin-bottom: 20px;
+    }
+
+    .filter-top, .filter-above-average, .filter-below-average {
+        padding: 10px;
+    }
+
+    .filter-top .top, .filter-above-average .above, .filter-below-average .below {
+        margin: 0!important;
+        width: 100%;
+        text-align: center;
+    }
+
+    .filter-above-average, .filter-below-average {
+        margin-top: 10px;
+    }
+
+
+
+    
+
 }
