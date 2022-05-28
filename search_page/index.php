@@ -36,7 +36,9 @@
 					<div class="year" onclick="show('Năm 2020')">Năm 2020</div>
 					<div class="year" onclick="show('Năm 2019')">Năm 2019</div>
 					<div class="year" onclick="show('Năm 2018')">Năm 2018</div>
-					<div class="year" onclick="show('Năm 2017')">Năm 2018</div>
+					<div class="year" onclick="show('Năm 2017')">Năm 2017</div>
+					<div class="year" onclick="show('Năm 2016')">Năm 2016</div>
+					<div class="year" onclick="show('Năm 2015')">Năm 2015</div>
 				</div>
 			</div>
 		</div>

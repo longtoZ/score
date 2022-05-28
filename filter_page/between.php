@@ -46,7 +46,7 @@ if (mysqli_num_rows($result) > 0){?>
 						<td><?php echo $stt; ?></td>
 						<td><?php echo $schoolname; ?></td>
 						<td><?php echo $district; ?></td>
-						<td style="background-color: var(--row-hover-color);color: var(--primary-color);"><?php echo $nv1; ?></td>
+						<td style="background-color: var(--row-hover-color);color: #000000;"><?php echo $nv1; ?></td>
 						<td><?php echo $nv2; ?></td>
 						<td><?php echo $nv3; ?></td>
 					</tr>	
@@ -58,7 +58,7 @@ if (mysqli_num_rows($result) > 0){?>
 						<td><?php echo $schoolname; ?></td>
 						<td><?php echo $district; ?></td>
 						<td><?php echo $nv1; ?></td>
-						<td style="background-color: var(--row-hover-color);color: var(--primary-color);"><?php echo $nv2; ?></td>
+						<td style="background-color: var(--row-hover-color);color: #000000;"><?php echo $nv2; ?></td>
 						<td><?php echo $nv3; ?></td>
 					</tr>	
 					<?php
@@ -69,7 +69,7 @@ if (mysqli_num_rows($result) > 0){?>
 						<td><?php echo $district; ?></td>
 						<td><?php echo $nv1; ?></td>
 						<td><?php echo $nv2; ?></td>
-						<td style="background-color: var(--row-hover-color);color: var(--primary-color);"><?php echo $nv3; ?></td>
+						<td style="background-color: var(--row-hover-color);color: #000000;"><?php echo $nv3; ?></td>
 					</tr>	
 					<?php
 				}

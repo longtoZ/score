@@ -12,7 +12,7 @@
         <nav>
             <div class="navbar">
                 <div class="navbar-select">
-                    <a href="../main_page/index.php">Tra điểm</a>
+                    <a href="../search_page/index.php">Tra điểm</a>
                 </div>
                 <div class="navbar-select">
                     <a href="../filter_page/index.php">Lọc điểm</a>
@@ -54,7 +54,7 @@
                     <a href="../home_page/index.html" class="nav-links">Trang chủ</a>
                 </li>
                 <li>
-                    <a href="../main_page/index.php" class="nav-links">Tra điểm</a>
+                    <a href="../search_page/index.php" class="nav-links">Tra điểm</a>
                 </li>
                 <li>
                     <a href="../filter_page/index.php" class="nav-links">Lọc điểm</a>
@@ -190,7 +190,7 @@
                 display: block;
                 width: 28px;
                 height: 28px;
-                padding-top: 10px;
+                padding-top: 12px;
                 font-size: 170%;
             }
 
@@ -222,7 +222,7 @@
                 transition: transform ease-in-out 0.3s, opacity linear 0.3s;
                 opacity: 0;
                 border-radius: 30px 0 0 25px;
-                z-index: 3;
+                z-index: 5;
             }
 
             .nav-list {
@@ -267,6 +267,10 @@
             #nav-input:checked ~ .nav-mobile {
                 transform: translateX(0%);
                 opacity: 1;
+            }
+
+            .switcher {
+                margin-left: 8%;
             }
 
 

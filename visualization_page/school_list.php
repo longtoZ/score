@@ -19,7 +19,7 @@
             <style>
                 .score-info {
                     background-color: var(--third-primary-color);
-                    box-shadow: 0 0 15px rgba(0,0,0,0.05);
+                    box-shadow: var(--box-shadow-light);
                     width: 100%;
                     height: 50px;
                     padding: 10px 20px;
@@ -34,6 +34,7 @@
                 .score-info:hover {
                     background-color: #FFF9C2;
                     cursor: pointer;
+                    color: #000000;
                 }
 
                 .school-name {

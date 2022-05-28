@@ -124,6 +124,7 @@ body::-webkit-scrollbar-thumb {
     width: 250px;
     background-color: var(--fourth-primary-color);
     box-shadow: var(--box-shadow-light);
+    color: var(--text-color);
     margin-right: 5px;
     margin-top: 20px;
     padding-left: 15px;
