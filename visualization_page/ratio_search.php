@@ -39,6 +39,7 @@
 <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script>
 
 <script>
+    var textColor = '#8a8a8a'
     var ctx_doughnut = document.getElementById('myChartDoughnut');
     var myChartDoughnut = new Chart(ctx_doughnut, {
         plugins: [ChartDataLabels],
@@ -63,7 +64,8 @@
             plugins: {
                 title: {
                     display: true,
-                    text: '<?php echo $datas[0]['TÊN TRƯỜNG'] ?>'
+                    text: '<?php echo $datas[0]['TÊN TRƯỜNG'] ?>',
+                    color: textColor
                 },
                 legend: {
                     position: 'top'

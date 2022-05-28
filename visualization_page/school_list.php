@@ -18,7 +18,7 @@
 
             <style>
                 .score-info {
-                    background-color: white;
+                    background-color: var(--third-primary-color);
                     box-shadow: 0 0 15px rgba(0,0,0,0.05);
                     width: 100%;
                     height: 50px;

@@ -73,7 +73,8 @@
     font-size: 200%;"></i>
 
 <style>
-    i:hover {
+    
+    #arrow-left:hover, #arrow-right:hover {
         cursor: pointer;
         color: #009879;
         opacity: 0.7;
@@ -145,7 +146,9 @@
 <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script>
 <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-trendline"></script>
 
+
 <script>
+    var textColor = '#8a8a8a'
     var mediaQuery = window.matchMedia('(max-width: 46.1875em)')
     var isHidden = false
     if (mediaQuery.matches) {
@@ -200,6 +203,7 @@
             plugins: {
                 title: {
                     display: true,
+                    color: textColor,
                     text: '<?php echo $datas[0]['t_2021'] ?>'
                 },
                 subtitle: {
@@ -218,7 +222,7 @@
                     }
                 },
                 datalabels: {
-                    color: 'black',
+                    color: textColor,
                     anchor: 'end',
                     align: 'top',
                     offet: 0,
@@ -233,13 +237,15 @@
                 x: {
                     title: {
                         display: true,
-                        text: 'Năm'
+                        text: 'Năm',
+                        color: textColor
                     }
                 },
                 y: {
                     title: {
                         display: true,
-                        text: 'Điểm'
+                        text: 'Điểm',
+                        color: textColor
                     },
                     min: 0,
                     max: 50,
@@ -315,6 +321,7 @@
             plugins: {
                 title: {
                     display: true,
+                    color: textColor,
                     text: '<?php echo $datas[0]['t_2021'] ?>'
                 },
                 subtitle: {
@@ -333,7 +340,7 @@
                     }
                 },
                 datalabels: {
-                    color: 'black',
+                    color: textColor,
                     anchor: 'end',
                     align: 'top',
                     offet: 0,
@@ -348,13 +355,15 @@
                 x: {
                     title: {
                         display: true,
-                        text: 'Năm'
+                        text: 'Năm',
+                        color: textColor
                     }
                 },
                 y: {
                     title: {
                         display: true,
-                        text: 'Tỉ lệ'
+                        text: 'Tỉ lệ',
+                        color: textColor
                     },
                     min: 0,
                     max: 100,

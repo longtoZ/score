@@ -64,6 +64,7 @@
 </script>
 
 <script>
+    var textColor = '#8a8a8a'
     var ctx_bar = document.getElementById('myChartBarComparision');
     var myChartBar = new Chart(ctx_bar, {
         type: 'bar',
@@ -81,7 +82,8 @@
             plugins: {
                 title: {
                     display: true,
-                    text: "<?php echo $datas[0]['TÊN QUẬN'] ?> " + "<?php echo $year ?>"
+                    text: "<?php echo $datas[0]['TÊN QUẬN'] ?> " + "<?php echo $year ?>",
+                    color: textColor
                 },
                 legend: {
                     display: false
@@ -91,13 +93,15 @@
                 x: {
                     title: {
                         display: true,
-                        text: 'Trường'
+                        text: 'Trường',
+                        color: textColor
                     }
                 },
                 y: {
                     title: {
                         display: true,
-                        text: 'Điểm NV1'
+                        text: 'Điểm NV1',
+                        color: textColor
                     },
                     min: 0,
                     max: 50,

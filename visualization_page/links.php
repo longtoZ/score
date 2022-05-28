@@ -44,7 +44,7 @@
             <span style="float: right; font-weight: normal; font-size: 90%; opacity: 0.5">Tất cả</span>
         </div>
         <div class="main-page-container">
-            <a href="https://thptnguyenhuuhuan.hcm.edu.vn/" target="_blank" style="text-decoration: none; color: black;">
+            <a href="https://thptnguyenhuuhuan.hcm.edu.vn/" target="_blank" style="text-decoration: none; color: var(--text-color);">
                 <div class="main-page">
                     <div class="logo">
                         <i class="fi fi-ss-form"></i>
@@ -63,7 +63,7 @@
             
         </div>
         <div class="fanpage-container">
-            <a href="https://www.facebook.com/truongthptNguyenHuuHuan/" target="_blank" style="text-decoration: none; color: black;">
+            <a href="https://www.facebook.com/truongthptNguyenHuuHuan/" target="_blank" style="text-decoration: none; color: var(--text-color);">
                 <div class="fanpage">
                     <div class="logo">
                         <i class="fi fi-brands-facebook"></i>
@@ -80,7 +80,7 @@
             </a>
         </div>
         <div class="curriculum-page-container">
-            <a href="https://hcm.edu.vn/homehcm" target="_blank" style="text-decoration: none; color: black;">
+            <a href="https://hcm.edu.vn/homehcm" target="_blank" style="text-decoration: none; color: var(--text-color);">
                 <div class="curriculum-page">
                     <div class="logo">
                     <i class="fi fi-sr-graduation-cap"></i>

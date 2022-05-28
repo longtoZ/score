@@ -1,4 +1,4 @@
-@import url('../../../expand/css/style.css');
+@import url('../../../expand/css/root.css');
 
 .search-table {
     box-shadow: var(--box-shadow);
@@ -37,6 +37,7 @@
 
 .search-table th, .search-table td {
     padding: 12px 15px;
+    border: none;
 }
 
 .search-table tr {
@@ -67,7 +68,8 @@
 .search-table tbody tr:hover {
     transform: scale(1.02);
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
-    background-color: #FFF9C2;
+    background-color: var(--row-hover-color);
+    color: #000000;
     font-size: 110%;
     font-weight: bold;
     transition: ease-in-out 0.15s;

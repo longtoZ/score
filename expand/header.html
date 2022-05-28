@@ -1,9 +1,9 @@
 <html>
     <head>
-        <link rel="stylesheet" type="text/css" href="../expand/css/style.css">
+        <link rel="stylesheet" type="text/css" href="../expand/css/root.css">
         <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-bold-rounded/css/uicons-bold-rounded.css'>
     </head>
-    <header>
+    <header id="main-header">
         <div class="logo">
             <a href="../home_page/index.html">
                 <img src="../img/logo-full-light (2).png" alt="" class="brand-logo" height="50px" width="auto">
@@ -89,6 +89,7 @@
             background-color: var(--switcher-color);
             overflow: hidden;
             margin-top: 10px;
+            cursor: pointer;
         }
 
         .toggle-box {
@@ -148,13 +149,14 @@
         }
 
         .navbar-select:hover {
-            background-color: var(--hover-color);
+            /* background-color: var(--hover-color);
             box-shadow: var(--box-shadow);
-            border-radius: 30px;
+            border-radius: 30px; */
+            border-bottom: 2px solid #009879;
         }
 
         .navbar-select:hover > a {
-            color: var(--primary-color);
+            color: #009879;
         }
 
         @media only screen and (max-width: 46.1875em) {
@@ -280,4 +282,21 @@
     </style>
 
     <script src="../expand/js/toggle-mode.js"></script>
+    <script src="../expand/js/hide-nav.js"></script>
+
+    <script>
+
+        if (localStorage.getItem("mode") == "dark-mode") {
+            document.querySelector('.toggle-box').style.transform = "translateX(100%)"
+            document.querySelector('.toggle-box').style.transition = "transform 0.3s ease-in-out"
+            document.querySelector('header .brand-logo').src = "../img/logo-full-dark (2).png"
+            document.body.classList.add("dark-mode")
+        } else {
+            document.querySelector('.toggle-box').style.transform = "translateX(0%)"
+            document.querySelector('.toggle-box').style.transition = "transform 0.3s ease-in-out"
+            document.querySelector('header .brand-logo').src = "../img/logo-full-light (2).png"
+            document.body.classList.remove("dark-mode")
+        }
+    </script>
+
 </html>

@@ -11,6 +11,7 @@
 
 html {
     animation: transitionIn 1.5s;
+    scroll-behavior: smooth;
 }
 
 body {
@@ -31,7 +32,9 @@ body::-webkit-scrollbar-thumb {
     border-radius: 20px;
 }
 
-
+::placeholder {
+    color: var(--placeholder-color);
+}
 
 .main-title {
     margin-top: 130px;
@@ -55,7 +58,7 @@ body::-webkit-scrollbar-thumb {
     border-radius: 10px;
 	padding: 8px;
     height: 50px;
-    background-color: var(--second-primary-color);
+    background-color: var(--fourth-primary-color);
     box-shadow: var(--box-shadow);
     padding-left: 25px;
 }
@@ -108,7 +111,7 @@ body::-webkit-scrollbar-thumb {
 
 .dropdown-list {
     position: relative;
-    background-color: var(--second-primary-color);
+    background-color: var(--fourth-primary-color);
     box-shadow: var(--box-shadow);
     margin-top: 8px;
     border-radius: 10px;
@@ -124,7 +127,7 @@ body::-webkit-scrollbar-thumb {
 }
 
 .dropdown-list .year:hover {
-    background-color: var(--primary-color);
+    background-color: var(--second-primary-color);
 }
 
 .dropdown-list.active {

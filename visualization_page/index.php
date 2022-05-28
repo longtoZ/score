@@ -28,7 +28,7 @@
                             </div>
                             <div class="school-search-box">
                                 <input type="text" class="school-search" placeholder="Tìm trường">
-                                <i class="fi fi-rr-search" onclick=""></i>
+                                <i class="fi fi-rr-search"></i>
                             </div>
                             
                         </div>
@@ -218,6 +218,27 @@
     </script>
     <script type="text/javascript">
 
+        // var textColor = 'black'
+        // var turned = false
+        // var switched = document.querySelector('.switcher');
+
+        
+        // if (switched) {
+        //     switched.addEventListener('click', function() {
+        //         var bgColor = window.getComputedStyle( document.body ,null).getPropertyValue('background-color');
+        //         if (turned==false) {
+        //             textColor = 'white'
+        //             turned = true
+        //         } else {
+        //             textColor = 'black'
+        //             turned = false
+        //         }
+
+        //     }, false);
+        // }
+
+        
+
         const default_school = "nguyen huu huan";
         const default_district = "TP Thủ Đức"
         const default_year = "2021";
@@ -231,6 +252,7 @@
             
         $(document).ready(function() {
             function showOnLoad() {
+
                 $.ajax({
                     url:"links.php",
                     method:"POST",

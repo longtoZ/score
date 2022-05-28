@@ -36,13 +36,14 @@
     font-family: var(--font-family);
     padding-bottom: 30px;
     border-radius: 30px;
-    box-shadow: 0 0 15px rgb(0 0 0 / 10%);;
+    box-shadow: var(--box-shadow);
     overflow: hidden;
+    background-color: var(--second-primary-color);
 }
 
 .calendar {
     width: 100%;
-    background-color: var(--bg-main);
+    background-color: var(--second-primary-color);
     position: relative;
     overflow: hidden;
     border-radius: 30px;
@@ -70,7 +71,7 @@
     align-items: center;
     font-size: 25px;
     font-weight: 600;
-    color: var(--color-txt);
+    color: var(--text-color);
     padding: 10px;
 }
 
@@ -109,10 +110,11 @@
     cursor: pointer;
     animation: to-top 1s forwards;
     border-radius: 50%;
+    color: var(--text-color-light);
 }
 
 .calendar-days div:hover {
-    background-color: var(--color-hover);
+    background-color: var(--third-primary-color);
     transition: ease-in-out 0.1s;
 }
 
@@ -135,7 +137,7 @@
 }
 
 .month-picker:hover {
-    background-color: var(--color-hover);
+    background-color: var(--third-primary-color);
 }
 
 .year-picker {
@@ -154,7 +156,7 @@
 }
 
 .year-change:hover {
-    background-color: var(--color-hover);
+    background-color: var(--third-primary-color);
 }
 
 
@@ -164,7 +166,7 @@
     height: 100%;
     top: 0;
     left: 0;
-    background-color: var(--bg-main);
+    background-color: var(--second-primary-color);
     padding: 20px;
     grid-template-columns: repeat(3, auto);
     gap: 5px;
@@ -194,12 +196,12 @@
     border-radius: 10px;
     text-align: center;
     cursor: pointer;
-    color: var(--color-txt);
+    color: var(--text-color);
     font-weight: bold;
 }
 
 .month-list > div > div:hover {
-    background-color: var(--color-hover);
+    background-color: var(--third-primary-color);
 }
 
 @keyframes to-top {

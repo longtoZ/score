@@ -13,7 +13,6 @@ if (isset($_POST['input'], $_POST['year'])) {
 	if (mysqli_num_rows($result) > 0){?>
 
 		<link rel="stylesheet" type="text/css" href="./assets/css/table.css">
-		<link rel="stylesheet" type="text/css" href="../expand/css/style.css">
 
 		<table class="search-table">
 			<thead>

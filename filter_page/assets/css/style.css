@@ -12,8 +12,12 @@
 
 html {
     animation: transitionIn 1.5s;
+    scroll-behavior: smooth;
 }
 
+body {
+    background-color: var(--primary-color);
+}
 
 body::-webkit-scrollbar {
     width: 10px;
@@ -24,9 +28,13 @@ body::-webkit-scrollbar-track {
 }
 
 body::-webkit-scrollbar-thumb {
-    background-color: rgba(179, 179, 179, 0.7);
+    background-color: var(--thumb-color);
     border-radius: 20px;
     border: 6px solid transparent;
+}
+
+::placeholder {
+    color: var(--placeholder-color);
 }
 
 
@@ -41,8 +49,8 @@ body::-webkit-scrollbar-thumb {
     border-radius: 30px;
 	padding: 15px;
     width: 100%;
-    background-color: white;
-    box-shadow: 0 0 12px rgba(0,0,0,0.07);
+    background-color: var(--second-primary-color);
+    box-shadow: var(--box-shadow);
     display: none;
     opacity: 0;
     transition: ease-in-out 0.3s;
@@ -74,13 +82,12 @@ body::-webkit-scrollbar-thumb {
 	padding: 15px 20px;
     margin: 20px 0;
     width: 100%;
-    background-color: white;
-    box-shadow: 0 0 12px rgba(0,0,0,0.07);
+    background-color: var(--second-primary-color);
+    box-shadow: var(--box-shadow)
 }
 
 .filter-basic-header:hover, .filter-advanced-header:hover {
-    /* background-color: #fafafa; */
-    box-shadow: 0 0 12px rgb(0 152 121 / 20%);
+    box-shadow: var(--hover-color);
     transition: ease-in-out 0.2s;
 }
 
@@ -131,10 +138,11 @@ body::-webkit-scrollbar-thumb {
 	padding: 8px;
     height: 35px;
     width: 140px;
-    background-color: white;
-    box-shadow: 0 0 12px rgba(0,0,0,0.07);
+    background-color: var(--fourth-primary-color);
+    box-shadow: var(--box-shadow);
     margin-right: 10px;
     padding-left: 15px;
+    color: var(--text-color);
 }
 
 .score-cal {
@@ -144,10 +152,10 @@ body::-webkit-scrollbar-thumb {
 	padding: 8px;
     height: 35px;
     width: 140px;
-    box-shadow: 0 0 12px rgba(0,0,0,0.07);
+    box-shadow: var(--box-shadow);
     margin-right: 10px;
     padding-left: 15px;
-    background-color: rgba(0, 152, 121, 1);
+    background-color: var(--green);
     text-align: center;
     font-weight: bold;
     color:white;
@@ -155,22 +163,19 @@ body::-webkit-scrollbar-thumb {
 
 
 .score-cal:hover {
-    background-color: rgb(0, 133, 106);
+    background-color: var(--darker-green);
     transition: ease-in;
     cursor: pointer;
 }
 
 
-.filter-score-container input::placeholder {
-    color: rgba(0, 0, 0, 0.35);
-}
 
 .filter-score-container input[class=score-average]:hover {
     cursor: not-allowed;
 }
 
 .filter-score-container input[class=score-average]::placeholder {
-    color: rgba(0, 152, 121, 0.5);
+    color: var(--darker-green);
 }
 
 
@@ -205,7 +210,7 @@ body::-webkit-scrollbar-thumb {
 
 .filter-year-select:hover, .filter-district-select:hover, .filter-wish-select:hover,
 .filter-year-advanced-select:hover, .filter-wish-advanced-select:hover {
-    box-shadow: 0 0 12px rgba(0, 152, 121, 0.25);
+    box-shadow: var(--hover-color);
     transition: ease-in-out 0.2s;
 }
 
@@ -232,8 +237,8 @@ body::-webkit-scrollbar-thumb {
 .filter-year-list, .filter-district-list, .filter-wish-list, 
 .filter-year-advanced-list, .filter-wish-advanced-list {
     position: relative;
-    background-color: white;
-    box-shadow: 0 0 12px rgba(0,0,0,0.1);
+    background-color: var(--fourth-primary-color);
+    box-shadow: var(--box-shadow);
     margin-top: 8px;
     border-radius: 10px;
     opacity: 0;
@@ -251,7 +256,7 @@ body::-webkit-scrollbar-thumb {
 
 .filter-year-list .year:hover, .filter-district-list .district:hover, .filter-wish-list .wish:hover,
 .filter-year-advanced-list .year:hover, .filter-wish-advanced-list .wish:hover {
-    background-color: #f3f3f3;
+    background-color: var(--third-primary-color);
     background-clip: border-box;
 }
 
@@ -265,14 +270,14 @@ body::-webkit-scrollbar-thumb {
 
 .filter-year-list::-webkit-scrollbar, .filter-district-list::-webkit-scrollbar, .filter-wish-list::-webkit-scrollbar,
 .filter-year-advanced-list::-webkit-scrollbar, .filter-wish-advanced-list::-webkit-scrollbar {
-    background-color: white;
+    background-color: var(--fourth-primary-color);
     width: 8px;
     border-radius: 8px;
 }
 
 .filter-year-list::-webkit-scrollbar-thumb, .filter-district-list::-webkit-scrollbar-thumb, .filter-wish-list::-webkit-scrollbar-thumb,
 .filter-year-advanced-list::-webkit-scrollbar-thumb, .filter-wish-advanced-list::-webkit-scrollbar-thumb {
-    background-color: rgba(179, 179, 179, 0.7);
+    background-color:var(--thumb-color);
     border-radius: 8px;
 }
 
@@ -305,29 +310,30 @@ body::-webkit-scrollbar-thumb {
     padding: 8px;
     height: 40px;
     width: 140px;
-    background-color: white;
-    box-shadow: 0 0 12px rgb(0 0 0 / 7%);
+    background-color: var(--fourth-primary-color);
+    box-shadow: var(--box-shadow-light);
     margin-right: 10px;
     padding-left: 15px;
     float: left;
+    color: var(--text-color);
 }
 
 .filter-between .between-search {
-    background-color: rgba(0, 152, 121, 1);
+    background-color: var(--green);
     color:white;
     text-align: center;
     font-weight: bold;
 }
 
 .filter-between .between-search:hover {
-    background-color: rgb(0, 133, 106);
+    background-color: var(--darker-green);
     transition: ease-in;
     cursor: pointer;
 }
 
 .filter-above-average .above, .filter-below-average .below {
-    background-color: white;
-    color: black;
+    background-color: var(--fourth-primary-color);
+    color: var(--text-color);
     text-align: center;
     font-weight: bold;
     width: 180px;
@@ -335,7 +341,7 @@ body::-webkit-scrollbar-thumb {
 }
 
 .filter-above-average .above.active, .filter-below-average .below.active {
-    background-color: rgba(0, 152, 121, 1);
+    background-color: var(--green);
     color: white;
 }
 
@@ -355,9 +361,9 @@ body::-webkit-scrollbar-thumb {
     padding: 8px;
     height: 50px;
     width: 180px;
-    box-shadow: 0 0 12px rgb(0 0 0 / 7%);
+    box-shadow: var(--box-shadow-light);
     padding-left: 15px;
-    background-color: rgba(0, 152, 121, 1);
+    background-color: var(--green);
     text-align: center;
     font-weight: bold;
     color: white;
@@ -367,9 +373,9 @@ body::-webkit-scrollbar-thumb {
 }
 
 #submit:hover {
-    background-color: rgb(0, 133, 106);
+    background-color: var(--green);
     transition: ease-in-out 0.2s;
-    box-shadow: 0 0 25px rgba(0, 173, 139, 0.4);
+    box-shadow: var(--hover-color);
     cursor: pointer;
 
 }
