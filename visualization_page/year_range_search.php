@@ -1,6 +1,9 @@
 <?php
     include("../config/config.php");
     $school = $_POST['title'];
+    $start = $_POST['start'];
+    $end = $_POST['end'];
+
     $sql = <<<EOD
     SELECT
     `search_score_2021`.`TÊN TRƯỜNG` as t_2021, `search_score_2021`.`ĐIỂM NV1` as nv1_2021, `search_score_2021`.`ĐIỂM NV2` as nv2_2021, `search_score_2021`.`ĐIỂM NV3` as nv3_2021,
@@ -45,11 +48,11 @@
 
 
 
-<div class="bar-graph1" style="height: 380px; width:auto; margin: 0 30px; display:block">
+<div class="bar-graph1" style="height: 380px; width:auto; margin: 0 30px; display:block;">
     <canvas id="myChartBar1"></canvas>  
 </div>
 
-<div class="bar-graph2" style="height: 380px; width:auto; margin: 0 30px; display:none">
+<div class="bar-graph2" style="height: 380px; width:auto; margin: 0 30px; display:none;">
     <canvas id="myChartBar2"></canvas>  
 </div>
 
@@ -106,11 +109,32 @@
     }
 </style>
 
+<script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.1/dist/chart.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-trendline"></script>
+
+
 <script>
-    
+    var textColor = '#8a8a8a'
+    var defaultBorder = 6
+    var col1 = 'rgb(0, 255, 171)'
+    var col2 = 'rgb(20, 195, 142)'
+    var col3 = 'rgb(184, 241, 176)'
+
+    var first = 2015;
+    var last = 2021
+    var start = <?php echo $start?>;
+    var end = <?php echo $end?>;
+    var labels = []
+
     var nv1 = [<?php echo $datas[0]['nv1_2015']?>, <?php echo $datas[0]['nv1_2016']?>, <?php echo $datas[0]['nv1_2017']?>, <?php echo $datas[0]['nv1_2018']?>, <?php echo $datas[0]['nv1_2019']?>, <?php echo $datas[0]['nv1_2020']?>, <?php echo $datas[0]['nv1_2021']?>]
     var nv2 = [<?php echo $datas[0]['nv2_2015']?>,<?php echo $datas[0]['nv2_2016']?>, <?php echo $datas[0]['nv2_2017']?>, <?php echo $datas[0]['nv2_2018']?>, <?php echo $datas[0]['nv2_2019']?>, <?php echo $datas[0]['nv2_2020']?>, <?php echo $datas[0]['nv2_2021']?>]
     var nv3 = [<?php echo $datas[0]['nv3_2015']?>,<?php echo $datas[0]['nv3_2016']?>, <?php echo $datas[0]['nv3_2017']?>, <?php echo $datas[0]['nv3_2018']?>, <?php echo $datas[0]['nv3_2019']?>, <?php echo $datas[0]['nv3_2020']?>, <?php echo $datas[0]['nv3_2021']?>]
+
+
+
+    console.log(labels)
+    console.log(nv1, nv2, nv3)
 
     var nv1Per = []
     var nv2Per = []
@@ -139,16 +163,54 @@
         }
     }
 
+    if (start != '-1' && end != '-1') {
+
+        var bg_nv1 = Array(end-start+1).fill(col1)
+        var bg_nv2 = Array(end-start+1).fill(col2)
+        var bg_nv3 = Array(end-start+1).fill(col3)
+        // console.log(bg_nv1, bg_nv2, bg_nv3)
+
+        nv1 = nv1.slice(start-first, end-first+1)
+        nv2 = nv2.slice(start-first, end-first+1)
+        nv3 = nv3.slice(start-first, end-first+1)
+
+        nv1Per = nv1Per.slice(start-first, end-first+1)
+        nv2Per = nv2Per.slice(start-first, end-first+1)
+        nv3Per = nv3Per.slice(start-first, end-first+1)
+
+        for (i=start; i <= end; i++) {
+            labels.push(i.toString())
+        }
+        myChartBar1.destroy()
+        myChartBar2.destroy()
+
+        myChartBar1.data.labels = labels
+        myChartBar1.data.datasets[0].backgroundColor = bg_nv1
+        myChartBar1.data.datasets[1].backgroundColor = bg_nv2
+        myChartBar1.data.datasets[2].backgroundColor = bg_nv3
+
+        myChartBar2.data.labels = labels
+        myChartBar2.data.datasets[0].backgroundColor = bg_nv1
+        myChartBar2.data.datasets[1].backgroundColor = bg_nv2
+        myChartBar2.data.datasets[2].backgroundColor = bg_nv3
+
+        myChartBar1.update()
+        myChartBar2.update()
+
+    } else {
+        var bg_nv1 = Array(last-first+1).fill(col1)
+        var bg_nv2 = Array(last-first+1).fill(col2)
+        var bg_nv3 = Array(last-first+1).fill(col3)
+
+        for (i=first; i <= last; i++) {
+            labels.push(i.toString())
+        }
+    }
 
 </script>
 
-<script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.1/dist/chart.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script>
-<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-trendline"></script>
-
-
 <script>
-    var textColor = '#8a8a8a'
+
     var mediaQuery = window.matchMedia('(max-width: 46.1875em)')
     var isHidden = false
     if (mediaQuery.matches) {
@@ -160,47 +222,33 @@
         plugins: [ChartDataLabels],
         type: 'bar',
         data: {
-            labels: ['2015', '2016', '2017', '2018', '2019', '2020', '2021'],
+            labels: labels,
             datasets: [{
                 label: 'NV1',
                 data: nv1,
-                backgroundColor: [
-                    'rgb(255, 99, 132)',
-                    'rgb(255, 99, 132)',
-                    'rgb(255, 99, 132)',
-                    'rgb(255, 99, 132)',
-                    'rgb(255, 99, 132)'
-                ]
+                borderRadius: defaultBorder,
+                backgroundColor: bg_nv1
                 },
                 {
                     label: 'NV2',
                     hidden: isHidden,
                     data: nv2,
-                    backgroundColor: [
-                        'rgb(54, 162, 235)',
-                        'rgb(54, 162, 235)',
-                        'rgb(54, 162, 235)',
-                        'rgb(54, 162, 235)',
-                        'rgb(54, 162, 235)'
-                    ]
+                    borderRadius: defaultBorder,
+                    backgroundColor: bg_nv2
                 },
                 {
                     label: 'NV3',
                     hidden: isHidden,
                     data: nv3,
-                    backgroundColor: [
-                        'rgb(255, 206, 86)',
-                        'rgb(255, 206, 86)',
-                        'rgb(255, 206, 86)',
-                        'rgb(255, 206, 86)',
-                        'rgb(255, 206, 86)'
-                    ]
+                    borderRadius: defaultBorder,
+                    backgroundColor: bg_nv3
                 }
         ]},
         options: {
             maintainAspectRatio: false,
             responsive: true,
             plugins: {
+                // tooltip: {enabled: false},
                 title: {
                     display: true,
                     color: textColor,
@@ -263,62 +311,38 @@
         plugins: [ChartDataLabels],
         type: 'bar',
         data: {
-            labels: ['2015', '2016', '2017', '2018', '2019', '2020', '2021'],
+            labels: labels,
             datasets: [{
                 label: 'NV1',
                 data: nv1Per,
-                backgroundColor: [
-                    'rgb(255, 99, 132)',
-                    'rgb(255, 99, 132)',
-                    'rgb(255, 99, 132)',
-                    'rgb(255, 99, 132)',
-                    'rgb(255, 99, 132)'
-                ],
+                borderRadius: defaultBorder,
+                backgroundColor: bg_nv1,
                 trendlineLinear: {
-                    style: "rgba(255, 99, 132, .8)",
-                    lineStyle: "dotted",
-                    width: 3
+                    style: col1,
+                    lineStyle: "solid",
+                    width: 2
                     }
                 },
                 {
                     label: 'NV2',
                     hidden: isHidden,
                     data: nv2Per,
-                    backgroundColor: [
-                        'rgb(54, 162, 235)',
-                        'rgb(54, 162, 235)',
-                        'rgb(54, 162, 235)',
-                        'rgb(54, 162, 235)',
-                        'rgb(54, 162, 235)'
-                    ],
-                    trendlineLinear: {
-                        style: "rgba(54, 162, 235, .8)",
-                        lineStyle: "dotted",
-                        width: 3
-                    }
+                    borderRadius: defaultBorder,
+                    backgroundColor: bg_nv2,
                 },
                 {
                     label: 'NV3',
                     hidden: isHidden,
                     data: nv3Per,
-                    backgroundColor: [
-                        'rgb(255, 206, 86)',
-                        'rgb(255, 206, 86)',
-                        'rgb(255, 206, 86)',
-                        'rgb(255, 206, 86)',
-                        'rgb(255, 206, 86)'
-                    ],
-                    trendlineLinear: {
-                        style: "rgba(255, 206, .8)",
-                        lineStyle: "dotted",
-                        width: 3
-                    }
+                    borderRadius: defaultBorder,
+                    backgroundColor: bg_nv3,
                 }
         ]},
         options: {
             maintainAspectRatio: false,
             responsive: true,
             plugins: {
+                // tooltip: {enabled: false},
                 title: {
                     display: true,
                     color: textColor,
@@ -375,7 +399,9 @@
         }
         
     });
+</script>
 
+<script>
     var pos = 0;
     var left = document.getElementById("arrow-left");
     var right = document.getElementById("arrow-right");
@@ -383,15 +409,17 @@
     left.addEventListener("click", function() {
         if (pos==1) {
             pos = 0;
-            document.querySelector('.bar-graph1').style.display = "block"
+            document.querySelector('.bar-graph1').style.display = "block";
             document.querySelector('.bar-graph2').style.display = "none";
+
         }
     });
     right.addEventListener("click", function() {
         if (pos==0) {
             pos = 1;
             document.querySelector('.bar-graph2').style.display = "block";
-            document.querySelector('.bar-graph1').style.display = "none"
+            document.querySelector('.bar-graph1').style.display = "none";
+
 
         }
     })

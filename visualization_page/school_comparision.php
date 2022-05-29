@@ -65,6 +65,7 @@
 
 <script>
     var textColor = '#8a8a8a'
+    var defaultBorder = 6
     var ctx_bar = document.getElementById('myChartBarComparision');
     var myChartBar = new Chart(ctx_bar, {
         type: 'bar',
@@ -73,6 +74,7 @@
             datasets: [{
                 label: '',
                 data: nv1,
+                borderRadius: defaultBorder,
                 backgroundColor: rgb_list
             }]
         },

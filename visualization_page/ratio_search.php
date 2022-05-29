@@ -50,8 +50,8 @@
                 label: 'NV1',
                 data: [chi_tieu, nguyen_vong],
                 backgroundColor: [
-                    'rgb(255, 99, 132)',
-                    'rgb(54, 162, 235)'
+                    'rgb(184, 241, 176)',
+                    'rgb(20, 195, 142)'
                 ],
                 hoverOffset: 4,
                 borderRadius: 5

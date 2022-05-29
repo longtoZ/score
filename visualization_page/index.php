@@ -38,11 +38,11 @@
                                 <div class="year-box">
                                     <div class="year-start">
                                         <span class="red-dot"></span>
-                                        <input class="year-start-input" placeholder="2015"></input>
+                                        <input class="year-start-input" value="2015" type="number" min="2015"></input>
                                     </div>
                                     <div class="year-end">
                                         <span class="green-dot"></span>
-                                        <input class="year-end-input" placeholder="2021"></input>
+                                        <input class="year-end-input" value="2021" type="number" min="2015"></input>
                                     </div>
                                 </div>
                             </div>
@@ -265,7 +265,7 @@
                 $.ajax({
                     url:"year_range_search.php",
                     method:"POST",
-                    data:{title:default_school},
+                    data:{title:default_school, start:'-1', end:'-1'},
                     success:function(data) {
                         $('.year-range-graph-container').html(data);
                     }
@@ -309,7 +309,6 @@
 
                 
             }
-
             showOnLoad();
 
 
@@ -322,8 +321,7 @@
             $(document).on('click', '.school-search-box i', function() {
                 document.querySelector('.filter-year-select .select').innerHTML = "Năm 2021";
                 var school_input = document.querySelector('.school-search').value;
-                
-                console.log(school_input);
+
                 if (school_input != '') {
                     $.ajax({
                         url:"links.php",
@@ -337,7 +335,7 @@
                     $.ajax({
                         url:"year_range_search.php",
                         method:"POST",
-                        data:{title:school_input},
+                        data:{title:school_input, start:'-1', end:'-1'},
                         success:function(data) {
                             $('.year-range-graph-container').html(data);
                         }
@@ -455,6 +453,33 @@
                 });
 
             });
+
+            function yearRangeChange() {
+                var school_input = document.querySelector('.school-search').value
+                if (school_input == '') {
+                    school_input = default_school
+                }
+                var start = parseInt(document.querySelector('.year-start-input').value);
+                var end = parseInt(document.querySelector('.year-end-input').value);
+
+                if (!isNaN(start) && !isNaN(end)) {
+
+                    $.ajax({
+                        url:"year_range_search.php",
+                        method:"POST",
+                        data:{title:school_input, start:start, end:end},
+                        beforeSend:function() {
+                            
+                        },
+                        success:function(data) {
+                            $('.comparision-graph-container').html(data);
+                        }
+                    })
+                }
+
+            }
+            $('.year-start-input').on('change', yearRangeChange);
+            $('.year-end-input').on('change', yearRangeChange);
 
                 
                 

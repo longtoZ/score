@@ -140,9 +140,9 @@ body::-webkit-scrollbar-thumb {
     top: 33px;
 }
 
-.year-start-input, .year-end-input {
+/* .year-start-input, .year-end-input {
     pointer-events: none;
-}
+} */
 
 .year-range-data {
     border: none;
