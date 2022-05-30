@@ -24,5 +24,23 @@
 8. [Flaticon](https://www.flaticon.com/) - *Trang web cung cấp icons miễn phí dưới nhiều dạng, phục vụ cho thiết kế nhiều mục đích.*
 9. [Visual studio code](https://code.visualstudio.com/) - *Trình soạn thảo mã nguồn được phát triển bởi Microsoft, đi kèm nhiều chức năng như `debug`, [git](https://git-scm.com/), `syntax highlighting`,... cũng như hỗ trợ nhiều `extension` miễn phí giúp tối ưu dự án.*
 
+## Quá trình
 
-
+- ### v1.0 
+  - Được đưa lên [github](https://github.com/) vào ngày `25/5/2022`
+  - Tối ưu code + Bổ sung bộ lọc
+- ### v1.2
+  > `27/5/2022`
+  - Xây dựng [responsive](https://en.wikipedia.org/wiki/Responsive_web_design) cho điện thoại
+  - Thử ngiệm `darkmode`
+- ## v1.2.5
+  > `28/5/2022`
+  - Hoàn thiện giao diện `darkmode` + sửa lỗi
+- ## v1.3
+  - `29/5/2022`
+  - Biểu đồ dãy năm có thể tuỳ chỉnh năm đầu và cuối + Sửa lỗi biểu đồ bị chồng lấp khi chuyển
+  - Thay đổi màu cho biểu đồ
+- ## v1.4
+  > `30/5/2022`
+  - Cập nhật `repsonsive` cho tablet
+  - Thêm chức năng thay đổi biểu đồ **Bar graph** & **Line graph** + Sửa lỗi chồng lặp
