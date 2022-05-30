@@ -37,7 +37,7 @@
   > `28/5/2022`
   - Hoàn thiện giao diện `darkmode` + sửa lỗi
 - ## v1.3
-  - `29/5/2022`
+  > `29/5/2022`
   - Biểu đồ dãy năm có thể tuỳ chỉnh năm đầu và cuối + Sửa lỗi biểu đồ bị chồng lấp khi chuyển
   - Thay đổi màu cho biểu đồ
 - ## v1.4
