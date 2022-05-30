@@ -33,14 +33,14 @@
   > `27/5/2022`
   - Xây dựng [responsive](https://en.wikipedia.org/wiki/Responsive_web_design) cho điện thoại
   - Thử ngiệm `darkmode`
-- ## v1.2.5
+- ### v1.2.5
   > `28/5/2022`
   - Hoàn thiện giao diện `darkmode` + sửa lỗi
-- ## v1.3
+- ### v1.3
   > `29/5/2022`
   - Biểu đồ dãy năm có thể tuỳ chỉnh năm đầu và cuối + Sửa lỗi biểu đồ bị chồng lấp khi chuyển
   - Thay đổi màu cho biểu đồ
-- ## v1.4
+- ### v1.4
   > `30/5/2022`
   - Cập nhật `repsonsive` cho tablet
   - Thêm chức năng thay đổi biểu đồ **Bar graph** & **Line graph** + Sửa lỗi chồng lặp
