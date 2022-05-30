@@ -3,6 +3,8 @@
     $school = $_POST['title'];
     $start = $_POST['start'];
     $end = $_POST['end'];
+    $new = $_POST['new'];
+    $chartClicked = $_POST['chartClicked'];
 
     $sql = <<<EOD
     SELECT
@@ -114,7 +116,9 @@
 <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-trendline"></script>
 
 
+
 <script>
+    var isNew = '<?php echo $new ?>';
     var textColor = '#8a8a8a'
     var defaultBorder = 6
     var col1 = 'rgb(0, 255, 171)'
@@ -131,10 +135,6 @@
     var nv2 = [<?php echo $datas[0]['nv2_2015']?>,<?php echo $datas[0]['nv2_2016']?>, <?php echo $datas[0]['nv2_2017']?>, <?php echo $datas[0]['nv2_2018']?>, <?php echo $datas[0]['nv2_2019']?>, <?php echo $datas[0]['nv2_2020']?>, <?php echo $datas[0]['nv2_2021']?>]
     var nv3 = [<?php echo $datas[0]['nv3_2015']?>,<?php echo $datas[0]['nv3_2016']?>, <?php echo $datas[0]['nv3_2017']?>, <?php echo $datas[0]['nv3_2018']?>, <?php echo $datas[0]['nv3_2019']?>, <?php echo $datas[0]['nv3_2020']?>, <?php echo $datas[0]['nv3_2021']?>]
 
-
-
-    console.log(labels)
-    console.log(nv1, nv2, nv3)
 
     var nv1Per = []
     var nv2Per = []
@@ -164,7 +164,6 @@
     }
 
     if (start != '-1' && end != '-1') {
-
         var bg_nv1 = Array(end-start+1).fill(col1)
         var bg_nv2 = Array(end-start+1).fill(col2)
         var bg_nv3 = Array(end-start+1).fill(col3)
@@ -181,21 +180,27 @@
         for (i=start; i <= end; i++) {
             labels.push(i.toString())
         }
+
         myChartBar1.destroy()
         myChartBar2.destroy()
 
-        myChartBar1.data.labels = labels
-        myChartBar1.data.datasets[0].backgroundColor = bg_nv1
-        myChartBar1.data.datasets[1].backgroundColor = bg_nv2
-        myChartBar1.data.datasets[2].backgroundColor = bg_nv3
+        configChart1.type = 'bar'
+        configChart1.data.labels = labels
+        configChart1.data.datasets[0].backgroundColor = bg_nv1
+        configChart1.data.datasets[1].backgroundColor = bg_nv2
+        configChart1.data.datasets[2].backgroundColor = bg_nv3
 
-        myChartBar2.data.labels = labels
-        myChartBar2.data.datasets[0].backgroundColor = bg_nv1
-        myChartBar2.data.datasets[1].backgroundColor = bg_nv2
-        myChartBar2.data.datasets[2].backgroundColor = bg_nv3
+        configChart2.type = 'bar'
+        configChart2.data.labels = labels
+        configChart2.data.datasets[0].backgroundColor = bg_nv1
+        configChart2.data.datasets[1].backgroundColor = bg_nv2
+        configChart2.data.datasets[2].backgroundColor = bg_nv3
 
-        myChartBar1.update()
-        myChartBar2.update()
+        var ctx_bar1 = document.getElementById('myChartBar1');
+        var myChartBar1 = new Chart(ctx_bar1, configChart1);
+        var ctx_bar2 = document.getElementById('myChartBar2');
+        var myChartBar2 = new Chart(ctx_bar2, configChart2);
+
 
     } else {
         var bg_nv1 = Array(last-first+1).fill(col1)
@@ -210,15 +215,13 @@
 </script>
 
 <script>
-
     var mediaQuery = window.matchMedia('(max-width: 46.1875em)')
     var isHidden = false
     if (mediaQuery.matches) {
         isHidden = true
     }
-
-    var ctx_bar1 = document.getElementById('myChartBar1');
-    var myChartBar1 = new Chart(ctx_bar1, {
+    
+    var configChart1 = {
         plugins: [ChartDataLabels],
         type: 'bar',
         data: {
@@ -227,21 +230,30 @@
                 label: 'NV1',
                 data: nv1,
                 borderRadius: defaultBorder,
-                backgroundColor: bg_nv1
+                backgroundColor: bg_nv1,
+                borderColor: col1,
+                tension: 0,
+                pointRadius: 5,
                 },
                 {
                     label: 'NV2',
                     hidden: isHidden,
                     data: nv2,
                     borderRadius: defaultBorder,
-                    backgroundColor: bg_nv2
+                    backgroundColor: bg_nv2,
+                    borderColor: col2,
+                    tension: 0,
+                    pointRadius: 5,
                 },
                 {
                     label: 'NV3',
                     hidden: isHidden,
                     data: nv3,
                     borderRadius: defaultBorder,
-                    backgroundColor: bg_nv3
+                    backgroundColor: bg_nv3,
+                    borderColor: col2,
+                    tension: 0,
+                    pointRadius: 5,
                 }
         ]},
         options: {
@@ -299,15 +311,14 @@
                     max: 50,
                     ticks: {
                         stepSize: 10
-                    }
-                }
+                    },
+                    beginAtZero: false
+                },
             }
         }
-        
-    });
+    }
 
-    var ctx_bar2 = document.getElementById('myChartBar2');
-    var myChartBar2 = new Chart(ctx_bar2, {
+    var configChart2 = {
         plugins: [ChartDataLabels],
         type: 'bar',
         data: {
@@ -317,6 +328,9 @@
                 data: nv1Per,
                 borderRadius: defaultBorder,
                 backgroundColor: bg_nv1,
+                borderColor: col1,
+                tension: 0,
+                pointRadius: 10,
                 trendlineLinear: {
                     style: col1,
                     lineStyle: "solid",
@@ -329,6 +343,9 @@
                     data: nv2Per,
                     borderRadius: defaultBorder,
                     backgroundColor: bg_nv2,
+                    borderColor: col2,
+                    tension: 0,
+                    pointRadius: 10,
                 },
                 {
                     label: 'NV3',
@@ -336,6 +353,9 @@
                     data: nv3Per,
                     borderRadius: defaultBorder,
                     backgroundColor: bg_nv3,
+                    borderColor: col3,
+                    tension: 0,
+                    pointRadius: 10,
                 }
         ]},
         options: {
@@ -393,12 +413,99 @@
                     max: 100,
                     ticks: {
                         stepSize: 10
-                    }
+                    },
+                    beginAtZero: false
+                    
                 }
             }
         }
-        
-    });
+    }
+</script>
+
+<script>
+        if (isNew == 'line') {
+            var chartClicked = '<?php echo $chartClicked ?>'
+            myChartBar1.destroy()
+            myChartBar2.destroy()
+            if (chartClicked == 'no') {
+
+                configChart1.type = 'line'
+                configChart1.data.datasets[0].borderColor = col1
+                configChart1.data.datasets[0].backgroundColor = col1.replace(')', ', 0.2)')
+                configChart1.data.datasets[0].tension = 0.4
+                configChart1.data.datasets[0].fill = true
+
+                configChart1.data.datasets[1].borderColor = col2
+                configChart1.data.datasets[1].backgroundColor = col2.replace(')', ', 0.2)')
+                configChart1.data.datasets[1].tension = 0.4
+                configChart1.data.datasets[1].fill = true
+
+                configChart1.data.datasets[2].borderColor = col3
+                configChart1.data.datasets[2].backgroundColor = col3.replace(')', ', 0.2)')
+                configChart1.data.datasets[2].tension = 0.4
+                configChart1.data.datasets[2].fill = true
+
+
+                configChart2.type = 'line'
+                configChart2.data.datasets[0].borderColor = col1
+                configChart2.data.datasets[0].backgroundColor = col1.replace(')', ', 0.2)')
+                configChart2.data.datasets[0].tension = 0.4
+                configChart2.data.datasets[0].fill = true
+
+                configChart2.data.datasets[1].borderColor = col2
+                configChart2.data.datasets[1].backgroundColor = col2.replace(')', ', 0.2)')
+                configChart2.data.datasets[1].tension = 0.4
+                configChart2.data.datasets[1].fill = true
+
+                configChart2.data.datasets[2].borderColor = col3
+                configChart2.data.datasets[2].backgroundColor = col3.replace(')', ', 0.2)')
+                configChart2.data.datasets[2].tension = 0.4
+                configChart2.data.datasets[2].fill = true
+
+                
+            } else {
+
+                configChart1.type = 'bar'
+                configChart1.data.datasets[0].borderRadius = defaultBorder
+                configChart1.data.datasets[0].backgroundColor = bg_nv1
+
+                configChart1.data.datasets[1].borderRadius = defaultBorder
+                configChart1.data.datasets[1].backgroundColor = bg_nv2
+
+                configChart1.data.datasets[2].borderRadius = defaultBorder
+                configChart1.data.datasets[2].backgroundColor = bg_nv3
+
+
+                configChart2.type = 'bar'
+                configChart2.data.datasets[0].borderRadius = defaultBorder
+                configChart2.data.datasets[0].backgroundColor = bg_nv1
+
+                configChart2.data.datasets[1].borderRadius = defaultBorder
+                configChart2.data.datasets[1].backgroundColor = bg_nv2
+
+                configChart2.data.datasets[2].borderRadius = defaultBorder
+                configChart2.data.datasets[2].backgroundColor = bg_nv3
+
+            }
+
+            var ctx_bar1 = document.getElementById('myChartBar1');
+            var myChartBar1 = new Chart(ctx_bar1, configChart1)
+            var ctx_bar2 = document.getElementById('myChartBar2');
+            var myChartBar2 = new Chart(ctx_bar2, configChart2)
+        }
+</script>
+
+<script>
+
+    if (isNew == 'true') {
+        var ctx_bar1 = document.getElementById('myChartBar1');
+        var myChartBar1 = new Chart(ctx_bar1, configChart1)
+
+        var ctx_bar2 = document.getElementById('myChartBar2');
+        var myChartBar2 = new Chart(ctx_bar2, configChart2)
+    }
+
+
 </script>
 
 <script>

@@ -140,9 +140,9 @@ body::-webkit-scrollbar-thumb {
     top: 33px;
 }
 
-/* .year-start-input, .year-end-input {
-    pointer-events: none;
-} */
+.year-start-input, .year-end-input {
+    color: var(--text-color-light)
+}
 
 .year-range-data {
     border: none;
@@ -365,7 +365,7 @@ body::-webkit-scrollbar-thumb {
 
 .more-info-data {
     margin: 15px 0;
-    width: 95%;
+    /* width: 95%; */
 }
 
 .school-links {
@@ -473,6 +473,20 @@ body::-webkit-scrollbar-thumb {
     padding-top: 10px;
 }
 
+.chart-type {
+    font-size: 110%;
+    font-weight: 500;
+    float: left;
+    margin-left: 30px;
+    color: var(--green);
+    cursor: pointer;
+    border-bottom: 2px dotted var(--green);
+}
+
+.chart-type:hover {
+    color: rgb(20, 195, 142);
+    border-bottom: 2px dotted rgb(20, 195, 142);
+}
 
 
 @keyframes transitionIn {
@@ -483,7 +497,7 @@ body::-webkit-scrollbar-thumb {
     }
 }
 
-@media only screen and (max-width: 46.1875em) {
+@media only screen and (max-width: 64em) {
 
     .main-data-box {
         padding: 0;
@@ -525,6 +539,7 @@ body::-webkit-scrollbar-thumb {
         width: 90%;
         margin: auto;
         margin-top: 30px;
+        margin-bottom: 30px;
     }
 
     .win-ratio-display {
@@ -569,5 +584,33 @@ body::-webkit-scrollbar-thumb {
         max-height: 250px;
     }
 
+    .comparision-detail-container .filter-box {
+        width: 95%;
+    }
 
+
+}
+
+@media only screen and (max-width: 64em) and (min-width: 46.25em) {
+    .comparision-detail-container .filter-box {
+        width: 85%;
+    }
+
+    .comparision-detail-container .filter-year h4, .comparision-detail-container .filter-district h4 {
+        text-align: left !important;
+        padding-left: 10px;
+
+    }
+
+    .win-ratio-data, .comparision-data {
+        margin: 25px 20px;
+    }
+}
+
+@media only screen and (max-width: 46.1875em) {
+    .year-range-data .filter-box .year-box {
+        float: left;
+        margin-top: 1.25em;
+        margin-left: 1.25em;
+    }
 }

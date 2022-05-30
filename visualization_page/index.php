@@ -35,6 +35,7 @@
                         <div class="year-range-data">
                             <div class="filter-box">
                                 <span class="main-title">Dãy năm</span>
+                                <div class="chart-type">> Đổi loại</div>
                                 <div class="year-box">
                                     <div class="year-start">
                                         <span class="red-dot"></span>
@@ -265,7 +266,7 @@
                 $.ajax({
                     url:"year_range_search.php",
                     method:"POST",
-                    data:{title:default_school, start:'-1', end:'-1'},
+                    data:{title:default_school, start:'-1', end:'-1', new:'true', chartClicked:'none'},
                     success:function(data) {
                         $('.year-range-graph-container').html(data);
                     }
@@ -335,7 +336,7 @@
                     $.ajax({
                         url:"year_range_search.php",
                         method:"POST",
-                        data:{title:school_input, start:'-1', end:'-1'},
+                        data:{title:school_input, start:'-1', end:'-1', new:'true', chartClicked:'none'},
                         success:function(data) {
                             $('.year-range-graph-container').html(data);
                         }
@@ -463,24 +464,61 @@
                 var end = parseInt(document.querySelector('.year-end-input').value);
 
                 if (!isNaN(start) && !isNaN(end)) {
+                    if (start > end) {
+                        alert("Năm đầu phải nhỏ hơn hoặc bằng năm cuối")
+                    } else {
 
-                    $.ajax({
-                        url:"year_range_search.php",
-                        method:"POST",
-                        data:{title:school_input, start:start, end:end},
-                        beforeSend:function() {
-                            
-                        },
-                        success:function(data) {
-                            $('.comparision-graph-container').html(data);
-                        }
-                    })
+                        $.ajax({
+                            url:"year_range_search.php",
+                            method:"POST",
+                            data:{title:school_input, start:start, end:end, new:'false', chartClicked:'none'},
+                            beforeSend:function() {
+                                
+                            },
+                            success:function(data) {
+                                $('.comparision-graph-container').html(data);
+                            }
+                        })
+                        
+                    }
                 }
 
             }
             $('.year-start-input').on('change', yearRangeChange);
             $('.year-end-input').on('change', yearRangeChange);
 
+            var chartClicked = 'no'
+            $('.filter-box .chart-type').on('click', function() {
+
+                var school_input = document.querySelector('.school-search').value
+                if (school_input == '') {
+                    school_input = default_school
+                }
+                var start = parseInt(document.querySelector('.year-start-input').value);
+                var end = parseInt(document.querySelector('.year-end-input').value);
+
+                $.ajax({
+                    url:"year_range_search.php",
+                    method:"POST",
+                    data:{title:school_input, start:start, end:end, new:'line', chartClicked:chartClicked},
+                    beforeSend:function() {
+                        
+                    },
+                    success:function(data) {
+                        $('.comparision-graph-container').html(data);
+                    }
+                })
+
+                if (chartClicked == 'no') {
+                    chartClicked = 'yes'
+                } else {
+                    chartClicked = 'no'
+                }
+
+                console.log(chartClicked)
+
+                
+            })
                 
                 
         })

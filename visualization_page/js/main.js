@@ -3,6 +3,8 @@ const filterYearList = document.querySelectorAll(".filter-year-list");
 const districtSelected = document.querySelectorAll(".filter-district-select");
 const filterDistrictList = document.querySelectorAll(".filter-district-list");
 
+
+
 function showYear(text) {
     for (let i of document.querySelectorAll('.filter-year-select .select')) {
         i.innerHTML = text;
@@ -67,3 +69,4 @@ function showTime(){
 }
 
 showTime();
+

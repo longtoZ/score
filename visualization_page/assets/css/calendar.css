@@ -245,3 +245,14 @@
         font-size: 60%;
     }
 }
+
+@media only screen and (max-width: 64em) and (min-width: 46.25em){
+    .calendar-container {
+        width: 85%;
+    }
+
+    .calendar-days .calendar-day-hover {
+        width: auto;
+        height: 70px;
+    }
+}

@@ -491,3 +491,21 @@ body::-webkit-scrollbar-thumb {
     
 
 }
+
+@media only screen and (max-width: 64em) and (min-width: 46.25em) {
+    .score-cal {
+        margin-top: 15px;
+    }
+
+    .filter-year, .filter-district, .filter-wish {
+        margin-top: 0;
+        width: 50%;
+        float: left;
+    }
+
+    .filter-year-select, .filter-year-list, 
+    .filter-district-select, .filter-district-list, 
+    .filter-wish-select, .filter-wish-list {
+        margin-right: 10px;
+    }
+}

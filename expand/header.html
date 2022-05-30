@@ -159,14 +159,10 @@
             color: #009879;
         }
 
-        @media only screen and (max-width: 46.1875em) {
+        @media only screen and (max-width: 64em) {
+            .contact-us, nav {
+                display: none;
 
-            header {
-                padding: 8px 4%;
-            }
-
-            .toggle-box {
-                top: 8px;
             }
 
             .nav-title {
@@ -192,10 +188,7 @@
                 height: 28px;
                 padding-top: 12px;
                 font-size: 170%;
-            }
-
-            .contact-us, nav {
-                display: none;
+                cursor: pointer;
             }
 
             .nav-overlay {
@@ -258,6 +251,7 @@
                 width: 20px;
                 height: 20px;
                 font-size: 120%;
+                cursor: pointer;
             }
 
             #nav-input:checked ~ .nav-overlay {
@@ -270,7 +264,7 @@
             }
 
             .switcher {
-                margin-left: 8%;
+                margin-left: 50%;
             }
 
 
@@ -281,8 +275,24 @@
                     opacity: 1;
                 }
             }
+        }
+
+        @media only screen and (max-width: 46.1875em) {
+            header {
+                padding: 8px 4%;
+            }
+
+            .toggle-box {
+                top: 8px;
+            }
+
+            .switcher {
+                margin-left: 8%;
+            }
 
         }
+
+
     </style>
 
     <script src="../expand/js/toggle-mode.js"></script>
