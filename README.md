@@ -58,8 +58,9 @@ Dự án được hỗ trợ và hoàn thiện không thể thiếu sự trợ g
 2. [Stack Overflow](https://stackoverflow.com/)
 3. [Github](https://github.com/)
 4. [Pinterest](https://www.pinterest.com/)
-5. [Chartjs docs](https://www.chartjs.org/docs/latest/)
-6. [Codepen](https://codepen.io/)
-7. [Flaticon](https://www.flaticon.com/)
+5. [Youtube](https://www.youtube.com/)
+6. [Chartjs docs](https://www.chartjs.org/docs/latest/)
+7. [Codepen](https://codepen.io/)
+8. [Flaticon](https://www.flaticon.com/)
 
 *Và nhiều nguồn tài liệu khác...*
