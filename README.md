@@ -27,7 +27,7 @@
 8. [Chartjs](https://www.chartjs.org/) - *Thư viện mã nguồn mở giúp việc vẽ và hiển thị số liệu trên biểu đồ nhanh chóng và đa dạng hơn.*
 9. [Visual studio code](https://code.visualstudio.com/) - *Trình soạn thảo mã nguồn được phát triển bởi Microsoft, đi kèm nhiều chức năng như `debug`, [git](https://git-scm.com/), `syntax highlighting`,... cũng như hỗ trợ nhiều `extension` miễn phí giúp tối ưu dự án.*
 
-## Quá trình
+## Phiên bản
 
 - ### v1.0 
   - Được đưa lên [github](https://github.com/) vào ngày `25/5/2022`
@@ -53,7 +53,7 @@
 - <a href="mailto:longto.xp@gmail.com">longto.xp@gmail.com</a>
 
 ## Tài liệu tham khảo
-Dự án được hỗ trợ và hoàn thiện không thể thiếu sự trợ giúp từ nhiều tài liệu trên các trang web chính như:
+Dự án được hoàn thiện không thể thiếu sự trợ giúp từ nhiều tài liệu trên các trang web chính như:
 1. [W3Schools](https://www.w3schools.com/)
 2. [Stack Overflow](https://stackoverflow.com/)
 3. [Github](https://github.com/)
@@ -64,3 +64,10 @@ Dự án được hỗ trợ và hoàn thiện không thể thiếu sự trợ g
 8. [Flaticon](https://www.flaticon.com/)
 
 *Và nhiều nguồn tài liệu khác...*
+
+
+> **Note**
+> Dự án đang trong quá trình phát triển
+
+> **Warning**
+> This is a warning
