@@ -4,13 +4,85 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" type="text/css" href="./assets/css/style.css">
+	<link rel="stylesheet" type="text/css" href="../expand/css/root.css">
 	<link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-regular-rounded/css/uicons-regular-rounded.css'>
 	<link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-brands/css/uicons-brands.css'>
-	<!-- <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css'> -->
+	<!-- CSS only -->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
 	<title>Trang chủ</title>
 </head>
 
 <body>
+	<div id="main">
+		<div id="header-container"></div>
 
+		<div class="fluid1"></div>
+		<div class="fluid2"></div>
+		<div class="title-flexbox">
+			<div id="title-container">
+				<div class="title-box">
+					<span class="title">Welcome to</span>
+					<br>
+					<span class="title2">SCORE</span>
+					<br>
+					<span class="desc">Việc tra cứu chưa bao giờ dễ dàng hơn</span>
+				</div>
+				<button type="button" class="start-btn btn btn-secondary btn-lg">Bắt đầu</button>
+			</div>
+
+			<div class="section-container">
+				<div class="line"></div>
+				<div class="section">
+					<ul style="list-style-type: none; padding-left: 0;" type="1">
+						<li id="part1">01  .  Score là gì?</li>
+						<li id="part2">02  .  Tại sao nên dùng score?</li>
+						<li id="part3">03  .  Phát triển dự án</li>
+					</ul>
+				</div>
+			</div>
+
+		</div>
+
+		<div id="section1">
+			<div class="section1">
+				<div class="title">
+					01 . <br>Score là gì?
+					<div class="title-line"></div>
+				</div>
+
+				<div class="desc">
+						<strong>Score</strong> là một dự án mã nguồn mở nhằm mục đích đưa việc lựa chọn trường THPT cho phụ huynh 
+						và học sinh trở nên dễ dàng hơn. Với nhiều công cụ và bộ lọc đầy đủ các chức năng, kết hợp 
+						biểu đồ thống kê số liệu điểm tuyển sinh qua các năm, <strong>Score</strong> đem lại một cái nhìn tổng quan 
+						nhất về điểm số.
+				</div>
+				<div class="reason">
+					<strong>Lí do ra đời dự án:</strong>
+					<ul>
+						<li>Điểm tuyển sinh 10 được đăng tải công khai trên các trang thông tin nhưng chỉ dừng lại ở hình ảnh.</li>
+						<li>Việc dò tìm, so sánh giữa các trường mất nhiều thời gian.</li>
+						<li>PH/HS khó đưa ra quyết định đúng đắn.</li>
+					</ul>
+				</div>
+			</div>
+			
+		</div>
+		<div class="fluid3"></div>
+
+		<div id="footer-container"></div>
+	</div>
 </body>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.1/dist/chart.min.js"></script>
+<script src="./js/graph.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+	$(function(){
+		$("#header-container").load("../expand/header.html"); 
+		$("#footer-container").load("../expand/footer.html"); 
+		});
+</script>
+
+
 </html>

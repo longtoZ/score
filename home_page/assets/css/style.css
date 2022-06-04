@@ -1,0 +1,173 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato&family=MuseoModerno:wght@200;300;500&family=Open+Sans:wght@600&display=swap');
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+    /* font-family: 'Lato', sans-serif; */
+    font-family: 'MuseoModerno', cursive;
+    /* font-family: 'Open Sans', sans-serif; */
+    font-weight: 300;
+}
+
+html {
+    animation: transitionIn 1.5s;
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: #f7f7f7;
+}
+
+header {
+    background-color: transparent !important;
+    box-shadow: none !important;
+}
+
+.logo, .switcher {
+    visibility: hidden;
+}
+
+.navbar a {
+    font-weight: 500;
+}
+
+.title-flexbox {
+    display: flex;
+    justify-content: center;
+    margin-top: 240px;
+}
+
+#title-container {
+    overflow: hidden;
+    position: relative;
+    width: 50%;
+}
+
+.fluid1 {
+    height: 35em;
+    width: 80em;
+    background: linear-gradient(to bottom, #5AFEBE, #E3FF99);
+    filter: blur(240px);
+    border-radius: 50%;
+    position: absolute;
+    top: -300px;
+    transform: translate(-50%,0);
+    left: 50%;
+    z-index: -1;
+}
+
+.fluid2 {
+    height: 32em;
+    width: 42em;
+    background: linear-gradient(to bottom, #9afdcf, #8bc1e5);
+    filter: blur(180px);
+    border-radius: 50%;
+    position: absolute;
+    top: 500px;
+    right: 55px;
+    z-index: -1;
+}
+
+.fluid3 {
+    height: 30em;
+    width: 40em;
+    background: linear-gradient(to bottom, #9afdbe, #cfe58b);
+    filter: blur(210px);
+    border-radius: 50%;
+    position: relative;
+    top: -2px;
+    left: -70px;
+    z-index: -1;
+}
+
+.title-box{
+    position: relative;
+}
+
+.title-box .title {
+    font-size: 4em;
+    font-weight: 200;
+}
+
+.title-box .title2 {
+    font-size: 10em;
+    font-weight: 500;
+    color: black;
+    line-height: 1;
+    /* -webkit-text-fill-color: transparent;
+    -webkit-text-stroke-width: 1px; */
+}
+
+.title-box .desc {
+    font-size: 1.4em;
+    color: black;
+    line-height: 4;
+}
+
+.start-btn {
+    background-color: #252526 !important;
+}
+
+.section-container {
+    width: 20%;
+    margin-top: 6%;
+}
+
+.line {
+    border-top: 2px solid #252526;
+    margin-bottom: 20px;
+}
+
+.section li {
+    margin: 5px 0;
+    line-height: 5;
+    padding: 0 20px;
+}
+
+.section li:hover {
+    backdrop-filter: blur(50px);
+    box-shadow: var(--box-shadow-light);
+    transition: all ease-in-out 0.2s;
+    font-weight: bold;
+}
+
+#section1 {
+    display: flex;
+    justify-content: center;
+    margin-top: 400px;
+    padding: 70px 0;
+    transition: all ease-in-out 0.3s;
+}
+
+#section1:hover {
+    backdrop-filter: blur(50px);
+    box-shadow: var(--box-shadow-light);
+}
+
+.section1 {
+    width: 70%;
+}
+
+#section1 .title{
+    float: left;
+    font-size: 6em;
+    width: 60%;
+}
+
+#section1 .title .title-line {
+    border-top: 6px solid black;
+    width: 40%;
+    margin-top: 40px;
+}
+
+#section1 .desc, #section1 .reason {
+    float: right;
+    width: 40%;
+    font-size: 1.2em;
+    line-height: 2;
+    color:#0000009c;
+}
+
+#section1 .reason {
+    margin-top: 60px;
+}
