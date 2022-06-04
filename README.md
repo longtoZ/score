@@ -1,4 +1,7 @@
-<h1 align="center">SCORE</h1>
+<div align="center">
+  <img src="img/logo.png" alt="Logo" width="100" height="100">
+  <h1 align="center">SCORE</h1>
+</div>
   
 
 
@@ -20,11 +23,11 @@
 4. [jQuery](https://jquery.com/) - *jQuery đơn giản hóa việc duyệt tài liệu HTML, xử lý sự kiện, hoạt ảnh và tương tác Ajax để phát triển web giàu tính năng hơn*
 5. [PHP](https://www.php.net/) - *Hypertext Preprocessor, một ngôn ngữ lập trình kịch bản hay một loại mã lệnh chủ yếu được dùng để phát triển các ứng dụng viết cho máy chủ, mã nguồn mở, dùng cho mục đích tổng quát.*
 6. [MySQL](https://www.mysql.com/) - *Hệ quản trị cơ sở dữ liệu tự do nguồn mở, làm nơi lưu trữ và truy xuất những thông tin trên các trang web viết bằng NodeJs, PHP hay Perl,...*
-7. [Chartjs](https://www.chartjs.org/) - *Thư viện mã nguồn mở giúp việc vẽ và hiển thị số liệu trên biểu đồ nhanh chóng và đa dạng hơn.*
-8. [Flaticon](https://www.flaticon.com/) - *Trang web cung cấp icons miễn phí dưới nhiều dạng, phục vụ cho thiết kế nhiều mục đích.*
+7. [XAMPP](https://www.apachefriends.org/) - *Chương trình tạo môi trường để chạy giả lập web server trên trình duyệt*
+8. [Chartjs](https://www.chartjs.org/) - *Thư viện mã nguồn mở giúp việc vẽ và hiển thị số liệu trên biểu đồ nhanh chóng và đa dạng hơn.*
 9. [Visual studio code](https://code.visualstudio.com/) - *Trình soạn thảo mã nguồn được phát triển bởi Microsoft, đi kèm nhiều chức năng như `debug`, [git](https://git-scm.com/), `syntax highlighting`,... cũng như hỗ trợ nhiều `extension` miễn phí giúp tối ưu dự án.*
 
-## Quá trình
+## Phiên bản
 
 - ### v1.0 
   - Được đưa lên [github](https://github.com/) vào ngày `25/5/2022`
@@ -38,9 +41,33 @@
   - Hoàn thiện giao diện `darkmode` + sửa lỗi
 - ### v1.3
   > `29/5/2022`
-  - Biểu đồ dãy năm có thể tuỳ chỉnh năm đầu và cuối + Sửa lỗi biểu đồ bị chồng lấp khi chuyển
+  - Biểu đồ dãy năm có thể tuỳ chỉnh năm đầu và cuối + Sửa lỗi biểu đồ bị chồng lặp khi chuyển
   - Thay đổi màu cho biểu đồ
 - ### v1.4
   > `30/5/2022`
   - Cập nhật `repsonsive` cho tablet
   - Thêm chức năng thay đổi biểu đồ **Bar graph** & **Line graph** + Sửa lỗi chồng lặp
+
+## Liên hệ
+- [facebook](https://www.facebook.com/its.longto/)
+- <a href="mailto:longto.xp@gmail.com">longto.xp@gmail.com</a>
+
+## Tài liệu tham khảo
+Dự án được hoàn thiện không thể thiếu sự trợ giúp từ nhiều tài liệu trên các trang web chính như:
+1. [W3Schools](https://www.w3schools.com/)
+2. [Stack Overflow](https://stackoverflow.com/)
+3. [Github](https://github.com/)
+4. [Pinterest](https://www.pinterest.com/)
+5. [Youtube](https://www.youtube.com/)
+6. [Chartjs docs](https://www.chartjs.org/docs/latest/)
+7. [Codepen](https://codepen.io/)
+8. [Flaticon](https://www.flaticon.com/)
+
+*Và nhiều nguồn tài liệu khác...*
+
+
+> **Note**
+> Dự án đang trong quá trình phát triển
+
+> **Warning**
+> This is a warning
