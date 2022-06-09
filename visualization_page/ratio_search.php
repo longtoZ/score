@@ -1,32 +1,28 @@
 <?php
     include("../config/config.php");
     $school = $_POST['title'];
-    $sql = "SELECT * FROM `ti_le_choi` WHERE `TÊN TRƯỜNG` LIKE '%$school%';";
-
     $year = $_POST['year'];
-    $result = mysqli_query($con,$sql);
-    $datas = array();
+
+    $query = <<<EOD
+    SELECT `chi_tieu`.`NAM_HOC`, `truong`.`TEN_TRUONG`, `chi_tieu`.`MA_TRUONG`, `truong`.`QUAN/HUYEN`, `chi_tieu`.`CHI_TIEU`, `chi_tieu`.`SO_LUONG`
+    FROM `chi_tieu` 
+    LEFT OUTER JOIN `truong` on `truong`.`MA_TRUONG` = `chi_tieu`.`MA_TRUONG`
+    WHERE `TEN_TRUONG` LIKE '%$school%' AND `NAM_HOC` = $year;
+    EOD;
+
+    $result = mysqli_query($con,$query);
 
     if (mysqli_num_rows($result) > 0) {
-        // print_r(mysqli_fetch_assoc($result));
+        $datas = array();
         while($row = mysqli_fetch_assoc($result)) {
             $datas[] = $row;
         }
     }
-
-    // print_r($datas);
-    
-    // echo $datas[0]['TÊN TRƯỜNG'];
-    // echo $datas[0]['CHỈ TIÊU 2019'];
-    // echo $datas[0]['NV1 2019'];
-    // echo $datas[0]['TỈ LỆ CHỌI 2019'];
-
 ?>
 
 <script>
-    var chi_tieu = <?php echo $datas[0]["CHỈ TIÊU $year"];?>;
-    var nguyen_vong = <?php echo $datas[0]["NV1 $year"];?>;
-    console.log([chi_tieu, nguyen_vong])
+    var chi_tieu = <?php echo $datas[0]['CHI_TIEU'];?>;
+    var so_luong = <?php echo $datas[0]['SO_LUONG'];?>;
 </script>
 
 
@@ -48,7 +44,7 @@
             labels: ['Chỉ tiêu', 'Nguyện vọng'],
             datasets: [{
                 label: 'NV1',
-                data: [chi_tieu, nguyen_vong],
+                data: [chi_tieu, so_luong],
                 backgroundColor: [
                     'rgb(184, 241, 176)',
                     'rgb(20, 195, 142)'
@@ -64,7 +60,7 @@
             plugins: {
                 title: {
                     display: true,
-                    text: '<?php echo $datas[0]['TÊN TRƯỜNG'] ?>',
+                    text: '<?php echo $datas[0]['TEN_TRUONG'] ?>',
                     color: textColor
                 },
                 legend: {

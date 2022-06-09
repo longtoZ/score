@@ -75,7 +75,6 @@ def chiTieu(cityID):
                 ['2020', list('TU')],
                 ['2021', list('WX')] ]
     lst = []
-    # scoreData = [f'{scoreIDCol[i]}1' for i in range(len(scoreIDCol))]
     nvData = [i[1] for i in yearCol]
 
     year = 2015
@@ -94,17 +93,17 @@ def chiTieu(cityID):
 
     wb.close()
 
-    wb2 = Workbook()
-    ws2 = wb2.active
-    ws2.title = "data"
+    # wb2 = Workbook()
+    # ws2 = wb2.active
+    # ws2.title = "data"
 
-    for i in lst:
-        ws2.append(i)
+    # for i in lst:
+    #     ws2.append(i)
 
-    wb2.save(r'C:\xampp\htdocs\search_project\config\reconstruct\tlc.xlsx')
+    # wb2.save(r'C:\xampp\htdocs\search_project\config\reconstruct\tlc.xlsx')
 
 
-truong('HCM_', 'TP Ho Chi Minh', 'B', 'C', 'L02')
+# truong('HCM_', 'TP Ho Chi Minh', 'B', 'C', 'L02')
 # diemChuan('HCM_')
-# chiTieu('HCM_')
+chiTieu('HCM_')
 

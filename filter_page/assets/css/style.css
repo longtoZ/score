@@ -118,7 +118,9 @@ body::-webkit-scrollbar-thumb {
 
 .filter-score-container {
     margin-top: 20px;
-    float: left;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
 }
 
 .filter-detail-container {
@@ -129,7 +131,21 @@ body::-webkit-scrollbar-thumb {
     font-weight: bold;
 }
 
-.score-maths, .score-literature, .score-english, .score-average, .filter-year-select, .filter-year-list,
+.primary-box {
+    border: none;
+    outline: none;
+    border-radius: 10px;
+	padding: 8px;
+    height: 35px;
+    width: 140px;
+    background-color: var(--fourth-primary-color);
+    box-shadow: var(--box-shadow);
+    margin-right: 10px;
+    padding-left: 15px;
+    color: var(--text-color);
+}
+
+/* .score-maths, .score-literature, .score-english, .score-average, .filter-year-select, .filter-year-list,
 .filter-district-select, .filter-district-list, .filter-wish-select, .filter-wish-list,
 .filter-year-advanced-select, .filter-year-advanced-list, .filter-wish-advanced-select, .filter-wish-advanced-list {
     border: none;
@@ -143,7 +159,7 @@ body::-webkit-scrollbar-thumb {
     margin-right: 10px;
     padding-left: 15px;
     color: var(--text-color);
-}
+} */
 
 .score-cal {
     border: none;
@@ -178,20 +194,13 @@ body::-webkit-scrollbar-thumb {
     color: var(--darker-green);
 }
 
-
-.filter-year, .filter-district, .filter-wish, .filter-year-advanced, .filter-wish-advanced {
+.primary-margin {
     margin-top: 40px;
     padding: 20px 10px;
     float: left;
 }
 
-.filter-year-advanced, .filter-wish-advanced {
-    margin-top: 0px;
-    padding: 0;
-}
-
-.filter-year-select, .filter-district-select, .filter-wish-select,
-.filter-year-advanced-select, .filter-wish-advanced-select {
+.select-margin {
     margin-top: 20px;
     height: 40px;
     border-radius: 10px;
@@ -200,42 +209,18 @@ body::-webkit-scrollbar-thumb {
     margin-right: 40px;
 }
 
-.filter-year-advanced-select, .filter-year-advanced-list, .filter-wish-advanced-select, .filter-wish-advanced-list {
-    margin-right: 10px;
-}
-
-.filter-year-advanced-select, .filter-wish-advanced-select {
-    margin-top: 0px;
-}
-
-.filter-year-select:hover, .filter-district-select:hover, .filter-wish-select:hover,
-.filter-year-advanced-select:hover, .filter-wish-advanced-select:hover {
+.select-hover:hover {
     box-shadow: var(--hover-color);
     transition: ease-in-out 0.2s;
-}
-
-.filter-district-select, .filter-district-list {
-    width: 180px;
-}
-
-.filter-wish-select, .filter-wish-list,
-.filter-wish-advanced-select, .filter-wish-advanced-list {
-    width: 200px;
-}
-
-.filter-year-select:hover, .filter-district-select:hover, .filter-wish-select:hover, .filter-year-advanced-select:hover, .filter-wish-advanced-select:hover {
     cursor: pointer;
 }
 
-
-.filter-year-select i, .filter-district-select i, .filter-wish-select i,
-.filter-year-advanced i, .filter-wish-advanced i {
+.arrow-pos {
     position: absolute;
     right: 8px;
 }
 
-.filter-year-list, .filter-district-list, .filter-wish-list, 
-.filter-year-advanced-list, .filter-wish-advanced-list {
+.primary-list {
     position: relative;
     background-color: var(--fourth-primary-color);
     box-shadow: var(--box-shadow);
@@ -247,6 +232,32 @@ body::-webkit-scrollbar-thumb {
     height: 140px;
     pointer-events: none;
 }
+
+
+.filter-year-advanced, .filter-wish-advanced {
+    margin-top: 0px;
+    padding: 0;
+}
+
+
+.filter-year-advanced-select, .filter-year-advanced-list, .filter-wish-advanced-select, .filter-wish-advanced-list {
+    margin-right: 10px;
+}
+
+.filter-year-advanced-select, .filter-wish-advanced-select {
+    margin-top: 0px;
+}
+
+
+.filter-district-select, .filter-district-list {
+    width: 180px;
+}
+
+.filter-wish-select, .filter-wish-list,
+.filter-wish-advanced-select, .filter-wish-advanced-list {
+    width: 200px;
+}
+
 
 .filter-year-list .year, .filter-district-list .district, .filter-wish-list .wish,
 .filter-year-advanced-list .year, .filter-wish-advanced-list .wish{
@@ -282,41 +293,47 @@ body::-webkit-scrollbar-thumb {
 }
 
 .filter-between-box, .filter-more-box {
+    margin-top: 90px;
     position: relative;
     top: -120px;
 }
 
 
-.filter-between, .filet-top {
+.filter-between, .filer-top {
     overflow: hidden;
     padding: 10px;
 }
 
-.filter-between h3, .filter-tool-box h3, .filter-top h3 {
+.filter-between h3, .filter-tool-box h3, .filter-top h3, .right-box h3 {
     margin: 30px 0;
     padding-left: 10px;
     font-weight: bold;
 }
 
-.filter-above-average, .filter-below-average {
-    margin-top: 90px ;
+.left-box, .right-box {
+    display: flex;
+    flex-direction: column;
 }
 
-.filter-between .start, .filter-between .end, .filter-between .between-search,
-.filter-top .top, .filter-above-average .above, .filter-below-average .below {
+.advanced-input {
     border: none;
     outline: none;
     border-radius: 10px;
     padding: 8px;
     height: 40px;
-    width: 140px;
+    width: 180px;
     background-color: var(--fourth-primary-color);
     box-shadow: var(--box-shadow-light);
     margin-right: 10px;
     padding-left: 15px;
     float: left;
     color: var(--text-color);
+    cursor: pointer;
+    text-align: center;
+    font-weight: bold;
+    transition: all ease 0.2s;
 }
+
 
 .filter-between .between-search {
     background-color: var(--green);
@@ -331,14 +348,6 @@ body::-webkit-scrollbar-thumb {
     cursor: pointer;
 }
 
-.filter-above-average .above, .filter-below-average .below {
-    background-color: var(--fourth-primary-color);
-    color: var(--text-color);
-    text-align: center;
-    font-weight: bold;
-    width: 180px;
-    cursor: pointer;
-}
 
 .filter-above-average .above.active, .filter-below-average .below.active {
     background-color: var(--green);
@@ -472,11 +481,11 @@ body::-webkit-scrollbar-thumb {
         margin-bottom: 20px;
     }
 
-    .filter-top, .filter-above-average, .filter-below-average {
+    .filter-top, .filter-above-average, .filter-below-average, .filter-top-pos {
         padding: 10px;
     }
 
-    .filter-top .top, .filter-above-average .above, .filter-below-average .below {
+    .filter-top .top, .filter-above-average .above, .filter-below-average .below, .filter-top-pos .position {
         margin: 0!important;
         width: 100%;
         text-align: center;

@@ -6,48 +6,38 @@
     $new = $_POST['new'];
     $chartClicked = $_POST['chartClicked'];
 
-    $sql = <<<EOD
-    SELECT
-    `search_score_2021`.`TÊN TRƯỜNG` as t_2021, `search_score_2021`.`ĐIỂM NV1` as nv1_2021, `search_score_2021`.`ĐIỂM NV2` as nv2_2021, `search_score_2021`.`ĐIỂM NV3` as nv3_2021,
-    `search_score_2020`.`TÊN TRƯỜNG` as t_2020, `search_score_2020`.`ĐIỂM NV1` as nv1_2020, `search_score_2020`.`ĐIỂM NV2` as nv2_2020, `search_score_2020`.`ĐIỂM NV3` as nv3_2020,
-    `search_score_2019`.`TÊN TRƯỜNG` as t_2019, `search_score_2019`.`ĐIỂM NV1` as nv1_2019, `search_score_2019`.`ĐIỂM NV2` as nv2_2019, `search_score_2019`.`ĐIỂM NV3` as nv3_2019,
-    `search_score_2018`.`TÊN TRƯỜNG` as t_2018, `search_score_2018`.`ĐIỂM NV1` as nv1_2018, `search_score_2018`.`ĐIỂM NV2` as nv2_2018, `search_score_2018`.`ĐIỂM NV3` as nv3_2018,
-    `search_score_2017`.`TÊN TRƯỜNG` as t_2017, `search_score_2017`.`ĐIỂM NV1` as nv1_2017, `search_score_2017`.`ĐIỂM NV2` as nv2_2017, `search_score_2017`.`ĐIỂM NV3` as nv3_2017,
-    `search_score_2016`.`TÊN TRƯỜNG` as t_2016, `search_score_2016`.`ĐIỂM NV1` as nv1_2016, `search_score_2016`.`ĐIỂM NV2` as nv2_2016, `search_score_2016`.`ĐIỂM NV3` as nv3_2016,
-    `search_score_2015`.`TÊN TRƯỜNG` as t_2015, `search_score_2015`.`ĐIỂM NV1` as nv1_2015, `search_score_2015`.`ĐIỂM NV2` as nv2_2015, `search_score_2015`.`ĐIỂM NV3` as nv3_2015
-    
-
-    FROM `search_score_2020`
-    	LEFT OUTER JOIN `search_score_2021` ON `search_score_2020`.`TÊN TRƯỜNG` = `search_score_2021`.`TÊN TRƯỜNG`
-        LEFT OUTER JOIN `search_score_2019` ON `search_score_2020`.`TÊN TRƯỜNG` = `search_score_2019`.`TÊN TRƯỜNG`
-        LEFT OUTER JOIN `search_score_2018` ON `search_score_2020`.`TÊN TRƯỜNG` = `search_score_2018`.`TÊN TRƯỜNG`
-        LEFT OUTER JOIN `search_score_2017` ON `search_score_2020`.`TÊN TRƯỜNG` = `search_score_2017`.`TÊN TRƯỜNG`
-        LEFT OUTER JOIN `search_score_2016` ON `search_score_2020`.`TÊN TRƯỜNG` = `search_score_2016`.`TÊN TRƯỜNG`
-        LEFT OUTER JOIN `search_score_2015` ON `search_score_2020`.`TÊN TRƯỜNG` = `search_score_2015`.`TÊN TRƯỜNG`
-        
-    WHERE `search_score_2020`.`TÊN TRƯỜNG` LIKE '%$school%';
+    $query = <<<EOD
+    SELECT `diem_chuan`.`NAM_HOC`, `truong`.`TEN_TRUONG`, `diem_chuan`.`MA_TRUONG`, `truong`.`QUAN/HUYEN`, `diem_chuan`.`MA_NV`, `diem_chuan`.`DIEM`
+    FROM `diem_chuan` 
+    LEFT OUTER JOIN `truong` on `truong`.`MA_TRUONG` = `diem_chuan`.`MA_TRUONG`
+    WHERE `TEN_TRUONG` LIKE '%$school%';
     EOD;
 
-    $result = mysqli_query($con,$sql);
-    $datas = array();
+    $result = mysqli_query($con,$query);
 
     if (mysqli_num_rows($result) > 0) {
-        // print_r(mysqli_fetch_assoc($result));
+        $datas = array();
+        $count = 1;
+        $schools = array();
         while($row = mysqli_fetch_assoc($result)) {
-            $datas[] = $row;
+    
+            if ($count == 1) {
+                array_push($schools, $row['NAM_HOC'], $row['TEN_TRUONG'], $row['QUAN/HUYEN'], $row['DIEM']);
+                $count++;
+
+            } else if ($count == 2) {
+                array_push($schools, $row['DIEM']);
+                $count++;
+
+            } else if ($count == 3) {
+                array_push($schools, $row['DIEM']);
+                $count= 1;
+                array_push($datas, $schools);
+                $schools = array();
+            }
         }
     }
-    
-    // echo $datas[0]['nv1_2020'];
-
-    // foreach ($datas[0] as $data) {
-    //     echo "$data <br>";
-    //     print_r($data);
-    // }
 ?>
-
-
-
 
 
 <div class="bar-graph1" style="height: 380px; width:auto; margin: 0 30px; display:block;">
@@ -126,15 +116,22 @@
     var col3 = 'rgb(184, 241, 176)'
 
     var first = 2015;
-    var last = 2021
+    var last = 2021;
     var start = <?php echo $start?>;
     var end = <?php echo $end?>;
     var labels = []
 
-    var nv1 = [<?php echo $datas[0]['nv1_2015']?>, <?php echo $datas[0]['nv1_2016']?>, <?php echo $datas[0]['nv1_2017']?>, <?php echo $datas[0]['nv1_2018']?>, <?php echo $datas[0]['nv1_2019']?>, <?php echo $datas[0]['nv1_2020']?>, <?php echo $datas[0]['nv1_2021']?>]
-    var nv2 = [<?php echo $datas[0]['nv2_2015']?>,<?php echo $datas[0]['nv2_2016']?>, <?php echo $datas[0]['nv2_2017']?>, <?php echo $datas[0]['nv2_2018']?>, <?php echo $datas[0]['nv2_2019']?>, <?php echo $datas[0]['nv2_2020']?>, <?php echo $datas[0]['nv2_2021']?>]
-    var nv3 = [<?php echo $datas[0]['nv3_2015']?>,<?php echo $datas[0]['nv3_2016']?>, <?php echo $datas[0]['nv3_2017']?>, <?php echo $datas[0]['nv3_2018']?>, <?php echo $datas[0]['nv3_2019']?>, <?php echo $datas[0]['nv3_2020']?>, <?php echo $datas[0]['nv3_2021']?>]
+    var datas = <?php echo json_encode($datas); ?>;
 
+    var nv1 = []
+    var nv2 = []
+    var nv3 = []
+
+    for (let i of datas) {
+        nv1.push(i[3])
+        nv2.push(i[4])
+        nv3.push(i[5])
+    }
 
     var nv1Per = []
     var nv2Per = []
@@ -167,7 +164,6 @@
         var bg_nv1 = Array(end-start+1).fill(col1)
         var bg_nv2 = Array(end-start+1).fill(col2)
         var bg_nv3 = Array(end-start+1).fill(col3)
-        // console.log(bg_nv1, bg_nv2, bg_nv3)
 
         nv1 = nv1.slice(start-first, end-first+1)
         nv2 = nv2.slice(start-first, end-first+1)
@@ -264,7 +260,7 @@
                 title: {
                     display: true,
                     color: textColor,
-                    text: '<?php echo $datas[0]['t_2021'] ?>'
+                    text: '<?php echo $datas[0][1] ?>'
                 },
                 subtitle: {
                     display: true,
@@ -299,6 +295,9 @@
                         display: true,
                         text: 'Năm',
                         color: textColor
+                    },
+                    grid: {
+                        display: false
                     }
                 },
                 y: {
@@ -366,7 +365,7 @@
                 title: {
                     display: true,
                     color: textColor,
-                    text: '<?php echo $datas[0]['t_2021'] ?>'
+                    text: '<?php echo $datas[0][1] ?>'
                 },
                 subtitle: {
                     display: true,

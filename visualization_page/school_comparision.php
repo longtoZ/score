@@ -1,30 +1,39 @@
 <?php
-    include("../config/config.php");
-    $year = $_POST['year'];
-    $district = $_POST['district'];
-    $sql = "SELECT * FROM `search_score_$year` WHERE `TÊN QUẬN` LIKE '%$district%';";
+include("../config/config.php");
+$year = $_POST['year'];
+$district = $_POST['district'];
 
-    $result = mysqli_query($con,$sql);
+$query = <<<EOD
+SELECT `truong`.`TEN_TRUONG`, `diem_chuan`.`MA_TRUONG`, `truong`.`QUAN/HUYEN`, `diem_chuan`.`MA_NV`, `diem_chuan`.`DIEM`
+FROM `diem_chuan` 
+LEFT OUTER JOIN `truong` on `truong`.`MA_TRUONG` = `diem_chuan`.`MA_TRUONG`
+WHERE `QUAN/HUYEN` LIKE '%$district%' AND `NAM_HOC` = $year
+EOD;
+
+$result = mysqli_query($con,$query);
+
+if (mysqli_num_rows($result) > 0) {
     $datas = array();
+    $count = 1;
+    $schools = array();
+    while($row = mysqli_fetch_assoc($result)) {
 
-    if (mysqli_num_rows($result) > 0) {
+        if ($count == 1) {
+            array_push($schools, $row['TEN_TRUONG'], $row['QUAN/HUYEN'], $row['DIEM']);
+            $count++;
 
-        while($row = mysqli_fetch_assoc($result)) {
-            $datas[] = $row;
+        } else if ($count == 2) {
+            array_push($schools, $row['DIEM']);
+            $count++;
+
+        } else if ($count == 3) {
+            array_push($schools, $row['DIEM']);
+            $count= 1;
+            array_push($datas, $schools);
+            $schools = array();
         }
     }
-    $schools = array();
-    $nv1 = array();
-    $nv2 = array();
-    $nv3 = array();
-    foreach ($datas as $data) {
-        $schools[] = $data["TÊN TRƯỜNG"];
-        $nv1[] = $data["ĐIỂM NV1"];
-        $nv2[] = $data["ĐIỂM NV2"];
-        $nv3[] = $data["ĐIỂM NV3"];
-    };
-
-
+}
 ?>
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.1/dist/chart.min.js"></script>
@@ -52,10 +61,16 @@
     function randomRGB() {
         return (Math.floor(Math.random() * 255) + 1).toString();
     }
-    var schools = <?php echo json_encode($schools); ?>;
-    var nv1 = <?php echo json_encode($nv1); ?>;
-    var nv2 = <?php echo json_encode($nv2); ?>;
-    var nv3 = <?php echo json_encode($nv3); ?>;
+    var datas_d = []
+    var schools = []
+    var nv1 = []
+
+    for (let i of <?php echo json_encode($datas); ?>) {
+        datas_d.push(i);
+        schools.push(i[0])
+        nv1.push(i[2])
+    }
+
     var rgb_list = [];
     for (let i=0; i<schools.length; i++) {
         rgb_list.push(`rgb(${randomRGB()}, ${randomRGB()}, ${randomRGB()})`);
@@ -84,7 +99,7 @@
             plugins: {
                 title: {
                     display: true,
-                    text: "<?php echo $datas[0]['TÊN QUẬN'] ?> " + "<?php echo $year ?>",
+                    text: "<?php echo $district ?> " + "<?php echo $year ?>",
                     color: textColor
                 },
                 legend: {
@@ -112,7 +127,6 @@
                     }
                 }
             }
-        }
-        
+        } 
     });
 </script>

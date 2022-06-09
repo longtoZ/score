@@ -7,14 +7,56 @@ $year = $_POST['year'];
 $district =  $_POST['district'];
 $wish =  $_POST['wish'];
 
-$query = "SELECT * FROM `search_score_{$year}` WHERE `TÊN QUẬN` REGEXP '{$district}' AND `{$wish}` <= {$average} ORDER BY `{$wish}` DESC";
+// print_r([$average, $year, $district, $wish]);
+$query = <<<EOD
+SELECT `diem_chuan`.`MA_TRUONG`, `diem_chuan`.`MA_NV`, `diem_chuan`.`DIEM`
+FROM `diem_chuan` 
+LEFT OUTER JOIN `truong` on `truong`.`MA_TRUONG` = `diem_chuan`.`MA_TRUONG`
+WHERE `NAM_HOC` = $year AND `QUAN/HUYEN` LIKE '%$district%' AND `MA_NV` = '$wish' AND `DIEM` <= $average ORDER BY `DIEM` DESC;
+EOD;
 
 $result = mysqli_query($con,$query);
 
-if (mysqli_num_rows($result) > 0){?>
+
+if (mysqli_num_rows($result) > 0){
+	
+	$datas = array();
+	while($row = mysqli_fetch_assoc($result)) {
+
+		$query2 = <<<EOD
+		SELECT `truong`.`TEN_TRUONG`, `diem_chuan`.`MA_TRUONG`, `truong`.`QUAN/HUYEN`, `diem_chuan`.`MA_NV`, `diem_chuan`.`DIEM` 
+		FROM `diem_chuan` 
+		LEFT OUTER JOIN `truong` on `truong`.`MA_TRUONG` = `diem_chuan`.`MA_TRUONG` 
+		WHERE (`truong`.`MA_TRUONG` = '{$row['MA_TRUONG']}' AND `diem_chuan`.`NAM_HOC` = $year)
+		EOD;
+
+		$result2 = mysqli_query($con,$query2);
+
+		$count2 = 1;
+		$schools2 = array();
+        while($row2 = mysqli_fetch_assoc($result2)) {
+
+			if ($count2 == 1) {
+				array_push($schools2, $row2['TEN_TRUONG'], $row2['QUAN/HUYEN'], $row2['DIEM']);
+				$count2++;
+
+			} else if ($count2 == 2) {
+				array_push($schools2, $row2['DIEM']);
+				$count2++;
+
+			} else if ($count2 == 3) {
+				array_push($schools2, $row2['DIEM']);
+				$count2 = 1;
+				array_push($datas, $schools2);
+				$schools2 = array();
+			}
+		}	
+	}
+
+	// print_r($datas);
+		?>
 
 	<link rel="stylesheet" type="text/css" href="./assets/css/table.css">
-
 
 	<table class="search-table">
 		<thead>
@@ -31,18 +73,15 @@ if (mysqli_num_rows($result) > 0){?>
 		<tbody>
 			<?php
 
-			while ($row=mysqli_fetch_assoc($result)) {
+			$stt = 1;
+			foreach ($datas as $row) {
 
-				$stt = $row['STT'];
-				$schoolname = $row['TÊN TRƯỜNG'];
-				$district = $row['TÊN QUẬN'];
-				$nv1 = $row['ĐIỂM NV1'];
-				$nv2 = $row['ĐIỂM NV2'];
-				$nv3 = $row['ĐIỂM NV3'];	
+				$schoolname = $row[0];
+				$district = $row[1];
+				$nv1 = $row[2];
+				$nv2 = $row[3];
+				$nv3 = $row[4];		
 				
-				?>
-
-				<?php
 				if (substr($wish, -1) == "1") { ?>
 					<tr>
 						<td><?php echo $stt; ?></td>
@@ -75,6 +114,8 @@ if (mysqli_num_rows($result) > 0){?>
 					</tr>	
 					<?php
 				}
+
+				$stt++;
 				?>
 
 				<?php	

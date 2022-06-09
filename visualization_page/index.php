@@ -122,7 +122,7 @@
                                                         <div class="district" onclick="showDistrict('Quận 6')">Quận 6</div>
                                                         <div class="district" onclick="showDistrict('Quận 7')">Quận 7</div>
                                                         <div class="district" onclick="showDistrict('Quận 8')">Quận 8</div>
-                                                        <div class="district" onclick="showDistrict('TP Thủ Đức')">TP Thủ Đức</div>
+                                                        <div class="district" onclick="showDistrict('Thủ Đức')">Thủ Đức</div>
                                                         <div class="district" onclick="showDistrict('Quận 10')">Quận 10</div>
                                                         <div class="district" onclick="showDistrict('Quận 11')">Quận 11</div>
                                                         <div class="district" onclick="showDistrict('Quận 12')">Quận 12</div>
@@ -241,7 +241,7 @@
         
 
         const default_school = "nguyen huu huan";
-        const default_district = "TP Thủ Đức"
+        const default_district = "Thủ Đức"
         const default_year = "2021";
         for (let i of document.querySelectorAll('.filter-year-select .select')) {
             i.innerHTML = "Năm " + default_year;
@@ -312,13 +312,13 @@
             }
             showOnLoad();
 
-
             document.querySelector('.school-search').addEventListener("keypress", function(event) {
                 if (event.key === "Enter") {
                     event.preventDefault();
                     document.querySelector(".school-search-box i").click();
                 }
             });
+
             $(document).on('click', '.school-search-box i', function() {
                 document.querySelector('.filter-year-select .select').innerHTML = "Năm 2021";
                 var school_input = document.querySelector('.school-search').value;
@@ -476,7 +476,7 @@
                                 
                             },
                             success:function(data) {
-                                $('.comparision-graph-container').html(data);
+                                $('.year-range-graph-container').html(data);
                             }
                         })
                         
@@ -505,7 +505,7 @@
                         
                     },
                     success:function(data) {
-                        $('.comparision-graph-container').html(data);
+                        $('.year-range-graph-container').html(data);
                     }
                 })
 

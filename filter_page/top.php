@@ -3,12 +3,57 @@ include("../config/config.php");
 $input = $_POST['input'];
 $year = $_POST['year'];
 $wish = $_POST['wish'];
+$order = $_POST['order'];
 
-$query = "SELECT * FROM `search_score_{$year}` ORDER BY `{$wish}` DESC LIMIT {$input}";
+$query = <<<EOD
+SELECT `truong`.`TEN_TRUONG`, `diem_chuan`.`MA_TRUONG`, `truong`.`QUAN/HUYEN`, `diem_chuan`.`MA_NV`, `diem_chuan`.`DIEM`
+FROM `diem_chuan` 
+LEFT OUTER JOIN `truong` on `truong`.`MA_TRUONG` = `diem_chuan`.`MA_TRUONG`
+WHERE `NAM_HOC` = $year AND `MA_NV` = '$wish' ORDER BY `DIEM` $order LIMIT $input;
+EOD;
 
 $result = mysqli_query($con,$query);
 
-if (mysqli_num_rows($result) > 0){?>
+if (mysqli_num_rows($result) > 0){
+	$datas = array();
+	while($row = mysqli_fetch_assoc($result)) {
+
+		$query2 = <<<EOD
+		SELECT `truong`.`TEN_TRUONG`, `diem_chuan`.`MA_TRUONG`, `truong`.`QUAN/HUYEN`, `diem_chuan`.`MA_NV`, `diem_chuan`.`DIEM` 
+		FROM `diem_chuan` 
+		LEFT OUTER JOIN `truong` on `truong`.`MA_TRUONG` = `diem_chuan`.`MA_TRUONG` 
+		WHERE (`truong`.`MA_TRUONG` = '{$row['MA_TRUONG']}' AND `diem_chuan`.`NAM_HOC` = $year)
+		EOD;
+
+		$result2 = mysqli_query($con,$query2);
+
+		$count2 = 1;
+		$schools2 = array();
+        while($row2 = mysqli_fetch_assoc($result2)) {
+
+			if ($count2 == 1) {
+				array_push($schools2, $row2['TEN_TRUONG'], $row2['QUAN/HUYEN'], $row2['DIEM']);
+				$count2++;
+
+			} else if ($count2 == 2) {
+				array_push($schools2, $row2['DIEM']);
+				$count2++;
+
+			} else if ($count2 == 3) {
+				array_push($schools2, $row2['DIEM']);
+				$count2 = 1;
+				array_push($datas, $schools2);
+				$schools2 = array();
+			}
+		}	
+	}
+
+	$arrow = "⇩";
+
+	if ($order == "ASC") {
+		$arrow = "⇧";
+	}
+	?>
 
 
 
@@ -21,27 +66,24 @@ if (mysqli_num_rows($result) > 0){?>
 				<th>STT</th>
 				<th>TÊN TRƯỜNG</th>
 				<th>TÊN QUẬN</th>
-				<th onclick="sortTable(3)">ĐIỂM NV1  ⇩</th>
-				<th onclick="sortTable(4)">ĐIỂM NV2  ⇩</th>
-				<th onclick="sortTable(5)">ĐIỂM NV3  ⇩</th>
+				<th onclick="sortTable(3)">ĐIỂM NV1  <?php echo $arrow; ?></th>
+				<th onclick="sortTable(4)">ĐIỂM NV2  <?php echo $arrow; ?></th>
+				<th onclick="sortTable(5)">ĐIỂM NV3  <?php echo $arrow; ?></th>
 			</tr>
 		</thead>
 
 		<tbody>
 			<?php
 
-			while ($row=mysqli_fetch_assoc($result)) {
+			$stt = 1;
+			foreach ($datas as $row) {
 
-				$stt = $row['STT'];
-				$schoolname = $row['TÊN TRƯỜNG'];
-				$district = $row['TÊN QUẬN'];
-				$nv1 = $row['ĐIỂM NV1'];
-				$nv2 = $row['ĐIỂM NV2'];
-				$nv3 = $row['ĐIỂM NV3'];	
-				
-				?>
+				$schoolname = $row[0];
+				$district = $row[1];
+				$nv1 = $row[2];
+				$nv2 = $row[3];
+				$nv3 = $row[4];	
 
-				<?php
 				if (substr($wish, -1) == "1") { ?>
 					<tr>
 						<td><?php echo $stt; ?></td>
@@ -74,6 +116,8 @@ if (mysqli_num_rows($result) > 0){?>
 					</tr>	
 					<?php
 				}
+
+				$stt++;
 				?>
 
 				<?php	

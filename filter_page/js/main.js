@@ -7,6 +7,7 @@ const above = document.querySelector('.filter-above-average');
 const below = document.querySelector('.filter-below-average');
 const aboveAverage = document.querySelector('.above');
 const belowAverage = document.querySelector('.below');
+const position = document.querySelector('.position');
 
 const submitBtn = document.querySelector('.submit-btn');
 
@@ -110,6 +111,7 @@ wishAdvancedSelected.onclick = function() {
 
 aboveClicked = false;
 belowClicked = false;
+positionClicked = false
 
 above.onclick = function () {
     if (aboveClicked == false) {
@@ -120,10 +122,12 @@ above.onclick = function () {
             belowAverage.classList.remove("active");
         }
         aboveClicked = true
+        belowClicked = false
         
     } else {
         aboveAverage.classList.remove("active");
         aboveClicked = false
+        belowClicked = true
     }
 
     document.querySelector('.filter-top .top').value = ''
@@ -138,11 +142,28 @@ below.onclick = function () {
             aboveAverage.classList.remove("active");
         }
         belowClicked = true
+        aboveClicked = false
         
     } else {
         belowAverage.classList.remove("active");
         belowClicked = false
+        aboveClicked = true
     }
 
     document.querySelector('.filter-top .top').value = ''
 }
+
+position.onclick = function () {
+    if (positionClicked == false) {
+        position.style.backgroundColor = 'var(--green)'
+        position.style.color = 'white'
+        position.value = "Cao nhất"
+        positionClicked = true
+    } else {
+        position.style.backgroundColor = 'var(--orange)'
+        position.style.color = 'white'
+        position.value = "Thấp nhất"
+        positionClicked = false
+    }
+}
+

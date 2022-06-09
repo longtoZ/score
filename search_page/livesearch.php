@@ -6,11 +6,43 @@ if (isset($_POST['input'], $_POST['year'])) {
 	$input = $_POST['input'];
 	$year = $_POST['year'];
 
-	$query = "SELECT * FROM `search_score_{$year}` WHERE `TÊN TRƯỜNG` LIKE '%".$input."%'";
+	// $query = "SELECT * FROM `search_score_{$year}` WHERE `TÊN TRƯỜNG` LIKE '%".$input."%'";
+	$query = <<<EOD
+	SELECT `truong`.`TEN_TRUONG`, `diem_chuan`.`MA_TRUONG`, `truong`.`QUAN/HUYEN`, `diem_chuan`.`MA_NV`, `diem_chuan`.`DIEM`
+	FROM `diem_chuan` 
+	LEFT OUTER JOIN `truong` on `truong`.`MA_TRUONG` = `diem_chuan`.`MA_TRUONG`
+	WHERE (`truong`.`TEN_TRUONG` LIKE '%$input%' AND `diem_chuan`.`NAM_HOC` = $year);
+	EOD;
+
 
 	$result = mysqli_query($con,$query);
 
-	if (mysqli_num_rows($result) > 0){?>
+	if (mysqli_num_rows($result) > 0){
+		$datas = array();
+		$count = 1;
+		$schools = array();
+        while($row = mysqli_fetch_assoc($result)) {
+
+			if ($count == 1) {
+				array_push($schools, $row['TEN_TRUONG'], $row['QUAN/HUYEN'], $row['DIEM']);
+				$count++;
+
+			} else if ($count == 2) {
+				array_push($schools, $row['DIEM']);
+				$count++;
+
+			} else if ($count == 3) {
+				array_push($schools, $row['DIEM']);
+				$count = 1;
+				array_push($datas, $schools);
+				$schools = array();
+			}
+
+
+		}
+    }
+	
+		?>
 
 		<link rel="stylesheet" type="text/css" href="./assets/css/table.css">
 
@@ -28,15 +60,13 @@ if (isset($_POST['input'], $_POST['year'])) {
 
 			<tbody>
 				<?php
-
-				while ($row=mysqli_fetch_assoc($result)) {
-
-					$stt = $row['STT'];
-					$schoolname = $row['TÊN TRƯỜNG'];
-					$district = $row['TÊN QUẬN'];
-					$nv1 = $row['ĐIỂM NV1'];
-					$nv2 = $row['ĐIỂM NV2'];
-					$nv3 = $row['ĐIỂM NV3'];	
+				$stt = 1;
+				foreach ($datas as $row) {
+					$schoolname = $row[0];
+					$district = $row[1];
+					$nv1 = $row[2];
+					$nv2 = $row[3];
+					$nv3 = $row[4];	
 
 					?>
 
@@ -49,7 +79,8 @@ if (isset($_POST['input'], $_POST['year'])) {
 						<td><?php echo $nv3; ?></td>
 					</tr>	
 
-					<?php	
+					<?php
+					$stt++;	
 				}
 				?>
 			</tbody>
@@ -57,8 +88,13 @@ if (isset($_POST['input'], $_POST['year'])) {
 		</table>
 
 	<?php 
-	} else {
-		echo "<h3 style='color:red; text-align:center;'>*Kết quả không khớp*</h3>";
-	}
+} else {
+	echo "<h3 style='color:red; text-align:center;'>*Kết quả không khớp*</h3>";
 }
+
 ?>
+
+<!-- SELECT `diem_chuan`.`NAM_HOC`, `truong`.`TEN_TRUONG`, `diem_chuan`.`MA_TRUONG`, `diem_chuan`.`MA_NV`, `diem_chuan`.`DIEM`
+FROM `diem_chuan` 
+LEFT OUTER JOIN `truong` on `truong`.`MA_TRUONG` = `diem_chuan`.`MA_TRUONG`
+WHERE (`truong`.`TEN_TRUONG` LIKE '%nguyen%' AND `diem_chuan`.`NAM_HOC` = 2021); -->
