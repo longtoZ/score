@@ -145,29 +145,14 @@ body::-webkit-scrollbar-thumb {
     color: var(--text-color);
 }
 
-/* .score-maths, .score-literature, .score-english, .score-average, .filter-year-select, .filter-year-list,
-.filter-district-select, .filter-district-list, .filter-wish-select, .filter-wish-list,
-.filter-year-advanced-select, .filter-year-advanced-list, .filter-wish-advanced-select, .filter-wish-advanced-list {
-    border: none;
-    outline: none;
-    border-radius: 10px;
-	padding: 8px;
-    height: 35px;
-    width: 140px;
-    background-color: var(--fourth-primary-color);
-    box-shadow: var(--box-shadow);
-    margin-right: 10px;
-    padding-left: 15px;
-    color: var(--text-color);
-} */
 
 .score-cal {
     border: none;
     outline: none;
     border-radius: 10px;
 	padding: 8px;
-    height: 35px;
-    width: 140px;
+    height: 45px;
+    width: 170px;
     box-shadow: var(--box-shadow);
     margin-right: 10px;
     padding-left: 15px;
@@ -258,39 +243,6 @@ body::-webkit-scrollbar-thumb {
     width: 200px;
 }
 
-
-.filter-year-list .year, .filter-district-list .district, .filter-wish-list .wish,
-.filter-year-advanced-list .year, .filter-wish-advanced-list .wish{
-    padding: 5px;
-    padding-left: 20px;
-}
-
-.filter-year-list .year:hover, .filter-district-list .district:hover, .filter-wish-list .wish:hover,
-.filter-year-advanced-list .year:hover, .filter-wish-advanced-list .wish:hover {
-    background-color: var(--third-primary-color);
-    background-clip: border-box;
-}
-
-.filter-year-list.active, .filter-district-list.active, .filter-wish-list.active,
-.filter-year-advanced-list.active, .filter-wish-advanced-list.active {
-    opacity: 1;
-    overflow-y: scroll;
-    cursor: pointer;
-    pointer-events: auto;
-}
-
-.filter-year-list::-webkit-scrollbar, .filter-district-list::-webkit-scrollbar, .filter-wish-list::-webkit-scrollbar,
-.filter-year-advanced-list::-webkit-scrollbar, .filter-wish-advanced-list::-webkit-scrollbar {
-    background-color: var(--fourth-primary-color);
-    width: 8px;
-    border-radius: 8px;
-}
-
-.filter-year-list::-webkit-scrollbar-thumb, .filter-district-list::-webkit-scrollbar-thumb, .filter-wish-list::-webkit-scrollbar-thumb,
-.filter-year-advanced-list::-webkit-scrollbar-thumb, .filter-wish-advanced-list::-webkit-scrollbar-thumb {
-    background-color:var(--thumb-color);
-    border-radius: 8px;
-}
 
 .filter-between-box, .filter-more-box {
     margin-top: 90px;

@@ -38,10 +38,25 @@ body::-webkit-scrollbar-thumb {
     color: var(--placeholder-color);
 }
 
-#search-area, #score-area, #ratio-area, #comparision-area {
+#main-title {
+    margin-top: 100px;
+    margin-bottom: 100px;
     display: flex;
     justify-content: center;
+    flex-direction: column;
 }
+
+#main-title * {
+    text-align: center;
+    font-weight: 500;
+    font-size: 250%;
+    margin: 10px 0;
+}
+
+#main-title .school-area {
+    font-size: 200%;
+}
+
 
 #search-area {
     margin-top: 300px;
@@ -77,22 +92,36 @@ body::-webkit-scrollbar-thumb {
     box-shadow: var(--hover-color);
 }
 
-#score-area {
-    margin: 100px 14% 0 14%;
+#score-area, #ratio-area, #comparision-area, #eval-area {
+    position: relative;
+    display: flex;
+    justify-content: center;
     flex-direction: column;
+    margin: 50px 10% 0 10%;
+    box-shadow: var(--box-shadow-light);
+    background-color: var(--second-primary-color);
+    border-radius: 15px;
+    padding: 30px;
 }
 
-#score-area .score-title, #ratio-area .ratio-title {
+#score-area div:not(:first-child), #ratio-area div:not(:first-child), 
+#comparision-area div:not(:first-child), #eval-area div:not(:first-child) {
+    overflow: hidden;
+    transition: all ease-in-out 0.4s;
+}
+
+#score-area .score-title, #ratio-area .ratio-title, 
+#comparision-area .comparision-title, #eval-area .eval-title {
     font-size: 170%;
     font-weight: 500;
     text-align: center;
 }
 
-.score-range {
+.score-range, .ratio-range, .comparision-range, .eval-range {
     margin: 40px 0;
 }
 
-.score-range * {
+.score-range *, .ratio-range *, .comparision-range *, .eval-range *{
     font-size: 110%;
     font-weight: 500;
 }
@@ -104,7 +133,7 @@ body::-webkit-scrollbar-thumb {
     border-bottom: 2px dotted var(--green);
 }
 
-.range .start, .range .end {
+.start, .end, .start-r, .end-r, .end-c, .end-e {
     border: none;
     outline: none;
     font-weight: bold;
@@ -131,4 +160,169 @@ body::-webkit-scrollbar-thumb {
     box-shadow: 0 0 8px rgb(71 255 95 / 80%);
     display: inline-block;
     border-radius: 50%;
+}
+
+
+.hide-btn {
+    width: 5%;
+    height: 30px;
+    background-color: tomato;
+    color: white;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    text-align: center;
+    line-height: 2.2;
+    transition: all ease 0.2s;
+}
+
+.hide-btn .open {
+    display: none;
+}
+
+.hide-btn.active {
+    background-color: var(--green);
+    width: 10%;
+}
+
+.hide-btn.active .close {
+    display: none;
+}
+
+.hide-btn.active .open {
+    display: block;
+}
+
+.floating-container {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    cursor: pointer;
+}
+
+.floating-container input {
+    pointer-events: none;
+}
+
+#floating-button {
+    background-color: var(--green);
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    box-shadow: var(--box-shadow);
+    position: relative;
+    left: 0%;
+    z-index: 2;
+    transition: background-color ease 0.4s;
+    cursor: pointer;
+}
+
+#floating-button.active {
+    left: 70%;
+}
+
+#floating-button i {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, 50%);
+    font-size: 130%;
+    color: white;
+    pointer-events: none;
+}
+
+#floating-box {
+    overflow: hidden;
+    background: var(--second-primary-color);
+    box-shadow: var(--box-shadow);
+    position: relative;
+    z-index: 2;
+    height: 0px;
+    width: 0px;
+    transition: all ease 0.4s;
+}
+
+#floating-box div {
+    overflow: hidden;
+    height: 0px;
+    width: 0px;
+    transition: all ease 0.4s;
+}
+
+#floating-box div * {
+    cursor: pointer;
+    user-select: none;
+}
+
+#floating-box.active {
+    padding: 20px;
+    border-radius: 20px;
+    margin-bottom: 20px;
+    height: auto;
+    width: auto;
+}
+
+#floating-box.active div {
+    margin: 10px 0;
+    height: auto;
+    width: auto;
+}
+
+.print {
+    text-align: center;
+    background-color: var(--green);
+    color: white;
+    font-weight: 500;
+    margin-top: 20px !important;
+    padding: 5px;
+    border-radius: 15px;
+}
+
+#floating-box .print:hover, #floating-button:hover {
+    background-color: var(--darker-green);
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(0,0,0,0.05);
+    backdrop-filter: blur(1px);
+    transition: all ease 0.2s;
+    display: none;
+}
+
+.overlay.active {
+    display: block;
+}
+
+
+.main.simplify table *{
+    background-color: transparent !important;
+    color: var(--text-color) !important;
+    box-shadow: none;
+}
+
+.main.simplify table tr, .main.simplify table th, .main.simplify table td {
+    border: 1px solid var(--text-color) !important;
+}
+
+.main.simplify table thead th {
+    font-weight: bold !important;
+}
+
+.title i {
+    color: var(--green);
+    margin: 0 20px;
+    cursor: pointer;
+    font-size: 120%;
+    position: relative;
+    top: 4px;
+    padding: 10px;
+
+@media only screen and (max-width: 46.1875em) {
+    
 }

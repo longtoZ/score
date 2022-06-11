@@ -1,7 +1,7 @@
 var clicked = false;
 function sortTable(col_num) {
     var table, rows, switching, i, x, y, shouldSwitch;
-    table = document.querySelector(".search-table");
+    table = document.getElementById('search-table-area');
     switching = true;
 
     while (switching) {

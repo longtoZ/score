@@ -24,8 +24,11 @@
     background-color: #009879;
     color: #ffffff;
     text-align: left;
-    font-weight: bold;
     box-shadow: 0 0 20px rgba(0, 152, 121, 0.3);
+}
+
+.search-table thead th {
+    font-weight: 500;
 }
 
 .search-table thead tr th:nth-of-type(3),
@@ -52,6 +55,7 @@
 .search-table tbody tr td:first-of-type {
     color: #009879;
     font-weight: bold;
+    text-align: center;
 }
 
 .search-table tbody tr:last-of-type {

@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" type="text/css" href="./assets/css/style.css" media="all">
-        <link rel="stylesheet" type="text/css" href="../expand/css/printing.css" media="print">
+        <link rel="stylesheet" type="text/css" href="../expand/css/root.css">
         <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-regular-rounded/css/uicons-regular-rounded.css'>
         <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-brands/css/uicons-brands.css'>
         <title>Lọc điểm</title>
@@ -53,6 +53,8 @@
                                         <div class="year" onclick="showYear('Năm 2019')">Năm 2019</div>
                                         <div class="year" onclick="showYear('Năm 2018')">Năm 2018</div>
                                         <div class="year" onclick="showYear('Năm 2017')">Năm 2017</div>
+                                        <div class="year" onclick="showYear('Năm 2016')">Năm 2016</div>
+                                        <div class="year" onclick="showYear('Năm 2015')">Năm 2015</div>
                                     </div>
                                 </div>
 
@@ -67,7 +69,7 @@
                                         <div class="district" onclick="showDistrict('Tất cả')">Tất cả</div>
                                         <div class="district" onclick="showDistrict('Quận 1')">Quận 1</div>
                                         <div class="district" onclick="showDistrict('Quận 3')">Quận 3</div>
-                                        <div class="district" onclick="showDistrict('Quận 4)">Quận 4</div>
+                                        <div class="district" onclick="showDistrict('Quận 4')">Quận 4</div>
                                         <div class="district" onclick="showDistrict('Quận 5')">Quận 5</div>
                                         <div class="district" onclick="showDistrict('Quận 6')">Quận 6</div>
                                         <div class="district" onclick="showDistrict('Quận 7')">Quận 7</div>

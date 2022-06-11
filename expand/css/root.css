@@ -48,3 +48,90 @@
 
     --row-hover-color: #efe9a8;
 }
+
+.primary-margin {
+    margin-top: 40px;
+    padding: 20px 10px;
+    float: left;
+}
+
+.select-margin {
+    margin-top: 20px;
+    height: 40px;
+    border-radius: 10px;
+    line-height: 1.8;
+    position: relative;
+    margin-right: 40px;
+}
+
+.select-hover:hover {
+    box-shadow: var(--hover-color);
+    transition: ease-in-out 0.2s;
+    cursor: pointer;
+}
+
+.arrow-pos {
+    position: absolute;
+    right: 8px;
+}
+
+
+.primary-box {
+    border: none;
+    outline: none;
+    border-radius: 10px;
+	padding: 8px;
+    height: 45px;
+    width: 170px;
+    background-color: var(--fourth-primary-color);
+    box-shadow: var(--box-shadow);
+    margin-right: 10px;
+    padding-left: 15px;
+    color: var(--text-color);
+}
+
+.primary-list {
+    position: relative;
+    background-color: var(--fourth-primary-color);
+    box-shadow: var(--box-shadow);
+    margin-top: 8px;
+    border-radius: 10px;
+    opacity: 0;
+    transition: opacity 0.2s linear;
+    overflow: hidden;
+    height: 140px;
+    pointer-events: none;
+}
+
+.filter-year-list .year, .filter-district-list .district, .filter-wish-list .wish,
+.filter-year-advanced-list .year, .filter-wish-advanced-list .wish{
+    padding: 5px;
+    padding-left: 20px;
+}
+
+.filter-year-list .year:hover, .filter-district-list .district:hover, .filter-wish-list .wish:hover,
+.filter-year-advanced-list .year:hover, .filter-wish-advanced-list .wish:hover {
+    background-color: var(--third-primary-color);
+    background-clip: border-box;
+}
+
+.filter-year-list.active, .filter-district-list.active, .filter-wish-list.active,
+.filter-year-advanced-list.active, .filter-wish-advanced-list.active {
+    opacity: 1;
+    overflow-y: scroll;
+    cursor: pointer;
+    pointer-events: auto;
+}
+
+.filter-year-list::-webkit-scrollbar, .filter-district-list::-webkit-scrollbar, .filter-wish-list::-webkit-scrollbar,
+.filter-year-advanced-list::-webkit-scrollbar, .filter-wish-advanced-list::-webkit-scrollbar {
+    background-color: var(--fourth-primary-color);
+    width: 8px;
+    border-radius: 8px;
+}
+
+.filter-year-list::-webkit-scrollbar-thumb, .filter-district-list::-webkit-scrollbar-thumb, .filter-wish-list::-webkit-scrollbar-thumb,
+.filter-year-advanced-list::-webkit-scrollbar-thumb, .filter-wish-advanced-list::-webkit-scrollbar-thumb {
+    background-color:var(--thumb-color);
+    border-radius: 8px;
+}
