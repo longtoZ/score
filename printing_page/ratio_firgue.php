@@ -203,6 +203,11 @@ if ($type=='table') {?>
                             grid: {
                                 display: false
                             },
+                            title: {
+                                display: true,
+                                text: 'Năm',
+                                color: textColor
+                            },
                             stacked:true
                         },
                         barAxis: {

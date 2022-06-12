@@ -75,7 +75,6 @@ if (mysqli_num_rows($result) > 0) {
     for (let i=0; i<schools.length; i++) {
         rgb_list.push(`rgb(${randomRGB()}, ${randomRGB()}, ${randomRGB()})`);
     }
-    console.log(rgb_list);
 </script>
 
 <script>

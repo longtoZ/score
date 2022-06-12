@@ -47,29 +47,35 @@ body::-webkit-scrollbar-thumb {
     border: none;
     outline: none;
     border-radius: 30px;
-	padding: 15px;
     width: 100%;
     background-color: var(--second-primary-color);
     box-shadow: var(--box-shadow);
-    display: none;
+    height: 0px;
     opacity: 0;
-    transition: ease-in-out 0.3s;
+    transition: all ease 0.3s;
+    pointer-events: none;
 }
 
 .filter-advanced-container {
     margin-bottom: 50px
 }
 
-.filter-basic-container.active {
-    display: block;
+.filter-basic-container.active, .filter-advanced-container.active  {
+    padding: 15px;
+    height: auto;
     opacity: 1;
-    transition: ease-in-out 0.3s;
+    transition: all ease 0.3s;
+    pointer-events: auto;
 }
 
-.filter-advanced-container.active {
-    display: block;
-    opacity: 1;
-    transition: ease-in-out 0.3s;
+.filter-basic-header.active i, .filter-advanced-header.active i {
+    transform: rotateZ(180deg) translateY(2px);
+    transition: transform ease 0.2s;
+}
+
+.filter-basic-header i, .filter-advanced-header i {
+    transform: rotateZ(0deg) translateY(0px);
+    transition: transform ease 0.2s;
 }
 
 .filter-basic-header, .filter-advanced-header {
@@ -83,7 +89,7 @@ body::-webkit-scrollbar-thumb {
     margin: 20px 0;
     width: 100%;
     background-color: var(--second-primary-color);
-    box-shadow: var(--box-shadow)
+    box-shadow: var(--box-shadow);
 }
 
 .filter-basic-header:hover, .filter-advanced-header:hover {
@@ -151,8 +157,8 @@ body::-webkit-scrollbar-thumb {
     outline: none;
     border-radius: 10px;
 	padding: 8px;
-    height: 45px;
-    width: 170px;
+    height: 40px;
+    width: 140px;
     box-shadow: var(--box-shadow);
     margin-right: 10px;
     padding-left: 15px;
@@ -302,8 +308,8 @@ body::-webkit-scrollbar-thumb {
 
 
 .filter-above-average .above.active, .filter-below-average .below.active {
-    background-color: var(--green);
-    color: white;
+    background-color: var(--green) !important;
+    color: white !important;
 }
 
 .submit-btn {

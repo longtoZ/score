@@ -35,7 +35,9 @@
                         <div class="year-range-data">
                             <div class="filter-box">
                                 <span class="main-title">Dãy năm</span>
-                                <div class="chart-type">> Đổi loại</div>
+                                <div class="chart-type">
+                                    <i class="fi fi-rr-shuffle"></i>
+                                </div>
                                 <div class="year-box">
                                     <div class="year-start">
                                         <span class="red-dot"></span>

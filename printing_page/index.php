@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" type="text/css" href="./assets/css/style.css">
         <link rel="stylesheet" type="text/css" href="../expand/css/root.css">
-        <link rel="stylesheet" type="text/css" href="../expand/css/printing.css" media="print">
+        <link rel="stylesheet" type="text/css" href="./assets/css/printing.css" media="print">
         <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-regular-rounded/css/uicons-regular-rounded.css'>
         <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-solid-straight/css/uicons-solid-straight.css'>
         <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-solid-rounded/css/uicons-solid-rounded.css'>
@@ -327,7 +327,6 @@
 
             var start_r = parseInt(document.querySelector('.start-r').value);
             var end_r = parseInt(document.querySelector('.end-r').value);
-            console.log(start_r, end_r);
 
             if (!isNaN(start_r) && !isNaN(end_r)) {
                 if (start_r > end_r) {

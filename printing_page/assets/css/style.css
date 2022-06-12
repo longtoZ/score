@@ -322,7 +322,44 @@ body::-webkit-scrollbar-thumb {
     position: relative;
     top: 4px;
     padding: 10px;
+}
+
+.bar-graph1, .ratio-chart, .bar-horizontal {
+    margin: 30px !important;
+}
 
 @media only screen and (max-width: 46.1875em) {
-    
+    #score-area, #ratio-area, #comparision-area, #eval-area {
+        margin: 50px 5% 0 5%;
+        padding: 30px 20px;
+    }
+
+    .bar-graph1, .ratio-chart, .bar-horizontal {
+        margin: 0 0 !important;
+    }
+
+    .hide-btn {
+        width: 10%;
+    }
+
+    .hide-btn.active {
+        width: 15%;
+    }
+
+    .score-range .title, .ratio-range .title {
+        width: 100%;
+    }
+
+    .score-range .range, .ratio-range .range {
+        float: left;
+        width: 100%;
+        margin-top: 20px;
+        margin-left: 10px;
+    }
+}
+
+@media only screen and (max-width: 64em) {
+    .school-search {
+        width: 70%;
+    }
 }

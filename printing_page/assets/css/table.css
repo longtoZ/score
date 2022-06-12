@@ -41,6 +41,7 @@
 .search-table th, .search-table td {
     padding: 12px 15px;
     border: none;
+    text-align: center;
 }
 
 .search-table tr {
@@ -55,7 +56,6 @@
 .search-table tbody tr td:first-of-type {
     color: #009879;
     font-weight: bold;
-    text-align: center;
 }
 
 .search-table tbody tr:last-of-type {
@@ -84,6 +84,10 @@
     /* Tables */
     .search-table th, .search-table td {
         padding: 12px 5px;
+    }
+
+    .search-table * {
+        font-size: 90%;
     }
 
     

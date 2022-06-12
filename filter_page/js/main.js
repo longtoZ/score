@@ -28,6 +28,10 @@ const filterYearAdvancedList = document.querySelector(".filter-year-advanced-lis
 const wishAdvancedSelected = document.querySelector(".filter-wish-advanced-select");
 const filterWishAdvancedList = document.querySelector(".filter-wish-advanced-list");
 
+const filterBetween = document.querySelectorAll('.filter-between *');
+const filterMoreLeft = document.querySelectorAll('.filter-more-box .left-box *');
+const filterMoreRight = document.querySelectorAll('.filter-more-box .right-box *');
+
 function showScore() {
     if (document.querySelector(".filter-year-select .select").innerHTML == "Chọn năm") {
         alert("Vui lòng chọn năm!");  
@@ -82,10 +86,12 @@ wishSelected.onclick = function() {
 
 
 basicChoose.onclick = function() {
+    basicChoose.classList.toggle('active');
     basicBox.classList.toggle("active");
 }
 
 advancedChoose.onclick = function() {
+    advancedChoose.classList.toggle('active');
     advancedBox.classList.toggle("active");
     submitBtn.classList.toggle("inactive");
 }
@@ -109,61 +115,115 @@ wishAdvancedSelected.onclick = function() {
 }
 
 
-aboveClicked = false;
-belowClicked = false;
-positionClicked = false
+filterBetween.forEach((item) => {
+    item.onclick = function () {
+        filterBetween.forEach((item0) => {
+            item0.style.opacity = "1"
+            item0.style.cursor = "pointer"
+        });
+        filterMoreLeft.forEach((item1) => {
+            item1.style.opacity = "0.5"
+            item1.style.cursor = "not-allowed"
+        });
+        filterMoreRight.forEach((item2) => {
+            item2.style.opacity = "0.5"
+            item2.style.cursor = "not-allowed"
+        });
+    }
+});
 
-above.onclick = function () {
-    if (aboveClicked == false) {
-        if (belowAverage == false) {
-            aboveAverage.classList.toggle('active');
-        } else {
-            aboveAverage.classList.toggle('active');
-            belowAverage.classList.remove("active");
-        }
-        aboveClicked = true
-        belowClicked = false
-        
-    } else {
-        aboveAverage.classList.remove("active");
-        aboveClicked = false
-        belowClicked = true
+filterMoreLeft.forEach((item) => {
+    item.onclick = function () {
+        filterMoreLeft.forEach((item0) => {
+            item0.style.opacity = "1"
+            item0.style.cursor = "pointer"
+        });
+        filterBetween.forEach((item1) => {
+            item1.style.opacity = "0.5"
+            item1.style.cursor = "not-allowed"
+        });
+        filterMoreRight.forEach((item2) => {
+            item2.style.opacity = "0.5"
+            item2.style.cursor = "not-allowed"
+        });
     }
 
-    document.querySelector('.filter-top .top').value = ''
-}
+    positionClicked = false
 
-below.onclick = function () {
-    if (belowClicked == false) {
-        if (aboveAverage == false) {
-            belowAverage.classList.toggle('active');
+    position.onclick = function () {
+        if (document.querySelector('.top').value != '') {
+            if (positionClicked == false) {
+                position.style.backgroundColor = 'var(--green)'
+                position.style.color = 'white'
+                position.value = "Cao nhất"
+                positionClicked = true
+            } else {
+                position.style.backgroundColor = 'var(--orange)'
+                position.style.color = 'white'
+                position.value = "Thấp nhất"
+                positionClicked = false
+            }
+        }
+    
+    }
+});
+
+filterMoreRight.forEach((item) => {
+    item.onclick = function () {
+        filterMoreRight.forEach((item0) => {
+            item0.style.opacity = "1"
+            item0.style.cursor = "pointer"
+        });
+        filterMoreLeft.forEach((item1) => {
+            item1.style.opacity = "0.5"
+            item1.style.cursor = "not-allowed"
+        });
+        filterBetween.forEach((item2) => {
+            item2.style.opacity = "0.5"
+            item2.style.cursor = "not-allowed"
+        });
+    }
+
+    aboveClicked = false;
+    belowClicked = false;
+
+    above.onclick = function () {
+        if (aboveClicked == false) {
+            if (belowAverage == false) {
+                aboveAverage.classList.toggle('active');
+            } else {
+                aboveAverage.classList.toggle('active');
+                belowAverage.classList.remove("active");
+            }
+            aboveClicked = true
+            belowClicked = false
+            
         } else {
-            belowAverage.classList.toggle('active');
             aboveAverage.classList.remove("active");
+            aboveClicked = false
+            belowClicked = true
         }
-        belowClicked = true
-        aboveClicked = false
-        
-    } else {
-        belowAverage.classList.remove("active");
-        belowClicked = false
-        aboveClicked = true
+    
+        document.querySelector('.filter-top .top').value = ''
     }
 
-    document.querySelector('.filter-top .top').value = ''
-}
-
-position.onclick = function () {
-    if (positionClicked == false) {
-        position.style.backgroundColor = 'var(--green)'
-        position.style.color = 'white'
-        position.value = "Cao nhất"
-        positionClicked = true
-    } else {
-        position.style.backgroundColor = 'var(--orange)'
-        position.style.color = 'white'
-        position.value = "Thấp nhất"
-        positionClicked = false
+    below.onclick = function () {
+        if (belowClicked == false) {
+            if (aboveAverage == false) {
+                belowAverage.classList.toggle('active');
+            } else {
+                belowAverage.classList.toggle('active');
+                aboveAverage.classList.remove("active");
+            }
+            belowClicked = true
+            aboveClicked = false
+            
+        } else {
+            belowAverage.classList.remove("active");
+            belowClicked = false
+            aboveClicked = true
+        }
+    
+        document.querySelector('.filter-top .top').value = ''
     }
-}
-
+});

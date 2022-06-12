@@ -5,7 +5,7 @@ var exams_year = 0
 fetch("../json/exams.json")
     .then(response => response.json())
     .then(data => {
-        console.log(data)
+        // console.log(data)
         for (i of data.year2022.days) {
             exams_date.push(i)
         }

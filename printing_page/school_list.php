@@ -192,14 +192,14 @@
                             x: {
                                 title: {
                                     display: true,
-                                    text: 'Trường',
+                                    text: 'Điểm',
                                     color: textColor
                                 }
                             },
                             y: {
                                 title: {
                                     display: true,
-                                    text: 'Điểm',
+                                    text: 'Trường',
                                     color: textColor
                                 },
                             }

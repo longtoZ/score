@@ -76,7 +76,6 @@
         <script>
             var child = 1;
             for (let i of <?php echo json_encode($datas); ?>) {
-                console.log(i[0], i[2])
 
                 var score_info = document.createElement('div')
                 var school_name = document.createElement('div')

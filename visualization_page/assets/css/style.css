@@ -472,19 +472,18 @@ body::-webkit-scrollbar-thumb {
     padding-top: 10px;
 }
 
-.chart-type {
-    font-size: 110%;
-    font-weight: 500;
-    float: left;
-    margin-left: 30px;
+.chart-type i{
     color: var(--green);
+    margin: 0 10px;
     cursor: pointer;
-    border-bottom: 2px dotted var(--green);
+    font-size: 120%;
+    position: relative;
+    top: 2px;
+    padding: 10px;
 }
 
-.chart-type:hover {
+.chart-type i:hover {
     color: rgb(20, 195, 142);
-    border-bottom: 2px dotted rgb(20, 195, 142);
 }
 
 
@@ -508,6 +507,10 @@ body::-webkit-scrollbar-thumb {
 
     .title-box {
         margin-bottom: 30px;
+    }
+
+    .school-title, .year-range-data {
+        width: 95%;
     }
 
     .school-title .main-title, .school-title .main-desc {
@@ -534,8 +537,12 @@ body::-webkit-scrollbar-thumb {
     }
 
     .win-ratio-data, .comparision-data {
+        margin: 0 0;
+    }
+
+    .win-ratio-data, .comparision-data {
         height: auto;
-        width: 90%;
+        width: 95%;
         margin: auto;
         margin-top: 30px;
         margin-bottom: 30px;
@@ -599,10 +606,6 @@ body::-webkit-scrollbar-thumb {
         text-align: left !important;
         padding-left: 10px;
 
-    }
-
-    .win-ratio-data, .comparision-data {
-        margin: 25px 20px;
     }
 }
 

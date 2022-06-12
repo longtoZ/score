@@ -191,7 +191,6 @@
                 
             </div>
 
-
             <h1 class="year-chosen"></h1>
 
             <div id="search-result"></div>

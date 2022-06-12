@@ -143,6 +143,11 @@
             </script>
 
             <script>
+                var mediaQuery = window.matchMedia('(max-width: 46.1875em)')
+                var isHidden = false
+                if (mediaQuery.matches) {
+                    isHidden = true
+                }
                 
                 var configChart1 = {
                     plugins: [ChartDataLabels],
@@ -157,14 +162,14 @@
                             },
                             {
                                 label: 'NV2',
-                                hidden: true,
+                                hidden: isHidden,
                                 data: nv2,
                                 borderRadius: defaultBorder,
                                 backgroundColor: bg_nv2
                             },
                             {
                                 label: 'NV3',
-                                hidden: true,
+                                hidden: isHidden,
                                 data: nv3,
                                 borderRadius: defaultBorder,
                                 backgroundColor: bg_nv3

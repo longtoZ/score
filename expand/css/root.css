@@ -81,8 +81,8 @@
     outline: none;
     border-radius: 10px;
 	padding: 8px;
-    height: 45px;
-    width: 170px;
+    height: 40px;
+    /* width: auto; */
     background-color: var(--fourth-primary-color);
     box-shadow: var(--box-shadow);
     margin-right: 10px;
