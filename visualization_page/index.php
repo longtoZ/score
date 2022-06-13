@@ -4,11 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" type="text/css" href="./assets/css/style.css">
-<<<<<<< HEAD
         <link rel="icon" type="image/png" href="../img/logo.png">
-=======
-        <!-- <link rel="stylesheet" type="text/css" href="./assets/css/header-footer.css"> -->
->>>>>>> 6f78cdf5158b1ce97555320dd4766fc7e516c5c6
         <link rel="stylesheet" type="text/css" href="./assets/css/calendar.css">
         <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-regular-rounded/css/uicons-regular-rounded.css'>
         <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-solid-straight/css/uicons-solid-straight.css'>
