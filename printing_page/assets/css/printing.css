@@ -1,0 +1,50 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato&family=MuseoModerno:wght@200;300;500&display=swap');
+
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+    font-family: 'Lato', sans-serif;
+    font-family: 'MuseoModerno', cursive;
+    font-weight: 300;
+    -webkit-print-color-adjust:exact;
+}
+
+@media print {
+    header, footer, #search-area, .main-title, .hide-btn, .floating-container {
+        display: none !important;
+        visibility: hidden !important;
+    }
+
+    #score-area, #ratio-area, #comparision-area, #eval-area {
+        margin: 70px 0 0 0 !important;
+        box-shadow: none !important;
+        background-color: transparent !important;
+        border-radius: none !important;
+        padding: 10px 0 !important;
+        border-radius: 0px !important;
+        border-bottom: 1px dashed var(--text-color);
+    }
+
+    #ratio-area {
+        padding: 30px 0 !important;
+    }
+
+    table { page-break-inside:auto }
+    tr    { page-break-inside:avoid; page-break-after:auto }
+    thead { display:table-header-group }
+
+     
+
+    @page {
+        size: A4 portrait;
+        margin-top: 20mm;
+        margin-bottom: 20mm;
+        margin-left: 30mm;
+        margin-right: 15mm;
+    }
+}
+
+
+
+

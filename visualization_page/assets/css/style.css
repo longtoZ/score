@@ -1,0 +1,618 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato&family=MuseoModerno:wght@200;300;500&display=swap');
+
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Lato', sans-serif;
+    font-family: 'MuseoModerno', cursive;
+    font-weight: 300;
+}
+
+
+html {
+    animation: transitionIn 1.5s;
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: var(--primary-color);
+}
+
+body::-webkit-scrollbar {
+    width: 10px;
+}
+
+body::-webkit-scrollbar-track {
+    background-color: transparent;
+}
+
+body::-webkit-scrollbar-thumb {
+    background-color: var(--thumb-color);
+    border-radius: 20px;
+    border: 6px solid transparent;
+}
+
+::placeholder {
+    color: var(--placeholder-color);
+}
+
+.red-dot {
+    height: 10px;
+    width: 10px;
+    background-color: rgb(255, 99, 71);
+    box-shadow: 0 0 8px rgba(255,99,71,.8);
+    display: inline-block;
+    border-radius: 50%;
+}
+
+.green-dot {
+    height: 10px;
+    width: 10px;
+    background-color: rgb(71, 255, 95);
+    box-shadow: 0 0 8px rgba(71, 255, 95,.8);
+    display: inline-block;
+    border-radius: 50%;
+}
+
+
+
+.main-data-box {
+    display: flex;
+    justify-content: center;
+    margin-top: 140px;
+    padding: 10px;
+}
+
+
+.main-data-container {
+    overflow: hidden;
+    width: 90%;
+}
+
+.left-container {
+    float: left;
+    width: 75%;
+}
+
+.right-container {
+    float: left;
+    width: 25%;
+    height: 100%;
+}
+
+
+.school-title {
+    overflow: hidden;
+    width: 90%;
+    margin: 0 15px;
+}
+
+
+.school-title .title-box {
+    float: left;
+}
+
+.school-title .school-search-box {
+    float: right;
+    position: relative;
+}
+
+.school-title .main-title {
+    font-size: 30px;
+    letter-spacing: 3px;
+    margin: 0 15px;
+    font-weight: 500;
+}
+
+
+.school-title .main-desc {
+    font-size: 15px;
+    opacity: 0.5;
+    margin: 10px 15px;
+
+}
+
+.school-search-box .school-search {
+    border: none;
+    outline: none;
+    border-radius: 10px;
+	padding: 8px;
+    height: 45px;
+    width: 250px;
+    background-color: var(--fourth-primary-color);
+    box-shadow: var(--box-shadow-light);
+    color: var(--text-color);
+    margin-right: 5px;
+    margin-top: 20px;
+    padding-left: 15px;
+}
+
+.school-search-box .school-search:focus {
+    box-shadow: var(--hover-color);
+}
+
+.school-search-box i {
+    position: absolute;
+    right: 17px;
+    top: 33px;
+}
+
+.year-start-input, .year-end-input {
+    color: var(--text-color-light)
+}
+
+.year-range-data {
+    border: none;
+    outline: none;
+    border-radius: 25px;
+	padding: 8px;
+    padding-bottom: 50px;
+    height: auto;
+    width: 90%;
+    background-color: var(--second-primary-color);
+    box-shadow: var(--box-shadow);
+    margin: 20px;
+    overflow: hidden;
+}
+
+.year-range-data .filter-box {
+    width: 98%;
+    margin: 10px 5px;
+    overflow: hidden;
+}
+
+.year-range-data .filter-box .main-title {
+    font-weight: bold;
+    font-size: 110%;
+    float: left;
+    margin-left: 20px;
+}
+
+.year-range-data .filter-box .year-box {
+    float: right;
+}
+
+.year-start, .year-end {
+    float: left;
+}
+
+.year-start .year-start-input, .year-end .year-end-input {
+    border: none;
+    outline: none;
+    font-weight: bold;
+    font-size: 110%;
+    width: 60px;
+    margin: 0 10px;
+    background: none;
+}
+
+.year-range-graph-container {
+    width: 98%;
+    height: 90%;
+    overflow: hidden;
+}
+
+.detail-data {
+    margin: 15px;
+    width: 90%;
+    overflow: hidden;
+}
+
+.win-ratio-display {
+    display:flex;
+    justify-content: center;
+    position: relative;
+    top: -80px;
+}
+
+.win-ratio-data, .comparision-data {
+    border: none;
+    outline: none;
+    border-radius: 25px;
+    height: 350px;
+    width: 95%;
+    background-color: var(--second-primary-color);
+    box-shadow: var(--box-shadow);
+    margin: 25px 30px;
+    overflow: hidden;
+}
+
+.comparision-data {
+    height: 500px;
+}
+
+.win-ratio-graph-container, .win-ratio-detail {
+    float: left;
+    width: 50%;
+}
+
+.filter-detail {
+    margin-top: 20px;
+    overflow: hidden;
+}
+
+.filter-year-select, .filter-year-list, .filter-district-select, .filter-district-list {
+    border: none;
+    outline: none;
+    border-radius: 10px;
+	padding: 8px;
+    height: 35px;
+    width: 140px;
+    background-color: var(--fourth-primary-color);
+    box-shadow: var(--box-shadow-light);
+    margin-right: 10px;
+    padding-left: 15px;
+}
+
+
+/* .filter-year-container {
+    display: flex;
+    justify-content: center;
+} */
+
+.filter-year, .filter-district {
+    padding: 10px;
+}
+
+.filter-year-select, .filter-district-select {
+    margin-top: 20px;
+    height: 40px;
+    border-radius: 10px;
+    line-height: 1.8;
+    position: relative;
+    margin-right: 40px;
+}
+
+.filter-year-select .select, .filter-district-select .select {
+    color:#009879;
+    font-weight: 500;
+}
+
+.filter-year-select:hover, .filter-district-select:hover {
+    box-shadow: var(--hover-color);
+    transition: ease-in-out 0.2s;
+}
+
+
+.filter-year:hover, .filter-district:hover {
+    cursor: pointer;
+}
+
+
+.filter-year-select i, .filter-district-select i {
+    position: absolute;
+    right: 8px;
+}
+
+.filter-year-list, .filter-district-list {
+    position: relative;
+    background-color: var(--fourth-primary-color);
+    box-shadow: var(--box-shadow);
+    margin-top: 8px;
+    border-radius: 10px;
+    opacity: 0;
+    transition: opacity 0.2s linear;
+    overflow: hidden;
+    height: 140px;
+    width: 140px;
+    pointer-events: none;
+    z-index: 2;
+}
+
+.filter-district-select, .filter-district-list {
+    width: 180px;
+}
+
+.filter-year-list .year, .filter-district-list .district{
+    padding: 5px;
+    padding-left: 20px;
+}
+
+.filter-year-list .year:hover, .filter-district-list .district:hover {
+    background-color: var(--second-primary-color);
+    background-clip: border-box;
+}
+
+.filter-year-list.active, .filter-district-list.active {
+    opacity: 1;
+    overflow-y: scroll;
+    pointer-events: auto;
+}
+
+.filter-district-list.active {
+    height: 140px;
+}
+
+
+.filter-year-list::-webkit-scrollbar, .filter-district-list::-webkit-scrollbar, .school-list::-webkit-scrollbar {
+    background-color: var(--primary-color);
+    width: 8px;
+    border-radius: 8px;
+}
+
+.filter-year-list::-webkit-scrollbar-thumb, .filter-district-list::-webkit-scrollbar-thumb, .school-list::-webkit-scrollbar-thumb {
+    background-color: var(--thumb-color);
+    border-radius: 8px;
+}
+
+.comparision-graph-container {
+    width: 50%;
+    float: left;
+}
+
+.comparision-detail-container {
+    float: left;
+    width: 50%;
+    display: flex;
+    justify-content: center;
+}
+
+.comparision-detail-container .filter-box {
+    float: left;
+}
+
+.school-list {
+    overflow-y: scroll;
+    max-height: 200px;
+    position: relative;
+    top: -80px;
+    padding: 0 10px;
+    border-radius: 10px;
+}
+
+.more-info-data {
+    margin: 15px 0;
+    /* width: 95%; */
+}
+
+.school-links {
+    margin-top: 35px;
+}
+
+.main-page-container, .fanpage-container, .curriculum-page-container {
+    overflow: hidden;
+    padding-left: 10px;
+}
+
+.main-page, .fanpage, .curriculum-page{
+    margin: 15px 0;
+    width: 95%;
+    height: 100px;
+    border: none;
+    outline: none;
+    border-radius: 25px;
+    background-color: var(--second-primary-color);
+    box-shadow: var(--box-shadow-light);
+    overflow: hidden;
+}
+
+.main-page:hover, .main-page:hover > .logo{
+    background-color: tomato;
+    color: white;
+    transition: ease-in-out 0.2s;
+    cursor: pointer;
+}
+
+.main-page .logo {
+    font-size: 200%;
+    color: tomato;
+    float: left;
+    width: 20%;
+    text-align: center;
+    line-height: 100px;
+}
+
+.main-page .detail, .fanpage .detail, .curriculum-page .detail {
+    float: left;
+    width: 70%;
+    padding: 10px;
+}
+
+.main-page .detail .title, .fanpage .detail .title, .curriculum-page .detail .title {
+    line-height: 2;
+    font-size: 150%;
+    font-weight: 600;
+}
+
+.main-page .detail .desc, .fanpage .detail .desc, .curriculum-page .detail .desc {
+    font-size: 75%;
+    opacity: 0.5;
+}
+
+.main-page .visit, .fanpage .visit, .curriculum-page .visit {
+    float: left;
+    width: 10%;
+    line-height: 100px;
+    text-align: center;
+    font-size: 170%;
+    opacity: 0.7;
+}
+
+.fanpage .logo {
+    font-size: 200%;
+    color: #1A78F2;
+    float: left;
+    width: 20%;
+    text-align: center;
+    line-height: 100px;
+}
+
+.fanpage:hover, .fanpage:hover > .logo{
+    background-color: #1A78F2;
+    color: white;
+    transition: ease-in-out 0.2s;
+    cursor: pointer;
+}
+
+.curriculum-page .logo {
+    font-size: 200%;
+    color: khaki;
+    float: left;
+    width: 20%;
+    text-align: center;
+    line-height: 100px;
+}
+
+.curriculum-page:hover, .curriculum-page:hover > .logo{
+    background-color: khaki;
+    color: white;
+    transition: ease-in-out 0.2s;
+    cursor: pointer;
+}
+
+.live-clock {
+    height: 50px;
+    width: 100%;
+    font-size: 30px;
+    color: #8699a6;
+    letter-spacing: 5px;
+    text-align: center;
+    padding-top: 10px;
+}
+
+.chart-type i{
+    color: var(--green);
+    margin: 0 10px;
+    cursor: pointer;
+    font-size: 120%;
+    position: relative;
+    top: 2px;
+    padding: 10px;
+}
+
+.chart-type i:hover {
+    color: rgb(20, 195, 142);
+}
+
+
+@keyframes transitionIn {
+    from {
+        opacity: 0;
+    } to {
+        opacity: 1;
+    }
+}
+
+@media only screen and (max-width: 64em) {
+
+    .main-data-box {
+        padding: 0;
+    }
+
+    .left-container, .right-container {
+        width: 100%;
+    }
+
+    .title-box {
+        margin-bottom: 30px;
+    }
+
+    .school-title, .year-range-data {
+        width: 95%;
+    }
+
+    .school-title .main-title, .school-title .main-desc {
+        margin: 0;
+    }
+
+    .school-search-box, .school-search-box .school-search{
+        width: 100%;
+        padding: 10px;
+    }
+
+    .school-search-box i {
+        right: 20px;
+        top: 44px;
+    }
+
+    .year-range-data .filter-box {
+        margin: 20px 5px;
+    }
+
+    .detail-data {
+        margin: 0 0;
+        width: 100%
+    }
+
+    .win-ratio-data, .comparision-data {
+        margin: 0 0;
+    }
+
+    .win-ratio-data, .comparision-data {
+        height: auto;
+        width: 95%;
+        margin: auto;
+        margin-top: 30px;
+        margin-bottom: 30px;
+    }
+
+    .win-ratio-display {
+        top: -100px !important;
+    }
+
+    .win-ratio-graph-container, .win-ratio-detail, .comparision-graph-container, .comparision-detail-container {
+        float: none;
+        width: 100%;
+    }
+
+    .win-ratio-data .year-box {
+        margin: 20px 20px 0!important;
+    }
+
+    .win-ratio-data .year-box h3 {
+        margin-right: 20px !important;
+    }
+
+    .filter-year .filter-year-select {
+        margin-right: 0 !important;
+    }
+
+    .firgue .firgue1 {
+        font-size: 400% !important;
+    }
+
+    .firgue .firgue2 {
+        font-size: 110% !important;
+    }
+
+    .filter-detail .filter-year, .filter-detail .filter-district {
+        width: 50%;
+    }
+
+    .filter-district .filter-district-select, .filter-district .filter-district-list {
+        width: 140px;
+    }
+
+    .school-list {
+        top: -100px;
+        max-height: 250px;
+    }
+
+    .comparision-detail-container .filter-box {
+        width: 95%;
+    }
+
+
+}
+
+@media only screen and (max-width: 64em) and (min-width: 46.25em) {
+    .comparision-detail-container .filter-box {
+        width: 85%;
+    }
+
+    .comparision-detail-container .filter-year h4, .comparision-detail-container .filter-district h4 {
+        text-align: left !important;
+        padding-left: 10px;
+
+    }
+}
+
+@media only screen and (max-width: 46.1875em) {
+    .year-range-data .filter-box .year-box {
+        float: left;
+        margin-top: 1.25em;
+        margin-left: 1.25em;
+    }
+}

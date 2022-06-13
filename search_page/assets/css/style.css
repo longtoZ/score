@@ -1,0 +1,161 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato&family=MuseoModerno:wght@200;300;500&display=swap');
+
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+    font-family: 'Lato', sans-serif;
+    font-family: 'MuseoModerno', cursive;
+    font-weight: 300;
+}
+
+html {
+    animation: transitionIn 1.5s;
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: var(--primary-color);
+}
+
+
+body::-webkit-scrollbar {
+    width: 10px;
+}
+
+body::-webkit-scrollbar-track {
+    background-color: transparent;
+}
+
+body::-webkit-scrollbar-thumb {
+    background-color: var(--thumb-color);
+    border-radius: 20px;
+}
+
+::placeholder {
+    color: var(--placeholder-color);
+}
+
+.main-title {
+    margin-top: 130px;
+    text-align: center;
+}
+
+.input-container {
+    margin-top: 50px;
+    display: flex;
+    justify-content: center;
+}
+
+.form-control, .dropdown-container {
+    width: 60%;
+}
+
+.form-control, .dropdown-select {
+    color: var(--text-color);
+    border: none;
+    outline: none;
+    border-radius: 10px;
+	padding: 8px;
+    height: 50px;
+    background-color: var(--fourth-primary-color);
+    box-shadow: var(--box-shadow);
+    padding-left: 25px;
+}
+
+.form-control:hover, .dropdown-select:hover {
+    box-shadow: var(--hover-color);
+    transition: ease-in-out 0.2s;
+}
+
+
+.year-chosen {
+    text-align: center;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+#search-result {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}  
+
+.dropdown {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.dropdown-container {
+    cursor: pointer;
+}
+
+
+.dropdown-select {
+    height: 40px;
+    border-radius: 10px;
+    line-height: 1.8;
+    position: relative;
+
+}
+
+/* .dropdown:hover .dropdown-list {
+    opacity: 1;
+} */
+
+.dropdown-select i {
+    position: absolute;
+    right: 8px;
+}
+
+.dropdown-list {
+    position: relative;
+    background-color: var(--fourth-primary-color);
+    box-shadow: var(--box-shadow);
+    margin-top: 8px;
+    border-radius: 10px;
+    opacity: 0;
+    transition: opacity 0.2s linear;
+    overflow: hidden;
+    height: 110px;
+}
+
+.dropdown-list .year {
+    padding: 5px;
+    padding-left: 25px;
+}
+
+.dropdown-list .year:hover {
+    background-color: var(--second-primary-color);
+}
+
+.dropdown-list.active {
+    opacity: 1;
+    overflow-y: scroll;
+}
+
+.dropdown-list::-webkit-scrollbar {
+    background-color: var(--primary-color);
+    width: 8px;
+    border-radius: 8px;
+}
+
+.dropdown-list::-webkit-scrollbar-thumb {
+    background-color: var(--thumb-color);
+    border-radius: 8px;
+}
+
+
+/* .dropdown-list.active + .dropdown-select fi.fi-rr-caret-down::before {
+    transform: rotate(180deg);
+} */
+
+
+@keyframes transitionIn {
+    from {
+        opacity: 0;
+    } to {
+        opacity: 1;
+    }
+}
