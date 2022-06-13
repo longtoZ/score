@@ -3,7 +3,10 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+<<<<<<< HEAD
         <link rel="icon" type="image/png" href="../img/logo.png">
+=======
+>>>>>>> 6f78cdf5158b1ce97555320dd4766fc7e516c5c6
         <link rel="stylesheet" type="text/css" href="./assets/css/style.css">
         <link rel="stylesheet" type="text/css" href="../expand/css/root.css">
         <link rel="stylesheet" type="text/css" href="./assets/css/printing.css" media="print">
