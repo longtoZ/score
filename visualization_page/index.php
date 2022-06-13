@@ -65,14 +65,6 @@
                                                 </div>
 
                                                 <div class="filter-year-list">
-                                                    <div class="year" onclick="showYear('Năm 2022')">Năm 2022</div>
-                                                    <div class="year" onclick="showYear('Năm 2021')">Năm 2021</div>
-                                                    <div class="year" onclick="showYear('Năm 2020')">Năm 2020</div>
-                                                    <div class="year" onclick="showYear('Năm 2019')">Năm 2019</div>
-                                                    <div class="year" onclick="showYear('Năm 2018')">Năm 2018</div>
-                                                    <div class="year" onclick="showYear('Năm 2017')">Năm 2017</div>
-                                                    <div class="year" onclick="showYear('Năm 2016')">Năm 2016</div>
-                                                    <div class="year" onclick="showYear('Năm 2015')">Năm 2015</div>
                                                 </div>
                                             </div>
                                             
@@ -98,14 +90,6 @@
                                                     </div>
 
                                                     <div class="filter-year-list" style="width:140px">
-                                                        <div class="year" onclick="showYear('Năm 2022')">Năm 2022</div>
-                                                        <div class="year" onclick="showYear('Năm 2021')">Năm 2021</div>
-                                                        <div class="year" onclick="showYear('Năm 2020')">Năm 2020</div>
-                                                        <div class="year" onclick="showYear('Năm 2019')">Năm 2019</div>
-                                                        <div class="year" onclick="showYear('Năm 2018')">Năm 2018</div>
-                                                        <div class="year" onclick="showYear('Năm 2017')">Năm 2017</div>
-                                                        <div class="year" onclick="showYear('Năm 2016')">Năm 2016</div>
-                                                        <div class="year" onclick="showYear('Năm 2015')">Năm 2015</div>
                                                     </div>
                                                 </div>
                                                 <div class="filter-district" style="float: left">
@@ -116,30 +100,6 @@
                                                     </div>
 
                                                     <div class="filter-district-list">
-                                                        
-                                                        <div class="district" onclick="showDistrict('Quận 1')">Quận 1</div>
-                                                        <div class="district" onclick="showDistrict('Quận 3')">Quận 3</div>
-                                                        <div class="district" onclick="showDistrict('Quận 4)">Quận 4</div>
-                                                        <div class="district" onclick="showDistrict('Quận 5')">Quận 5</div>
-                                                        <div class="district" onclick="showDistrict('Quận 6')">Quận 6</div>
-                                                        <div class="district" onclick="showDistrict('Quận 7')">Quận 7</div>
-                                                        <div class="district" onclick="showDistrict('Quận 8')">Quận 8</div>
-                                                        <div class="district" onclick="showDistrict('Thủ Đức')">Thủ Đức</div>
-                                                        <div class="district" onclick="showDistrict('Quận 10')">Quận 10</div>
-                                                        <div class="district" onclick="showDistrict('Quận 11')">Quận 11</div>
-                                                        <div class="district" onclick="showDistrict('Quận 12')">Quận 12</div>
-                                                        <div class="district" onclick="showDistrict('Bình Thạnh')">Bình Thạnh</div>
-                                                        <div class="district" onclick="showDistrict('Gò Vấp')">Gò Vấp</div>
-                                                        <div class="district" onclick="showDistrict('Phú Nhuận')">Phú Nhuận</div>
-                                                        <div class="district" onclick="showDistrict('Tân Bình')">Tân Bình</div>
-                                                        <div class="district" onclick="showDistrict('Tân Phú')">Tân Phú</div>
-                                                        <div class="district" onclick="showDistrict('Bình Tân')">Bình Tân</div>
-                                                        <div class="district" onclick="showDistrict('Bình Chánh')">Bình Chánh</div>
-                                                        <div class="district" onclick="showDistrict('Cần Giờ')">Cần Giờ</div>
-                                                        <div class="district" onclick="showDistrict('Củ Chi')">Củ Chi</div>
-                                                        <div class="district" onclick="showDistrict('Hóc Môn')">Hóc Môn</div>
-                                                        <div class="district" onclick="showDistrict('Nhà Bè')">Nhà Bè</div>
-
                                                     </div>
                                                 </div>
                                             </div>
@@ -211,7 +171,8 @@
     <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-trendline"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="js/main.js"></script>
+    <script src="../expand/js/create-years.js"></script>
+    <script src="./js/main.js"></script>
     <script src="js/calendar.js"></script>
     <script>
         $(function(){
@@ -384,78 +345,6 @@
                 
             });
 
-            $('.filter-year-list .year').on('click', function () {
-                var year = (document.querySelector('.filter-year-select .select').innerHTML).replace("Năm ", "");
-                var district = document.querySelector('.filter-district-select .select').innerHTML;
-                var school_input = document.querySelector('.school-search').value;
-                if (school_input == '') {
-                    school_input = default_school;
-                }
-
-                $.ajax({
-                    url:"ratio_search.php",
-                    method:"POST",
-                    data:{title:school_input, year:year},
-                    beforeSend:function() {
-                        
-                    },
-                    success:function(data) {
-                        $('.win-ratio-graph-container').html(data);
-                    }
-                });
-
-                $.ajax({
-                    url:"ratio_firgue.php",
-                    method:"POST",
-                    data:{title:school_input, year:year},
-                    beforeSend:function() {
-                        
-                    },
-                    success:function(data) {
-                        $('.win-ratio-display').html(data);
-                    }
-                });
-
-                $.ajax({
-                    url:"school_comparision.php",
-                    method:"POST",
-                    data:{year:year, district:district},
-                    beforeSend:function() {
-                        
-                    },
-                    success:function(data) {
-                        $('.comparision-graph-container').html(data);
-                    }
-                });
-                
-                
-            });
-
-            $('.filter-district-list .district').on('click', function () {
-                var year = (document.querySelector('.filter-year-select .select').innerHTML).replace("Năm ", "");
-                var district = document.querySelector('.filter-district-select .select').innerHTML;
-                $.ajax({
-                    url:"school_comparision.php",
-                    method:"POST",
-                    data:{year:year, district:district},
-                    beforeSend:function() {
-                        
-                    },
-                    success:function(data) {
-                        $('.comparision-graph-container').html(data);
-                    }
-                });
-
-                $.ajax({
-                    url:"school_list.php",
-                    method:"POST",
-                    data:{year:year, district:district},
-                    success:function(data) {
-                        $('.school-list').html(data);
-                    }
-                });
-
-            });
 
             function yearRangeChange() {
                 var school_input = document.querySelector('.school-search').value

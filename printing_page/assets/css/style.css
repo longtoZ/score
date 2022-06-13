@@ -39,8 +39,7 @@ body::-webkit-scrollbar-thumb {
 }
 
 #main-title {
-    margin-top: 100px;
-    margin-bottom: 100px;
+    margin: 100px 10px;
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -361,5 +360,13 @@ body::-webkit-scrollbar-thumb {
 @media only screen and (max-width: 64em) {
     .school-search {
         width: 70%;
+    }
+}
+
+@keyframes transitionIn {
+    from {
+        opacity: 0;
+    } to {
+        opacity: 1;
     }
 }

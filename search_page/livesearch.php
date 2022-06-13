@@ -38,10 +38,8 @@ if (isset($_POST['input'], $_POST['year'])) {
 				$schools = array();
 			}
 
-
 		}
-    }
-	
+
 		?>
 
 		<link rel="stylesheet" type="text/css" href="./assets/css/table.css">
@@ -88,6 +86,11 @@ if (isset($_POST['input'], $_POST['year'])) {
 		</table>
 
 	<?php 
+    } else {
+		echo "<h3 style='color:red; text-align:center;'>*Kết quả không khớp*</h3>";
+	}
+	
+
 } else {
 	echo "<h3 style='color:red; text-align:center;'>*Kết quả không khớp*</h3>";
 }

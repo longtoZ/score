@@ -1,43 +1,135 @@
+for (let j of document.querySelectorAll('.filter-year-list')){
+    for (let i of yearsList) {
+            var item = document.createElement('div')
+            
+            item.className = "year"
+            item.innerHTML = "Năm " + i.toString()
+
+            j.appendChild(item)
+        }
+}
+
+for (let i of districtsList) {
+    var item = document.createElement('div')
+    
+    item.className = "district"
+    item.innerHTML = i.toString()
+
+    document.querySelector('.filter-district-list').appendChild(item)
+}
+
 const yearSelected = document.querySelectorAll(".filter-year-select");
 const filterYearList = document.querySelectorAll(".filter-year-list");
-const districtSelected = document.querySelectorAll(".filter-district-select");
-const filterDistrictList = document.querySelectorAll(".filter-district-list");
+const yearsItem = document.querySelectorAll('.filter-year-list .year');
+const districtSelected = document.querySelector(".filter-district-select");
+const filterDistrictList = document.querySelector(".filter-district-list");
+const districtsItem = document.querySelectorAll('.filter-district-list .district');
 
-
-
-function showYear(text) {
-    for (let i of document.querySelectorAll('.filter-year-select .select')) {
-        i.innerHTML = text;
+yearsItem.forEach((item) => {
+    item.onclick = function() {
+        for (let j of document.querySelectorAll('.filter-year-select .select')) {
+            j.innerHTML = this.innerHTML
+            for (let i of filterYearList) {
+                i.classList.remove("active");
+                console.log(i)
+            }
+        }
     }
-    for (let i of filterYearList) {
-        i.classList.remove("active");
-    }
-    
-}
+});
+
 for (let i of yearSelected) {
     i.onclick = function() {
         for (let j of filterYearList) {
             j.classList.toggle("active");
         }
+
     }
 }
 
-function showDistrict(text) {
-    for (let i of document.querySelectorAll('.filter-district-select .select')) {
-        i.innerHTML = text;
+districtsItem.forEach((item) => {
+    item.onclick = function() {
+        document.querySelector('.filter-district-select .select').innerHTML = this.innerHTML
+        filterDistrictList.classList.remove("active");
     }
-    for (let i of filterDistrictList) {
-        i.classList.remove("active");
-    }
-    
+});
+
+districtSelected.onclick = function() {
+    filterDistrictList.classList.toggle("active");
 }
-for (let i of districtSelected) {
-    i.onclick = function() {
-        for (let j of filterDistrictList) {
-            j.classList.toggle("active");
+
+$('.filter-year-list .year').on('click', function () {
+    var year = (document.querySelector('.filter-year-select .select').innerHTML).replace("Năm ", "");
+    var district = document.querySelector('.filter-district-select .select').innerHTML;
+    var school_input = document.querySelector('.school-search').value;
+    if (school_input == '') {
+        school_input = default_school;
+    }
+
+    $.ajax({
+        url:"ratio_search.php",
+        method:"POST",
+        data:{title:school_input, year:year},
+        beforeSend:function() {
+            
+        },
+        success:function(data) {
+            $('.win-ratio-graph-container').html(data);
         }
-    }
-}
+    });
+
+    $.ajax({
+        url:"ratio_firgue.php",
+        method:"POST",
+        data:{title:school_input, year:year},
+        beforeSend:function() {
+            
+        },
+        success:function(data) {
+            $('.win-ratio-display').html(data);
+        }
+    });
+
+    $.ajax({
+        url:"school_comparision.php",
+        method:"POST",
+        data:{year:year, district:district},
+        beforeSend:function() {
+            
+        },
+        success:function(data) {
+            $('.comparision-graph-container').html(data);
+        }
+    });
+    
+    
+});
+
+$('.filter-district-list .district').on('click', function () {
+    var year = (document.querySelector('.filter-year-select .select').innerHTML).replace("Năm ", "");
+    var district = document.querySelector('.filter-district-select .select').innerHTML;
+    $.ajax({
+        url:"school_comparision.php",
+        method:"POST",
+        data:{year:year, district:district},
+        beforeSend:function() {
+            
+        },
+        success:function(data) {
+            $('.comparision-graph-container').html(data);
+        }
+    });
+
+    $.ajax({
+        url:"school_list.php",
+        method:"POST",
+        data:{year:year, district:district},
+        success:function(data) {
+            $('.school-list').html(data);
+        }
+    });
+
+});
+
 
 
 function showTime(){

@@ -22,6 +22,7 @@
     --green: #009879;
     --orange: #df7b00;
     --darker-green: #00856a;
+    --divider-color: invert(0);
 }
 
 .dark-mode {
@@ -47,6 +48,7 @@
     --table-even-color: #252526;
 
     --row-hover-color: #efe9a8;
+    --divider-color: invert(0.88);
 }
 
 .primary-margin {

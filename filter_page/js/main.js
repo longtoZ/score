@@ -1,3 +1,125 @@
+districtsList.unshift("Tất cả")
+
+for (let i of yearsList) {
+    var item = document.createElement('div')
+    
+    item.className = "year"
+    item.innerHTML = "Năm " + i.toString()
+
+    document.querySelector('.filter-year-list').appendChild(item)
+}
+
+for (let i of yearsList) {
+    var item = document.createElement('div')
+    
+    item.className = "year"
+    item.innerHTML = "Năm " + i.toString()
+
+    document.querySelector('.filter-year-advanced-list').appendChild(item)
+}
+
+for (let i of districtsList) {
+    var item = document.createElement('div')
+    
+    item.className = "district"
+    item.innerHTML = i.toString()
+
+    document.querySelector('.filter-district-list').appendChild(item)
+}
+
+for (let i of wishsList) {
+    var item = document.createElement('div')
+    
+    item.className = "wish"
+    item.innerHTML = i.toString()
+
+    document.querySelector('.filter-wish-list').appendChild(item)
+}
+
+for (let i of wishsList) {
+    var item = document.createElement('div')
+    
+    item.className = "wish"
+    item.innerHTML = i.toString()
+
+    document.querySelector('.filter-wish-advanced-list').appendChild(item)
+}
+
+
+const yearSelected = document.querySelector(".filter-year-select");
+const filterYearList = document.querySelector(".filter-year-list");
+const yearsItem = document.querySelectorAll('.filter-year-list .year');
+const districtSelected = document.querySelector(".filter-district-select");
+const filterDistrictList = document.querySelector(".filter-district-list");
+const districtsItem = document.querySelectorAll('.filter-district-list .district');
+const wishSelected = document.querySelector(".filter-wish-select");
+const filterWishList = document.querySelector(".filter-wish-list");
+const wishsItem = document.querySelectorAll('.filter-wish-list .wish');
+
+const yearAdvancedSelected = document.querySelector(".filter-year-advanced-select");
+const filterYearAdvancedList = document.querySelector(".filter-year-advanced-list");
+const yearsAdvancedItem = document.querySelectorAll('.filter-year-advanced-list .year');
+const wishAdvancedSelected = document.querySelector(".filter-wish-advanced-select");
+const filterWishAdvancedList = document.querySelector(".filter-wish-advanced-list");
+const wishsAdvancedItem = document.querySelectorAll('.filter-wish-advanced-list .wish')
+
+yearsItem.forEach((item) => {
+    item.onclick = function() {
+        document.querySelector('.filter-year-select .select').innerHTML = this.innerHTML
+        filterYearList.classList.remove("active");
+    }
+});
+
+yearSelected.onclick = function() {
+    filterYearList.classList.toggle("active");
+}
+
+districtsItem.forEach((item) => {
+    item.onclick = function() {
+        document.querySelector('.filter-district-select .select').innerHTML = this.innerHTML
+        filterDistrictList.classList.remove("active");
+    }
+});
+
+districtSelected.onclick = function() {
+    filterDistrictList.classList.toggle("active");
+}
+
+wishsItem.forEach((item) => {
+    item.onclick = function() {
+        document.querySelector('.filter-wish-select .select').innerHTML = this.innerHTML
+        filterWishList.classList.remove("active");
+    }
+});
+
+wishSelected.onclick = function() {
+    filterWishList.classList.toggle("active");
+}
+
+yearsAdvancedItem.forEach((item) => {
+    item.onclick = function() {
+        document.querySelector('.filter-year-advanced-select .select').innerHTML = this.innerHTML
+        filterYearAdvancedList.classList.remove("active");
+    }
+});
+
+yearAdvancedSelected.onclick = function() {
+    filterYearAdvancedList.classList.toggle("active");
+}
+
+wishsAdvancedItem.forEach((item) => {
+    item.onclick = function() {
+        document.querySelector('.filter-wish-advanced-select .select').innerHTML = this.innerHTML
+        filterWishAdvancedList.classList.remove("active");
+    }
+});
+
+wishAdvancedSelected.onclick = function() {
+    filterWishAdvancedList.classList.toggle("active");
+}
+
+
+
 const basicChoose = document.querySelector('.filter-basic-header');
 const basicBox = document.querySelector('.filter-basic-container');
 const advancedChoose = document.querySelector('.filter-advanced-header');
@@ -15,18 +137,6 @@ var maths = 0;
 var literature = 0;
 var english = 0;
 
-
-const yearSelected = document.querySelector(".filter-year-select");
-const filterYearList = document.querySelector(".filter-year-list");
-const districtSelected = document.querySelector(".filter-district-select");
-const filterDistrictList = document.querySelector(".filter-district-list");
-const wishSelected = document.querySelector(".filter-wish-select");
-const filterWishList = document.querySelector(".filter-wish-list");
-
-const yearAdvancedSelected = document.querySelector(".filter-year-advanced-select");
-const filterYearAdvancedList = document.querySelector(".filter-year-advanced-list");
-const wishAdvancedSelected = document.querySelector(".filter-wish-advanced-select");
-const filterWishAdvancedList = document.querySelector(".filter-wish-advanced-list");
 
 const filterBetween = document.querySelectorAll('.filter-between *');
 const filterMoreLeft = document.querySelectorAll('.filter-more-box .left-box *');
@@ -56,35 +166,6 @@ function showScore() {
 }  
 
 
-
-function showYear(text) {
-    document.querySelector('.filter-year-select .select').innerHTML = text;
-    filterYearList.classList.remove("active");
-}
-
-yearSelected.onclick = function() {
-    filterYearList.classList.toggle("active");
-}
-
-function showDistrict(text) {
-    document.querySelector('.filter-district-select .select').innerHTML = text;
-    filterDistrictList.classList.remove("active");
-}
-
-districtSelected.onclick = function() {
-    filterDistrictList.classList.toggle("active");
-}
-
-function showWish(text) {
-    document.querySelector('.filter-wish-select .select').innerHTML = text;
-    filterWishList.classList.remove("active");
-}
-
-wishSelected.onclick = function() {
-    filterWishList.classList.toggle("active");
-}
-
-
 basicChoose.onclick = function() {
     basicChoose.classList.toggle('active');
     basicBox.classList.toggle("active");
@@ -96,23 +177,6 @@ advancedChoose.onclick = function() {
     submitBtn.classList.toggle("inactive");
 }
 
-function showYearAdvanced(text) {
-    document.querySelector('.filter-year-advanced-select .select').innerHTML = text;
-    filterYearAdvancedList.classList.remove("active");
-}
-
-yearAdvancedSelected.onclick = function() {
-    filterYearAdvancedList.classList.toggle("active");
-}
-
-function showWishAdvanced(text) {
-    document.querySelector('.filter-wish-advanced-select .select').innerHTML = text;
-    filterWishAdvancedList.classList.remove("active");
-}
-
-wishAdvancedSelected.onclick = function() {
-    filterWishAdvancedList.classList.toggle("active");
-}
 
 
 filterBetween.forEach((item) => {

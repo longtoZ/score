@@ -36,7 +36,7 @@
                 $schools = array();
             }
         }
-    }
+    } 
 ?>
 
 
@@ -104,8 +104,6 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.1/dist/chart.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script>
 <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-trendline"></script>
-
-
 
 <script>
     var isNew = '<?php echo $new ?>';

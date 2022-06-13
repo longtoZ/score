@@ -9,6 +9,7 @@
                 <img src="../img/logo-full-light (2).png" alt="" class="brand-logo" height="50px" width="auto">
             </a>
         </div>
+
         <nav>
             <div class="navbar">
                 <div class="navbar-select">
@@ -25,6 +26,7 @@
                 </div>
             </div>
         </nav>
+
         <div class="switcher">
             
             <div class="mode">
@@ -69,6 +71,8 @@
                     <a href="../printing_page/index.php" class="nav-links">Tổng hợp</a>
                 </li>
             </ul>
+
+            
         </div>
     </header>
 
@@ -96,6 +100,7 @@
             overflow: hidden;
             margin-top: 10px;
             cursor: pointer;
+            position: relative;
         }
 
         .toggle-box {
@@ -106,7 +111,7 @@
             overflow: hidden;
             margin-top: 10px;
             position: absolute;
-            top: 15px;
+            top: -10px;
             box-shadow: var(--box-shadow);
             z-index: 1;
         }
@@ -289,12 +294,12 @@
                 padding: 8px 4%;
             }
 
-            .toggle-box {
-                top: 8px;
+            .switcher {
+                margin-top: 10%;
             }
 
-            .switcher {
-                margin-left: 8%;
+            .nav-overlay {
+                backdrop-filter: blur(0px);
             }
 
         }

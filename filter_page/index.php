@@ -47,14 +47,6 @@
                                     </div>
 
                                     <div class="filter-year-list primary-box primary-list">
-                                        <div class="year" onclick="showYear('Năm 2022')">Năm 2022</div>
-                                        <div class="year" onclick="showYear('Năm 2021')">Năm 2021</div>
-                                        <div class="year" onclick="showYear('Năm 2020')">Năm 2020</div>
-                                        <div class="year" onclick="showYear('Năm 2019')">Năm 2019</div>
-                                        <div class="year" onclick="showYear('Năm 2018')">Năm 2018</div>
-                                        <div class="year" onclick="showYear('Năm 2017')">Năm 2017</div>
-                                        <div class="year" onclick="showYear('Năm 2016')">Năm 2016</div>
-                                        <div class="year" onclick="showYear('Năm 2015')">Năm 2015</div>
                                     </div>
                                 </div>
 
@@ -66,30 +58,6 @@
                                     </div>
 
                                     <div class="filter-district-list primary-box primary-list">
-                                        <div class="district" onclick="showDistrict('Tất cả')">Tất cả</div>
-                                        <div class="district" onclick="showDistrict('Quận 1')">Quận 1</div>
-                                        <div class="district" onclick="showDistrict('Quận 3')">Quận 3</div>
-                                        <div class="district" onclick="showDistrict('Quận 4')">Quận 4</div>
-                                        <div class="district" onclick="showDistrict('Quận 5')">Quận 5</div>
-                                        <div class="district" onclick="showDistrict('Quận 6')">Quận 6</div>
-                                        <div class="district" onclick="showDistrict('Quận 7')">Quận 7</div>
-                                        <div class="district" onclick="showDistrict('Quận 8')">Quận 8</div>
-                                        <div class="district" onclick="showDistrict('TP Thủ Đức')">TP Thủ Đức</div>
-                                        <div class="district" onclick="showDistrict('Quận 10')">Quận 10</div>
-                                        <div class="district" onclick="showDistrict('Quận 11')">Quận 11</div>
-                                        <div class="district" onclick="showDistrict('Quận 12')">Quận 12</div>
-                                        <div class="district" onclick="showDistrict('Quận Bình Thạnh')">Bình Thạnh</div>
-                                        <div class="district" onclick="showDistrict('Quận Gò Vấp')">Gò Vấp</div>
-                                        <div class="district" onclick="showDistrict('Quận Phú Nhuận')">Phú Nhuận</div>
-                                        <div class="district" onclick="showDistrict('Quận Tân Bình')">Tân Bình</div>
-                                        <div class="district" onclick="showDistrict('Quận Tân Phú')">Tân Phú</div>
-                                        <div class="district" onclick="showDistrict('Quận Bình Tân')">Bình Tân</div>
-                                        <div class="district" onclick="showDistrict('Huyện Bình Chánh')">Bình Chánh</div>
-                                        <div class="district" onclick="showDistrict('Huyện Cần Giờ')">Cần Giờ</div>
-                                        <div class="district" onclick="showDistrict('Huyện Củ Chi')">Củ Chi</div>
-                                        <div class="district" onclick="showDistrict('Huyện Hóc Môn')">Hóc Môn</div>
-                                        <div class="district" onclick="showDistrict('Huyện Nhà Bè')">Nhà Bè</div>
-
                                     </div>
                                 </div>
 
@@ -101,9 +69,6 @@
                                     </div>
 
                                     <div class="filter-wish-list primary-box primary-list">
-                                        <div class="wish" onclick="showWish('Nguyện vọng 1')">Nguyện vọng 1</div>
-                                        <div class="wish" onclick="showWish('Nguyện vọng 2')">Nguyện vọng 2</div>
-                                        <div class="wish" onclick="showWish('Nguyện vọng 3')">Nguyện vọng 3</div>
                                     </div>
                                 </div>
                             </div>
@@ -125,12 +90,6 @@
                                 </div>
 
                                 <div class="filter-year-advanced-list primary-box primary-list" style="z-index: 2">
-                                    <div class="year" onclick="showYearAdvanced('Năm 2022')">Năm 2022</div>
-                                    <div class="year" onclick="showYearAdvanced('Năm 2021')">Năm 2021</div>
-                                    <div class="year" onclick="showYearAdvanced('Năm 2020')">Năm 2020</div>
-                                    <div class="year" onclick="showYearAdvanced('Năm 2019')">Năm 2019</div>
-                                    <div class="year" onclick="showYearAdvanced('Năm 2018')">Năm 2018</div>
-                                    <div class="year" onclick="showYearAdvanced('Năm 2017')">Năm 2017</div>
                                 </div>
                             </div>
                             <div class="filter-wish-advanced primary-margin" style="margin: 0 10px;">
@@ -141,9 +100,6 @@
                                 </div>
 
                                 <div class="filter-wish-advanced-list primary-box primary-list" style="z-index: 2">
-                                    <div class="wish" onclick="showWishAdvanced('Nguyện vọng 1')">Nguyện vọng 1</div>
-                                    <div class="wish" onclick="showWishAdvanced('Nguyện vọng 2')">Nguyện vọng 2</div>
-                                    <div class="wish" onclick="showWishAdvanced('Nguyện vọng 3')">Nguyện vọng 3</div>
                                 </div>
                             </div>
                         </div>
@@ -199,7 +155,7 @@
         </div>
     </body>
 
-    <script src="./js/main.js"></script>
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script>
         $(function(){
@@ -207,6 +163,9 @@
             $("#footer-container").load("../expand/footer.html"); 
             });
     </script>
+
+    <script type="text/javascript" src="../expand/js/create-years.js"></script>
+    <script type="text/javascript" src="./js/main.js"></script>
 
     <script type="text/javascript">
         
@@ -255,7 +214,6 @@
                 var wish = (document.querySelector('.filter-wish-advanced-select .select').innerHTML).replace('Nguyện vọng ', 'NV');
                 var start = parseFloat(document.querySelector('.filter-between .start').value);
                 var end = parseFloat(document.querySelector('.filter-between .end').value);            
-                console.log([start, end, year, wish]);
 
 
                 if (isNaN(start) || isNaN(end)) {
@@ -311,7 +269,6 @@
                 $("#search-result").css("display","flex");
                 var year = (document.querySelector('.filter-year-advanced-select .select').innerHTML).replace('Năm ', '');
                 var wish = (document.querySelector('.filter-wish-advanced-select .select').innerHTML).replace('Nguyện vọng ', 'NV');
-                console.log([year,wish])
                 $.ajax({
                         url:"average.php",
                         method:"POST",
