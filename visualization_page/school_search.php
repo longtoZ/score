@@ -2,7 +2,7 @@
 
     include("../config/config.php");
     $school = $_POST['school_name'];
-    $sql = "SELECT * FROM `ti_le_choi` WHERE `TÊN TRƯỜNG` LIKE '%$school%';";
+    $sql = "SELECT * FROM `truong` WHERE `TEN_TRUONG` LIKE '%$school%';";
     $result = mysqli_query($con,$sql);
     $datas = array();
 
@@ -15,6 +15,6 @@
 
 ?>
 
-<span><?php echo $datas[0]['TÊN TRƯỜNG']; ?></span>
+<span><?php echo $datas[0]['TEN_TRUONG']; ?></span>
 <br>
-<span class="district-desc" style="display:none"><?php echo $datas[0]['TÊN QUẬN']?></span>
+<span class="district-desc" style="display:none"><?php echo $datas[0]['QUAN/HUYEN']?></span>

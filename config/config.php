@@ -1,6 +1,6 @@
 <?php
+header('Content-type: text/plain; charset=utf-8');
 
-<<<<<<< HEAD
 // $dbhost = "sql202.epizy.com";
 // $dbuser = "epiz_31947273";
 // $dbpassword = "CkZSyaiFO8P";
@@ -10,14 +10,10 @@ $dbhost = "localhost";
 $dbuser = "root";
 $dbpassword = "";
 $dbname = "scoredb";
-=======
-$dbhost = "sql202.epizy.com";
-$dbuser = "epiz_31947273";
-$dbpassword = "CkZSyaiFO8P";
-$dbname = "epiz_31947273_score";
->>>>>>> 6f78cdf5158b1ce97555320dd4766fc7e516c5c6
 
 $con = mysqli_connect($dbhost, $dbuser, $dbpassword, $dbname);
+$con -> set_charset("utf8");
+
 
 if (!$con) {
 	echo "Connection failed".mysqli_connect_error();

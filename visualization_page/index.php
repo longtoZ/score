@@ -332,6 +332,7 @@
                             document.querySelector('.filter-district-select .select').innerHTML = document.querySelector('.main-title .district-desc').innerHTML;
                             document.querySelector('.filter-district-select').click();
                             for (let i of document.querySelectorAll('.filter-district-list .district')) {
+                                console.log(i)
                                 if (i.innerHTML == document.querySelector('.filter-district-select .select').innerHTML) {
                                     i.click();
                                 }

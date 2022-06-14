@@ -1,12 +1,9 @@
 window.onload = function () {
     for (let i of yearsList) {
         var item = document.createElement('div')
-        console.log(item)
         
         item.className = "year"
         item.innerHTML = "Năm " + i.toString()
-
-        console.log(item)
 
         document.querySelector('.dropdown-list').appendChild(item)
     }
@@ -16,7 +13,6 @@ window.onload = function () {
     const dropdownItems = document.querySelectorAll(".dropdown-list .year");
 
     dropdownItems.forEach((item) => {
-        console.log(item)
         item.onclick = function() {
             document.querySelector('.dropdown-select .select').innerHTML = this.innerHTML
             dropdownList.classList.remove("active");
