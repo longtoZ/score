@@ -47,6 +47,23 @@
   > `30/5/2022`
   - Cập nhật `repsonsive` cho tablet
   - Thêm chức năng thay đổi biểu đồ **Bar graph** & **Line graph** + Sửa lỗi chồng lặp
+- ### v1.4.5
+  > `4/6/2022`
+  - Thay đổi cấu trúc database mysql dưới dạng relationship
+  - Xây dựng trang chủ
+- ### v1.5
+  > `9/6/2022`
+  - Hoàn thiện cấu trúc database mới
+  - Sửa lỗi hiển thị biểu đồ
+- ### v1.6
+  > `12/6/2022`
+  - Hoàn thiện trang tổng hợp và in ấn; tuỳ chọn mục, kiểu dữ liệu (bảng, biểu đồ) để in
+  - Cải thiện animations
+- ### v1.7
+  > `13/6/2022`
+  - Phiên bản hoàn thiện đầu tiên của trang web được host online trên [Infinity Free](https://www.infinityfree.net/)
+  - Sửa lỗi encoding utf-8 khi truy xuất database từ server
+
 
 ## Liên hệ
 - [facebook](https://www.facebook.com/its.longto/)
