@@ -253,7 +253,8 @@
                                 method:"POST",
                                 data:{year:year_end, 
                                     district:document.querySelector('.school-area').innerHTML, 
-                                    school:document.querySelector('.school-title').innerHTML},
+                                    school:document.querySelector('.school-title').innerHTML,
+                                    type:'table'},
                                 success:function(data) {
                                     $('.comparision-table').html(data);
                                 }
@@ -285,118 +286,119 @@
                         data:{year:year_end, district:default_district, school:default_school, type:'table'},
                         success:function(data) {
                             $('.comparision-table').html(data);
-                            alert('here')
                         }
                     });
 
                 }
                 
             });
+
+            function yearRangeChange() {
+                var school_input = document.querySelector('.school-title').innerHTML
+                if (school_input == '') { school_input = default_school }
+
+                var start = parseInt(document.querySelector('.start').value);
+                var end = parseInt(document.querySelector('.end').value);
+
+                if (!isNaN(start) && !isNaN(end)) {
+                    if (start > end) {
+                        alert("Năm đầu phải nhỏ hơn hoặc bằng năm cuối")
+                    } else {
+
+                        $.ajax({
+                            url:"year_range_search.php",
+                            method:"POST",
+                            data:{title:school_input, start:start, end:end, type:'table'},
+                            beforeSend:function() {
+                                
+                            },
+                            success:function(data) {
+                                $('.score-chart').html(data);
+                            }
+                        })
+                        
+                    }
+                }
+            }
+
+            function yearRangeChangeR() {
+                var school_input = document.querySelector('.school-title').innerHTML
+                if (school_input == '') { school_input = default_school }
+
+                var start_r = parseInt(document.querySelector('.start-r').value);
+                var end_r = parseInt(document.querySelector('.end-r').value);
+
+                if (!isNaN(start_r) && !isNaN(end_r)) {
+                    if (start_r > end_r) {
+                        alert("Năm đầu phải nhỏ hơn hoặc bằng năm cuối")
+                    } else {
+
+                        $.ajax({
+                            url:"ratio_firgue.php",
+                            method:"POST",
+                            data:{title:school_input, start:start_r, end:end_r, type:'table'},
+                            success:function(data) {
+                                $('.ratio-table').html(data);
+                            }
+                        });
+                        
+                    }
+                }
+            }
+
+            function yearRangeChangeC() {
+                var school_input = document.querySelector('.school-title').innerHTML
+                if (school_input == '') { school_input = default_school }
+
+                var end_c = parseInt(document.querySelector('.end-c').value);
+
+                $.ajax({
+                    url:"school_list.php",
+                    method:"POST",
+                    data:{year:end_c, 
+                        district:document.querySelector('.school-area').innerHTML, 
+                        school:school_input,
+                        type:'table'},
+                    success:function(data) {
+                        $('.comparision-table').html(data);
+                    }
+                });
+                        
+        
+            }
+
+            function yearRangeChangeE() {
+                var school_input = document.querySelector('.school-title').innerHTML
+                if (school_input == '') { school_input = default_school }
+
+                var end_e = parseInt(document.querySelector('.end-e').value);
+
+                $.ajax({
+                    url:"school_eval.php",
+                    method:"POST",
+                    data:{year:end_e, 
+                        school:school_input},
+                    success:function(data) {
+                        $('.eval-table').html(data);
+                    }
+                });
+                        
+        
+            }
+            
+            
+            $('.start').on('change', yearRangeChange);
+            $('.end').on('change', yearRangeChange);
+
+            $('.start-r').on('change', yearRangeChangeR);
+            $('.end-r').on('change', yearRangeChangeR);
+
+            $('.end-c').on('change', yearRangeChangeC);
+
+            $('.end-e').on('change', yearRangeChangeE);
         });
 
-        function yearRangeChange() {
-            var school_input = document.querySelector('.school-search').value
-            if (school_input == '') { school_input = default_school }
 
-            var start = parseInt(document.querySelector('.start').value);
-            var end = parseInt(document.querySelector('.end').value);
-
-            if (!isNaN(start) && !isNaN(end)) {
-                if (start > end) {
-                    alert("Năm đầu phải nhỏ hơn hoặc bằng năm cuối")
-                } else {
-
-                    $.ajax({
-                        url:"year_range_search.php",
-                        method:"POST",
-                        data:{title:school_input, start:start, end:end, type:'table'},
-                        beforeSend:function() {
-                            
-                        },
-                        success:function(data) {
-                            $('.score-chart').html(data);
-                        }
-                    })
-                    
-                }
-            }
-        }
-
-        function yearRangeChangeR() {
-            var school_input = document.querySelector('.school-search').value
-            if (school_input == '') { school_input = default_school }
-
-            var start_r = parseInt(document.querySelector('.start-r').value);
-            var end_r = parseInt(document.querySelector('.end-r').value);
-
-            if (!isNaN(start_r) && !isNaN(end_r)) {
-                if (start_r > end_r) {
-                    alert("Năm đầu phải nhỏ hơn hoặc bằng năm cuối")
-                } else {
-
-                    $.ajax({
-                        url:"ratio_firgue.php",
-                        method:"POST",
-                        data:{title:default_school, start:start_r, end:end_r, type:'table'},
-                        success:function(data) {
-                            $('.ratio-table').html(data);
-                        }
-                    });
-                    
-                }
-            }
-        }
-
-        function yearRangeChangeC() {
-            var school_input = document.querySelector('.school-search').value
-            if (school_input == '') { school_input = default_school }
-
-            var end_c = parseInt(document.querySelector('.end-c').value);
-
-            $.ajax({
-                url:"school_list.php",
-                method:"POST",
-                data:{year:end_c, 
-                    district:document.querySelector('.school-area').innerHTML, 
-                    school:document.querySelector('.school-title').innerHTML,
-                    type:'table'},
-                success:function(data) {
-                    $('.comparision-table').html(data);
-                }
-            });
-                    
-    
-        }
-
-        function yearRangeChangeE() {
-            var school_input = document.querySelector('.school-search').value
-            if (school_input == '') { school_input = default_school }
-
-            var end_e = parseInt(document.querySelector('.end-e').value);
-
-            $.ajax({
-                url:"school_eval.php",
-                method:"POST",
-                data:{year:end_e, 
-                    school:document.querySelector('.school-title').innerHTML},
-                success:function(data) {
-                    $('.eval-table').html(data);
-                }
-            });
-                    
-    
-        }
-        
-        
-        $('.start').on('change', yearRangeChange);
-        $('.end').on('change', yearRangeChange);
-
-        $('.start-r').on('change', yearRangeChangeR);
-        $('.end-r').on('change', yearRangeChangeR);
-
-        $('.end-c').on('change', yearRangeChangeC);
-
-        $('.end-e').on('change', yearRangeChangeE);
 
 
     });

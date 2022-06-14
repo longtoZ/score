@@ -199,7 +199,9 @@
                         method:"POST",
                         data:{average:average, year:year, district:district, wish:wish},
                         beforeSend:function() {
-                            $("#search-result").html("<h4>Đang lọc...</h4>");
+                            $(function(){
+                                $("#search-result").load("../expand/loader.html"); 
+                            });
                         },
                         success:function(data) {
                             $("#search-result").html(data);  
@@ -228,7 +230,9 @@
                             method:"POST",
                             data:{start:start, end:end, year:year, wish:wish},
                             beforeSend:function() {
-                                $("#search-result").html("<h4>Đang lọc...</h4>");
+                                $(function(){
+                                    $("#search-result").load("../expand/loader.html"); 
+                                });
                             },
                             success:function(data) {
                                 $("#search-result").html(data);
@@ -254,6 +258,11 @@
                         url:"top.php",
                         method:"POST",
                         data:{input:input, year:year, wish:wish, order:order},
+                        beforeSend:function() {
+                            $(function(){
+                                $("#search-result").load("../expand/loader.html"); 
+                            });
+                        },
                         success: function (data) {
                             $("#search-result").html(data);
                         }
@@ -274,6 +283,11 @@
                         url:"average.php",
                         method:"POST",
                         data:{year:year, wish:wish, compare:'above'},
+                        beforeSend:function() {
+                            $(function(){
+                                $("#search-result").load("../expand/loader.html"); 
+                            });
+                        },
                         success: function (data) {
                             $("#search-result").html(data);
                         }
@@ -289,6 +303,11 @@
                         url:"average.php",
                         method:"POST",
                         data:{year:year, wish:wish, compare:'below'},
+                        beforeSend:function() {
+                            $(function(){
+                                $("#search-result").load("../expand/loader.html"); 
+                            });
+                        },
                         success: function (data) {
                             $("#search-result").html(data);
                         }

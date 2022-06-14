@@ -108,10 +108,10 @@ print.addEventListener('click', function() {
 })
 
 
-
 changeType1.addEventListener('click', function () {
     var year_start = parseInt(document.querySelector('.start').value);
     var year_end = parseInt(document.querySelector('.end').value);
+    var school_input = document.querySelector('.school-title').innerHTML
 
     if(!(this.className).includes('clicked')) {
         this.classList.toggle('clicked');
@@ -119,7 +119,7 @@ changeType1.addEventListener('click', function () {
         $.ajax({
             url:"year_range_search.php",
             method:"POST",
-            data:{title:default_school, start:year_start, end:year_end, type:'chart'},
+            data:{title:school_input, start:year_start, end:year_end, type:'chart'},
             success:function(data) {
                 $('.score-chart').html(data);
             }
@@ -131,7 +131,7 @@ changeType1.addEventListener('click', function () {
         $.ajax({
             url:"year_range_search.php",
             method:"POST",
-            data:{title:default_school, start:year_start, end:year_end, type:'table'},
+            data:{title:school_input, start:year_start, end:year_end, type:'table'},
             success:function(data) {
                 $('.score-chart').html(data);
             }
@@ -142,14 +142,16 @@ changeType1.addEventListener('click', function () {
 changeType2.addEventListener('click', function () {
     var start_r = parseInt(document.querySelector('.start-r').value);
     var end_r = parseInt(document.querySelector('.end-r').value);
-    console.log(start_r, end_r)
+    var school_input = document.querySelector('.school-title').innerHTML;
+
+
 
     if(!(this.className).includes('clicked')) {
         this.classList.toggle('clicked');
         $.ajax({
             url:"ratio_firgue.php",
             method:"POST",
-            data:{title:default_school, start:start_r, end:end_r, type:'chart'},
+            data:{title:school_input, start:start_r, end:end_r, type:'chart'},
             success:function(data) {
                 $('.ratio-table').html(data);
             }
@@ -159,7 +161,7 @@ changeType2.addEventListener('click', function () {
         $.ajax({
             url:"ratio_firgue.php",
             method:"POST",
-            data:{title:default_school, start:start_r, end:end_r, type:'table'},
+            data:{title:school_input, start:start_r, end:end_r, type:'table'},
             success:function(data) {
                 $('.ratio-table').html(data);
             }
@@ -170,6 +172,7 @@ changeType2.addEventListener('click', function () {
 changeType3.addEventListener('click', function () {
 
     var end_c = parseInt(document.querySelector('.end-c').value);
+    var school_input = document.querySelector('.school-title').innerHTML
 
     if(!(this.className).includes('clicked')) {
         this.classList.toggle('clicked');
@@ -178,7 +181,7 @@ changeType3.addEventListener('click', function () {
             method:"POST",
             data:{year:end_c, 
                 district:document.querySelector('.school-area').innerHTML, 
-                school:document.querySelector('.school-title').innerHTML,
+                school:school_input,
                 type:'chart'},
             success:function(data) {
                 $('.comparision-table').html(data);
@@ -191,7 +194,7 @@ changeType3.addEventListener('click', function () {
             method:"POST",
             data:{year:end_c, 
                 district:document.querySelector('.school-area').innerHTML, 
-                school:document.querySelector('.school-title').innerHTML,
+                school:school_input,
                 type:'table'},
             success:function(data) {
                 $('.comparision-table').html(data);
