@@ -66,18 +66,6 @@ $('.filter-year-list .year').on('click', function () {
     }
 
     $.ajax({
-        url:"ratio_search.php",
-        method:"POST",
-        data:{title:school_input, year:year},
-        beforeSend:function() {
-            
-        },
-        success:function(data) {
-            $('.win-ratio-graph-container').html(data);
-        }
-    });
-
-    $.ajax({
         url:"ratio_firgue.php",
         method:"POST",
         data:{title:school_input, year:year},
@@ -85,7 +73,8 @@ $('.filter-year-list .year').on('click', function () {
             
         },
         success:function(data) {
-            $('.win-ratio-display').html(data);
+            $('.win-ratio-graph-container').html($(data).filter('#ratioGraph'));
+            $('.win-ratio-display').html($(data).filter('#ratioFigure'));
         }
     });
 
@@ -97,7 +86,8 @@ $('.filter-year-list .year').on('click', function () {
             
         },
         success:function(data) {
-            $('.comparision-graph-container').html(data);
+            $('.comparision-graph-container').html($(data).filter('#comparisionGraph'));
+            $('.school-list').html($(data).filter('#comparisionList'));
         }
     });
     
@@ -115,18 +105,11 @@ $('.filter-district-list .district').on('click', function () {
             
         },
         success:function(data) {
-            $('.comparision-graph-container').html(data);
+            $('.comparision-graph-container').html($(data).filter('#comparisionGraph'));
+            $('.school-list').html($(data).filter('#comparisionList'));
         }
     });
 
-    $.ajax({
-        url:"school_list.php",
-        method:"POST",
-        data:{year:year, district:district},
-        success:function(data) {
-            $('.school-list').html(data);
-        }
-    });
 
 });
 
@@ -161,4 +144,66 @@ function showTime(){
 }
 
 showTime();
+
+const navWrapNV1 = document.querySelector('.nav-wrap .select-nv1');
+const navWrapNV2 = document.querySelector('.nav-wrap .select-nv2');
+const navWrapNV3 = document.querySelector('.nav-wrap .select-nv3');
+
+navWrapNV1.style.backgroundColor = "#00A6A5";
+navWrapNV1.style.color = "white"
+
+function displayScore(wish) {
+    var school_input = document.querySelector('.schoolname p').innerHTML
+    var year_input = document.querySelector('.year-input-nv').value
+
+    $.ajax({
+        url:"year_range_comparision.php",
+        method:"POST",
+        data:{title:school_input, year:year_input, wish:wish},
+        success:function(data) {
+            $('.comparision .info').html($(data).filter('#info1'))
+            $('.calculation').html($(data).filter('#info2'))
+        }
+    });
+}
+
+navWrapNV1.addEventListener('click', function () {
+
+    navWrapNV1.style.backgroundColor = "#00C6A6";
+    navWrapNV1.style.color = "white"
+
+    navWrapNV2.style.backgroundColor = "transparent"
+    navWrapNV2.style.color = "var(--text-color)"
+    navWrapNV3.style.backgroundColor = "transparent"
+    navWrapNV3.style.color = "var(--text-color)"
+
+    displayScore('NV1')
+
+});
+
+navWrapNV2.addEventListener('click', function () {
+
+    navWrapNV2.style.backgroundColor = "#00A6A5";
+    navWrapNV2.style.color = "white"
+
+    navWrapNV1.style.backgroundColor = "transparent"
+    navWrapNV1.style.color = "var(--text-color)"
+    navWrapNV3.style.backgroundColor = "transparent"
+    navWrapNV3.style.color = "var(--text-color)"
+
+    displayScore('NV2')
+});
+
+navWrapNV3.addEventListener('click', function () {
+
+    navWrapNV3.style.backgroundColor = "#008597";
+    navWrapNV3.style.color = "white"
+
+    navWrapNV1.style.backgroundColor = "transparent"
+    navWrapNV1.style.color = "var(--text-color)"
+    navWrapNV2.style.backgroundColor = "transparent"
+    navWrapNV2.style.color = "var(--text-color)"
+
+    displayScore('NV3')
+});
 

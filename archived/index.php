@@ -20,36 +20,18 @@
 
             <div class="main-data-box">
                 <div class="main-data-container">
-                    <div class="title-container">
-                        <div class="school-search-box">
-                            <input type="text" class="school-search" placeholder="Tìm trường">
-                            <i class="fi fi-rr-search"></i>
-
+                    <div class="left-container">
+                        <div class="school-title">
+                            <div class="title-box">
+                                <span class="main-title">THPT Nguyễn Hữu Huân</span>
+                                <p class="main-desc">Số liệu về điểm thi được hiển thị tại đây</p>
+                            </div>
+                            <div class="school-search-box">
+                                <input type="text" class="school-search" placeholder="Tìm trường">
+                                <i class="fi fi-rr-search"></i>
+                            </div>
+                            
                         </div>
-
-                        <div class="school-info">
-                            <div class="schoolname" style="background-color: #00e599;box-shadow: 0 0 15px #00e59996">
-                                <h1>Tên trường</h1>
-                                <p>THPT Nguyễn Hữu Huân</p>
-                            </div>
-                            <div class="schooltype" style="background-color: #00C6A6;box-shadow: 0 0 15px #00C6A696">
-                                <h1>Loại trường</h1>
-                                <p>Đang cập nhật...</p>
-                            </div>
-                            <div class="schoolcity" style="background-color: #00A6A5;box-shadow: 0 0 15px #00A6A596">
-                                <h1>Thành phố</h1>
-                                <p>TP Hồ Chí Minh</p>
-                            </div>
-                            <div class="schooldistrict" style="background-color: #008597;box-shadow: 0 0 15px #00859796">
-                                <h1>Quận/Huyện</h1>
-                                <p>Thủ Đức</p>
-                            </div>
-                        </div>
-
-                        </div>
-                    </div>
-
-                    <div class="year-range-container">
                         <div class="year-range-data">
                             <div class="filter-box">
                                 <span class="main-title">Dãy năm</span>
@@ -69,103 +51,69 @@
                             </div>
                             <div class="year-range-graph-container" style="position: relative"></div>
                         </div>
-                        <div class="year-range-detail">
-                            <h3>Chọn năm
-                                <input class="year-input-nv" type="number" value="2021" min="2015">
-                            </h3>
-                            
-                            <div class="comparision">
-                                <div class="navigation">
-                                    <div class="nav-wrap">
-                                        <div class="select-nv1">NV1</div>
-                                        <div class="select-nv2">NV2</div>
-                                        <div class="select-nv3">NV3</div>
-                                    </div>
-                                </div>
-                                <div class="info"></div>
-                            </div>
-                            <div class="calculation" style="padding-bottom: 20px">
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="win-ratio-container">
-                        <div class="win-ratio-data">
-                            <div class="win-ratio-graph-container"></div>
-                            <div class="win-ratio-detail">
-                                <div class="year-box" style="overflow:hidden; display:flex; justify-content:center;">
-                                    <h3 style="text-align:center; margin-top:40px; margin-right: 40px; float:left">Tỉ lệ chọi</h3>
-                                    <div class="filter-year-container" style="float:left">
-                                        <div class="filter-year">
-                                            <div class="filter-year-select">
-                                                <span class="select">Chọn năm</span>
-                                                <i class="fi fi-rr-caret-down"></i>
-                                            </div>
-
-                                            <div class="filter-year-list">
-                                            </div>
-                                        </div>
-                                        
-                                    </div>
-                                        
-
-                                </div>
-                                <div class="win-ratio-display"></div>
-                            </div>
-                        </div>
-                        
-                        <div class="ratio-graph-container">
-                            <div class="range" style="float:right">
-                                <span class="red-dot"></span>
-                                <input class="start-r" value="2015" type="number" min="2015"></input>
-                                <span class="green-dot"></span>
-                                <input class="end-r" value="2021" type="number" min="2015"></input>
-                            </div>
-                            <div class="ratio-graph">
-
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="comparision-data-container">
-                        <div class="comparision-data">
-                            <div class="comparision-graph-container"></div>
-                            <div class="comparision-detail">
-                                <div class="comparision-detail-container">
-                                    <div class="filter-box">
-                                        <h3 style="text-align:center; font-weight: bold; margin-top: 40px;">Trường trong khu vực</h3>
-                                        <div class="filter-detail">
-                                            <div class="filter-year" style="float: left">
-                                                <h4 class="year-title" style="text-align:center">Chọn năm</h4>
-                                                <div class="filter-year-select" style="width:140px">
+                        <div class="detail-data">
+                            <div class="win-ratio-data">
+                                <div class="win-ratio-graph-container"></div>
+                                <div class="win-ratio-detail">
+                                    <div class="year-box" style="overflow:hidden; display:flex; justify-content:center;">
+                                        <h3 style="text-align:center; margin-top:40px; margin-right: 40px; float:left">Tỉ lệ chọi</h3>
+                                        <div class="filter-year-container" style="float:left">
+                                            <div class="filter-year">
+                                                <div class="filter-year-select">
                                                     <span class="select">Chọn năm</span>
                                                     <i class="fi fi-rr-caret-down"></i>
                                                 </div>
 
-                                                <div class="filter-year-list" style="width:140px">
+                                                <div class="filter-year-list">
                                                 </div>
                                             </div>
-                                            <div class="filter-district" style="float: left">
-                                                <h4 class="district-title" style="text-align:center">Chọn khu vực</h4>
-                                                <div class="filter-district-select">
-                                                    <span class="select">Chọn quận/TP</span>
-                                                    <i class="fi fi-rr-caret-down"></i>
-                                                </div>
-
-                                                <div class="filter-district-list">
-                                                </div>
-                                            </div>
+                                            
                                         </div>
-                                        <div class="school-list"></div>
-                                        
+                                            
+
                                     </div>
+                                    <div class="win-ratio-display"></div>
                                 </div>
-                                
+                            </div>
+                            <div class="comparision-data">
+                                <div class="comparision-graph-container"></div>
+                                <div class="comparision-detail">
+                                    <div class="comparision-detail-container">
+                                        <div class="filter-box">
+                                            <h3 style="text-align:center; font-weight: bold; margin-top: 40px;">Trường trong khu vực</h3>
+                                            <div class="filter-detail">
+                                                <div class="filter-year" style="float: left">
+                                                    <h4 class="year-title" style="text-align:center">Chọn năm</h4>
+                                                    <div class="filter-year-select" style="width:140px">
+                                                        <span class="select">Chọn năm</span>
+                                                        <i class="fi fi-rr-caret-down"></i>
+                                                    </div>
+
+                                                    <div class="filter-year-list" style="width:140px">
+                                                    </div>
+                                                </div>
+                                                <div class="filter-district" style="float: left">
+                                                    <h4 class="district-title" style="text-align:center">Chọn khu vực</h4>
+                                                    <div class="filter-district-select">
+                                                        <span class="select">Chọn quận/TP</span>
+                                                        <i class="fi fi-rr-caret-down"></i>
+                                                    </div>
+
+                                                    <div class="filter-district-list">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="school-list"></div>
+                                            
+                                        </div>
+                                    </div>
+                                    
+                                </div>
                             </div>
                         </div>
                     </div>
 
-                    <div class="more-container">
+                    <div class="right-container">
                         <div class="more-info-data">
 
                             <div class="calendar-box">
@@ -234,13 +182,30 @@
     </script>
     <script type="text/javascript">
 
-        const default_school = document.querySelector('.schoolname p').innerHTML;
-        const default_district = document.querySelector('.schooldistrict p').innerHTML;
-        const default_year = "2021";
-        const default_wish = "NV1";
-        const default_start = '2015';
-        const default_end = '2021';
+        // var textColor = 'black'
+        // var turned = false
+        // var switched = document.querySelector('.switcher');
 
+        
+        // if (switched) {
+        //     switched.addEventListener('click', function() {
+        //         var bgColor = window.getComputedStyle( document.body ,null).getPropertyValue('background-color');
+        //         if (turned==false) {
+        //             textColor = 'white'
+        //             turned = true
+        //         } else {
+        //             textColor = 'black'
+        //             turned = false
+        //         }
+
+        //     }, false);
+        // }
+
+        
+
+        const default_school = "nguyen huu huan";
+        const default_district = "Thủ Đức"
+        const default_year = "2021";
         for (let i of document.querySelectorAll('.filter-year-select .select')) {
             i.innerHTML = "Năm " + default_year;
         }
@@ -271,15 +236,14 @@
                     }
                 });
 
-                $.ajax({
-                    url:"year_range_comparision.php",
-                    method:"POST",
-                    data:{title:default_school, year:default_year, wish:default_wish},
-                    success:function(data) {
-                        $('.comparision .info').html($(data).filter('#info1'))
-                        $('.calculation').html($(data).filter('#info2'))
-                    }
-                });
+                // $.ajax({
+                //     url:"ratio_search.php",
+                //     method:"POST",
+                //     data:{title:default_school, year:default_year},
+                //     success:function(data) {
+                //         $('.win-ratio-graph-container').html(data);
+                //     }
+                // });
 
                 $.ajax({
                     url:"ratio_firgue.php",
@@ -292,17 +256,6 @@
                 });
 
                 $.ajax({
-                    url:"../printing_page/ratio_firgue.php",
-                    method:"POST",
-                    data:{title:default_school, start: default_start, end:default_end, type:'chart'},
-                    success: function(data) {
-                        $('.ratio-graph').html(data);
-
-    
-                    } 
-                })
-
-                $.ajax({
                     url:"school_comparision.php",
                     method:"POST",
                     data:{year:default_year, district:default_district},
@@ -311,6 +264,16 @@
                         $('.school-list').html($(data).filter('#comparisionList'));
                     }
                 });
+
+                // $.ajax({
+                //     url:"school_list.php",
+                //     method:"POST",
+                //     data:{year:default_year, district:default_district},
+                //     success:function(data) {
+                //         $('.school-list').html(data);
+                //     }
+                // });
+
                 
             }
             showOnLoad();
@@ -323,11 +286,8 @@
             });
 
             $(document).on('click', '.school-search-box i', function() {
-                var school_input = document.querySelector('.school-search').value
-                var year_input = document.querySelector('.year-input-nv').value
-                document.querySelector('.filter-year-select .select').innerHTML = "Năm 2021"
-                document.querySelector('.start-r').value = default_start
-                document.querySelector('.end-r').value = default_end
+                document.querySelector('.filter-year-select .select').innerHTML = "Năm 2021";
+                var school_input = document.querySelector('.school-search').value;
 
                 if (school_input != '') {
                     $.ajax({
@@ -345,23 +305,11 @@
                         data:{title:school_input, start:'-1', end:'-1', new:'true', chartClicked:'none'},
                         success:function(data) {
                             $('.year-range-graph-container').html($(data).filter('#yearGraphContainer'));
-                            $('.schoolname p').html($(data).filter('#schoolTitle').text());
-                            $('.schooldistrict p').html($(data).filter('#schoolDistrict').text());
-                            // $('.schoolcity p').html($(data).filter('#schoolID').text());
-
-                            $.ajax({
-                                url:"year_range_comparision.php",
-                                method:"POST",
-                                data:{title:school_input, year:year_input, wish:default_wish},
-                                success:function(data) {
-                                    $('.comparision .info').html($(data).filter('#info1'))
-                                    $('.calculation').html($(data).filter('#info2'))
-                                }
-                            });
-                            
-                            document.querySelector('.filter-district-select .select').innerHTML = document.querySelector('.schooldistrict p').innerHTML;
+                            $('.title-box .main-title').html($(data).filter('#titleContainer'));
+                            document.querySelector('.filter-district-select .select').innerHTML = document.querySelector('.main-title .district-desc').innerHTML;
                             document.querySelector('.filter-district-select').click();
                             for (let i of document.querySelectorAll('.filter-district-list .district')) {
+                                console.log(i)
                                 if (i.innerHTML == document.querySelector('.filter-district-select .select').innerHTML) {
                                     i.click();
                                 }
@@ -380,14 +328,15 @@
                         }
                     });
 
-                    $.ajax({
-                        url:"../printing_page/ratio_firgue.php",
-                        method:"POST",
-                        data:{title:school_input, start:default_start, end:default_end, type:'chart'},
-                        success:function(data) {
-                            $('.ratio-graph').html(data);
-                        }
-                    });
+                    // $.ajax({
+                    //     url:"school_search.php",
+                    //     method:"POST",
+                    //     data:{school_name:school_input},
+                    //     success:function(data) {
+
+                    //     }
+                             
+                    // });
 
                 }
                 
@@ -423,35 +372,6 @@
                 }
 
             }
-
-            function yearRangeChangeR() {
-                var school_input = document.querySelector('.schoolname p').innerHTML
-                if (school_input == '') { school_input = default_school }
-
-                var start_r = parseInt(document.querySelector('.start-r').value);
-                var end_r = parseInt(document.querySelector('.end-r').value);
-
-                if (!isNaN(start_r) && !isNaN(end_r)) {
-                    if (start_r > end_r) {
-                        alert("Năm đầu phải nhỏ hơn hoặc bằng năm cuối")
-                    } else {
-
-                        $.ajax({
-                            url:"../printing_page/ratio_firgue.php",
-                            method:"POST",
-                            data:{title:school_input, start:start_r, end:end_r, type:'chart'},
-                            success:function(data) {
-                                $('.ratio-graph').html(data);
-                            }
-                        });
-                        
-                    }
-                }
-            }
-
-            $('.start-r').on('change', yearRangeChangeR);
-            $('.end-r').on('change', yearRangeChangeR);
-
             $('.year-start-input').on('change', yearRangeChange);
             $('.year-end-input').on('change', yearRangeChange);
 
@@ -486,25 +406,7 @@
                 console.log(chartClicked)
 
                 
-            });
-
-
-            $('.year-input-nv').on('change', function () {
-                var school_input = document.querySelector('.schoolname p').innerHTML
-                var year_input = document.querySelector('.year-input-nv').value
-
-                $.ajax({
-                    url:"year_range_comparision.php",
-                    method:"POST",
-                    data:{title:school_input, year:year_input, wish:default_wish},
-                    success:function(data) {
-                        $('.comparision .info').html($(data).filter('#info1'))
-                        $('.calculation').html($(data).filter('#info2'))
-                    }
-                });
-            });
-
-
+            })
                 
                 
         })

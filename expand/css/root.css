@@ -45,10 +45,38 @@
     color: white !important;
 
     --table-odd-color: #1e1e1e;
-    --table-even-color: #252526;
+    --table-even-color: #2e2e2e;
 
     --row-hover-color: #efe9a8;
     --divider-color: invert(0.88);
+}
+
+
+html {
+    animation: transitionIn 1.5s;
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: var(--primary-color);
+}
+
+
+body::-webkit-scrollbar {
+    width: 10px;
+}
+
+body::-webkit-scrollbar-track {
+    background-color: transparent;
+}
+
+body::-webkit-scrollbar-thumb {
+    background-color: var(--thumb-color);
+    border-radius: 20px;
+}
+
+::placeholder {
+    color: var(--placeholder-color);
 }
 
 .primary-margin {
@@ -137,3 +165,4 @@
     background-color:var(--thumb-color);
     border-radius: 8px;
 }
+

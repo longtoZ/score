@@ -68,11 +68,6 @@
             }
         </style>
 
-        <!-- <div class="score-info">
-            <div class="school-name"><?php echo $school ?></div>
-            <div class="school-score"><?php echo $nv1 ?></div>
-        </div> -->
-
         <script>
             var child = 1;
             for (let i of <?php echo json_encode($datas); ?>) {

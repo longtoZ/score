@@ -15,6 +15,6 @@
 
 ?>
 
-<span><?php echo $datas[0]['TEN_TRUONG']; ?></span>
+<span style="font-weight: 500;"><?php echo $datas[0]['TEN_TRUONG']; ?></span>
 <br>
 <span class="district-desc" style="display:none"><?php echo $datas[0]['QUAN/HUYEN']?></span>

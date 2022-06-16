@@ -130,6 +130,8 @@ if (mysqli_num_rows($result) > 0) {
                         </tr>	
                         <?php
                     }
+
+                    $stt++;
                 } else if ($compare == "below") {
                     if (substr($wish, -1) == "1" && $nv1 <= $average) { ?>
                         <tr>

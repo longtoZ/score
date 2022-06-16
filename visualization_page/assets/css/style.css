@@ -10,34 +10,6 @@
     font-weight: 300;
 }
 
-
-html {
-    animation: transitionIn 1.5s;
-    scroll-behavior: smooth;
-}
-
-body {
-    background-color: var(--primary-color);
-}
-
-body::-webkit-scrollbar {
-    width: 10px;
-}
-
-body::-webkit-scrollbar-track {
-    background-color: transparent;
-}
-
-body::-webkit-scrollbar-thumb {
-    background-color: var(--thumb-color);
-    border-radius: 20px;
-    border: 6px solid transparent;
-}
-
-::placeholder {
-    color: var(--placeholder-color);
-}
-
 .red-dot {
     height: 10px;
     width: 10px;
@@ -59,59 +31,26 @@ body::-webkit-scrollbar-thumb {
 
 
 .main-data-box {
+    margin-top: 100px;
+}
+
+
+.main-data-box > div {
+    overflow: hidden;
     display: flex;
     justify-content: center;
-    margin-top: 140px;
-    padding: 10px;
 }
 
-
-.main-data-container {
-    overflow: hidden;
-    width: 90%;
+.title-container {
+    margin: 20px 0;
+    width: 85%;
 }
 
-.left-container {
-    float: left;
-    width: 75%;
-}
-
-.right-container {
-    float: left;
-    width: 25%;
-    height: 100%;
-}
-
-
-.school-title {
-    overflow: hidden;
-    width: 90%;
-    margin: 0 15px;
-}
-
-
-.school-title .title-box {
-    float: left;
-}
-
-.school-title .school-search-box {
-    float: right;
+.school-search-box {
+    display: flex;
+    justify-content: center;
     position: relative;
-}
-
-.school-title .main-title {
-    font-size: 30px;
-    letter-spacing: 3px;
-    margin: 0 15px;
-    font-weight: 500;
-}
-
-
-.school-title .main-desc {
-    font-size: 15px;
-    opacity: 0.5;
-    margin: 10px 15px;
-
+    margin: 50px 0;
 }
 
 .school-search-box .school-search {
@@ -120,7 +59,7 @@ body::-webkit-scrollbar-thumb {
     border-radius: 10px;
 	padding: 8px;
     height: 45px;
-    width: 250px;
+    width: 50%;
     background-color: var(--fourth-primary-color);
     box-shadow: var(--box-shadow-light);
     color: var(--text-color);
@@ -135,27 +74,124 @@ body::-webkit-scrollbar-thumb {
 
 .school-search-box i {
     position: absolute;
-    right: 17px;
+    right: 27em;
     top: 33px;
+    cursor: pointer;
 }
+
+.school-info {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.school-info div {
+    margin: 15px;
+    padding: 20px 30px;
+    border-radius: 20px;
+    flex: 1;
+    cursor: pointer;
+    color: white;
+    transform: translateX(0px);
+    transition: all ease-in-out 0.3s;
+    border-left: 0px solid white;
+}
+
+.school-info div:hover {
+    transform: translateX(10px);
+    border-left: 10px solid white;
+}
+
+.year-range-container {
+    display: flex;
+    justify-content: center;
+}
+
 
 .year-start-input, .year-end-input {
     color: var(--text-color-light)
 }
 
 .year-range-data {
-    border: none;
-    outline: none;
+    width: 60%;
+}
+
+.year-range-detail {
+    width: 25%;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+}
+
+.year-range-detail > div {
+    flex: 1;
+}
+
+.year-range-data, .year-range-detail > div, .comparision-data{
     border-radius: 25px;
 	padding: 8px;
     padding-bottom: 50px;
     height: auto;
-    width: 90%;
     background-color: var(--second-primary-color);
-    box-shadow: var(--box-shadow);
+    box-shadow: var(--box-shadow-light);
     margin: 20px;
-    overflow: hidden;
 }
+
+
+.year-range-detail .navigation {
+    display: flex;
+    justify-content: center;
+    margin: 10px 0;
+}
+
+.navigation .nav-wrap {
+    background-color: var(--third-primary-color);
+    padding: 1%;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+.navigation .nav-wrap div:nth-child(2) {
+    margin: 0 15px;
+}
+
+.navigation .nav-wrap div {
+    font-weight: 500;
+    float: left;
+    padding: 4px 14px;
+    border-radius: 20px;
+    transition: all ease 0.2s;
+}
+
+.year-range-detail h3 {
+    margin-left: auto;
+    margin-right: 0;
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
+.year-input-nv {
+    border: none;
+    outline: none;
+    font-weight: bold;
+    font-size: 1.2em;
+    width: 70px;
+    margin-left: 20px;
+    background: none;
+    margin-top: 20px;
+    color: var(--text-color-light);
+}
+
+.comparision, .calculation {
+    border-bottom: 5px solid #00a6a5;
+}
+
+
+.comparision .info, .calculation {
+    text-align: center;
+    margin-top: 15px;
+}
+
 
 .year-range-data .filter-box {
     width: 98%;
@@ -196,8 +232,8 @@ body::-webkit-scrollbar-thumb {
 
 .detail-data {
     margin: 15px;
-    width: 90%;
     overflow: hidden;
+    flex-direction: column;
 }
 
 .win-ratio-display {
@@ -207,25 +243,38 @@ body::-webkit-scrollbar-thumb {
     top: -80px;
 }
 
-.win-ratio-data, .comparision-data {
+.win-ratio-data, .ratio-graph-container{
     border: none;
     outline: none;
     border-radius: 25px;
-    height: 350px;
-    width: 95%;
+    height: auto;
+    width: 41%;
     background-color: var(--second-primary-color);
-    box-shadow: var(--box-shadow);
-    margin: 25px 30px;
+    box-shadow: var(--box-shadow-light);
+    margin: 25px;
+    padding: 30px 10px;
     overflow: hidden;
 }
 
-.comparision-data {
-    height: 500px;
+.start-r, .end-r {
+    border: none;
+    outline: none;
+    font-weight: bold;
+    font-size: 110%;
+    width: 60px;
+    margin: 0 10px;
+    background: none;
+    color: var(--text-color-light);
 }
+
 
 .win-ratio-graph-container, .win-ratio-detail {
     float: left;
     width: 50%;
+}
+
+.comparision-data {
+    width: 85%;
 }
 
 .filter-detail {
@@ -262,7 +311,7 @@ body::-webkit-scrollbar-thumb {
     border-radius: 10px;
     line-height: 1.8;
     position: relative;
-    margin-right: 40px;
+    margin-right: 80px;
 }
 
 .filter-year-select .select, .filter-district-select .select {
@@ -302,7 +351,7 @@ body::-webkit-scrollbar-thumb {
 }
 
 .filter-district-select, .filter-district-list {
-    width: 180px;
+    width: 140px;
 }
 
 .filter-year-list .year, .filter-district-list .district{
@@ -355,7 +404,7 @@ body::-webkit-scrollbar-thumb {
 
 .school-list {
     overflow-y: scroll;
-    max-height: 200px;
+    max-height: 20em;
     position: relative;
     top: -80px;
     padding: 0 10px;
@@ -364,11 +413,12 @@ body::-webkit-scrollbar-thumb {
 
 .more-info-data {
     margin: 15px 0;
-    /* width: 95%; */
+    width: 40%;
 }
 
 .school-links {
-    margin-top: 35px;
+    margin: 35px 2.5%;
+    width: 40%;
 }
 
 .main-page-container, .fanpage-container, .curriculum-page-container {
@@ -379,7 +429,6 @@ body::-webkit-scrollbar-thumb {
 .main-page, .fanpage, .curriculum-page{
     margin: 15px 0;
     width: 95%;
-    height: 100px;
     border: none;
     outline: none;
     border-radius: 25px;
@@ -496,123 +545,111 @@ body::-webkit-scrollbar-thumb {
 }
 
 @media only screen and (max-width: 64em) {
-
-    .main-data-box {
-        padding: 0;
+    .school-info div {
+        flex: 40%;
     }
 
-    .left-container, .right-container {
-        width: 100%;
+    .year-range-container, .win-ratio-container, .comparision-data-container {
+        flex-direction: column;
+        padding: 0 7.5%;
     }
 
-    .title-box {
-        margin-bottom: 30px;
+    .year-range-data, .year-range-detail, .win-ratio-data, .ratio-graph-container, 
+    .comparision-data {
+        width: auto;
     }
 
-    .school-title, .year-range-data {
-        width: 95%;
+    .filter-year-select, .filter-district-select {
+        margin-right: 0;
     }
 
-    .school-title .main-title, .school-title .main-desc {
-        margin: 0;
+    .more-container {
+        margin-top: 50px;   
     }
-
-    .school-search-box, .school-search-box .school-search{
-        width: 100%;
-        padding: 10px;
-    }
-
-    .school-search-box i {
-        right: 20px;
-        top: 44px;
-    }
-
-    .year-range-data .filter-box {
-        margin: 20px 5px;
-    }
-
-    .detail-data {
-        margin: 0 0;
-        width: 100%
-    }
-
-    .win-ratio-data, .comparision-data {
-        margin: 0 0;
-    }
-
-    .win-ratio-data, .comparision-data {
-        height: auto;
-        width: 95%;
-        margin: auto;
-        margin-top: 30px;
-        margin-bottom: 30px;
-    }
-
-    .win-ratio-display {
-        top: -100px !important;
-    }
-
-    .win-ratio-graph-container, .win-ratio-detail, .comparision-graph-container, .comparision-detail-container {
-        float: none;
-        width: 100%;
-    }
-
-    .win-ratio-data .year-box {
-        margin: 20px 20px 0!important;
-    }
-
-    .win-ratio-data .year-box h3 {
-        margin-right: 20px !important;
-    }
-
-    .filter-year .filter-year-select {
-        margin-right: 0 !important;
-    }
-
-    .firgue .firgue1 {
-        font-size: 400% !important;
-    }
-
-    .firgue .firgue2 {
-        font-size: 110% !important;
-    }
-
-    .filter-detail .filter-year, .filter-detail .filter-district {
-        width: 50%;
-    }
-
-    .filter-district .filter-district-select, .filter-district .filter-district-list {
-        width: 140px;
-    }
-
-    .school-list {
-        top: -100px;
-        max-height: 250px;
-    }
-
-    .comparision-detail-container .filter-box {
-        width: 95%;
-    }
+ 
 
 
 }
 
 @media only screen and (max-width: 64em) and (min-width: 46.25em) {
-    .comparision-detail-container .filter-box {
-        width: 85%;
-    }
-
-    .comparision-detail-container .filter-year h4, .comparision-detail-container .filter-district h4 {
-        text-align: left !important;
-        padding-left: 10px;
-
+    .school-search-box i {
+        right: 14em;
     }
 }
 
 @media only screen and (max-width: 46.1875em) {
-    .year-range-data .filter-box .year-box {
-        float: left;
-        margin-top: 1.25em;
-        margin-left: 1.25em;
+    .year-range-container, .win-ratio-container, .comparision-data-container, .more-container {
+        flex-direction: column;
+        padding: 0 0;
     }
+
+    .school-search-box .school-search {
+        width: 100%;
+    }
+
+    .school-search-box i {
+        right: 1em;
+    }
+
+    .school-info div {
+        margin: 20px 8px;
+    }
+
+    #info1 h1 {
+        font-size: 1.4em;
+    }
+
+    #info1 h4 {
+        font-size: 90%;
+    }
+
+    #info2 h2 {
+        font-size: 1.4em;
+    }
+
+    .win-ratio-graph-container, .win-ratio-detail {
+        float: none;
+        width: 100%;
+        padding: 30px 20px;
+    }
+
+    .year-box {
+        flex-direction: column;
+    }
+
+    .year-box h3 {
+        margin-right: 0px !important;
+    }
+
+    .filter-year-select, .filter-year-list, .filter-district-select {
+        margin: auto;
+    }
+
+    .ratio-graph-container {
+        padding: 30px 0;;
+    }
+
+    .comparision-graph-container, .comparision-detail-container {
+        width: 100%;
+        float: none;
+    }
+
+    .filter-year, .filter-district {
+        float: none !important;
+    }
+
+    .filter-year-list, .filter-district-list {
+        margin: auto;
+        margin-top: 10px;
+    }
+
+    .more-container {
+        flex-direction: column;
+        padding: 0 2%;
+    }
+
+    .school-links {
+        width: 100%;
+    }
+
 }

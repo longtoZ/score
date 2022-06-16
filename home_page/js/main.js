@@ -4,7 +4,7 @@ const section3_title = document.querySelector('.section3 .title');
 const section4_title = document.querySelector('.section4 .title');
 const section5_title = document.querySelector('.section5 .title');
 
-const section1_desc = document.querySelectorAll('.section1 .desc');
+const section1_desc = document.querySelector('.section1 .desc');
 const section2_part = document.querySelectorAll('.section2 .part');
 const section3_card = document.querySelectorAll('.section3 .card');
 const section5_card = document.querySelectorAll('.section5 .card');
@@ -51,9 +51,14 @@ observerFade.observe(section3_title)
 observerFade.observe(section4_title)
 observerFade.observe(section5_title)
 
-section1_desc.forEach(item => {
-    observerFade.observe(item)
-})
+
+const mediaQuery = window.matchMedia('(max-width: 46.1875em)')
+if (mediaQuery.matches) {
+    section1_desc.classList.remove('hide-fade')
+} else {
+    observerFade.observe(section1_desc)
+}
+
 
 section2_part.forEach(item => {
     observerFade.observe(item)

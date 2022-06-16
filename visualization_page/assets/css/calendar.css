@@ -19,11 +19,6 @@
     --font-family: cursive;
 }
 
-.calendar-box {
-    display: flex;
-    justify-content: center;
-}
-
 .calendar-container {
     --bg-body: var(--light-body);
     --bg-main: var(--light-main);
@@ -247,12 +242,20 @@
 }
 
 @media only screen and (max-width: 64em) and (min-width: 46.25em){
-    .calendar-container {
-        width: 85%;
-    }
 
     .calendar-days .calendar-day-hover {
         width: auto;
-        height: 70px;
+    }
+
+    .calendar-days div {
+        width: auto;
+    }
+
+}
+
+@media only screen and (max-width: 46.25em) {
+    .calendar-days div {
+        width: auto;
+        height: auto;
     }
 }

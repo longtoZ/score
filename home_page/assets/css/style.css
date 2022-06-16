@@ -1,4 +1,27 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato&family=MuseoModerno:wght@200;300;500&family=Open+Sans:wght@600&display=swap');
+
+:root {
+    --fs-title: 4em;
+    --fs-subtitle: 1.5em;
+    --fs-icon: 2em;
+    --fs-btn: 1.4em;
+    --fs-desc: 1.2em; 
+    --fs-desc2: 1.1em;
+    --fs-content: 1em;
+}
+
+@media only screen and (max-width: 46.25em) {
+    :root {
+        --fs-title: calc(4em*0.95);
+        --fs-subtitle: calc(1.5em*0.95);
+        --fs-icon: calc(2em*0.95);
+        --fs-btn: calc(1.4em*0.95);
+        --fs-desc: calc(1.2em*0.95); 
+        --fs-desc2: calc(1.1em*0.95);
+        --fs-content: calc(1em*0.95);
+    }
+}
+
 * {
 	padding: 0;
 	margin: 0;
@@ -7,33 +30,6 @@
     font-weight: 300;
 }
 
-html {
-    animation: transitionIn 1.5s;
-    scroll-behavior: smooth;
-}
-
-body {
-    background-color: var(--primary-color);
-    overflow-x: hidden;
-}
-
-body::-webkit-scrollbar {
-    width: 10px;
-}
-
-body::-webkit-scrollbar-track {
-    background-color: transparent;
-}
-
-body::-webkit-scrollbar-thumb {
-    background-color: var(--thumb-color);
-    border-radius: 20px;
-    border: 6px solid transparent;
-}
-
-::placeholder {
-    color: var(--placeholder-color);
-}
 
 b {
     font-weight: 500;
@@ -145,13 +141,13 @@ ul * {
 }
 
 .title {
-    font-size: 4em;
+    font-size: var(--fs-title);
     font-weight: 500;
     margin: 30px 0 50px 0;
 }
 
 .title-box .desc, .section1 .desc, .section2 .content * {
-    font-size: 1.2em;
+    font-size: var(--fs-desc);
 }
 
 
@@ -171,7 +167,7 @@ ul * {
 
 .title-box .start button a {
     color: white;
-    font-size: 1.4em;
+    font-size: var(--fs-btn);
     font-weight: 500;
     text-decoration: none;
 }
@@ -192,7 +188,7 @@ ul * {
 }
 
 .section1 .desc .part {
-    font-size: 1.1em;
+    font-size: var(--fs-desc2);
     flex: 50%;
     padding: 20px 50px;
     line-height: 2;
@@ -242,11 +238,11 @@ ul * {
 }
 
 .content .part i {
-    font-size: 2em;
+    font-size: var(--fs-icon);
 }
 
 .content .part p {
-    font-size: 1em;
+    font-size: var(--fs-content);
 }
 
 .section3 .content .card {
@@ -288,7 +284,7 @@ ul * {
 }
 
 .section3 .content b {
-    font-size: 120%;
+    font-size: var(--fs-desc);
     line-height: 3;
 }
 
@@ -362,7 +358,7 @@ ul * {
 }
 
 .section4 .content .card-title {
-    font-size: 110%;
+    font-size: var(--fs-desc2);
     font-weight: 500;
     line-height: 3;
 }
@@ -387,7 +383,7 @@ ul * {
 }
 
 .card-title i {
-    font-size: 120%;
+    font-size: var(--fs-desc);
     position: relative;
     top: 4px;
     margin-right: 10px;
@@ -396,8 +392,8 @@ ul * {
 .section4 .find-more a{
     float: right;
     margin: 40px 0;
-    color: blue;
-    font-size: 110%;
+    color: cornflowerblue;
+    font-size: var(--fs-desc2);
 }
 
 .section5 .content {
@@ -409,12 +405,11 @@ ul * {
 .section5 .content .card {
     padding: 20px 50px;
     margin: 50px 0;
-    width: 70%;
     flex: 50%;
 }
 
 .section5 .card-title{
-    font-size: 150%;
+    font-size: var(--fs-subtitle);
     font-weight: 500;
     padding-bottom: 25px;
 }
@@ -427,7 +422,7 @@ ul * {
 
 .more-title {
     text-align: center;
-    font-size: 150%;
+    font-size: var(--fs-subtitle);
     font-weight: 500;
     margin-top: 80px;
     margin-bottom: 40px;
@@ -443,6 +438,7 @@ ul * {
     border-radius: 20px;
     cursor: pointer;
     transition: all ease 0.3s;
+    margin-bottom: 20px;
 }
 
 .more button:hover {
@@ -491,11 +487,58 @@ ul * {
     .more button {
         width: 40%;
     }
+
+    .section1 .desc {
+        flex-direction: column;
+    }
+
+    .section1 .desc .part {
+        margin: 20px 0;
+    }
 }    
 
 @media only screen and (max-width: 46.25em) {
     .more button {
         width: 60%;
+    }
+
+    .title-box, .section1, .section2, .section3, .section4, .section5 {
+        width: 90%;
+    }
+
+    .section1 .desc {
+        flex-direction: column;
+    }
+
+    .section1 .desc .part {
+        padding: 20px;
+    }
+
+    .section3 .content .card:nth-child(odd):before, 
+    .section3 .content .card:nth-child(even)::before,
+    .section3 .content .card:nth-child(odd):after, 
+    .section3 .content .card:nth-child(even)::after { 
+        display: none;
+    }
+
+    .section3 .content .card {
+        margin: 20px 0;
+    }
+
+    .section3 .content .time {
+        width: 100%;
+    }
+
+    .section4 .content {
+        padding: 30px 20px;
+    }
+
+    .section5 .content {
+        flex-direction: column;
+    }
+
+    .section5 .content .card {
+        padding: 20px;
     }
 }
 

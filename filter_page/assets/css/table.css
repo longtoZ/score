@@ -82,5 +82,9 @@
         padding: 12px 5px;
     }
 
+    .search-table * {
+        font-size: 95%;
+    }
+
     
 }
