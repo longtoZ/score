@@ -72,6 +72,15 @@ if (mysqli_num_rows($result) > 0) {
 
     <link rel="stylesheet" type="text/css" href="./assets/css/table.css">
 
+    <?php if ($compare == "above") {?>
+	    <h1 style="text-align:center; margin-bottom: 30px; font-weight: 500">Trên trung bình: <?php echo $average; ?></h1>
+    <?php
+    } else {?>
+	    <h1 style="text-align:center; margin-bottom: 30px; font-weight: 500">Dưới trung bình: <?php echo $average; ?></h1>
+    <?php
+    }
+    ?>
+
 
 	<table class="search-table">
 		<thead>

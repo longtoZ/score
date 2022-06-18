@@ -9,6 +9,8 @@ const section2 = document.querySelector('.section2 label');
 const section3 = document.querySelector('.section3 label');
 const section4 = document.querySelector('.section4 label');
 const simplify = document.getElementById('simplify-mode');
+
+const exportxlsx = document.querySelector('.exportxlsx');
 const print = document.querySelector('.print');
 
 const changeType1 = document.querySelector('#score-area .title i');
@@ -65,6 +67,7 @@ hideBtn.forEach((item) => {
 //         floatingBtn.classList.remove('active')
 //     }
 // }
+
 function hidePrintBox() {
     if (floatingCheckbox.checked==false) {
         floatingBox.classList.toggle('active')
@@ -80,10 +83,54 @@ function hidePrintBox() {
 floatingBtn.addEventListener('click', hidePrintBox);
 overlay.addEventListener('click', hidePrintBox);
 
+simplify.addEventListener('click', function () {
+    document.querySelector('.main').classList.toggle('simplify')
+});
+
+print.addEventListener('click', function() {
+    window.print()
+});
+
+function exportXLSX() {
+
+    var tableSec1 = document.querySelector('.score-chart .search-table');
+    var tableSec2 = document.querySelector('.ratio-table .search-table');
+    var tableSec3 = document.querySelector('.comparision-table .search-table');
+    var tableSec4 = document.querySelector('.eval-table .search-table');
+
+    const wb = XLSX.utils.book_new();
+
+    if (tableSec1) {
+        var tableSec1Title = document.querySelector('.score-title').innerHTML;
+        var ws1 = XLSX.utils.table_to_sheet(tableSec1);
+        XLSX.utils.book_append_sheet(wb, ws1, tableSec1Title);
+    }
+
+    if (tableSec2) {
+        var tableSec2Title = document.querySelector('.ratio-title').innerHTML;
+        var ws2 = XLSX.utils.table_to_sheet(tableSec2);
+        XLSX.utils.book_append_sheet(wb, ws2, tableSec2Title);
+    }
+
+    if (tableSec3) {
+        var tableSec3Title = document.querySelector('.comparision-title').innerHTML;
+        var ws3= XLSX.utils.table_to_sheet(tableSec3);
+        XLSX.utils.book_append_sheet(wb, ws3, tableSec3Title);
+    }
+
+    if (tableSec4) {
+        var tableSec4Title = document.querySelector('.eval-title').innerHTML;
+        var ws4 = XLSX.utils.table_to_sheet(tableSec4);
+        XLSX.utils.book_append_sheet(wb, ws4, tableSec4Title);
+    }
+
+    XLSX.writeFile(wb, "Tong_hop.xlsx");
+  }
+
+exportxlsx.addEventListener('click', exportXLSX);
 
 section1.addEventListener('click', function() {
     hideSection(document.querySelector('#score-area .hide-btn'))
-
 });
 
 section2.addEventListener('click', function() {
@@ -97,15 +144,6 @@ section3.addEventListener('click', function() {
 section4.addEventListener('click', function() {
     hideSection(document.querySelector('#eval-area .hide-btn'))
 });
-
-simplify.addEventListener('click', function () {
-    document.querySelector('.main').classList.toggle('simplify')
-});
-
-
-print.addEventListener('click', function() {
-    window.print()
-})
 
 
 changeType1.addEventListener('click', function () {

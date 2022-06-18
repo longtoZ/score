@@ -58,6 +58,8 @@ if (mysqli_num_rows($result) > 0){
 
 	<link rel="stylesheet" type="text/css" href="./assets/css/table.css">
 
+	<h1 style="text-align:center; margin-bottom: 30px; font-weight: 500">Điểm <?php echo $wish; ?>: <?php echo $average; ?></h1>
+
 	<table class="search-table">
 		<thead>
 			<tr>

@@ -3,7 +3,7 @@
 .search-table {
     box-shadow: var(--box-shadow);
     border-collapse: collapse;
-    width: 80%;
+    width: 100%;
     margin-bottom: 100px;
     opacity: 1;
     animation-name: fadeInOpacity;
@@ -52,6 +52,7 @@
 .search-table tbody tr td:first-of-type {
     color: #009879;
     font-weight: bold;
+    text-align: center;
 }
 
 .search-table tbody tr:last-of-type {

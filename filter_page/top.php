@@ -53,11 +53,15 @@ if (mysqli_num_rows($result) > 0){
 	if ($order == "ASC") {
 		$arrow = "⇧";
 	}
+
+	$ranking = $order=="ASC" ? "Thấp nhất" : "Cao nhất";
 	?>
 
 
 
 	<link rel="stylesheet" type="text/css" href="./assets/css/table.css">
+
+	<h1 style="text-align:center; margin-bottom: 30px; font-weight: 500">Top <?php echo $input; ?> <?php echo $ranking; ?></h1>
 
 
 	<table class="search-table">

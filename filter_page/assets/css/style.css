@@ -9,7 +9,13 @@
     font-weight: 300;
 }
 
-
+@keyframes transitionIn {
+    from {
+        opacity: 0;
+    } to {
+        opacity: 1;
+    }
+}
 
 .filter-box {
     display: flex;
@@ -324,18 +330,20 @@
 #search-result {
     display: flex;
     justify-content: center;
+    padding: 0 5%;
+    flex-direction: column;
 }
 
-
-@keyframes transitionIn {
-    from {
-        opacity: 0;
-    } to {
-        opacity: 1;
-    }
-}
 
 @media only screen and (max-width: 46.1875em) {
+
+    .filter-container {
+        width: 80%;
+    }
+
+    #search-result {
+        padding: 0 3%;
+    }
 
 
     .filter-detail-container {

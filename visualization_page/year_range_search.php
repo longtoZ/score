@@ -193,7 +193,7 @@
 
             myChartBar1.destroy()
             myChartBar2.destroy()
-
+            
             configChart1.type = 'bar'
             configChart1.data.labels = labels
             configChart1.data.datasets[0].backgroundColor = bg_nv1

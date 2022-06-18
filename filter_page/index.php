@@ -4,7 +4,8 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="icon" type="image/png" href="../img/logo.png">
-        <link rel="stylesheet" type="text/css" href="./assets/css/style.css" media="all">
+        <link rel="stylesheet" type="text/css" href="./assets/css/style.css">
+        <link rel="stylesheet" type="text/css" href="./assets/css/printing.css">
         <link rel="stylesheet" type="text/css" href="../expand/css/root.css">
         <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-regular-rounded/css/uicons-regular-rounded.css'>
         <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-brands/css/uicons-brands.css'>
@@ -74,6 +75,14 @@
                                 </div>
                             </div>
                         </div>
+
+                        <div class="submit-btn">
+                            <div class="submit-btn-container">
+                                <input type="button" id="submit" value="Tìm kiếm">
+                                <!-- <i class="fi fi-rr-search"></i> -->
+                            </div>
+                            
+                        </div>
                         
                     </div>
                     
@@ -138,19 +147,34 @@
                     </div>
                 </div>
             </div>
-            
-
-            <div class="submit-btn">
-                <div class="submit-btn-container">
-                    <input type="button" id="submit" value="Tìm kiếm">
-                    <!-- <i class="fi fi-rr-search"></i> -->
-                </div>
-                
-            </div>
 
             <h1 class="year-chosen"></h1>
 
             <div id="search-result"></div>
+
+            <div class="floating-container">
+                <input type="checkbox" name="" id="floating-checkbox" hidden >
+                <label class="overlay" for="floating-checkbox"></label>
+                <div id="floating-box">
+                    <div class="simplify" style="border-bottom: 1px solid var(--text-color); padding-top: 15px;">
+                        <input type="checkbox" id="simplify-mode" value="">
+                        <label for="simplify-mode">Chế độ đơn giản</label>
+                    </div>
+                    <div class="exportxlsx" style="background-color: #33C481;">
+                        <i class="fi fi-br-download"></i>
+                        Excel
+                    </div>
+                    <div class="print">
+                        <i class="fi fi-rr-document-signed" style="padding: 0 4px;"></i>
+                        In dữ liệu
+                    </div>
+                </div>
+                <label for="floating-checkbox">
+                    <div id="floating-button">
+                        <i class="fi fi-rr-print"></i>
+                    </div>
+                </label>
+            </div>
 
             <div id="footer-container"></div>
         </div>
@@ -167,6 +191,7 @@
 
     <script type="text/javascript" src="../expand/js/create-years.js"></script>
     <script type="text/javascript" src="./js/main.js"></script>
+    <script src="https://cdn.sheetjs.com/xlsx-latest/package/dist/xlsx.full.min.js"></script>
 
     <script type="text/javascript">
         

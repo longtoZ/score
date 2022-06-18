@@ -166,3 +166,166 @@ body::-webkit-scrollbar-thumb {
     border-radius: 8px;
 }
 
+
+.hide-btn {
+    width: 5%;
+    height: 30px;
+    background-color: tomato;
+    color: white;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    text-align: center;
+    line-height: 2.2;
+    transition: all ease 0.2s;
+}
+
+.hide-btn .open {
+    display: none;
+}
+
+.hide-btn.active {
+    background-color: var(--green);
+    width: 10%;
+}
+
+.hide-btn.active .close {
+    display: none;
+}
+
+.hide-btn.active .open {
+    display: block;
+}
+
+.floating-container {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    cursor: pointer;
+    z-index: 3;
+}
+
+.floating-container input {
+    pointer-events: none;
+}
+
+#floating-button {
+    background-color: var(--green);
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    box-shadow: var(--box-shadow);
+    position: relative;
+    left: 0%;
+    z-index: 2;
+    transition: background-color ease 0.4s;
+    cursor: pointer;
+}
+
+#floating-button.active {
+    left: 70%;
+}
+
+#floating-button i {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, 50%);
+    font-size: 130%;
+    color: white;
+    pointer-events: none;
+}
+
+#floating-box {
+    overflow: hidden;
+    background: var(--second-primary-color);
+    box-shadow: var(--box-shadow);
+    position: relative;
+    z-index: 2;
+    height: 0px;
+    width: 0px;
+    transition: all ease 0.4s;
+}
+
+#floating-box div {
+    overflow: hidden;
+    height: 0px;
+    width: 0px;
+    transition: all ease 0.4s;
+}
+
+#floating-box div * {
+    cursor: pointer;
+    user-select: none;
+}
+
+#floating-box.active {
+    padding: 20px;
+    border-radius: 20px;
+    margin-bottom: 20px;
+    height: auto;
+    width: auto;
+}
+
+#floating-box.active div {
+    margin: 10px 0;
+    height: auto;
+    width: auto;
+}
+
+#floating-box .print, #floating-box .exportxlsx {
+    text-align: center;
+    background-color: var(--green);
+    color: white;
+    font-weight: 500;
+    margin-top: 20px !important;
+    padding: 5px;
+    border-radius: 15px;
+    transition: all ease 0.2s;
+}
+
+#floating-box .print:hover, #floating-box .exportxlsx:hover, #floating-button:hover {
+    filter: brightness(0.9);
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(0,0,0,0.05);
+    backdrop-filter: blur(1px);
+    transition: all ease 0.2s;
+    display: none;
+}
+
+.overlay.active {
+    display: block;
+}
+
+
+.main.simplify table *{
+    background-color: transparent !important;
+    color: var(--text-color) !important;
+    box-shadow: none;
+}
+
+.main.simplify table tr, .main.simplify table th, .main.simplify table td {
+    border: 1px solid var(--text-color) !important;
+}
+
+.main.simplify table thead th {
+    font-weight: bold !important;
+}
+
+.title i {
+    color: var(--green);
+    margin: 0 20px;
+    cursor: pointer;
+    font-size: 120%;
+    position: relative;
+    top: 4px;
+    padding: 10px;
+}

@@ -39,6 +39,13 @@ ul * {
     text-align: left;
 }
 
+@keyframes transitionIn {
+    from {
+        opacity: 0;
+    } to {
+        opacity: 1;
+    }
+}
 
 #title-container, #section1-container, #section2-container, #section3-container,
 #section4-container, #section5-container {
@@ -451,7 +458,7 @@ ul * {
     text-decoration: none;
 }
 
-#floating-button {
+#scroll-button {
     position: fixed;
     bottom: 30px;
     right: 30px;
@@ -465,11 +472,11 @@ ul * {
     z-index: 3;
 }
 
-#floating-button:hover {
+#scroll-button:hover {
     filter: brightness(96%);
 }
 
-#floating-button i {
+#scroll-button i {
     position: absolute;
     left: 50%;
     transform: translate(-50%, 50%);
@@ -539,13 +546,5 @@ ul * {
 
     .section5 .content .card {
         padding: 20px;
-    }
-}
-
-@keyframes transitionIn {
-    from {
-        opacity: 0;
-    } to {
-        opacity: 1;
     }
 }

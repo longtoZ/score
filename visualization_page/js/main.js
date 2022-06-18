@@ -149,9 +149,6 @@ const navWrapNV1 = document.querySelector('.nav-wrap .select-nv1');
 const navWrapNV2 = document.querySelector('.nav-wrap .select-nv2');
 const navWrapNV3 = document.querySelector('.nav-wrap .select-nv3');
 
-navWrapNV1.style.backgroundColor = "#00A6A5";
-navWrapNV1.style.color = "white"
-
 function displayScore(wish) {
     var school_input = document.querySelector('.schoolname p').innerHTML
     var year_input = document.querySelector('.year-input-nv').value
@@ -166,6 +163,9 @@ function displayScore(wish) {
         }
     });
 }
+
+navWrapNV1.style.backgroundColor = "#00C6A6";
+navWrapNV1.style.color = "white"
 
 navWrapNV1.addEventListener('click', function () {
 

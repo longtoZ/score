@@ -178,7 +178,6 @@ advancedChoose.onclick = function() {
 }
 
 
-
 filterBetween.forEach((item) => {
     item.onclick = function () {
         filterBetween.forEach((item0) => {
@@ -291,3 +290,56 @@ filterMoreRight.forEach((item) => {
         document.querySelector('.filter-top .top').value = ''
     }
 });
+
+
+const hideBtn = document.querySelectorAll('.hide-btn');
+const floatingBtn = document.getElementById('floating-button');
+const floatingBox = document.getElementById('floating-box');
+const floatingCheckbox = document.getElementById('floating-checkbox');
+const overlay = document.querySelector('.overlay');
+
+const simplify = document.getElementById('simplify-mode');
+const exportxlsx = document.querySelector('.exportxlsx');
+const print = document.querySelector('.print');
+
+function hidePrintBox() {
+    if (floatingCheckbox.checked==false) {
+        floatingBox.classList.toggle('active')
+        floatingBtn.classList.toggle('active')
+        overlay.classList.toggle('active')
+    } else {
+        floatingBox.classList.remove('active')
+        floatingBtn.classList.remove('active')
+        overlay.classList.remove('active')
+    }
+}
+
+floatingBtn.addEventListener('click', hidePrintBox);
+overlay.addEventListener('click', hidePrintBox);
+
+simplify.addEventListener('click', function () {
+    document.querySelector('.main').classList.toggle('simplify')
+});
+
+print.addEventListener('click', function() {
+    window.print()
+});
+
+function exportXLSX() {
+
+    var exportTable = document.querySelector('.search-table');
+
+    if (exportTable ) {
+
+        var tableTitle = (document.querySelector('#search-result h1').innerHTML).replace(':', '');
+
+        var wb = XLSX.utils.table_to_book(exportTable, {sheet:tableTitle});
+        XLSX.writeFile(wb, tableTitle + ".xlsx");
+    
+    } else {
+        alert("Chưa có kết quả để in");
+    }
+  }
+
+exportxlsx.addEventListener('click', exportXLSX);
+

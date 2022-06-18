@@ -77,6 +77,6 @@ section5_card.forEach(item => {
 })
 
 
-document.getElementById('floating-button').addEventListener('click', function() {
+document.getElementById('scroll-button').addEventListener('click', function() {
     document.documentElement.scrollTop = 0;
 })

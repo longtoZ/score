@@ -144,12 +144,16 @@ if ($type=='table') {?>
                 labels.push(i.toString())
             }
 
+            try {
+                configChartR.type = 'bar'
+                configChartR.data.labels = labels
+                configChartR.data.datasets[0].backgroundColor = bg_nv1
+                configChartR.data.datasets[1].backgroundColor = bg_nv2
+                configChartR.data.datasets[2].backgroundColor = bg_nv3
+            } catch (e) {
 
-            configChartR.type = 'bar'
-            configChartR.data.labels = labels
-            configChartR.data.datasets[0].backgroundColor = bg_nv1
-            configChartR.data.datasets[1].backgroundColor = bg_nv2
-            configChartR.data.datasets[2].backgroundColor = bg_nv3
+            }
+
 
         </script>
 

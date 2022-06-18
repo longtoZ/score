@@ -10,6 +10,14 @@
     font-weight: 300;
 }
 
+@keyframes transitionIn {
+    from {
+        opacity: 0;
+    } to {
+        opacity: 1;
+    }
+}
+
 .red-dot {
     height: 10px;
     width: 10px;
@@ -27,7 +35,6 @@
     display: inline-block;
     border-radius: 50%;
 }
-
 
 
 .main-data-box {
@@ -73,9 +80,9 @@
 }
 
 .school-search-box i {
-    position: absolute;
-    right: 27em;
-    top: 33px;
+    position: relative;
+    right: 2.1875em;
+    top: 2.0625em;
     cursor: pointer;
 }
 
@@ -536,14 +543,6 @@
 }
 
 
-@keyframes transitionIn {
-    from {
-        opacity: 0;
-    } to {
-        opacity: 1;
-    }
-}
-
 @media only screen and (max-width: 64em) {
     .school-info div {
         flex: 40%;
@@ -567,14 +566,10 @@
         margin-top: 50px;   
     }
  
-
-
 }
 
 @media only screen and (max-width: 64em) and (min-width: 46.25em) {
-    .school-search-box i {
-        right: 14em;
-    }
+
 }
 
 @media only screen and (max-width: 46.1875em) {
@@ -587,9 +582,6 @@
         width: 100%;
     }
 
-    .school-search-box i {
-        right: 1em;
-    }
 
     .school-info div {
         margin: 20px 8px;

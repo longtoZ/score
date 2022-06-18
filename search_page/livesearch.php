@@ -96,8 +96,3 @@ if (isset($_POST['input'], $_POST['year'])) {
 }
 
 ?>
-
-<!-- SELECT `diem_chuan`.`NAM_HOC`, `truong`.`TEN_TRUONG`, `diem_chuan`.`MA_TRUONG`, `diem_chuan`.`MA_NV`, `diem_chuan`.`DIEM`
-FROM `diem_chuan` 
-LEFT OUTER JOIN `truong` on `truong`.`MA_TRUONG` = `diem_chuan`.`MA_TRUONG`
-WHERE (`truong`.`TEN_TRUONG` LIKE '%nguyen%' AND `diem_chuan`.`NAM_HOC` = 2021); -->

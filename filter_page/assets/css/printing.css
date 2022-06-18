@@ -11,37 +11,24 @@
 }
 
 @media print {
-    header, footer, #search-area, .main-title, .hide-btn, .floating-container, .title i {
+    header, footer, #search-area, .filter-box, .hide-btn, .floating-container {
         display: none !important;
         visibility: hidden !important;
     }
 
-
-    #score-area, #ratio-area, #comparision-area, #eval-area {
-        margin: 70px 0 0 0 !important;
+    .search-table * {
         box-shadow: none !important;
-        background-color: transparent !important;
-        border-radius: none !important;
-        padding: 10px 0 !important;
-        border-radius: 0px !important;
-        border-bottom: 1px dashed var(--text-color);
     }
 
-    #eval-area .eval-table  {
+    .search-table {
         margin-bottom: 0 !important;
-        padding-bottom: 80px !important;
     }
 
-
-    #ratio-area {
-        padding: 30px 0 !important;
-    }
 
     table { page-break-inside:auto }
     tr    { page-break-inside:avoid; page-break-after:auto }
     thead { display:table-header-group }
 
-     
 
     @page {
         size: A4 portrait;
