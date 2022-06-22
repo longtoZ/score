@@ -27,30 +27,57 @@
     
             $result2 = mysqli_query($con,$query2);
     
-            $count2 = 1;
-            $schools2 = array();
-            while($row2 = mysqli_fetch_assoc($result2)) {
-    
-                if ($count2 == 1) {
-                    array_push($schools2, $row2['TEN_TRUONG'], $row2['QUAN/HUYEN'], $row2['DIEM']);
-                    $count++;
-                    $count2++;
-    
-                } else if ($count2 == 2) {
-                    array_push($schools2, $row2['DIEM']);
-                    $count2++;
-    
-                } else if ($count2 == 3) {
-                    array_push($schools2, $row2['DIEM']);
-                    $count2 = 1;
+            $rawLst = array();
 
-                    if ($schools2[0] == $school) {
-                        $current = [$current_pos, $schools2];
+            while($row = mysqli_fetch_assoc($result2)) {
+                $rawLst[] = $row;
+            }
+        
+            $code = '';
+            $schools = array();
+        
+            for ($i = 0; $i < sizeof($rawLst); $i++) {
+        
+                if ($code == '') {
+        
+                    if ($i != 0) {
+                        array_push($schools, $rawLst[$i-1]['TEN_TRUONG'], $rawLst[$i-1]['QUAN/HUYEN']);
+                        $schools[2][$rawLst[$i-1]['MA_NV']] = $rawLst[$i-1]['DIEM'];
+                        $schools[2][$rawLst[$i]['MA_NV']] = $rawLst[$i]['DIEM'];
+                        $code = $rawLst[$i-1]['MA_TRUONG'];
+        
+                    } else {
+                        array_push($schools, $rawLst[$i]['TEN_TRUONG'], $rawLst[$i]['QUAN/HUYEN']);
+                        $schools[2][$rawLst[$i]['MA_NV']] = $rawLst[$i]['DIEM'];
+                        $code = $rawLst[$i]['MA_TRUONG'];
                     }
-                    array_push($datas, $schools2);
-                    $schools2 = array();
+                    
+                } else if ($rawLst[$i]['MA_TRUONG'] == $code) {
+                    $schools[2][$rawLst[$i]['MA_NV']] = $rawLst[$i]['DIEM'];
+                } else if ($rawLst[$i]['MA_TRUONG'] != $code){
+
+                    if ($schools[0] == $school) {
+                        $current = [$current_pos, $schools];
+                    }
+
+                    array_push($datas, $schools);
+                    $schools = array();
+                    $code = '';
                 }
-            }	
+        
+                if ($i == sizeof($rawLst)-1) {
+
+                    if ($schools[0] == $school) {
+                        $current = [$current_pos, $schools];
+                    }
+
+                    array_push($datas, $schools);
+                    $schools = array();
+                    $code = '';
+                }
+            }
+
+            // print_r($datas);
 
             $current_pos++;
         }
@@ -87,9 +114,9 @@
                         $stt = $key+1;
                         $schoolname = $item[0];
                         $district = $item[1];
-                        $nv1 = $item[2];
-                        $nv2 = $item[3];
-                        $nv3 = $item[4];
+                        $nv1 = $item[2]['NV1'];
+                        $nv2 = $item[2]['NV2'];
+                        $nv3 = $item[2]['NV3'];	
                         ?>
                         <tr>
                             <td><?php echo $stt; ?></td>
@@ -116,9 +143,9 @@
                         $stt = $key+1;
                         $schoolname = $item[0];
                         $district = $item[1];
-                        $nv1 = $item[2];
-                        $nv2 = $item[3];
-                        $nv3 = $item[4];
+                        $nv1 = $item[2]['NV1'];
+                        $nv2 = $item[2]['NV2'];
+                        $nv3 = $item[2]['NV3'];	
                         ?>
                         <tr>
                             <td style="color:red"><?php echo $stt; ?></td>
@@ -136,7 +163,7 @@
         </table>
 
         <div class="content" style="font-weight: 500; font-size: 110%;">
-            * Xếp hạng của trường (NV1 <?php echo $current[1][2]?>đ): <?php echo $current[0]?>/<?php echo $current_pos-1?>
+            * Xếp hạng của trường (NV1 <?php echo $current[1][2]['NV1']?>đ): <?php echo $current[0]?>/<?php echo $current_pos-1?>
         </div>
         <?php
     }

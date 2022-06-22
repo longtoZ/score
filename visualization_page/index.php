@@ -223,7 +223,7 @@
     <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-trendline"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="../expand/js/create-years.js"></script>
+    <script src="../expand/js/create-lists.js"></script>
     <script src="./js/main.js"></script>
     <script src="js/calendar.js"></script>
     <script>
@@ -297,8 +297,6 @@
                     data:{title:default_school, start: default_start, end:default_end, type:'chart'},
                     success: function(data) {
                         $('.ratio-graph').html(data);
-
-    
                     } 
                 })
 
@@ -365,7 +363,13 @@
                                 if (i.innerHTML == document.querySelector('.filter-district-select .select').innerHTML) {
                                     i.click();
                                 }
+                            }
 
+                            document.querySelector('.filter-year-select').click();
+                            for (let i of document.querySelectorAll('.filter-year-list .year')) {
+                                if (i.innerHTML.includes(default_year)) {
+                                    i.click();
+                                }
                             }
                         }
                     });
@@ -373,7 +377,7 @@
                     $.ajax({
                         url:"ratio_firgue.php",
                         method:"POST",
-                        data:{title:school_input, year:(parseFloat(default_year)-1).toString()},
+                        data:{title:school_input, year:default_year},
                         success:function(data) {
                             $('.win-ratio-graph-container').html($(data).filter('#ratioGraph'));
                             $('.win-ratio-display').html($(data).filter('#ratioFigure'));

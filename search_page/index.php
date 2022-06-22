@@ -21,16 +21,27 @@
 		<div class="input-container">
 			<input type="text" class="form-control" id="live-search" placeholder="Tìm kiếm...">
 		</div>
+
+
 		
 		<div class="dropdown">
+			<div class="school-type-container">
+				<div class="school-type-select">
+					<span class="select">Trường thường</span>
+					<i class="fi fi-rr-caret-down"></i>
+				</div>
+				<div class="school-type-list"></div>
+			</div>
+
 			<div class="dropdown-container">
 				<div class="dropdown-select">
 					<span class="select">Năm 2021</span>
 					<i class="fi fi-rr-caret-down"></i>
 				</div>
-
 				<div class="dropdown-list">
 				</div>
+			</div>
+
 			</div>
 		</div>
 
@@ -46,7 +57,7 @@
 </body>
 
 <script src="./js/main.js"></script>
-<script src="../expand/js/create-years.js"></script>
+<script src="../expand/js/create-lists.js"></script>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script>
@@ -61,18 +72,25 @@
 
 		$("#live-search").keyup(function(){
 			var year = (document.querySelector('.dropdown-select .select').innerHTML).replace("Năm ","");
+			var schoolType = (document.querySelector('.school-type-select .select').innerHTML);
+			if (schoolType=="Trường thường") {
+				schoolType = "`truong`.`MA_LOAI` = 'L02' OR `truong`.`MA_LOAI` = 'L03'"
+			} else {
+				schoolType = "`truong`.`MA_LOAI` = " + `'${schoolTypesObj[schoolType]}'` + " AND `diem_chuan`.`MA_NV` LIKE '%\\_%'"
+			}
+
 			document.querySelector('.year-chosen').innerHTML = document.querySelector('.dropdown-select .select').innerHTML;
 			var input = $(this).val();
 
 			// alert(input);
 
-			if (input != "" && document.querySelector('.dropdown-select .select').innerHTML !="Chọn năm") {
+			if (input != "") {
 				$("#search-result").css("display","flex")
 				$.ajax({
 
 					url:"livesearch.php",
 					method:"POST",
-					data:{input:input,year:year},
+					data:{input:input, year:year, schoolType:schoolType},
 					beforeSend:function() {
 						$(function(){
 							$("#search-result").load("../expand/loader.html"); 
@@ -82,11 +100,11 @@
 						$("#search-result").html(data);
 					}
 				});
-			} else if (input=="" && document.querySelector('.dropdown-select .select').innerHTML !="Chọn năm") {
+			} else if (input=="") {
 				$.ajax({
 					url:"livesearch.php",
 					method:"POST",
-					data:{input:'',year:year},
+					data:{input:'', year:year, schoolType:schoolType},
 					beforeSend:function() {
 						$(function(){
 							$("#search-result").load("../expand/loader.html"); 
@@ -96,9 +114,6 @@
 						$("#search-result").html(data);
 					}
 				});
-
-			} else if (input!="" && document.querySelector('.dropdown-select .select').innerHTML =="Chọn năm"){
-				alert("Vui lòng chọn năm!");		
 
 			} else {
 				$("#search-result").css("display","none");

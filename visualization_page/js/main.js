@@ -31,7 +31,6 @@ yearsItem.forEach((item) => {
             j.innerHTML = this.innerHTML
             for (let i of filterYearList) {
                 i.classList.remove("active");
-                console.log(i)
             }
         }
     }

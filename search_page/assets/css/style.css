@@ -20,11 +20,15 @@
     justify-content: center;
 }
 
-.form-control, .dropdown-container {
+/* .form-control, .dropdown-container {
     width: 60%;
+} */
+
+.form-control {
+    width: 50%;
 }
 
-.form-control, .dropdown-select {
+.form-control, .dropdown-select, .school-type-select {
     color: var(--text-color);
     border: none;
     outline: none;
@@ -32,17 +36,18 @@
 	padding: 8px;
     height: 50px;
     background-color: var(--fourth-primary-color);
-    box-shadow: var(--box-shadow);
+    box-shadow: var(--box-shadow-light);
     padding-left: 25px;
 }
 
-.form-control:hover, .dropdown-select:hover {
+
+/* .form-control:hover, .dropdown-select:hover, .school-type-select:hover {
     box-shadow: var(--hover-color);
     transition: ease-in-out 0.2s;
-}
+} */
 
 
-.year-chosen {
+.year-chosen, .type-chosen {
     text-align: center;
     padding: 20px;
     margin-bottom: 20px;
@@ -56,17 +61,20 @@
 }  
 
 .dropdown {
-    margin-top: 20px;
+    margin-top: 40px;
     display: flex;
     justify-content: center;
+    flex-direction: column;
+    padding: 0 25%;
 }
 
-.dropdown-container {
+.dropdown-container, .school-type-container {
     cursor: pointer;
+    margin-bottom: 15px;
 }
 
 
-.dropdown-select {
+.dropdown-select, .school-type-select {
     height: 40px;
     border-radius: 10px;
     line-height: 1.8;
@@ -78,44 +86,44 @@
     opacity: 1;
 } */
 
-.dropdown-select i {
+.dropdown-select i, .school-type-select i {
     position: absolute;
     right: 8px;
 }
 
-.dropdown-list {
+.dropdown-list, .school-type-list {
     position: relative;
     background-color: var(--fourth-primary-color);
     box-shadow: var(--box-shadow);
     margin-top: 8px;
     border-radius: 10px;
-    opacity: 0;
     transition: opacity 0.2s linear;
     overflow: hidden;
-    height: 110px;
+    height: 0px;
+    transition: all ease 0.2s;
 }
 
-.dropdown-list .year {
+.dropdown-list .year, .school-type-list .type {
     padding: 5px;
     padding-left: 25px;
 }
 
-.dropdown-list .year:hover {
+.dropdown-list .year:hover, .school-type-list .type:hover {
     background-color: var(--second-primary-color);
 }
 
-.dropdown-list.active {
-    opacity: 1;
+.dropdown-list.active, .school-type-list.active {
+    height: 110px;
     overflow-y: scroll;
 }
 
-.dropdown-list::-webkit-scrollbar {
+.dropdown-list::-webkit-scrollbar, .school-type-list::-webkit-scrollbar {
     background-color: var(--primary-color);
     width: 8px;
     border-radius: 8px;
 }
 
-.dropdown-list::-webkit-scrollbar-thumb {
+.dropdown-list::-webkit-scrollbar-thumb, .school-type-list::-webkit-scrollbar-thumb {
     background-color: var(--thumb-color);
     border-radius: 8px;
 }
@@ -126,8 +134,12 @@
 } */
 
 @media only screen and (max-width: 46.1875em) {
-    .form-control, .dropdown-container {
-        width: 80%;
+    .form-control{
+        width: 70%;
+    }
+
+    .dropdown {
+        padding: 0 15%;
     }
     
 }

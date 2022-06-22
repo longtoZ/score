@@ -7,30 +7,50 @@ $query = <<<EOD
 SELECT `truong`.`TEN_TRUONG`, `diem_chuan`.`MA_TRUONG`, `truong`.`QUAN/HUYEN`, `diem_chuan`.`MA_NV`, `diem_chuan`.`DIEM`
 FROM `diem_chuan` 
 LEFT OUTER JOIN `truong` on `truong`.`MA_TRUONG` = `diem_chuan`.`MA_TRUONG`
-WHERE `QUAN/HUYEN` LIKE '%$district%' AND `NAM_HOC` = $year
+WHERE `QUAN/HUYEN` LIKE '%$district%' AND `NAM_HOC` = $year  AND (`truong`.`MA_LOAI` = 'L02' OR `truong`.`MA_LOAI` = 'L03');
 EOD;
 
 $result = mysqli_query($con,$query);
 
 if (mysqli_num_rows($result) > 0) {
-    $datas = array();
-    $count = 1;
-    $schools = array();
+    $rawLst = array();
+
     while($row = mysqli_fetch_assoc($result)) {
+        $rawLst[] = $row;
+    }
 
-        if ($count == 1) {
-            array_push($schools, $row['TEN_TRUONG'], $row['QUAN/HUYEN'], $row['DIEM']);
-            $count++;
+    $datas = array();
+    $code = '';
+    $schools = array();
 
-        } else if ($count == 2) {
-            array_push($schools, $row['DIEM']);
-            $count++;
+    for ($i = 0; $i < sizeof($rawLst); $i++) {
 
-        } else if ($count == 3) {
-            array_push($schools, $row['DIEM']);
-            $count= 1;
+        if ($code == '') {
+
+            if ($i != 0) {
+                array_push($schools, $rawLst[$i-1]['TEN_TRUONG'], $rawLst[$i-1]['QUAN/HUYEN']);
+                $schools[2][$rawLst[$i-1]['MA_NV']] = $rawLst[$i-1]['DIEM'];
+                $schools[2][$rawLst[$i]['MA_NV']] = $rawLst[$i]['DIEM'];
+                $code = $rawLst[$i-1]['MA_TRUONG'];
+
+            } else {
+                array_push($schools, $rawLst[$i]['TEN_TRUONG'], $rawLst[$i]['QUAN/HUYEN']);
+                $schools[2][$rawLst[$i]['MA_NV']] = $rawLst[$i]['DIEM'];
+                $code = $rawLst[$i]['MA_TRUONG'];
+            }
+            
+        } else if ($rawLst[$i]['MA_TRUONG'] == $code) {
+            $schools[2][$rawLst[$i]['MA_NV']] = $rawLst[$i]['DIEM'];
+        } else if ($rawLst[$i]['MA_TRUONG'] != $code){
             array_push($datas, $schools);
             $schools = array();
+            $code = '';
+        }
+
+        if ($i == sizeof($rawLst)-1) {
+            array_push($datas, $schools);
+            $schools = array();
+            $code = '';
         }
     }
 }
@@ -70,7 +90,7 @@ if (mysqli_num_rows($result) > 0) {
         for (let i of <?php echo json_encode($datas); ?>) {
             datas_d.push(i);
             schools.push(i[0])
-            nv1.push(i[2])
+            nv1.push(i[2]['NV1'])
         }
 
         var rgb_list = [];
@@ -181,7 +201,7 @@ if (mysqli_num_rows($result) > 0) {
             school_score.className = 'school-score'
 
             school_name.innerHTML = i[0]
-            school_score.innerHTML = i[2]
+            school_score.innerHTML = i[2]['NV1']
 
             score_info.appendChild(school_name)
             score_info.appendChild(school_score)

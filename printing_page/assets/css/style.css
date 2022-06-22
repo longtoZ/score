@@ -160,13 +160,6 @@
         margin: 0 0 !important;
     }
 
-    .hide-btn {
-        width: 10%;
-    }
-
-    .hide-btn.active {
-        width: 15%;
-    }
 
     .score-range .title, .ratio-range .title {
         width: 100%;
@@ -183,6 +176,7 @@
         backdrop-filter: blur(0px);
         background-color: rgba(0,0,0,0.1);
     }
+
 }
 
 @media only screen and (max-width: 64em) {

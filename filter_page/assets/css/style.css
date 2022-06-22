@@ -33,6 +33,7 @@
     opacity: 0;
     transition: all ease 0.3s;
     pointer-events: none;
+    transition: all ease 0.3s;
 }
 
 .filter-advanced-container {
@@ -43,7 +44,6 @@
     padding: 15px;
     height: auto;
     opacity: 1;
-    transition: all ease 0.3s;
     pointer-events: auto;
 }
 
@@ -346,10 +346,6 @@
     }
 
 
-    .filter-detail-container {
-        height: 36.5em;
-    }
-
     .score-maths, .score-literature, .score-english, .score-average, 
     .filter-year-advanced-select, .filter-year-advanced-list, .filter-wish-advanced-select, .filter-wish-advanced-list {
         width: 100%;
@@ -386,12 +382,14 @@
     }
 
     .filter-year-list, .filter-district-list, .filter-year-advanced-list, .filter-wish-advanced-list {
-        opacity: 1;
-        display: none;
+        opacity: 0;
+        height: 0px;
+        transition: all ease 0.3s;
     }
 
     .filter-year-list.active, .filter-district-list.active, .filter-year-advanced-list.active, .filter-wish-advanced-list.active {
-        display: block;
+        opacity: 1;
+        height: auto;
     }
 
     .filter-tool-box {

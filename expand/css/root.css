@@ -1,7 +1,7 @@
 :root {
     --primary-color: #ffffff;
     --second-primary-color: #ffffff;
-    --third-primary-color: #f3f3f3;;
+    --third-primary-color: #f3f3f3;
     --fourth-primary-color: #ffffff;
 
     --switcher-color: #E5E5E5;
@@ -50,6 +50,7 @@
     --row-hover-color: #efe9a8;
     --divider-color: invert(0.88);
 }
+
 
 
 html {
@@ -127,9 +128,9 @@ body::-webkit-scrollbar-thumb {
     margin-top: 8px;
     border-radius: 10px;
     opacity: 0;
-    transition: opacity 0.2s linear;
+    transition: all ease 0.3s;
     overflow: hidden;
-    height: 140px;
+    height: 0px;
     pointer-events: none;
 }
 
@@ -148,6 +149,7 @@ body::-webkit-scrollbar-thumb {
 .filter-year-list.active, .filter-district-list.active, .filter-wish-list.active,
 .filter-year-advanced-list.active, .filter-wish-advanced-list.active {
     opacity: 1;
+    height: 140px;
     overflow-y: scroll;
     cursor: pointer;
     pointer-events: auto;
@@ -328,4 +330,14 @@ body::-webkit-scrollbar-thumb {
     position: relative;
     top: 4px;
     padding: 10px;
+}
+
+@media only screen and (max-width: 46.1875em) {
+    .hide-btn {
+        width: 10%;
+    }
+
+    .hide-btn.active {
+        width: 15%;
+    }
 }

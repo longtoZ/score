@@ -24,32 +24,53 @@
             SELECT `truong`.`TEN_TRUONG`, `diem_chuan`.`MA_TRUONG`, `truong`.`QUAN/HUYEN`, `diem_chuan`.`MA_NV`, `diem_chuan`.`DIEM` 
             FROM `diem_chuan` 
             LEFT OUTER JOIN `truong` on `truong`.`MA_TRUONG` = `diem_chuan`.`MA_TRUONG` 
-            WHERE (`truong`.`MA_TRUONG` = '{$row['MA_TRUONG']}' AND `diem_chuan`.`NAM_HOC` = $year)
+            WHERE (`truong`.`MA_TRUONG` = '{$row['MA_TRUONG']}' AND `diem_chuan`.`NAM_HOC` = $year AND (`truong`.`MA_LOAI` = 'L02' OR `truong`.`MA_LOAI` = 'L03'))
             EOD;
     
             $result2 = mysqli_query($con,$query2);
     
-            $count2 = 1;
-            $schools2 = array();
-            while($row2 = mysqli_fetch_assoc($result2)) {
-    
-                if ($count2 == 1) {
-                    array_push($schools2, $row2['TEN_TRUONG'], $row2['QUAN/HUYEN'], $row2['DIEM']);
-                    $count++;
-                    $count2++;
-    
-                } else if ($count2 == 2) {
-                    array_push($schools2, $row2['DIEM']);
-                    $count2++;
-    
-                } else if ($count2 == 3) {
-                    array_push($schools2, $row2['DIEM']);
-                    $count2 = 1;
+            $rawLst = array();
 
-                    array_push($datas, $schools2);
-                    $schools2 = array();
+            while($row = mysqli_fetch_assoc($result2)) {
+                $rawLst[] = $row;
+            }
+        
+            $code = '';
+            $schools = array();
+        
+            for ($i = 0; $i < sizeof($rawLst); $i++) {
+        
+                if ($code == '') {
+        
+                    if ($i != 0) {
+                        array_push($schools, $rawLst[$i-1]['TEN_TRUONG'], $rawLst[$i-1]['QUAN/HUYEN']);
+                        $schools[2][$rawLst[$i-1]['MA_NV']] = $rawLst[$i-1]['DIEM'];
+                        $schools[2][$rawLst[$i]['MA_NV']] = $rawLst[$i]['DIEM'];
+                        $code = $rawLst[$i-1]['MA_TRUONG'];
+        
+                    } else {
+                        array_push($schools, $rawLst[$i]['TEN_TRUONG'], $rawLst[$i]['QUAN/HUYEN']);
+                        $schools[2][$rawLst[$i]['MA_NV']] = $rawLst[$i]['DIEM'];
+                        $code = $rawLst[$i]['MA_TRUONG'];
+                    }
+                    
+                } else if ($rawLst[$i]['MA_TRUONG'] == $code) {
+                    $schools[2][$rawLst[$i]['MA_NV']] = $rawLst[$i]['DIEM'];
+                } else if ($rawLst[$i]['MA_TRUONG'] != $code){
+                    array_push($datas, $schools);
+                    $schools = array();
+                    $code = '';
                 }
-            }	
+        
+                if ($i == sizeof($rawLst)-1) {
+                    array_push($datas, $schools);
+                    $schools = array();
+                    $code = '';
+                }
+            }
+
+            // print_r($datas);
+            
 
         }
 
@@ -79,9 +100,9 @@
                         
                         $schoolname = $row[0];
                         $district = $row[1];
-                        $nv1 = $row[2];
-                        $nv2 = $row[3];
-                        $nv3 = $row[4];		
+                        $nv1 = $row[2]['NV1'];
+                        $nv2 = $row[2]['NV2'];
+                        $nv3 = $row[2]['NV3'];	
 
                         if ($schoolname == $school) {?>
                             <tr style="background-color: var(--row-hover-color)">
@@ -135,9 +156,9 @@
                 for (let i of <?php echo json_encode($datas); ?>) {
                     datas_d.push(i)
                     schools.push(i[0])
-                    nv1.push(i[2])
-                    nv2.push(i[3])
-                    nv3.push(i[4])
+                    nv1.push(i[2]['NV1'])
+                    nv2.push(i[2]['NV2'])
+                    nv3.push(i[2]['NV3'])
                 }
 
                 var bg_nv1 = Array(schools.length).fill(col1)
@@ -164,14 +185,14 @@
                             {
                                 label: 'NV2',
                                 data: nv2,
-                                hidden:true,
+                                hidden:false,
                                 borderRadius: defaultBorder,
                                 backgroundColor: bg_nv2
                             },
                             {
                                 label: 'NV3',
                                 data: nv3,
-                                hidden:true,
+                                hidden:false,
                                 borderRadius: defaultBorder,
                                 backgroundColor: bg_nv3
                             }

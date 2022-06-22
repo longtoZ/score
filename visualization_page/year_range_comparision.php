@@ -8,33 +8,57 @@
     SELECT `diem_chuan`.`NAM_HOC`, `truong`.`TEN_TRUONG`, `diem_chuan`.`MA_TRUONG`, `truong`.`QUAN/HUYEN`, `diem_chuan`.`MA_NV`, `diem_chuan`.`DIEM`
     FROM `diem_chuan` 
     LEFT OUTER JOIN `truong` on `truong`.`MA_TRUONG` = `diem_chuan`.`MA_TRUONG`
-    WHERE `TEN_TRUONG` LIKE '%$school%';
+    WHERE `TEN_TRUONG` LIKE '%$school%'  AND (`truong`.`MA_LOAI` = 'L02' OR `truong`.`MA_LOAI` = 'L03');
     EOD;
 
     $result = mysqli_query($con,$query);
 
     if (mysqli_num_rows($result) > 0) {
-        $datas = array();
-        $count = 1;
-        $schools = array();
-        while($row = mysqli_fetch_assoc($result)) {
+        $rawLst = array();
     
-            if ($count == 1) {
-                array_push($schools, $row['NAM_HOC'], $row['TEN_TRUONG'], $row['QUAN/HUYEN'], $row['DIEM']);
-                $count++;
-
-            } else if ($count == 2) {
-                array_push($schools, $row['DIEM']);
-                $count++;
-
-            } else if ($count == 3) {
-                array_push($schools, $row['DIEM']);
-                $count= 1;
+        while($row = mysqli_fetch_assoc($result)) {
+            $rawLst[] = $row;
+        }
+    
+        $datas = array();
+        $datas2 = array();
+        $code = '';
+        $schools = array();
+        
+        for ($i = 0; $i < sizeof($rawLst); $i++) {
+    
+            if ($code == '') {
+    
+                if ($i != 0) {
+                    array_push($schools, $rawLst[$i-1]['NAM_HOC'], $rawLst[$i-1]['TEN_TRUONG'], $rawLst[$i-1]['QUAN/HUYEN']);
+                    $schools[3][$rawLst[$i-1]['MA_NV']] = $rawLst[$i-1]['DIEM'];
+                    $schools[3][$rawLst[$i]['MA_NV']] = $rawLst[$i]['DIEM'];
+                    $code = $rawLst[$i-1]['NAM_HOC'];
+    
+                } else {
+                    array_push($schools, $rawLst[$i]['NAM_HOC'], $rawLst[$i]['TEN_TRUONG'], $rawLst[$i]['QUAN/HUYEN']);
+                    $schools[3][$rawLst[$i]['MA_NV']] = $rawLst[$i]['DIEM'];
+                    $code = $rawLst[$i]['NAM_HOC'];
+                }
+                
+            } else if ($rawLst[$i]['NAM_HOC'] == $code) {
+                $schools[3][$rawLst[$i]['MA_NV']] = $rawLst[$i]['DIEM'];
+            } else if ($rawLst[$i]['NAM_HOC'] != $code){
                 array_push($datas, $schools);
                 $schools = array();
+                $code = '';
+            }
+    
+            if ($i == sizeof($rawLst)-1) {
+                array_push($datas, $schools);
+                $schools = array();
+                $code = '';
             }
         }
-    }?>
+
+        // print_r($datas);
+    }
+        ?>
 
 
 <div id="info1">
@@ -53,21 +77,21 @@
                 if (datas[i][0] == year) {
                     if (wish == 'NV1') {
                         display_info.push(parseInt(datas[i][0]))
-                        display_info.push(datas[i][3])
+                        display_info.push(datas[i][3]['NV1'])
                         display_info.push(parseInt(datas[i-1][0]))
-                        display_info.push(datas[i-1][3])
+                        display_info.push(datas[i-1][3]['NV1'])
                         break;
                     } else if (wish == 'NV2') {
                         display_info.push(parseInt(datas[i][0]))
-                        display_info.push(datas[i][4])
+                        display_info.push(datas[i][3]['NV2'])
                         display_info.push(parseInt(datas[i-1][0]))
-                        display_info.push(datas[i-1][4])
+                        display_info.push(datas[i-1][3]['NV2'])
                         break;
                     } else if (wish == 'NV3') {
                         display_info.push(parseInt(datas[i][0]))
-                        display_info.push(datas[i][5])
+                        display_info.push(datas[i][3]['NV3'])
                         display_info.push(parseInt(datas[i-1][0]))
-                        display_info.push(datas[i-1][5])
+                        display_info.push(datas[i-1][3]['NV3'])
                         break;
                     }
                 }
@@ -122,21 +146,21 @@
                 if (datas[i][0] == year) {
                     if (wish == 'NV1') {
                         display_info.push(parseInt(datas[i][0]))
-                        display_info.push(datas[i][3])
+                        display_info.push(datas[i][3]['NV1'])
                         display_info.push(parseInt(datas[i-1][0]))
-                        display_info.push(datas[i-1][3])
+                        display_info.push(datas[i-1][3]['NV1'])
                         break;
                     } else if (wish == 'NV2') {
                         display_info.push(parseInt(datas[i][0]))
-                        display_info.push(datas[i][4])
+                        display_info.push(datas[i][3]['NV2'])
                         display_info.push(parseInt(datas[i-1][0]))
-                        display_info.push(datas[i-1][4])
+                        display_info.push(datas[i-1][3]['NV2'])
                         break;
                     } else if (wish == 'NV3') {
                         display_info.push(parseInt(datas[i][0]))
-                        display_info.push(datas[i][5])
+                        display_info.push(datas[i][3]['NV3'])
                         display_info.push(parseInt(datas[i-1][0]))
-                        display_info.push(datas[i-1][5])
+                        display_info.push(datas[i-1][3]['NV3'])
                         break;
                     }
                 }
@@ -144,7 +168,6 @@
             } catch (e) {}
         }
 
-        console.log(display_info)
 
         if (display_info[0] >= 2021) {
             document.querySelector('#info2 h2').innerHTML = 'Để đạt được: ' + display_info[1] + '/' + '30'
@@ -163,6 +186,3 @@
 
     </script>
 </div>
-
-
-
