@@ -71,10 +71,17 @@
         var year = '<?php echo $year; ?>';
         var wish = '<?php echo $wish; ?>';
         var display_info = []
+        var display_full = ['<?php echo $school; ?>']
 
         for (i=0; i <= datas.length; i++) {
             try {
                 if (datas[i][0] == year) {
+
+                    display_full.push(parseInt(datas[i][0]))
+                    display_full.push(datas[i][3]['NV1'])
+                    display_full.push(datas[i][3]['NV2'])
+                    display_full.push(datas[i][3]['NV3'])
+                    
                     if (wish == 'NV1') {
                         display_info.push(parseInt(datas[i][0]))
                         display_info.push(datas[i][3]['NV1'])

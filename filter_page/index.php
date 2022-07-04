@@ -7,7 +7,7 @@
         <link rel="stylesheet" type="text/css" href="./assets/css/style.css">
         <link rel="stylesheet" type="text/css" href="./assets/css/printing.css">
         <link rel="stylesheet" type="text/css" href="../expand/css/root.css">
-        <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-regular-rounded/css/uicons-regular-rounded.css'>
+        <link rel='stylesheet' href='../expand/css/uicons-regular-rounded.css'>
         <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-brands/css/uicons-brands.css'>
         <title>Lọc điểm</title>
     </head>
@@ -18,6 +18,16 @@
             <div id="header-container"></div>
 
             <!-- <div class="line-divider"></div> -->
+
+            <h1 class="main-title">Lọc điểm phù hợp</h1>
+            <h4 class="subtitle">
+                Bạn có thể tuỳ chỉnh các bộ lọc từ đơn giản đến chi tiết
+                để lựa chọn và xem xét trường có số điểm phù hợp với nguyện vọng
+                của mình.
+                <p style="font-weight: 400;">
+                    Chưa rõ? <a href="../docs_page/filter_page.html" target="_blank">Đọc tài liệu &rarr;</a>
+                </p>
+            </h4>
 
             <div class="filter-box">
                 <div class="filter-container">
@@ -44,7 +54,7 @@
                                 <div class="filter-year primary-margin">
                                     <h3 class="year-title">Chọn năm</h3>
                                     <div class="filter-year-select primary-box select-margin select-hover">
-                                        <span class="select">Chọn năm</span>
+                                        <span class="select">Năm 2021</span>
                                         <i class="fi fi-rr-caret-down arrow-pos"></i>
                                     </div>
 
@@ -55,7 +65,7 @@
                                 <div class="filter-district primary-margin">
                                     <h3 class="district-title">Chọn khu vực</h3>
                                     <div class="filter-district-select primary-box select-margin select-hover">
-                                        <span class="select">Chọn quận/TP</span>
+                                        <span class="select">Tất cả</span>
                                         <i class="fi fi-rr-caret-down arrow-pos"></i>
                                     </div>
 
@@ -66,7 +76,7 @@
                                 <div class="filter-wish primary-margin">
                                     <h3 class="wish-title">Chọn nguyện vọng</h3>
                                     <div class="filter-wish-select primary-box select-margin select-hover">
-                                        <span class="select">Chọn nguyện vọng</span>
+                                        <span class="select">Nguyện vọng 1</span>
                                         <i class="fi fi-rr-caret-down arrow-pos"></i>
                                     </div>
 
@@ -99,9 +109,10 @@
                                     <i class="fi fi-rr-caret-down arrow-pos"></i>
                                 </div>
 
-                                <div class="filter-year-advanced-list primary-box primary-list" style="z-index: 2">
+                                <div class="filter-year-advanced-list primary-box primary-list">
                                 </div>
                             </div>
+                            
                             <div class="filter-wish-advanced primary-margin" style="margin: 0 10px;">
                                 <h3 class="filter-between-title">Chọn nguyện vọng</h3>
                                 <div class="filter-wish-advanced-select primary-box select-margin select-hover">
@@ -109,8 +120,18 @@
                                     <i class="fi fi-rr-caret-down arrow-pos"></i>
                                 </div>
 
-                                <div class="filter-wish-advanced-list primary-box primary-list" style="z-index: 2">
+                                <div class="filter-wish-advanced-list primary-box primary-list">
                                 </div>
+                            </div>
+
+                            <div class="filter-district-advanced primary-margin"  style="margin: 0 10px;">
+                                <h3 class="filter-between-title">Chọn khu vực</h3>
+                                <div class="filter-district-advanced-select primary-box select-margin select-hover">
+                                    <span class="select">Tất cả</span>
+                                    <i class="fi fi-rr-caret-down arrow-pos"></i>
+                                </div>
+
+                                <div class="filter-district-advanced-list primary-box primary-list"></div>
                             </div>
                         </div>
                         <div class="filter-between-box" style="display:flex; justify-content: center;">
@@ -199,6 +220,8 @@
 
             $(document).on('click', '#submit', function() {
 
+                document.querySelector('.score-cal').click()
+
                 var average = parseFloat(document.querySelector('.score-average').value);
                 var year = (document.querySelector('.filter-year-select .select').innerHTML).replace("Năm ", "");
                 var district = document.querySelector('.filter-district-select .select').innerHTML;
@@ -240,6 +263,11 @@
             $(document).on('click', '.between-search', function() {
                 var year = (document.querySelector('.filter-year-advanced-select .select').innerHTML).replace('Năm ', '');
                 var wish = (document.querySelector('.filter-wish-advanced-select .select').innerHTML).replace('Nguyện vọng ', 'NV');
+                var district = document.querySelector('.filter-district-advanced-select .select').innerHTML;
+                if (district == 'Tất cả') {
+                    district = '';
+                }
+
                 var start = parseFloat(document.querySelector('.filter-between .start').value);
                 var end = parseFloat(document.querySelector('.filter-between .end').value);            
 
@@ -253,7 +281,7 @@
                         $.ajax({
                             url:"between.php",
                             method:"POST",
-                            data:{start:start, end:end, year:year, wish:wish},
+                            data:{start:start, end:end, year:year, wish:wish, district:district},
                             beforeSend:function() {
                                 $(function(){
                                     $("#search-result").load("../expand/loader.html"); 
@@ -271,7 +299,12 @@
             $(document).on('click', '.position', function(){
                 $("#search-result").css("display","flex");
                 var year = (document.querySelector('.filter-year-advanced-select .select').innerHTML).replace('Năm ', '');
-                var wish = (document.querySelector('.filter-wish-advanced-select .select').innerHTML).replace('Nguyện vọng ', 'NV');    
+                var wish = (document.querySelector('.filter-wish-advanced-select .select').innerHTML).replace('Nguyện vọng ', 'NV');
+                var district = document.querySelector('.filter-district-advanced-select .select').innerHTML;
+                if (district == 'Tất cả') {
+                    district = '';
+                }
+
                 var input = parseInt(document.querySelector('.top').value);
                 var order = "DESC"
                 if (!isNaN(input)) {
@@ -282,7 +315,7 @@
                     $.ajax({
                         url:"top.php",
                         method:"POST",
-                        data:{input:input, year:year, wish:wish, order:order},
+                        data:{input:input, year:year, wish:wish, district:district, order:order},
                         beforeSend:function() {
                             $(function(){
                                 $("#search-result").load("../expand/loader.html"); 
@@ -304,10 +337,15 @@
                 $("#search-result").css("display","flex");
                 var year = (document.querySelector('.filter-year-advanced-select .select').innerHTML).replace('Năm ', '');
                 var wish = (document.querySelector('.filter-wish-advanced-select .select').innerHTML).replace('Nguyện vọng ', 'NV');
+                var district = document.querySelector('.filter-district-advanced-select .select').innerHTML;
+                if (district == 'Tất cả') {
+                    district = '';
+                }
+
                 $.ajax({
                         url:"average.php",
                         method:"POST",
-                        data:{year:year, wish:wish, compare:'above'},
+                        data:{year:year, wish:wish, district:district, compare:'above'},
                         beforeSend:function() {
                             $(function(){
                                 $("#search-result").load("../expand/loader.html"); 
@@ -323,11 +361,16 @@
                 $("#search-result").css("display","flex");
                 var year = (document.querySelector('.filter-year-advanced-select .select').innerHTML).replace('Năm ', '');
                 var wish = (document.querySelector('.filter-wish-advanced-select .select').innerHTML).replace('Nguyện vọng ', 'NV');
+                var district = document.querySelector('.filter-district-advanced-select .select').innerHTML;
+                if (district == 'Tất cả') {
+                    district = '';
+                }
+
                 console.log([year,wish])
                 $.ajax({
                         url:"average.php",
                         method:"POST",
-                        data:{year:year, wish:wish, compare:'below'},
+                        data:{year:year, wish:wish, district:district, compare:'below'},
                         beforeSend:function() {
                             $(function(){
                                 $("#search-result").load("../expand/loader.html"); 

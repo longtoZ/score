@@ -18,6 +18,20 @@
     }
 }
 
+.main-title-1 {
+    margin-top: 190px;
+    text-align: center;
+    font-weight: 500;
+}
+
+.subtitle-1 {
+    text-align: center;
+    padding: 20px 15% 50px;
+    color: var(--text-color-light);
+    opacity: 0.7;
+    font-style: italic;
+}
+
 #main-title {
     margin: 100px 10px;
     display: flex;
@@ -38,7 +52,7 @@
 
 
 #search-area {
-    margin-top: 300px;
+    margin-top: 100px;
 }
 
 .search-box {
@@ -71,7 +85,9 @@
     box-shadow: var(--hover-color);
 }
 
-#score-area, #ratio-area, #comparision-area, #eval-area {
+#score-area, #ratio-area, 
+#comparision-area, #eval-area,
+#average-area {
     position: relative;
     display: flex;
     justify-content: center;
@@ -84,23 +100,27 @@
 }
 
 #score-area div:not(:first-child), #ratio-area div:not(:first-child), 
-#comparision-area div:not(:first-child), #eval-area div:not(:first-child) {
+#comparision-area div:not(:first-child), #eval-area div:not(:first-child),
+#average-area div:not(:first-child) {
     overflow: hidden;
     transition: all ease-in-out 0.4s;
 }
 
 #score-area .score-title, #ratio-area .ratio-title, 
-#comparision-area .comparision-title, #eval-area .eval-title {
+#comparision-area .comparision-title, #eval-area .eval-title,
+#average-area .average-title {
     font-size: 170%;
     font-weight: 500;
     text-align: center;
 }
 
-.score-range, .ratio-range, .comparision-range, .eval-range {
+.score-range, .ratio-range, 
+.comparision-range, .eval-range, .average-range {
     margin: 40px 0;
 }
 
-.score-range *, .ratio-range *, .comparision-range *, .eval-range *{
+.score-range *, .ratio-range *, 
+.comparision-range *, .eval-range *, .average-range *{
     font-size: 110%;
     font-weight: 500;
 }
@@ -112,7 +132,8 @@
     border-bottom: 2px dotted var(--green);
 }
 
-.start, .end, .start-r, .end-r, .end-c, .end-e {
+.start, .end, .start-r, .end-r, 
+.end-c, .end-e, .top-p, .end-a {
     border: none;
     outline: none;
     font-weight: bold;
@@ -145,14 +166,41 @@
     margin: 30px !important;
 }
 
+.average-range select {
+    border-radius: 8px;
+    font-size: 100%;
+    border: 2px solid var(--text-color-light);
+    background-color: transparent;
+    color: var(--text-color);
+    margin-top: 20%;
+}
+
+
+.average-range option {
+    font-size: 100%;
+    font-weight: 300;
+    background-color: var(--third-primary-color);
+    color: var(--text-color);
+}
+
+.average-range select::-webkit-scrollbar {
+    background-color: var(--primary-color);
+    width: 8px;
+    border-radius: 8px;
+}
+
+.average-range select::-webkit-scrollbar-thumb {
+    background-color: var(--thumb-color);
+    border-radius: 8px;
+}
 
 @media only screen and (max-width: 46.1875em) {
-    #score-area, #ratio-area, #comparision-area, #eval-area {
+    #score-area, #ratio-area, #comparision-area, #eval-area, #average-area {
         margin: 50px 5% 0 5%;
         padding: 30px 15px;
     }
 
-    .score-chart, .ratio-table, .comparision-table, .eval-table {
+    .score-chart, .ratio-table, .comparision-table, .eval-table, .average-table {
         overflow-x: scroll !important;
     }
 

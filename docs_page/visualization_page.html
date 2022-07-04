@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="icon" type="image/png" href="../img/logo.png">
+        <link rel="stylesheet" type="text/css" href="./assets/css/style.css">
+        <link rel="stylesheet" type="text/css" href="../expand/css/root.css">
+        <link rel='stylesheet' href='../expand/css/uicons-regular-rounded.css'>
+        <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-bold-rounded/css/uicons-bold-rounded.css'>
+        <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-brands/css/uicons-brands.css'>
+        <title>Tài liệu</title>
+    </head>
+
+    <body>
+        <div id="main">
+            <header></header>
+
+            <div class="main-container">
+                <div class="menu-container"></div>
+
+                <div class="content-container">
+
+                    <div class="admonition note">
+                        <div class="admonition__logo">
+                            <i class="fi fi-rr-info"></i>
+                            <h3>Ghi chú</h3>
+                        </div>
+                        <div class="admonition__content">
+                            <p>
+                                Tại trang <a href="../visualization_page/">Thống kê</a>, người dùng chỉ cần tra cứu
+                                duy nhất một tên trường, hệ thống sẽ tự động lọc ra và trình bày những số liệu chi tiết 
+                                về trường được tìm dưới nhiều dạng biểu đồ khác nhau.
+                            </p>
+                        </div>
+                    </div>
+
+                    <section id="year-range">
+                        <h2>
+                            Biểu đồ dãy năm
+                            <a href="#year-range" class="headerlink">¶</a>
+                        </h2>
+
+                        <p>
+                            Phần này sẽ hiển thị <b>điểm nguyện vọng 1, 2, 3</b> qua các năm dưới 
+                            dạng <b>biểu đồ cột</b> (<i>một năm gồm 3 cột tương ứng với 3 nguyện vọng</i>).
+                        </p>
+
+                        <h3>- Thay đổi dãy năm (<i>từ năm... đến năm...</i>) ở góc trên bên phải của thẻ:</h3>
+                        <img src="./assets/img/visual_page_01.png" alt="01">
+                        <img src="./assets/img/visual_page_02.png" alt="01">
+
+                        <h3 style="margin: 50px 0 30px 0;">- Ẩn/Hiện nguyện vọng: </h3>
+                        <p>Hệ thống sẽ tự căn chỉnh khoảng cách và độ rộng các cột để phù hợp với giao diện người dùng.</p>
+                        <img src="./assets/img/visual_page_03.png" alt="01">
+                        <img src="./assets/img/visual_page_04.png" alt="01">
+
+                        <h3 style="margin: 50px 0 30px 0;">- Chuyển dạng biểu đồ (cột và đường): </h3>
+                        <p>Đễ dàng xem được sự biến động của điểm số qua các năm hơn.</p>
+                        <img src="./assets/img/visual_page_05.png" alt="01">
+
+                        <h3 style="margin: 50px 0 30px 0;">- Thay đổi số liệu hiển thị (theo điểm hoặc phần trăm)</h3>
+                        <p>
+                            Vì lí do điểm từ năm 2021 trở đi sẽ b <b>không còn được nhân hệ số</b>, nên chúng tôi đã đưa ra giải 
+                            pháp so sánh bằng cách hiển thị theo <b>phần trăm</b> nhằm giúp cho người dùng có đánh giá 
+                            chính xác hơn.
+                        </p>
+                        <img src="./assets/img/visual_page_06.png" alt="01">
+                        <img src="./assets/img/visual_page_07.png" alt="01">
+
+                        <h3 style="margin: 50px 0 30px 0;">- So sánh số liệu với năm trước đó:</h3>
+                        <p>
+                            Với chức năng này, người dùng có thể xem được:
+                            <ul>
+                                <li>Điểm nguyện vọng của năm hiện tại và năm trước đó</li>
+                                <li>So sánh tăng hay giảm bao nhiêu phần trăm so với năm trước</li>
+                                <li>Đề xuất điểm từng môn để đạt được chỉ tiêu (<i>xem thêm tại <a href="./filter_page.html#basic-filter">Lọc điểm cơ bản)</a></i></li>
+                            </ul>
+                        </p>
+                        <img src="./assets/img/visual_page_08.png" alt="01" style="width: 48%; float: left">
+                        <img src="./assets/img/visual_page_09.png" alt="01" style="width: 48%; float: right">
+                    </section>
+
+                    <section id="win-ratio">
+                        <h2>
+                            Tỉ lệ chọi
+                            <a href="#win-ratio" class="headerlink">¶</a>
+                        </h2>
+
+                        <p>
+                            Tỉ lệ chọi được hiển thị thành 2 thẻ: <b>bên trái</b> biểu thị <b>chỉ tiêu, nguyện vọng
+                            và tỉ lệ chọi</b> trong 1 năm và so sánh với năm trước đó; <b>bên phải</b> là biểu đồ 
+                            kết hợp <b>đường và cột chồng</b> trình bày số liệu qua các năm (<i>tương tự dãy năm ở trên</i>).
+                        </p>
+
+                        <div class="admonition note">
+                            <div class="admonition__logo">
+                                <i class="fi fi-rr-info"></i>
+                                <h3>Ghi chú</h3>
+                            </div>
+                            <div class="admonition__content">
+                                <p>
+                                    Các chức năng như <b>thay đổi dãy năm, ẩn/hiện thành phần</b> đều hoạt động giống như đề cập 
+                                    ở <a href="#year-range">trên</a>.
+                                </p>
+                            </div>
+                        </div>
+
+                        <img src="./assets/img/visual_page_10.png" alt="01">
+                    </section>
+
+                    <section id="school-comparision">
+                        <h2>
+                            Trường cùng khu vực
+                            <a href="#school-comparision" class="headerlink">¶</a>
+                        </h2>
+                        <p>
+                            Khi người dùng tìm kiếm một trường, hệ thống tự động định vị <b>khu vực</b> 
+                            của trường đó và so sánh với các trường cùng khu vực dưới dạng <b>biểu đồ cột</b> 
+                            (bên trái) và một số tuỳ chỉnh <b>năm và khu vực</b> (bên phải).
+                        </p>
+
+                        <img src="./assets/img/visual_page_11.png" alt="01">
+
+                    </section>
+
+                    <section id="group-comparision">
+                        <h2>
+                            Trường với số điểm ngang nhau
+                            <a href="#group-comparision" class="headerlink">¶</a>
+                        </h2>
+
+                        <p>
+                            Đây là một tính năng mới được thêm vào <b>Score</b>, nó sẽ tự động
+                            lọc ra các trường có số điểm tương đương nhau (<i>các năm trước 2021 
+                            độ chênh lệch là &#177; 1 điểm, từ năm 2021 trở đi là &#177; 0.5 điểm</i>).
+                        </p>
+
+                        <div class="admonition note">
+                            <div class="admonition__logo">
+                                <i class="fi fi-rr-info"></i>
+                                <h3>Ghi chú</h3>
+                            </div>
+                            <div class="admonition__content">
+                                <p>
+                                    Bố cục hiển thị được thiết kế giống với phần <a href="#school-comparision">Trường trong khu vực</a> ở trên.
+                                </p>
+                            </div>
+                        </div>
+
+                        <img src="./assets/img/visual_page_12.png" alt="01">
+
+                    </section>
+
+                    <section id="links">
+                        <h2>
+                            Liên kết
+                            <a href="#links" class="headerlink">¶</a>
+                        </h2>
+                        <p>
+                            Người dùng có thể ghé qua <b>trang thông tin chính</b> của trường 
+                            hoặc <b>fanpage (nếu có)</b> để cập nhật những thông tin mới nhất.
+                        </p>
+
+                        <img src="./assets/img/visual_page_13.png" alt="01">
+                    </section>
+                </div>
+            </div>
+
+            <div id="scroll-button">
+                <i class="fi fi-br-angle-up"></i>
+            </div>
+
+            <footer></footer>
+        </div>
+    </body>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script type="text/javascript" src="./js/main.js"></script>
+    <script type="text/javascript" src="../expand/js/hide-nav.js"></script>
+    <script>
+        $(function(){
+            $(".menu-container").load("../expand/menu.html");
+            $("header").load("../expand/mini-header.html"); 
+            $("footer").load("../expand/mini-footer.html");  
+        });
+    </script>
+</html>

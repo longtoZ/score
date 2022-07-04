@@ -458,32 +458,6 @@ ul * {
     text-decoration: none;
 }
 
-#scroll-button {
-    position: fixed;
-    bottom: 30px;
-    right: 30px;
-    background-color: #00d3a8;
-    border-radius: 50%;
-    width: 60px;
-    height: 60px;
-    box-shadow: 0 0 15px rgba(0, 211, 168, 50%);
-    cursor: pointer;
-    transition: all ease 0.2s;
-    z-index: 3;
-}
-
-#scroll-button:hover {
-    filter: brightness(96%);
-}
-
-#scroll-button i {
-    position: absolute;
-    left: 50%;
-    transform: translate(-50%, 50%);
-    font-size: 130%;
-    color: white;
-    pointer-events: none;
-}
 
 @media only screen and (max-width:64em) {
     .section2 .content .part {

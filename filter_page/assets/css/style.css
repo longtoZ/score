@@ -17,6 +17,20 @@
     }
 }
 
+.main-title {
+    margin-top: 190px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.subtitle {
+    text-align: center;
+    padding: 20px 15% 50px;
+    color: var(--text-color-light);
+    opacity: 0.7;
+    font-style: italic;
+}
+
 .filter-box {
     display: flex;
     justify-content: center;
@@ -90,7 +104,7 @@
 
 
 .filter-container {
-    margin-top: 120px;
+    margin-top: 20px;
     display: block;
     width: 75%;
 }
@@ -205,17 +219,20 @@
 }
 
 
-.filter-year-advanced, .filter-wish-advanced {
+.filter-year-advanced, .filter-wish-advanced, .filter-district-advanced {
     margin-top: 0px;
     padding: 0;
 }
 
 
-.filter-year-advanced-select, .filter-year-advanced-list, .filter-wish-advanced-select, .filter-wish-advanced-list {
+.filter-year-advanced-select, .filter-year-advanced-list, 
+.filter-wish-advanced-select, .filter-wish-advanced-list,
+.filter-district-advanced-select, .filter-district-advanced-list {
     margin-right: 10px;
 }
 
-.filter-year-advanced-select, .filter-wish-advanced-select {
+.filter-year-advanced-select, .filter-wish-advanced-select, 
+.filter-district-advanced-select {
     margin-top: 0px;
 }
 
@@ -381,13 +398,17 @@
         margin-right: 0;
     }
 
-    .filter-year-list, .filter-district-list, .filter-year-advanced-list, .filter-wish-advanced-list {
+    .filter-year-list, .filter-district-list, 
+    .filter-year-advanced-list, .filter-wish-advanced-list,
+    .filter-district-advanced-list {
         opacity: 0;
         height: 0px;
         transition: all ease 0.3s;
     }
 
-    .filter-year-list.active, .filter-district-list.active, .filter-year-advanced-list.active, .filter-wish-advanced-list.active {
+    .filter-year-list.active, .filter-district-list.active, 
+    .filter-year-advanced-list.active, .filter-wish-advanced-list.active,
+    .filter-district-advanced-list.active {
         opacity: 1;
         height: auto;
     }

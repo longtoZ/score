@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="icon" type="image/png" href="../img/logo.png">
+        <link rel="stylesheet" type="text/css" href="./assets/css/style.css">
+        <link rel="stylesheet" type="text/css" href="../expand/css/root.css">
+        <link rel='stylesheet' href='../expand/css/uicons-regular-rounded.css'>
+        <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-bold-rounded/css/uicons-bold-rounded.css'>
+        <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-brands/css/uicons-brands.css'>
+        <title>Tài liệu</title>
+    </head>
+
+    <body>
+        <div id="main">
+            <header>
+
+            </header>
+
+            <div class="main-container">
+                <div class="menu-container"></div>
+
+                <div class="content-container">
+                    <section id="basic-search">
+                        <h2>
+                            Tìm trường cơ bản
+                            <a href="#basic-search" class="headerlink">¶</a>
+                        </h2>
+
+                        <div class="admonition note">
+                            <div class="admonition__logo">
+                                <i class="fi fi-rr-info"></i>
+                                <h3>Ghi chú</h3>
+                            </div>
+                            <div class="admonition__content">
+                                <p>
+                                    Hiện tại tính <b>Score</b> chỉ hỗ trợ tra cứu điểm chuyên trên trang <a href="../search_page/">Tìm trường</a>. 
+                                    Những trang còn lại sẽ được bổ sung tính năng này sớm nhất có thể.
+                                </p>
+                            </div>
+                        </div>
+
+                        <p>
+                            Đây là trang đầu tiên được xây dựng của dự án, phục vụ mục
+                            đích hiển thị điểm theo tên trường được tìm kiếm, bao gồm điểm
+                            <b>nguyên vọng 1, 2, 3</b> và <b>nguyện vọng chuyên</b>
+                        </p>
+
+                        <br>                           
+
+                        <img src="./assets/img/search_page_01.png" alt="01">
+
+                        <p>
+                            Khi nhập tên trường, bảng điểm sẽ tự động hiển thị trực tiếp. 
+                            Người dùng không cần ấn bất kì nút <b>tìm kiếm nào</b> (như hình bên dưới)
+                        </p>
+
+                        <img src="./assets/img/search_page_02.png" alt="01">
+                    </section>
+
+                    <section id="basic-search-detail">
+                        <h2>
+                            Điểm thường và chuyên
+                            <a href="#basic-search-detail" class="headerlink">¶</a>
+                        </h2>
+
+                        <p>
+                            Hiển thị giữa <b>loại thường</b> và <b>loại chuyên, tích hợp</b> có sự khác nhau nhất định.
+                            Vì <b>điểm nguyện vọng chuyên</b> của các trường khác nhau tuỳ thuộc vào số lượng môn, nên
+                            thay vì phân loại điểm <b>theo cột</b>, hệ thống sẽ phân loại <b>theo hàng</b> (như hình bên dưới).
+                        </p>
+
+                        <h3 class="bigger-1">- Loại thường:</h3>
+
+                        <img src="./assets/img/search_page_03.png" alt="01">
+
+                        <h3 class="bigger-1" style="margin-top: 50px;">- Loại chuyên, tích hợp:</h3>
+
+                        <img src="./assets/img/search_page_04.png" alt="01">
+                    </section>
+                </div>
+            </div>
+
+            <div id="scroll-button">
+                <i class="fi fi-br-angle-up"></i>
+            </div>
+
+            <footer>
+                
+            </footer>
+        </div>
+    </body>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script type="text/javascript" src="./js/main.js"></script>
+    <script type="text/javascript" src="../expand/js/hide-nav.js"></script>
+    <script>
+        $(function(){
+            $(".menu-container").load("../expand/menu.html");
+            $("header").load("../expand/mini-header.html"); 
+            $("footer").load("../expand/mini-footer.html");  
+        });
+    </script>
+</html>

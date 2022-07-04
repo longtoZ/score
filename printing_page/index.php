@@ -7,7 +7,7 @@
         <link rel="stylesheet" type="text/css" href="./assets/css/style.css">
         <link rel="stylesheet" type="text/css" href="../expand/css/root.css">
         <link rel="stylesheet" type="text/css" href="./assets/css/printing.css" media="print">
-        <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-regular-rounded/css/uicons-regular-rounded.css'>
+        <link rel='stylesheet' href='../expand/css/uicons-regular-rounded.css'>
         <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-solid-straight/css/uicons-solid-straight.css'>
         <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-solid-rounded/css/uicons-solid-rounded.css'>
         <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-bold-rounded/css/uicons-bold-rounded.css'>
@@ -20,6 +20,14 @@
         <div class="main">
 
             <div id="header-container"></div>
+
+            <h1 class="main-title-1">Tổng hợp và xuất dữ liệu</h1>
+            <h4 class="subtitle-1">
+                Một vài bước chuẩn bị trước khi bạn quyết định lưu những gì cần thiết.
+                <p style="font-weight: 400;">
+                    Chưa rõ? <a href="../docs_page/printing_page.html" target="_blank">Đọc tài liệu &rarr;</a>
+                </p>
+            </h4>
 
             <div id="search-area">
                 <div class="search-box" style="display:flex; justify-content:center">
@@ -100,13 +108,48 @@
                     <i class="open fi fi-br-check"></i>
                 </label>
                 <div class="eval-range">
-                    <div class="title" style="float:left;">Chọn năm</div>
-                    <div class="range" style="float:right;">
+                    <div class="title" style="float:left;">
+                        Chọn năm
+                        <br>
+                        Chọn top
+                    </div>
+                    <div class="range" style="float:left; padding-left:30px">
                         <span class="green-dot"></span>
                         <input class="end-e" value="2021" type="number" min="2015"></input>
+                        <br>
+                        <span class="red-dot"></span>
+                        <input class="top-p" value="5" type="number" min="1"></input>
                     </div>
                 </div>
                 <div class="eval-table"></div>
+            </div>
+
+            <div id="average-area">
+                <div class="average-title">Điểm trung bình</div>
+                <label class="hide-btn" for="sec5">
+                    <i class="close fi fi-br-cross"></i>
+                    <i class="open fi fi-br-check"></i>
+                </label>
+                <div class="average-range">
+                    <div class="title" style="float:left;">
+                        Chọn năm
+                        <br>
+                        <br>
+                        Chọn khu vực
+                        <!-- <i class="fi fi-rr-shuffle"></i> -->
+                    </div>
+                    <div class="range" style="float:right;">
+                        <span class="green-dot"></span>
+                        <input class="end-a" value="2021" type="number" min="2015"></input>
+                        <br>
+                        <select class="district-list">
+                            <option>Tất cả</option>
+                            <option>Trong khu vực</option>
+                        </select>
+                    </div>
+
+                </div>
+                <div class="average-table"></div>
             </div>
 
             <div class="floating-container">
@@ -127,7 +170,11 @@
                     </div>
                     <div class="section4">
                         <input type="checkbox" id="sec4" value="" checked>
-                        <label for="sec4">Đánh giá</label>
+                        <label for="sec4">Xếp hạng</label>
+                    </div>
+                    <div class="section5">
+                        <input type="checkbox" id="sec5" value="" checked>
+                        <label for="sec5">Điểm trung bình</label>
                     </div>
                     <div class="simplify" style="border-top: 1px solid var(--text-color); padding-top: 15px;">
                         <input type="checkbox" id="simplify-mode" value="">
@@ -166,7 +213,8 @@
             });
     </script>
 
-<script src="https://cdn.sheetjs.com/xlsx-latest/package/dist/xlsx.full.min.js"></script>
+    <script src="https://cdn.sheetjs.com/xlsx-latest/package/dist/xlsx.full.min.js"></script>
+    <script type="text/javascript" src="../expand/js/create-lists.js"></script>
     <script src="./js/main.js"></script>
     
 
@@ -178,8 +226,9 @@
         const default_school = document.querySelector('.school-title').innerHTML;
         const default_district = document.querySelector('.school-area').innerHTML;
         
-        var year_start = document.querySelector('.start').value
-        var year_end = document.querySelector('.end').value
+        const year_start = document.querySelector('.start').value
+        const year_end = document.querySelector('.end').value
+        const default_top = parseInt(document.querySelector('.top-p').value)
 
         for (let i of document.querySelectorAll('.filter-year-select .select')) {
             i.innerHTML = "Năm " + default_year;
@@ -228,11 +277,21 @@
                 $.ajax({
                     url:"school_eval.php",
                     method:"POST",
-                    data:{year:year_end, school:default_school},
+                    data:{year:year_end, top:default_top, school:default_school},
                     success:function(data) {
                         $('.eval-table').html(data);
+
+                        $.ajax({
+                            url:"average.php",
+                            method:"POST",
+                            data:{school:default_school, year:year_end, district: ''},
+                            success: function (data) {
+                                $(".average-table").html(data);
+                            }
+                        });
                     }
                 });
+
             }
 
             window.onload = showOnLoad();
@@ -246,6 +305,9 @@
                     document.querySelector('.start-r').value = default_start
                     document.querySelector('.end-r').value = default_end
                     document.querySelector('.end-c').value = default_end
+                    document.querySelector('.top-p').value = default_top.toString()
+                    document.querySelector('.end-a').value = default_end
+                    document.querySelector('.district-list').value = 'Tất cả'
 
                     var school_input = document.querySelector('.school-search').value;
 
@@ -257,12 +319,15 @@
                             data:{title:school_input, start:year_start, end:year_end, type:'table'},
                             success:function(data) {
                                 $('.score-chart').html(data);
+
+                                school_input = document.querySelector('.school-title').innerHTML
+
                                 $.ajax({
                                     url:"school_list.php",
                                     method:"POST",
                                     data:{year:year_end, 
                                         district:document.querySelector('.school-area').innerHTML, 
-                                        school:document.querySelector('.school-title').innerHTML,
+                                        school:school_input,
                                         type:'table'},
                                     success:function(data) {
                                         $('.comparision-table').html(data);
@@ -272,9 +337,18 @@
                                 $.ajax({
                                     url:"school_eval.php",
                                     method:"POST",
-                                    data:{year:year_end, school:document.querySelector('.school-title').innerHTML},
+                                    data:{year:year_end, top:default_top, school:school_input},
                                     success:function(data) {
                                         $('.eval-table').html(data);
+
+                                        $.ajax({
+                                            url:"average.php",
+                                            method:"POST",
+                                            data:{school:school_input, year:year_end, district: ''},
+                                            success: function (data) {
+                                                $(".average-table").html(data);
+                                            }
+                                        });
                                     }
                                 });
                             }
@@ -381,18 +455,42 @@
                     if (school_input == '') { school_input = default_school }
 
                     var end_e = parseInt(document.querySelector('.end-e').value);
+                    var top_p = parseInt(document.querySelector('.top-p').value);
 
                     $.ajax({
                         url:"school_eval.php",
                         method:"POST",
-                        data:{year:end_e, 
+                        data:{year:end_e,
+                            top:top_p, 
                             school:school_input},
                         success:function(data) {
                             $('.eval-table').html(data);
                         }
                     });
                             
-            
+                }
+
+                function yearRangeChangeA() {
+                    var school_input = document.querySelector('.school-title').innerHTML
+                    if (school_input == '') { school_input = default_school }
+
+                    var end_a = parseInt(document.querySelector('.end-a').value);
+                    var district_a = document.querySelector('.district-list').value;
+
+                    if (district_a == "Tất cả") {
+                        district_a = ""
+                    } else {
+                        district_a = document.querySelector('.school-area').innerHTML
+                    }
+
+                    $.ajax({
+                        url:"average.php",
+                        method:"POST",
+                        data:{school:school_input, year:end_a, district: district_a},
+                        success: function (data) {
+                            $(".average-table").html(data);
+                        }
+                    });
                 }
                 
                 
@@ -405,10 +503,12 @@
                 $('.end-c').on('change', yearRangeChangeC);
 
                 $('.end-e').on('change', yearRangeChangeE);
+                $('.top-p').on('change', yearRangeChangeE);
+
+                $('.end-a').on('change', yearRangeChangeA);
+                $('.district-list').on('change', yearRangeChangeA);
+
             });
-
-
-
 
         });
 

@@ -7,7 +7,8 @@ $query = <<<EOD
 SELECT `truong`.`TEN_TRUONG`, `diem_chuan`.`MA_TRUONG`, `truong`.`QUAN/HUYEN`, `diem_chuan`.`MA_NV`, `diem_chuan`.`DIEM`
 FROM `diem_chuan` 
 LEFT OUTER JOIN `truong` on `truong`.`MA_TRUONG` = `diem_chuan`.`MA_TRUONG`
-WHERE `QUAN/HUYEN` LIKE '%$district%' AND `NAM_HOC` = $year  AND (`truong`.`MA_LOAI` = 'L02' OR `truong`.`MA_LOAI` = 'L03');
+WHERE `QUAN/HUYEN` LIKE '%$district%' AND `NAM_HOC` = $year  
+AND (`truong`.`MA_LOAI` = 'L02' OR `truong`.`MA_LOAI` = 'L03');
 EOD;
 
 $result = mysqli_query($con,$query);
@@ -133,6 +134,9 @@ if (mysqli_num_rows($result) > 0) {
                             display: true,
                             text: 'Trường',
                             color: textColor
+                        },
+                        grid: {
+                            display: false
                         }
                     },
                     y: {

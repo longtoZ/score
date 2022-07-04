@@ -80,15 +80,15 @@
             
             <script src="./js/sort.js"></script>
 
-            <table class="search-table" id="search-table-area">
+            <table class="search-table" id="search-table-school-list">
                 <thead>
                     <tr>
                         <th>STT</th>
                         <th>TÊN TRƯỜNG</th>
                         <th>TÊN QUẬN</th>
-                        <th onclick="sortTable(3)">ĐIỂM NV1  ⇩</th>
-                        <th onclick="sortTable(4)">ĐIỂM NV2  ⇩</th>
-                        <th onclick="sortTable(5)">ĐIỂM NV3  ⇩</th>
+                        <th onclick="sortTable(3, 'search-table-school-list')">ĐIỂM NV1  ⇩</th>
+                        <th onclick="sortTable(4, 'search-table-school-list')">ĐIỂM NV2  ⇩</th>
+                        <th onclick="sortTable(5, 'search-table-school-list')">ĐIỂM NV3  ⇩</th>
                     </tr>
                 </thead>
         
@@ -106,7 +106,7 @@
 
                         if ($schoolname == $school) {?>
                             <tr style="background-color: var(--row-hover-color)">
-                                <td style="font-weight: 500;"><?php echo $stt; ?></td>
+                                <td style="font-weight: bold;"><?php echo $stt; ?></td>
                                 <td style="font-weight: 500;"><?php echo $schoolname; ?></td>
                                 <td style="font-weight: 500;"><?php echo $district; ?></td>
                                 <td style="font-weight: 500;"><?php echo $nv1; ?></td>

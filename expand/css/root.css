@@ -3,6 +3,7 @@
     --second-primary-color: #ffffff;
     --third-primary-color: #f3f3f3;
     --fourth-primary-color: #ffffff;
+    --fifth-primary-color: #ffffff;
 
     --switcher-color: #E5E5E5;
     --header-color: #ffffff;
@@ -23,6 +24,8 @@
     --orange: #df7b00;
     --darker-green: #00856a;
     --divider-color: invert(0);
+
+    --link-text: #3399ff;
 }
 
 .dark-mode {
@@ -30,6 +33,7 @@
     --second-primary-color:	#252526;
     --third-primary-color: #2d2d30;
     --fourth-primary-color: #3e3e42;
+    --fifth-primary-color: #252526;
 
     --header-color: #262626;
     --switcher-color: #2d2d30;
@@ -135,19 +139,22 @@ body::-webkit-scrollbar-thumb {
 }
 
 .filter-year-list .year, .filter-district-list .district, .filter-wish-list .wish,
-.filter-year-advanced-list .year, .filter-wish-advanced-list .wish{
+.filter-year-advanced-list .year, .filter-wish-advanced-list .wish,
+.filter-district-advanced-list .district{
     padding: 5px;
     padding-left: 20px;
 }
 
 .filter-year-list .year:hover, .filter-district-list .district:hover, .filter-wish-list .wish:hover,
-.filter-year-advanced-list .year:hover, .filter-wish-advanced-list .wish:hover {
+.filter-year-advanced-list .year:hover, .filter-wish-advanced-list .wish:hover,
+.filter-district-list .district:hover {
     background-color: var(--third-primary-color);
     background-clip: border-box;
 }
 
 .filter-year-list.active, .filter-district-list.active, .filter-wish-list.active,
-.filter-year-advanced-list.active, .filter-wish-advanced-list.active {
+.filter-year-advanced-list.active, .filter-wish-advanced-list.active,
+.filter-district-advanced-list.active {
     opacity: 1;
     height: 140px;
     overflow-y: scroll;
@@ -156,14 +163,16 @@ body::-webkit-scrollbar-thumb {
 }
 
 .filter-year-list::-webkit-scrollbar, .filter-district-list::-webkit-scrollbar, .filter-wish-list::-webkit-scrollbar,
-.filter-year-advanced-list::-webkit-scrollbar, .filter-wish-advanced-list::-webkit-scrollbar {
+.filter-year-advanced-list::-webkit-scrollbar, .filter-wish-advanced-list::-webkit-scrollbar,
+.filter-district-advanced-list::-webkit-scrollbar {
     background-color: var(--fourth-primary-color);
     width: 8px;
     border-radius: 8px;
 }
 
 .filter-year-list::-webkit-scrollbar-thumb, .filter-district-list::-webkit-scrollbar-thumb, .filter-wish-list::-webkit-scrollbar-thumb,
-.filter-year-advanced-list::-webkit-scrollbar-thumb, .filter-wish-advanced-list::-webkit-scrollbar-thumb {
+.filter-year-advanced-list::-webkit-scrollbar-thumb, .filter-wish-advanced-list::-webkit-scrollbar-thumb,
+.filter-district-advanced-list::-webkit-scrollbar-thumb{
     background-color:var(--thumb-color);
     border-radius: 8px;
 }
@@ -307,7 +316,6 @@ body::-webkit-scrollbar-thumb {
     display: block;
 }
 
-
 .main.simplify table *{
     background-color: transparent !important;
     color: var(--text-color) !important;
@@ -331,6 +339,34 @@ body::-webkit-scrollbar-thumb {
     top: 4px;
     padding: 10px;
 }
+
+#scroll-button {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background-color: #00d3a8;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    box-shadow: 0 0 15px rgba(0, 211, 168, 50%);
+    cursor: pointer;
+    transition: all ease 0.2s;
+    z-index: 3;
+}
+
+#scroll-button:hover {
+    filter: brightness(96%);
+}
+
+#scroll-button i {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, 50%);
+    font-size: 130%;
+    color: white;
+    pointer-events: none;
+}
+
 
 @media only screen and (max-width: 46.1875em) {
     .hide-btn {

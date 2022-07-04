@@ -7,16 +7,17 @@ for (let i of yearsList) {
     item.innerHTML = "Năm " + i.toString()
 
     document.querySelector('.filter-year-list').appendChild(item)
-}
-
-for (let i of yearsList) {
-    var item = document.createElement('div')
-    
-    item.className = "year"
-    item.innerHTML = "Năm " + i.toString()
-
     document.querySelector('.filter-year-advanced-list').appendChild(item)
 }
+
+// for (let i of yearsList) {
+//     var item = document.createElement('div')
+    
+//     item.className = "year"
+//     item.innerHTML = "Năm " + i.toString()
+
+    
+// }
 
 for (let i of districtsList) {
     var item = document.createElement('div')
@@ -25,6 +26,7 @@ for (let i of districtsList) {
     item.innerHTML = i.toString()
 
     document.querySelector('.filter-district-list').appendChild(item)
+    document.querySelector('.filter-district-advanced-list').appendChild(item)
 }
 
 for (let i of wishsList) {
@@ -34,16 +36,17 @@ for (let i of wishsList) {
     item.innerHTML = i.toString()
 
     document.querySelector('.filter-wish-list').appendChild(item)
-}
-
-for (let i of wishsList) {
-    var item = document.createElement('div')
-    
-    item.className = "wish"
-    item.innerHTML = i.toString()
-
     document.querySelector('.filter-wish-advanced-list').appendChild(item)
 }
+
+// for (let i of wishsList) {
+//     var item = document.createElement('div')
+    
+//     item.className = "wish"
+//     item.innerHTML = i.toString()
+
+    
+// }
 
 
 const yearSelected = document.querySelector(".filter-year-select");
@@ -61,7 +64,10 @@ const filterYearAdvancedList = document.querySelector(".filter-year-advanced-lis
 const yearsAdvancedItem = document.querySelectorAll('.filter-year-advanced-list .year');
 const wishAdvancedSelected = document.querySelector(".filter-wish-advanced-select");
 const filterWishAdvancedList = document.querySelector(".filter-wish-advanced-list");
-const wishsAdvancedItem = document.querySelectorAll('.filter-wish-advanced-list .wish')
+const wishsAdvancedItem = document.querySelectorAll('.filter-wish-advanced-list .wish');
+const districtAdvancedSelected = document.querySelector(".filter-district-advanced-select");
+const filterDistrictAdvancedList = document.querySelector(".filter-district-advanced-list");
+const districtsAdvancedItem = document.querySelectorAll('.filter-district-advanced-list .district');
 
 yearsItem.forEach((item) => {
     item.onclick = function() {
@@ -116,6 +122,17 @@ wishsAdvancedItem.forEach((item) => {
 
 wishAdvancedSelected.onclick = function() {
     filterWishAdvancedList.classList.toggle("active");
+}
+
+districtsAdvancedItem.forEach((item) => {
+    item.onclick = function() {
+        document.querySelector('.filter-district-advanced-select .select').innerHTML = this.innerHTML;
+        filterDistrictAdvancedList.classList.remove("active");
+    }
+});
+
+districtAdvancedSelected.onclick = function() {
+    filterDistrictAdvancedList.classList.toggle("active");
 }
 
 

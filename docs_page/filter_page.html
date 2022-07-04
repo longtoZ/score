@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="icon" type="image/png" href="../img/logo.png">
+        <link rel="stylesheet" type="text/css" href="./assets/css/style.css">
+        <link rel="stylesheet" type="text/css" href="../expand/css/root.css">
+        <link rel='stylesheet' href='../expand/css/uicons-regular-rounded.css'>
+        <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-bold-rounded/css/uicons-bold-rounded.css'>
+        <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-brands/css/uicons-brands.css'>
+        <title>Tài liệu</title>
+    </head>
+
+    <body>
+        <div id="main">
+            <header></header>
+
+            <div class="main-container">
+                <div class="menu-container"></div>
+
+                <div class="content-container">
+                    <section id="basic-filter">
+                        <h2>
+                            Lọc điểm cơ bản
+                            <a href="#basic-filter" class="headerlink">¶</a>
+                        </h2>
+
+                        <p>
+                            Tại phần này <b>cơ bản</b>, người dùng được yêu cầu nhập điểm <b>Toán, Văn, Anh</b> tuỳ ý
+                            và chọn <b>năm, khu vực, nguyện vọng</b> (hoặc để theo mặc định). Sau đó hệ thống sẽ tự
+                            động tính điểm nguyện vọng và đề xuất các trường phù hợp với tiêu chí đó.
+                        </p>
+
+                        <img src="./assets/img/filter_page_01.png" alt="01">
+
+                        <h3 class="bigger-1">- Sau khi nhập đầy đủ, kết quả hiển thị như hình bên dưới</h3>
+
+                        <img src="./assets/img/filter_page_02.png" alt="01" style="width: 50%; margin: 30px auto; display: block;">
+                        <img src="./assets/img/filter_page_03.png" alt="01">
+
+                        <div class="admonition note">
+                            <div class="admonition__logo">
+                                <i class="fi fi-rr-info"></i>
+                                <h3>Ghi chú</h3>
+                            </div>
+                            <div class="admonition__content">
+                                <p>
+                                    Một số bảng kết quả có chức năng <b>sắp xếp điểm theo thứ tự</b> (ví dụ như các bảng trong 
+                                    <a href="../filter_page/">Lọc điểm</a>), thuận lợi trong việc xếp hạng.
+                                </p>
+                            </div>
+                        </div>
+
+                        <p style="margin-top: 50px;">
+                            Điểm <b>giảm dần (từ cao đến thấp)</b> hình bên trái, 
+                            điểm <b>tăng dần (từ thấp đến cao)</b> hình bên phải.
+                        </p>
+
+                        <img src="./assets/img/filter_page_04.png" alt="01" style="float: left; width: 48%;">
+                        <img src="./assets/img/filter_page_05.png" alt="01" style="float: right; width: 48%;">
+
+                    </section>
+
+                    <section id="basic-filter">
+                        <h2>
+                            Lọc điểm nâng cao
+                            <a href="#basic-filter" class="headerlink">¶</a>
+                        </h2>
+
+                        <p>
+                            Để cho việc đưa ra lựa chọn được chi tiết và chính xác hơn, 
+                            chúng tôi cung cấp bộ lọc với nhiều sự lựa chọn và so sánh nhiều
+                            hơn giữa các trường trong khu vực.
+                        </p>
+
+                        <img src="./assets/img/filter_page_06.png" alt="01">
+
+                        <h3 class="bigger-1" style="margin: 40px 0;">- Mô tả chức năng: </h3>
+                        <ul>
+                            <li>
+                                Tại phần <b>Lọc trong khoảng</b>, người dùng được yêu cầu nhập điểm trong 
+                                một khoảng nhất định (ví dụ từ <b>21 -> 23</b>: <i>đầu sẽ là <b>21</b>, 
+                                cuối sẽ là <b>23</b></i>). Nếu điểm đầu nhỏ hơn điểm cuối, hệ thống sẽ yêu
+                                cầu nhập lại.
+                            </li>
+                            <li>
+                                Tại phần <b>Top (xếp hạng)</b>, người dùng sẽ nhập <b>số tự nhiên</b> đại 
+                                diện cho xếp hạng bao nhiêu trường có số điểm cao nhất (hoặc thấp nhất) (<i>
+                                ví dụ top 5 trường có điểm cao nhất, top 10 trường có điểm thấp nhất,...
+                                </i>).
+                            </li>
+                            <li>
+                                Tại phần <b>Trung bình</b>, hệ thống tự động tính điểm trung bình của toàn thành
+                                phố dựa trên <b>năm, nguyện vọng và khu vực</b> đã được chọn ở trên. Người dùng 
+                                chỉ cần lựa chọn hiển thị các trường với số điểm <b>trên trung bình</b> hoặc <b>
+                                dưới trung bình </b>so với toàn khu vực.
+                            </li>
+                        </ul>
+                    </section>
+
+                    <section id="filter-between">
+                        <h2>
+                            Lọc trong khoảng
+                            <a href="#filter-between" class="headerlink">¶</a>
+                        </h2>
+
+                        <p>- Khi sử dụng một chức năng, 2 chức năng còn lại sẽ bị làm mờ đi (như hình bên dưới).</p>
+
+                        <img src="./assets/img/filter_page_07.png" alt="01">
+                        <img src="./assets/img/filter_page_08.png" alt="01">
+
+                        <div class="admonition warning">
+                            <div class="admonition__logo">
+                                <i class="fi fi-rr-engine-warning"></i>
+                                <h3>Lưu ý</h3>
+                            </div>
+                            <div class="admonition__content">
+                                <p>
+                                    - Khi điều kiện nhập không đúng, trang web sẽ thông báo nhập lại
+                                </p>
+                            </div>
+                        </div>
+                        <img src="./assets/img/filter_page_09.png" alt="01">
+                    </section>
+
+                    <section id="filter-top">
+                        <h2>
+                            Top
+                            <a href="#filter-top" class="headerlink">¶</a>
+                        </h2>
+
+                        <p>
+                            Người dùng có thể chuyển từ <b>Cao nhất</b> sang <b>Thấp nhất</b> bằng 
+                            việc ấn nút thêm một lần nữa (như hình).
+                        </p>
+
+                        <h3 class="bigger-1">- Hiển thị cao nhất:</h3>
+                        <img src="./assets/img/filter_page_10.png" alt="01">
+                        <h3 class="bigger-1" style="margin: 30px 0;">- Hiển thị thấp nhất:</h3>
+                        <img src="./assets/img/filter_page_11.png" alt="01">
+
+                    </section>
+
+                    <section id="filter-average">
+                        <h2>
+                            Trung bình
+                            <a href="#filter-average" class="headerlink">¶</a>
+                        </h2>
+
+                        <h3 class="bigger-1">- Hiển thị các trường với điểm cao hơn trung bình:</h3>
+                        <img src="./assets/img/filter_page_12.png" alt="01">
+                        <h3 class="bigger-1" style="margin: 30px 0;">- Hiển thị các trường với điểm thấp hơn trung bình:</h3>
+                        <img src="./assets/img/filter_page_13.png" alt="01">
+                    </section>
+
+                    <section id="filter-print">
+                        <h2>
+                            Xuất dữ liệu
+                            <a href="#filter-print" class="headerlink">¶</a>
+                        </h2>
+
+                        <p>
+                            Trang <a href="../filter_page/">Lọc điểm</a> có hỗ trợ chức năng in các bảng 
+                            kết quả đã được người dùng tuỳ chỉnh phục vụ cho nhu cầu lưu trữ tài liệu.
+                        </p>
+
+                        <div class="admonition note">
+                            <div class="admonition__logo">
+                                <i class="fi fi-rr-info"></i>
+                                <h3>Ghi chú</h3>
+                            </div>
+                            <div class="admonition__content">
+                                <p>
+                                    Nút in năm ở góc <b>bên phải phía dưới</b> màn hình. Nếu không nhìn thấy, 
+                                    hãy <b>vuốt lên phía trên</b> và nút sẽ tự hiển thị (mặc định nút sẽ 
+                                    ẩn khi kéo xuống để tránh che mất nội dung).
+                                </p>
+                            </div>
+                        </div>
+
+                        <img src="./assets/img/filter_page_14.png" alt="01" style="margin: 30px auto; display: block; width: 50%;">
+
+                        <h3 class="bigger-1">- Giao diện trước khi in:</h3>
+                        <img src="./assets/img/filter_page_15.png" alt="01">
+                        <h3 class="bigger-1" style="margin: 30px 0;">- Giao diện ở <u>chế độ đơn giản:</u></h3>
+                        <img src="./assets/img/filter_page_16.png" alt="01">
+
+                        <p>Người dùng có thể chọn lưu dưới dạng file <b>pdf</b> và tuỳ chỉnh định dạng theo nhu cầu ở phần xem trước khi in (phần bên phải ở hình trên).</p>
+                    </section>
+                </div>
+            </div>
+
+            <div id="scroll-button">
+                <i class="fi fi-br-angle-up"></i>
+            </div>
+
+            <footer></footer>
+        </div>
+    </body>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script type="text/javascript" src="./js/main.js"></script>
+    <script type="text/javascript" src="../expand/js/hide-nav.js"></script>
+    <script>
+        $(function(){
+            $(".menu-container").load("../expand/menu.html");
+            $("header").load("../expand/mini-header.html"); 
+            $("footer").load("../expand/mini-footer.html");  
+        });
+    </script>
+</html>

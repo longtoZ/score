@@ -2,6 +2,7 @@
     include("../config/config.php");
     $school = $_POST['school'];
     $year = $_POST['year'];
+    $top = $_POST['top'];
     $query = <<<EOD
     SELECT `truong`.`TEN_TRUONG`, `diem_chuan`.`MA_TRUONG`, `truong`.`QUAN/HUYEN`, `diem_chuan`.`MA_NV`, `diem_chuan`.`DIEM`
     FROM `diem_chuan` 
@@ -82,8 +83,8 @@
             $current_pos++;
         }
 
-        $highest = array_slice($datas, 0, 5, true);
-        $lowest = array_slice($datas, -5, 5, true);
+        $highest = array_slice($datas, 0, $top, true);
+        $lowest = array_slice($datas, -$top, $top, true);
         // print_r($highest);
         // print_r($lowest);
         // print_r($current);
@@ -93,7 +94,7 @@
 
         <link rel="stylesheet" type="text/css" href="./assets/css/table.css">
 
-        <h2 style="text-align:center; margin-bottom: 30px; font-weight: 500;">Top 5 trường có điểm cao nhất và thấp nhất</h2>
+        <h2 style="text-align:center; margin-bottom: 30px; font-weight: 500;">Top <?php echo $top; ?> trường có điểm cao nhất và thấp nhất</h2>
 
         <table class="search-table" id="search-table-area">
             <thead>
@@ -117,16 +118,27 @@
                         $nv1 = $item[2]['NV1'];
                         $nv2 = $item[2]['NV2'];
                         $nv3 = $item[2]['NV3'];	
-                        ?>
-                        <tr>
-                            <td><?php echo $stt; ?></td>
-                            <td><?php echo $schoolname; ?></td>
-                            <td><?php echo $district; ?></td>
-                            <td><?php echo $nv1; ?></td>
-                            <td><?php echo $nv2; ?></td>
-                            <td><?php echo $nv3; ?></td>
-                        </tr>
-                    <?php	
+                        if ($schoolname == $school) {?>
+                            <tr style="background-color: var(--row-hover-color)">
+                                <td style="font-weight: bold;"><?php echo $stt; ?></td>
+                                <td style="font-weight: 500;"><?php echo $schoolname; ?></td>
+                                <td style="font-weight: 500;"><?php echo $district; ?></td>
+                                <td style="font-weight: 500;"><?php echo $nv1; ?></td>
+                                <td style="font-weight: 500;"><?php echo $nv2; ?></td>
+                                <td style="font-weight: 500;"><?php echo $nv3; ?></td>
+                            </tr>	
+                        <?php 
+                        } else {?>
+                            <tr>
+                                <td><?php echo $stt; ?></td>
+                                <td><?php echo $schoolname; ?></td>
+                                <td><?php echo $district; ?></td>
+                                <td><?php echo $nv1; ?></td>
+                                <td><?php echo $nv2; ?></td>
+                                <td><?php echo $nv3; ?></td>
+                            </tr>
+                        <?php
+                        }	
                     }
                     ?>
 
@@ -138,6 +150,7 @@
                         <td style="height: 100px; border-left: 3px dotted var(--table-even-color); background-color: var(--second-primary-color);"></td>
                         <td style="height: 100px; border-left: 3px dotted var(--table-even-color); background-color: var(--second-primary-color);"></td>
                     </tr>
+                    
                     <?php
                     foreach ($lowest as $key => $item) {
                         $stt = $key+1;
@@ -146,16 +159,27 @@
                         $nv1 = $item[2]['NV1'];
                         $nv2 = $item[2]['NV2'];
                         $nv3 = $item[2]['NV3'];	
-                        ?>
-                        <tr>
-                            <td style="color:red"><?php echo $stt; ?></td>
-                            <td><?php echo $schoolname; ?></td>
-                            <td><?php echo $district; ?></td>
-                            <td><?php echo $nv1; ?></td>
-                            <td><?php echo $nv2; ?></td>
-                            <td><?php echo $nv3; ?></td>
-                        </tr>
-                    <?php	
+                        if ($schoolname == $school) {?>
+                            <tr style="background-color: var(--row-hover-color)">
+                                <td style="font-weight: bold; color:red"><?php echo $stt; ?></td>
+                                <td style="font-weight: 500;"><?php echo $schoolname; ?></td>
+                                <td style="font-weight: 500;"><?php echo $district; ?></td>
+                                <td style="font-weight: 500;"><?php echo $nv1; ?></td>
+                                <td style="font-weight: 500;"><?php echo $nv2; ?></td>
+                                <td style="font-weight: 500;"><?php echo $nv3; ?></td>
+                            </tr>	
+                        <?php 
+                        } else {?>
+                            <tr>
+                                <td style="color:red"><?php echo $stt; ?></td>
+                                <td><?php echo $schoolname; ?></td>
+                                <td><?php echo $district; ?></td>
+                                <td><?php echo $nv1; ?></td>
+                                <td><?php echo $nv2; ?></td>
+                                <td><?php echo $nv3; ?></td>
+                            </tr>
+                        <?php	
+                        }
                     }
                 ?>
             </tbody>
@@ -165,10 +189,10 @@
         <div class="content" style="font-weight: 500; font-size: 110%;">
             * Xếp hạng của trường (NV1 <?php echo $current[1][2]['NV1']?>đ): <?php echo $current[0]?>/<?php echo $current_pos-1?>
         </div>
+
+        <script>
+            var score_nv1 = parseInt('<?php echo $current[1][2]['NV1']?>')
+        </script>
         <?php
     }
 ?>
-
-
-
-

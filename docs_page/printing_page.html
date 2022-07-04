@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="icon" type="image/png" href="../img/logo.png">
+        <link rel="stylesheet" type="text/css" href="./assets/css/style.css">
+        <link rel="stylesheet" type="text/css" href="../expand/css/root.css">
+        <link rel='stylesheet' href='../expand/css/uicons-regular-rounded.css'>
+        <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-bold-rounded/css/uicons-bold-rounded.css'>
+        <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-brands/css/uicons-brands.css'>
+        <title>Tài liệu</title>
+    </head>
+
+    <body>
+        <div id="main">
+            <header></header>
+
+            <div class="main-container">
+                <div class="menu-container"></div>
+
+                <div class="content-container">
+                    <section id="basic-function">
+                        <h2>
+                            Các chức năng cơ bản
+                            <a href="#basic-function" class="headerlink">¶</a>
+                        </h2>
+
+                        <ul>
+                            <li>
+                                <a href="../printing_page/">Tổng hợp</a> là trang với mục đích chủ yếu là đem
+                                tất cả số liệu của một trường về một nơi để xuất dữ liệu (hoặc in) nhằm đáp ứng 
+                                nhu cầu lưu trữ tài liệu để nghiên cứu kĩ hơn.
+                            </li>
+    
+                            <li>
+                                Vì là phần tổng hợp nên giao diện của trang khá giống với các trang trước đó như 
+                                <a href="../search_page/">Tìm trường</a>, <a href="../filter_page/">Lọc điểm</a>, 
+                                đặc biệt là <a href="../visualization_page/">Thống kê</a>.
+                            </li>
+
+                            <li>
+                                Đồng thời, các chức năng đã được nêu trước đó như <b>Thay đổi dãy năm</b> (thường 
+                                được hiển thị trên đầu mỗi thẻ), <b>Thay đổi dạng biều đồ</b> (nút  
+                                <i class="fi fi-rr-shuffle" style="color: var(--green); position: relative; top: 4px"></i>  ở đầu thẻ) 
+                                hoặc <b>chọn khu vực</b> đều được sử dụng lại.
+                            </li>
+                        </ul>
+
+                        <div class="admonition note">
+                            <div class="admonition__logo">
+                                <i class="fi fi-rr-info"></i>
+                                <h3>Ghi chú</h3>
+                            </div>
+                            <div class="admonition__content">
+                                <p>
+                                    Vì đa số các tính năng và cách thực hoạt động của nó đều đã được
+                                    mô tả chi tiết ở tài liệu các trang trước. Nếu bạn chưa rõ về các chức năng này, hãy tham khảo thêm tài liệu tại <a href="./filter_page.html">Lọc điểm</a> 
+                                    và <a href="./visualization_page.html">Thống kê</a>.
+                                </p>
+                            </div>
+                        </div>
+
+                    </section>
+
+                    <section id="hide-card">
+                        <h2>
+                            Ẩn/Hiện thẻ
+                            <a href="#hide-card" class="headerlink">¶</a>
+                        </h2>
+
+                        <p>
+                            Người dùng có thể tuỳ chọn ẩn/hiện thẻ của từng mục bằng các 
+                            ấn vào nút ở <b>góc phía trên bên phải</b> để thu gọn thẻ đó.
+                        </p>
+
+                        <img src="./assets/img/printing_page_01.png" alt="01">
+                        <img src="./assets/img/printing_page_02.png" alt="01">
+
+                        <p>
+                            Ngoài ra, để cho việc hiển thị trên trang web và khi in được 
+                            đồng bộ hoá, hệ thống sẽ nhớ những thẻ nào mà người dùng ẩn đi 
+                            và sẽ không in thẻ đó.
+                        </p>
+
+                        <img src="./assets/img/printing_page_03.png" alt="01" style="width: 60%; display: block; margin: 30px auto;">
+                        <img src="./assets/img/printing_page_04.png" alt="01">
+
+
+                    </section>
+                </div>
+            </div>
+
+            <div id="scroll-button">
+                <i class="fi fi-br-angle-up"></i>
+            </div>
+
+            <footer></footer>
+        </div>
+    </body>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script type="text/javascript" src="./js/main.js"></script>
+    <script type="text/javascript" src="../expand/js/hide-nav.js"></script>
+    <script>
+        $(function(){
+            $(".menu-container").load("../expand/menu.html");
+            $("header").load("../expand/mini-header.html"); 
+            $("footer").load("../expand/mini-footer.html");  
+        });
+    </script>
+</html>

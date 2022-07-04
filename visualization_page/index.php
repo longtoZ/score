@@ -6,7 +6,7 @@
         <link rel="stylesheet" type="text/css" href="./assets/css/style.css">
         <link rel="icon" type="image/png" href="../img/logo.png">
         <link rel="stylesheet" type="text/css" href="./assets/css/calendar.css">
-        <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-regular-rounded/css/uicons-regular-rounded.css'>
+        <link rel='stylesheet' href='../expand/css/uicons-regular-rounded.css'>
         <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-solid-straight/css/uicons-solid-straight.css'>
         <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-solid-rounded/css/uicons-solid-rounded.css'>
         <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-bold-rounded/css/uicons-bold-rounded.css'>
@@ -17,6 +17,15 @@
     <body>
         <div class="main">
             <div id="header-container"></div>
+
+            <h1 class="main-title">Thống kê và trực quan hoá điểm số</h1>
+            <h4 class="subtitle">
+                Đây là nơi cho bạn một góc nhìn tổng quát nhất về một trường thông qua
+                các biểu đồ và tuỳ biến đa dạng.
+                <p style="font-weight: 400;">
+                    Chưa rõ? <a href="../docs_page/visualization_page.html" target="_blank">Đọc tài liệu &rarr;</a>
+                </p>
+            </h4>
 
             <div class="main-data-box">
                 <div class="main-data-container">
@@ -165,6 +174,50 @@
                         </div>
                     </div>
 
+                    <div class="group-data-container">
+                        <div class="group-data">
+                            <div class="group-graph-container"></div>
+                            <div class="group-detail">
+                                <div class="group-detail-container">
+                                    <div class="filter-box">
+                                        <h3 style="text-align:center; font-weight: bold; margin-top: 40px;">Trường cùng nhóm điểm</h3>
+                                        <div class="school-to-compare">
+                                            <h3></h3>
+                                            <div class="score-group">
+                                                <div class="score-nv1">
+                                                    <h4 class="title">Điểm NV1</h4>
+                                                    <p></p>
+                                                </div>
+                                                <div class="score-nv2">
+                                                    <h4 class="title">Điểm NV2</h4>
+                                                    <p></p>
+                                                </div>
+                                                <div class="score-nv3">
+                                                    <h4 class="title">Điểm NV3</h4>
+                                                    <p></p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="filter-detail">
+                                            <div class="filter-year">
+                                                <h4 class="year-title" style="text-align:center">Chọn năm</h4>
+                                                <div class="filter-year-select" style="width:140px; margin: 10px auto">
+                                                    <span class="select">Chọn năm</span>
+                                                    <i class="fi fi-rr-caret-down"></i>
+                                                </div>
+
+                                                <div class="filter-year-list" style="width:140px; margin: 10px auto">
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="school-group-list"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                     <div class="more-container">
                         <div class="more-info-data">
 
@@ -278,6 +331,21 @@
                     success:function(data) {
                         $('.comparision .info').html($(data).filter('#info1'))
                         $('.calculation').html($(data).filter('#info2'))
+
+                        document.querySelector('.school-to-compare h3').innerHTML = display_full[0]
+                        document.querySelector('.score-nv1 p').innerHTML = display_full[2]
+                        document.querySelector('.score-nv2 p').innerHTML = display_full[3]
+                        document.querySelector('.score-nv3 p').innerHTML = display_full[4]
+
+                        $.ajax({
+                            url:"group_comparision.php",
+                            method:"POST",
+                            data:{title:default_school, year:default_year, score:display_full[2]},
+                            success:function(data) {
+                                $('.group-graph-container').html($(data).filter('#groupGraph'));
+                                $('.school-group-list').html($(data).filter('#groupList'));
+                            }
+                        });
                     }
                 });
 
@@ -354,23 +422,57 @@
                                 success:function(data) {
                                     $('.comparision .info').html($(data).filter('#info1'))
                                     $('.calculation').html($(data).filter('#info2'))
+
+                                    async function run() {
+                                        await districtClick();
+                                        await yearClick();
+                                        await groupComparisionDisplay();
+                                    }
+
+                                    run()
                                 }
                             });
                             
-                            document.querySelector('.filter-district-select .select').innerHTML = document.querySelector('.schooldistrict p').innerHTML;
-                            document.querySelector('.filter-district-select').click();
-                            for (let i of document.querySelectorAll('.filter-district-list .district')) {
-                                if (i.innerHTML == document.querySelector('.filter-district-select .select').innerHTML) {
-                                    i.click();
+                            function districtClick() {
+                                document.querySelector('.filter-district-select .select').innerHTML = document.querySelector('.schooldistrict p').innerHTML;
+                                document.querySelector('.filter-district-select').click();
+                                for (let i of document.querySelectorAll('.filter-district-list .district')) {
+                                    if (i.innerHTML == document.querySelector('.filter-district-select .select').innerHTML) {
+                                        i.click();
+                                    }
                                 }
                             }
 
-                            document.querySelector('.filter-year-select').click();
-                            for (let i of document.querySelectorAll('.filter-year-list .year')) {
-                                if (i.innerHTML.includes(default_year)) {
-                                    i.click();
+                            function groupComparisionDisplay() {
+                                document.querySelector('.school-to-compare h3').innerHTML = document.querySelector('.schoolname p').innerHTML
+                                document.querySelector('.score-nv1 p').innerHTML = display_full[2]
+                                document.querySelector('.score-nv2 p').innerHTML = display_full[3]
+                                document.querySelector('.score-nv3 p').innerHTML = display_full[4]
+
+                                console.log(display_full)
+
+                                $.ajax({
+                                    url:"group_comparision.php",
+                                    method:"POST",
+                                    data:{title:document.querySelector('.schoolname p').innerHTML, year:default_year, score:display_full[2]},
+                                    success:function(data) {
+                                        $('.group-graph-container').html($(data).filter('#groupGraph'));
+                                        $('.school-group-list').html($(data).filter('#groupList'));
+                                    }
+                                });
+                            }
+
+                            function yearClick() {
+                                document.querySelector('.filter-year-select').click();
+                                for (let i of document.querySelectorAll('.filter-year-list .year')) {
+                                    if (i.innerHTML.includes(default_year)) {
+                                        i.click();
+                                    }
                                 }
                             }
+
+
+
                         }
                     });
 

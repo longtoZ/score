@@ -12,6 +12,15 @@
 .main-title {
     margin-top: 130px;
     text-align: center;
+    font-weight: 500;
+}
+
+.subtitle {
+    text-align: center;
+    padding: 20px 15% 50px;
+    color: var(--text-color-light);
+    opacity: 0.7;
+    font-style: italic;
 }
 
 .input-container {

@@ -313,7 +313,7 @@
                         color: textColor,
                         anchor: 'end',
                         align: 'top',
-                        offet: 0,
+                        offset: 0,
                         font: {
                             weight: 'bold',
                             size: '10px'
@@ -361,12 +361,12 @@
                     backgroundColor: bg_nv1,
                     borderColor: col1,
                     tension: 0,
-                    pointRadius: 10,
-                    trendlineLinear: {
-                        style: col1,
-                        lineStyle: "solid",
-                        width: 2
-                        }
+                    pointRadius: 10
+                    // trendlineLinear: {
+                    //     style: col1,
+                    //     lineStyle: "solid",
+                    //     width: 2
+                    //     }
                     },
                     {
                         label: 'NV2',

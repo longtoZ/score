@@ -11,7 +11,7 @@
 }
 
 @media print {
-    header, footer, #search-area, .filter-box, .hide-btn, .floating-container {
+    header, footer, #search-area, .filter-box, .hide-btn, .floating-container, .main-title, .subtitle {
         display: none !important;
         visibility: hidden !important;
     }

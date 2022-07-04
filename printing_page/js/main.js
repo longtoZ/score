@@ -8,6 +8,7 @@ const section1 = document.querySelector('.section1 label');
 const section2 = document.querySelector('.section2 label');
 const section3 = document.querySelector('.section3 label');
 const section4 = document.querySelector('.section4 label');
+const section5 = document.querySelector('.section5 label');
 const simplify = document.getElementById('simplify-mode');
 
 const exportxlsx = document.querySelector('.exportxlsx');
@@ -145,6 +146,10 @@ section4.addEventListener('click', function() {
     hideSection(document.querySelector('#eval-area .hide-btn'))
 });
 
+section5.addEventListener('click', function() {
+    hideSection(document.querySelector('#average-area .hide-btn'))
+});
+
 
 changeType1.addEventListener('click', function () {
     var year_start = parseInt(document.querySelector('.start').value);
@@ -240,7 +245,5 @@ changeType3.addEventListener('click', function () {
         });
     }
 });
-
-
 
 

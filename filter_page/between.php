@@ -4,12 +4,13 @@ $start = $_POST['start'];
 $end = $_POST['end'];
 $year = $_POST['year'];
 $wish = $_POST['wish'];
+$district = $_POST['district'];
 
 $query = <<<EOD
 SELECT `truong`.`TEN_TRUONG`, `diem_chuan`.`MA_TRUONG`, `truong`.`QUAN/HUYEN`, `diem_chuan`.`MA_NV`, `diem_chuan`.`DIEM`
 FROM `diem_chuan` 
 LEFT OUTER JOIN `truong` on `truong`.`MA_TRUONG` = `diem_chuan`.`MA_TRUONG`
-WHERE `NAM_HOC` = $year AND `MA_NV` = '$wish' AND 
+WHERE `NAM_HOC` = $year AND `MA_NV` = '$wish' AND `QUAN/HUYEN` LIKE '%$district' AND
 (`DIEM` >= $start AND `DIEM` <= $end) ORDER BY `DIEM` ASC;
 EOD;
 

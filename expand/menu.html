@@ -1,0 +1,73 @@
+<div class="left-pannel">
+    <h2 class="menu__title">Mục lục</h2>
+
+    <div class="menu__section">
+        <div class="section__list">
+            <a href="overview.html" class="section__title" style="text-decoration: none; color: var(--text-color);">
+                <b style="padding-right: 10px;">1. </b>Tổng quan
+                <i class="fi fi-rr-angle-right"></i>
+            </a>
+            <div class="section__part"></div>
+        </div>
+    
+        <div class="section__list">
+            <div class="section__title active">
+                <b style="padding-right: 10px;">2. </b>Tính năng
+                <i class="fi fi-rr-angle-down"></i>
+            </div>
+            <ul class="section__part">
+                <li><a href="../docs_page/search_page.html">Tìm trường</a></li>
+                <li><a href="../docs_page/filter_page.html">Lọc điểm</a></li>
+                <li><a href="../docs_page/visualization_page.html">Thống kê</a></li>
+                <li><a href="../docs_page/printing_page.html">Tổng hợp</a></li>
+            </ul>
+        </div>
+    
+        <div class="section__list">
+            <div class="section__title active">
+                <b style="padding-right: 10px;">3. </b>Mở rộng
+                <i class="fi fi-rr-angle-down"></i>
+            </div>
+            <ul class="section__part">
+                <li><a href="../docs_page/references.html">Tài liệu và công cụ</a></li>
+                <li><a href="#">Changelog</a></li>
+                <li><a href="#">Lỗi</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class="right-pannel">
+    <div class="menu__resize">
+        <i class="fi fi-rr-angle-double-left"></i>
+    </div>
+</div>
+
+
+<script>
+    var section_title = document.querySelectorAll('.section__title')
+    var menu_container = document.querySelector('.menu-container')
+    var menu_resize = document.querySelector('.menu__resize')
+    var right_pannel = document.querySelector('.right-pannel')
+    var left_pannel = document.querySelector('.left-pannel')
+
+    section_title.forEach(item => {
+        item.onclick = function () {
+            this.classList.toggle('active')
+        }
+    })
+
+    menu_resize.addEventListener('click', async function () {
+        right_pannel.classList.toggle('reduce')
+        left_pannel.classList.toggle('reduce')
+        menu_container.classList.toggle('reduce')
+        await document.querySelector('.content-container').classList.toggle('reduce')
+    })
+
+    if (window.matchMedia('(max-width: 64em)').matches) {
+        document.querySelector('.menu-container').classList.toggle('reduce')
+        document.querySelector('.left-pannel').classList.toggle('reduce')
+        document.querySelector('.right-pannel').classList.toggle('reduce')
+        document.querySelector('.content-container').classList.toggle('reduce')
+    }
+</script>

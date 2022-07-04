@@ -2,6 +2,7 @@
 include("../config/config.php");
 $year = $_POST['year'];
 $wish = $_POST['wish'];
+$district = $_POST['district'];
 $compare = $_POST['compare'];
 
 // $query = "SELECT * FROM `search_score_{$year}` ORDER BY `{$wish}` DESC";
@@ -9,7 +10,7 @@ $query = <<<EOD
 SELECT `truong`.`TEN_TRUONG`, `diem_chuan`.`MA_TRUONG`, `truong`.`QUAN/HUYEN`, `diem_chuan`.`MA_NV`, `diem_chuan`.`DIEM`
 FROM `diem_chuan` 
 LEFT OUTER JOIN `truong` on `truong`.`MA_TRUONG` = `diem_chuan`.`MA_TRUONG`
-WHERE `NAM_HOC` = $year AND `MA_NV` = '$wish' ORDER BY `DIEM` DESC;
+WHERE `NAM_HOC` = $year AND `MA_NV` = '$wish' AND `QUAN/HUYEN` LIKE '%$district' ORDER BY `DIEM` DESC;
 EOD;
 
 $result = mysqli_query($con,$query);

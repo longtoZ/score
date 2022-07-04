@@ -5,7 +5,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="icon" type="image/png" href="../img/logo.png">
 	<link rel="stylesheet" type="text/css" href="./assets/css/style.css" media="all">
-	<link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-regular-rounded/css/uicons-regular-rounded.css'>
+	<link rel='stylesheet' href='../expand/css/uicons-regular-rounded.css'>
 	<link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-brands/css/uicons-brands.css'>
 </head>
 
@@ -16,7 +16,15 @@
 
 		<!-- <div class="line-divider"></div> -->
 
-		<h1 class="main-title">Tra điểm tại đây</h1>
+		<h1 class="main-title">Tìm trường cơ bản</h1>
+		<h4 class="subtitle">
+			Tại đây bạn có thể tìm kiếm điểm nguyện vọng 1, 2, 3 và môn chuyên
+			của các trường qua từng năm mà không cần dò thủ công theo danh sách.
+			<p style="font-weight: 400;">
+				Chưa rõ? <a href="../docs_page/search_page.html" target="_blank">Đọc tài liệu &rarr;</a>
+			</p>
+		</h4>
+
 
 		<div class="input-container">
 			<input type="text" class="form-control" id="live-search" placeholder="Tìm kiếm...">

@@ -56,13 +56,17 @@ districtSelected.onclick = function() {
     filterDistrictList.classList.toggle("active");
 }
 
-$('.filter-year-list .year').on('click', function () {
+function changeYear() {
     var year = (document.querySelector('.filter-year-select .select').innerHTML).replace("Năm ", "");
     var district = document.querySelector('.filter-district-select .select').innerHTML;
     var school_input = document.querySelector('.school-search').value;
     if (school_input == '') {
         school_input = default_school;
     }
+
+    document.querySelector('.year-input-nv').value = year
+    var year_input = document.querySelector('.year-input-nv').value
+
 
     $.ajax({
         url:"ratio_firgue.php",
@@ -89,9 +93,35 @@ $('.filter-year-list .year').on('click', function () {
             $('.school-list').html($(data).filter('#comparisionList'));
         }
     });
+
+
+    $.ajax({
+        url:"year_range_comparision.php",
+        method:"POST",
+        data:{title:document.querySelector('.schoolname p').innerHTML, year:year_input, wish:default_wish},
+        success:function(data) {
+            $('.comparision .info').html($(data).filter('#info1'))
+            $('.calculation').html($(data).filter('#info2'))
+
+            document.querySelector('.score-nv1 p').innerHTML = display_full[2]
+            document.querySelector('.score-nv2 p').innerHTML = display_full[3]
+            document.querySelector('.score-nv3 p').innerHTML = display_full[4]
+
+            $.ajax({
+                url:"group_comparision.php",
+                method:"POST",
+                data:{title:document.querySelector('.schoolname p').innerHTML, year:year, score:display_full[2]},
+                success:function(data) {
+                    $('.group-graph-container').html($(data).filter('#groupGraph'));
+                    $('.school-group-list').html($(data).filter('#groupList'));
+                }
+            });
+        }
+    }); 
     
-    
-});
+}
+
+$('.filter-year-list .year').on('click', changeYear);
 
 $('.filter-district-list .district').on('click', function () {
     var year = (document.querySelector('.filter-year-select .select').innerHTML).replace("Năm ", "");
