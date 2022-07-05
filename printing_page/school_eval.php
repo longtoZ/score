@@ -87,10 +87,7 @@
         $lowest = array_slice($datas, -$top, $top, true);
         // print_r($highest);
         // print_r($lowest);
-        // print_r($current);
-
-
-        ?>
+        // print_r($current);?>
 
         <link rel="stylesheet" type="text/css" href="./assets/css/table.css">
 
@@ -191,8 +188,16 @@
         </div>
 
         <script>
+            console.log('here')
             var score_nv1 = parseInt('<?php echo $current[1][2]['NV1']?>')
         </script>
-        <?php
+    <?php
+    } else {?>
+        <h2 style="text-align:center; margin-bottom: 30px; font-weight: 500;">Top</h2>
+        <table class="search-table" id="search-table-area"></table>
+        <script>
+            console.log('none')
+        </script>
+    <?php
     }
-?>
+    ?>

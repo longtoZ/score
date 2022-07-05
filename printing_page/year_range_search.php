@@ -261,4 +261,12 @@
 
         <?php
         }
-}?>
+
+    } else {?>
+        <script>
+            document.querySelector('.school-title').innerHTML = 'Không tìm thấy trường';
+            document.querySelector('.school-area').innerHTML = 'Không tìm thấy quận/huyện';
+        </script>
+    <?php
+    } 
+    ?>

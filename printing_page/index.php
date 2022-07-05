@@ -257,7 +257,7 @@
                 });
 
                 $.ajax({
-                    url:"ratio_firgue.php",
+                    url:"ratio_figure.php",
                     method:"POST",
                     data:{title:default_school, start:year_start, end:year_end, type:'table'},
                     success:function(data) {
@@ -295,8 +295,7 @@
             }
 
             window.onload = showOnLoad();
-
-            
+          
             $(document).ready(function() {
                 $(document).on('click', '.search-box i', function() {
 
@@ -322,53 +321,51 @@
 
                                 school_input = document.querySelector('.school-title').innerHTML
 
-                                $.ajax({
-                                    url:"school_list.php",
-                                    method:"POST",
-                                    data:{year:year_end, 
-                                        district:document.querySelector('.school-area').innerHTML, 
-                                        school:school_input,
-                                        type:'table'},
-                                    success:function(data) {
-                                        $('.comparision-table').html(data);
-                                    }
-                                });
+                                if (school_input != "Không tìm thấy trường") {
 
-                                $.ajax({
-                                    url:"school_eval.php",
-                                    method:"POST",
-                                    data:{year:year_end, top:default_top, school:school_input},
-                                    success:function(data) {
-                                        $('.eval-table').html(data);
+                                    $.ajax({
+                                        url:"school_list.php",
+                                        method:"POST",
+                                        data:{year:year_end, 
+                                            district:document.querySelector('.school-area').innerHTML, 
+                                            school:school_input,
+                                            type:'table'},
+                                        success:function(data) {
+                                            $('.comparision-table').html(data);
+                                        }
+                                    });
 
-                                        $.ajax({
-                                            url:"average.php",
-                                            method:"POST",
-                                            data:{school:school_input, year:year_end, district: ''},
-                                            success: function (data) {
-                                                $(".average-table").html(data);
-                                            }
-                                        });
-                                    }
-                                });
+                                    $.ajax({
+                                        url:"school_eval.php",
+                                        method:"POST",
+                                        data:{year:year_end, top:default_top, school:school_input},
+                                        success:function(data) {
+                                            $('.eval-table').html(data);
+
+                                            $.ajax({
+                                                url:"average.php",
+                                                method:"POST",
+                                                data:{school:school_input, year:year_end, district: ''},
+                                                success: function (data) {
+                                                    $(".average-table").html(data);
+                                                }
+                                            });
+                                        }
+                                    });
+                                } else {
+                                    $('.comparision-table').html('<div></div>');
+                                    $('.eval-table').html('<div></div>');
+                                    $('.average-table').html('<div></div>');
+                                }
                             }
                         });
 
                         $.ajax({
-                            url:"ratio_firgue.php",
+                            url:"ratio_figure.php",
                             method:"POST",
                             data:{title:school_input, start:year_start, end:year_end, type:'table'},
                             success:function(data) {
                                 $('.ratio-table').html(data);
-                            }
-                        });
-
-                        $.ajax({
-                            url:"school_list.php",
-                            method:"POST",
-                            data:{year:year_end, district:default_district, school:default_school, type:'table'},
-                            success:function(data) {
-                                $('.comparision-table').html(data);
                             }
                         });
 
@@ -417,7 +414,7 @@
                         } else {
 
                             $.ajax({
-                                url:"ratio_firgue.php",
+                                url:"ratio_figure.php",
                                 method:"POST",
                                 data:{title:school_input, start:start_r, end:end_r, type:'table'},
                                 success:function(data) {

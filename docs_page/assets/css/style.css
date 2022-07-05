@@ -7,6 +7,10 @@
     font-family: 'MuseoModerno', cursive;
     font-weight: 300;
 }
+::selection {
+    color: black;
+    background-color: #ffffa1;
+}
 
 b {
     font-weight: 500;
@@ -150,6 +154,7 @@ header i {
     max-height: 70%;
     overflow-y: scroll;
     transition: all ease 0.4s;
+    z-index: 3;
 }
 
 .menu-container::-webkit-scrollbar {
@@ -239,7 +244,6 @@ header i {
     width: 80%;
     transition: all ease 0.4s;
     position: relative;
-    z-index: -1;
 }
 
 .content-container .topic {
@@ -266,6 +270,12 @@ section {
     position: relative;
     overflow: hidden;
     margin-bottom: 50px;
+    height: auto;
+    transition: height ease 0.4s;
+}
+
+section h3, section p, section ul *, section div{
+    transition: all ease 0.4s;
 }
 
 section h2 {
@@ -285,6 +295,25 @@ section h2 > a{
 
 section h2:hover > a {
     display: inline-block;
+}
+
+h2 span i{
+    display: block;
+    position: relative;
+    top: 0;
+}
+
+.minimize > h2 span i{
+    transform: rotateZ(180deg);
+    top: -0.45em;
+}
+
+.minimize > *:not(h2):not(h2 span){
+    transition: all ease 0.4s;
+    padding: 0;
+    margin: 0;
+    height: 0;
+    opacity: 0;
 }
 
 section h3 {
@@ -348,7 +377,24 @@ section img {
     }
 
     .menu-container {
-        z-index: 3;
         width: 30%;
+    }
+}
+
+@media only screen and (max-width: 46.25em) {
+    header input {
+        width: 30%;
+    }
+
+    header i {
+        right: 8%;
+    }
+
+    .menu-container {
+        width: 70%;
+    }
+
+    footer {
+        padding: 50px 5% 20px 5%;
     }
 }

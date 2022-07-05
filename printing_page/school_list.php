@@ -75,7 +75,6 @@
         }
 
         if ($type=='table') {?>
-            <script>console.log('<?php echo $type ?>')</script>
             <link rel="stylesheet" type="text/css" href="./assets/css/table.css">
             
             <script src="./js/sort.js"></script>
@@ -232,8 +231,13 @@
         <?php
         }
 
+    } else {?>
+        <div></div>
+    <?php
     }
-?>
+    ?>
+
+
 
 
 

@@ -192,7 +192,7 @@ changeType2.addEventListener('click', function () {
     if(!(this.className).includes('clicked')) {
         this.classList.toggle('clicked');
         $.ajax({
-            url:"ratio_firgue.php",
+            url:"ratio_figure.php",
             method:"POST",
             data:{title:school_input, start:start_r, end:end_r, type:'chart'},
             success:function(data) {
@@ -202,7 +202,7 @@ changeType2.addEventListener('click', function () {
     } else {
         this.classList.remove('clicked');
         $.ajax({
-            url:"ratio_firgue.php",
+            url:"ratio_figure.php",
             method:"POST",
             data:{title:school_input, start:start_r, end:end_r, type:'table'},
             success:function(data) {

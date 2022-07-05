@@ -82,195 +82,202 @@ if (mysqli_num_rows($result) > 0) {
         
 
     }
-}
-?>
 
-<div id="groupGraph">
+    ?>
 
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.1/dist/chart.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script>
+    <div id="groupGraph">
 
-    <div class="bar-graph">
-        <canvas id="myChartBarGroup"></canvas>  
-    </div>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.1/dist/chart.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script>
 
-    <style>
-        .bar-graph {
-            height: 470px;
-            width:100%
-        }
+        <div class="bar-graph">
+            <canvas id="myChartBarGroup"></canvas>  
+        </div>
 
-        @media only screen and (max-width: 46.1875em) {
+        <style>
             .bar-graph {
-                width: 95%;
+                height: 470px;
+                width:100%
             }
-        }
-        
-    </style>
 
-    <script>
-
-        function randomRGB() {
-            return (Math.floor(Math.random() * 255) + 1).toString();
-        }
-        var datas_g = []
-        var schools = []
-        var nv1 = []
-        // var nv2 = []
-        // var nv3 = []
-
-        schools.push('<?php echo $title; ?>')
-        nv1.push('<?php echo $score; ?>')
-
-        for (let i of <?php echo json_encode($datas); ?>) {
-            datas_g.push(i);
-            schools.push(i[0])
-            nv1.push(i[2]['NV1'])
-            // nv2.push(i[2]['NV2'])
-            // nv3.push(i[2]['NV3'])
-        }
-
-
-        var rgb_list = [];
-        for (let i=0; i<schools.length; i++) {
-            rgb_list.push(`rgb(${randomRGB()}, ${randomRGB()}, ${randomRGB()})`);
-        }
-    </script>
-
-    <script>
-        var textColor = '#8a8a8a'
-        var defaultBorder = 6
-        var ctx_bar = document.getElementById('myChartBarGroup');
-        var myChartBar = new Chart(ctx_bar, {
-            plugins: [ChartDataLabels],
-            type: 'bar',
-            data: {
-                labels: schools,
-                datasets: [{
-                    label: '',
-                    data: nv1,
-                    borderRadius: defaultBorder,
-                    backgroundColor: rgb_list
+            @media only screen and (max-width: 46.1875em) {
+                .bar-graph {
+                    width: 95%;
                 }
-            ]
-            },
-            options: {
-                maintainAspectRatio: false,
-                responsive: true,
-                indexAxis: 'y',
-                plugins: {
-                    title: {
-                        display: true,
-                        text: "Năm " + "<?php echo $year ?>",
-                        color: textColor
-                    },
-                    legend: {
-                        display: false
-                    },
-                    datalabels: {
-                        color: textColor,
-                        anchor: 'end',
-                        align: 'right',
-                        padding: {
-                            left: 20
-                        },
-                        font: {
-                            weight: 'bold',
-                            size: '12px'
-                        }
-                                    
+            }
+            
+        </style>
+
+        <script>
+
+            function randomRGB() {
+                return (Math.floor(Math.random() * 255) + 1).toString();
+            }
+            var datas_g = []
+            var schools = []
+            var nv1 = []
+            // var nv2 = []
+            // var nv3 = []
+
+            schools.push('<?php echo $title; ?>')
+            nv1.push('<?php echo $score; ?>')
+
+            for (let i of <?php echo json_encode($datas); ?>) {
+                datas_g.push(i);
+                schools.push(i[0])
+                nv1.push(i[2]['NV1'])
+                // nv2.push(i[2]['NV2'])
+                // nv3.push(i[2]['NV3'])
+            }
+
+
+            var rgb_list = [];
+            for (let i=0; i<schools.length; i++) {
+                rgb_list.push(`rgb(${randomRGB()}, ${randomRGB()}, ${randomRGB()})`);
+            }
+        </script>
+
+        <script>
+            var textColor = '#8a8a8a'
+            var defaultBorder = 6
+            var ctx_bar = document.getElementById('myChartBarGroup');
+            var myChartBar = new Chart(ctx_bar, {
+                plugins: [ChartDataLabels],
+                type: 'bar',
+                data: {
+                    labels: schools,
+                    datasets: [{
+                        label: '',
+                        data: nv1,
+                        borderRadius: defaultBorder,
+                        backgroundColor: rgb_list
                     }
+                ]
                 },
-                scales: {
-                    x: {
+                options: {
+                    maintainAspectRatio: false,
+                    responsive: true,
+                    indexAxis: 'y',
+                    plugins: {
                         title: {
                             display: true,
-                            text: 'Điểm NV1',
-                            color: textColor
-                        }
-                    },
-                    y: {
-                        title: {
-                            display: true,
-                            text: 'Trường',
+                            text: "Năm " + "<?php echo $year ?>",
                             color: textColor
                         },
-                        grid: {
+                        legend: {
                             display: false
                         },
-                        ticks: {
-                            stepSize: 10
+                        datalabels: {
+                            color: textColor,
+                            anchor: 'end',
+                            align: 'right',
+                            padding: {
+                                left: 20
+                            },
+                            font: {
+                                weight: 'bold',
+                                size: '12px'
+                            }
+                                        
+                        }
+                    },
+                    scales: {
+                        x: {
+                            title: {
+                                display: true,
+                                text: 'Điểm NV1',
+                                color: textColor
+                            }
+                        },
+                        y: {
+                            title: {
+                                display: true,
+                                text: 'Trường',
+                                color: textColor
+                            },
+                            grid: {
+                                display: false
+                            },
+                            ticks: {
+                                stepSize: 10
+                            }
                         }
                     }
-                }
-            } 
-        });
-    </script>
+                } 
+            });
+        </script>
 
-</div>
+    </div>
 
-<div id="groupList">
-    
-    <style>
-        .score-info {
-            background-color: var(--third-primary-color);
-            box-shadow: var(--box-shadow-light);
-            width: 100%;
-            height: 50px;
-            padding: 10px 20px;
-            margin: 10px 0;
-            z-index: 1;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-radius: 8px
-        }
+    <div id="groupList">
+        
+        <style>
+            .score-info {
+                background-color: var(--third-primary-color);
+                box-shadow: var(--box-shadow-light);
+                width: 100%;
+                height: 50px;
+                padding: 10px 20px;
+                margin: 10px 0;
+                z-index: 1;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                border-radius: 8px
+            }
 
-        .score-info:hover {
-            background-color: #FFF9C2;
-            cursor: pointer;
-            color: #000000;
-        }
+            .score-info:hover {
+                background-color: #FFF9C2;
+                cursor: pointer;
+                color: #000000;
+            }
 
-        .school-name {
-            float: left
-        }
+            .school-name {
+                float: left
+            }
 
-        .school-score {
-            float: right;
-            color: #009879;
-            font-weight: bold;
-        }
-    </style>
+            .school-score {
+                float: right;
+                color: #009879;
+                font-weight: bold;
+            }
+        </style>
 
-    <script>
+        <script>
 
-        function addFirstChild(name, score) {
+            function addFirstChild(name, score) {
 
-            var score_info = document.createElement('div')
-            var school_name = document.createElement('div')
-            var school_score = document.createElement('div')
+                var score_info = document.createElement('div')
+                var school_name = document.createElement('div')
+                var school_score = document.createElement('div')
 
-            score_info.className = 'score-info'
-            school_name.className = 'school-name'
-            school_score.className = 'school-score'
+                score_info.className = 'score-info'
+                school_name.className = 'school-name'
+                school_score.className = 'school-score'
 
-            school_name.innerHTML = name
-            school_score.innerHTML = score
+                school_name.innerHTML = name
+                school_score.innerHTML = score
 
-            score_info.appendChild(school_name)
-            score_info.appendChild(school_score)
-            document.querySelector('.school-group-list').appendChild(score_info)
+                score_info.appendChild(school_name)
+                score_info.appendChild(school_score)
+                document.querySelector('.school-group-list').appendChild(score_info)
 
-        }
+            }
 
-        addFirstChild('<?php echo $title; ?>', '<?php echo $score; ?>')
+            addFirstChild('<?php echo $title; ?>', '<?php echo $score; ?>')
 
-        var child = 1;
-        for (let i of <?php echo json_encode($datas); ?>) {
+            var child = 1;
+            for (let i of <?php echo json_encode($datas); ?>) {
 
-            addFirstChild(i[0], i[2]['NV1'])
+                addFirstChild(i[0], i[2]['NV1'])
 
-        }
-    </script>
-</div>
+            }
+        </script>
+    </div>
+
+<?php
+} else {?>
+    <div id="groupGraph"></div>
+    <div id="groupList"></div>
+<?php
+} ?>

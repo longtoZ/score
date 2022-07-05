@@ -69,7 +69,7 @@ function changeYear() {
 
 
     $.ajax({
-        url:"ratio_firgue.php",
+        url:"ratio_figure.php",
         method:"POST",
         data:{title:school_input, year:year},
         beforeSend:function() {

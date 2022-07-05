@@ -57,139 +57,150 @@
         }
 
         // print_r($datas);
-    }
         ?>
 
 
-<div id="info1">
-    <h1></h1>
-    <h4 style="color: var(--text-color-light); opacity: 0.5; margin-bottom: 20px"></h4>
-    <p></p>
+        <div id="info1">
+            <h1></h1>
+            <h4 style="color: var(--text-color-light); opacity: 0.5; margin-bottom: 20px"></h4>
+            <p></p>
 
-    <script>
-        var datas = <?php echo json_encode($datas); ?>;
-        var year = '<?php echo $year; ?>';
-        var wish = '<?php echo $wish; ?>';
-        var display_info = []
-        var display_full = ['<?php echo $school; ?>']
+            <script>
+                var datas = <?php echo json_encode($datas); ?>;
+                var year = '<?php echo $year; ?>';
+                var wish = '<?php echo $wish; ?>';
+                var display_info = []
+                var display_full = ['<?php echo $school; ?>']
 
-        for (i=0; i <= datas.length; i++) {
-            try {
-                if (datas[i][0] == year) {
+                for (i=0; i <= datas.length; i++) {
+                    try {
+                        if (datas[i][0] == year) {
 
-                    display_full.push(parseInt(datas[i][0]))
-                    display_full.push(datas[i][3]['NV1'])
-                    display_full.push(datas[i][3]['NV2'])
-                    display_full.push(datas[i][3]['NV3'])
-                    
-                    if (wish == 'NV1') {
-                        display_info.push(parseInt(datas[i][0]))
-                        display_info.push(datas[i][3]['NV1'])
-                        display_info.push(parseInt(datas[i-1][0]))
-                        display_info.push(datas[i-1][3]['NV1'])
-                        break;
-                    } else if (wish == 'NV2') {
-                        display_info.push(parseInt(datas[i][0]))
-                        display_info.push(datas[i][3]['NV2'])
-                        display_info.push(parseInt(datas[i-1][0]))
-                        display_info.push(datas[i-1][3]['NV2'])
-                        break;
-                    } else if (wish == 'NV3') {
-                        display_info.push(parseInt(datas[i][0]))
-                        display_info.push(datas[i][3]['NV3'])
-                        display_info.push(parseInt(datas[i-1][0]))
-                        display_info.push(datas[i-1][3]['NV3'])
-                        break;
-                    }
+                            display_full.push(parseInt(datas[i][0]))
+                            display_full.push(datas[i][3]['NV1'])
+                            display_full.push(datas[i][3]['NV2'])
+                            display_full.push(datas[i][3]['NV3'])
+                            
+                            if (wish == 'NV1') {
+                                display_info.push(parseInt(datas[i][0]))
+                                display_info.push(datas[i][3]['NV1'])
+                                display_info.push(parseInt(datas[i-1][0]))
+                                display_info.push(datas[i-1][3]['NV1'])
+                                break;
+                            } else if (wish == 'NV2') {
+                                display_info.push(parseInt(datas[i][0]))
+                                display_info.push(datas[i][3]['NV2'])
+                                display_info.push(parseInt(datas[i-1][0]))
+                                display_info.push(datas[i-1][3]['NV2'])
+                                break;
+                            } else if (wish == 'NV3') {
+                                display_info.push(parseInt(datas[i][0]))
+                                display_info.push(datas[i][3]['NV3'])
+                                display_info.push(parseInt(datas[i-1][0]))
+                                display_info.push(datas[i-1][3]['NV3'])
+                                break;
+                            }
+                        }
+
+                    } catch (e) {}
                 }
 
-            } catch (e) {}
-        }
 
-
-        if (display_info[0] >= 2021) {
-                document.querySelector('#info1 h1').innerHTML = 'Năm ' + display_info[0] + ': ' + display_info[1] + '/' + '30'
-        } else {
-            document.querySelector('#info1 h1').innerHTML = 'Năm ' + display_info[0] + ': ' + display_info[1] + '/' + '50'
-        }
-
-        if (display_info[2] >= 2021) {
-            document.querySelector('#info1 h4').innerHTML = 'Năm ' + display_info[2] + ': ' + display_info[3] + '/' + '30'
-        } else {
-            document.querySelector('#info1 h4').innerHTML = 'Năm ' + display_info[2] + ': ' + display_info[3] + '/' + '50'
-        }
-
-        var score_now =  display_info[0] >= 2021 ? parseFloat(display_info[1])/30 : parseFloat(display_info[1])/50
-        var score_prev =  display_info[2] >= 2021 ? parseFloat(display_info[3])/30 : parseFloat(display_info[3])/50
-
-        var compare = ''
-        if (score_now >= score_prev) {
-            document.querySelector('#info1 p').innerHTML = '➚ Tăng ' + ((score_now-score_prev)*100).toFixed(2) + '% so với năm trước'
-            document.querySelector('#info1 p').style.color = "green"
-        } else {
-            document.querySelector('#info1 p').innerHTML = '➘ Giảm ' + ((score_prev-score_now)*100).toFixed(2) + '% so với năm trước'
-            document.querySelector('#info1 p').style.color = "red"
-        }
-    </script>
-</div>
-
-<div id="info2">
-    <h2 style="margin: 15px 0; color: green; font-weight: 500"></h2>
-    <ul style="display:inline-block; font-size: 1.1em">
-        <li>Toán </li>
-        <li>Văn </li>
-        <li>Anh </li>
-    </ul>
-
-    <script>
-
-        var datas = <?php echo json_encode($datas); ?>;
-        var year = '<?php echo $year; ?>';
-        var wish = '<?php echo $wish; ?>';
-        var display_info = []
-
-        for (i=0; i <= datas.length; i++) {
-            try {
-                if (datas[i][0] == year) {
-                    if (wish == 'NV1') {
-                        display_info.push(parseInt(datas[i][0]))
-                        display_info.push(datas[i][3]['NV1'])
-                        display_info.push(parseInt(datas[i-1][0]))
-                        display_info.push(datas[i-1][3]['NV1'])
-                        break;
-                    } else if (wish == 'NV2') {
-                        display_info.push(parseInt(datas[i][0]))
-                        display_info.push(datas[i][3]['NV2'])
-                        display_info.push(parseInt(datas[i-1][0]))
-                        display_info.push(datas[i-1][3]['NV2'])
-                        break;
-                    } else if (wish == 'NV3') {
-                        display_info.push(parseInt(datas[i][0]))
-                        display_info.push(datas[i][3]['NV3'])
-                        display_info.push(parseInt(datas[i-1][0]))
-                        display_info.push(datas[i-1][3]['NV3'])
-                        break;
-                    }
+                if (display_info[0] >= 2021) {
+                        document.querySelector('#info1 h1').innerHTML = 'Năm ' + display_info[0] + ': ' + display_info[1] + '/' + '30'
+                } else {
+                    document.querySelector('#info1 h1').innerHTML = 'Năm ' + display_info[0] + ': ' + display_info[1] + '/' + '50'
                 }
 
-            } catch (e) {}
-        }
+                if (display_info[2] >= 2021) {
+                    document.querySelector('#info1 h4').innerHTML = 'Năm ' + display_info[2] + ': ' + display_info[3] + '/' + '30'
+                } else {
+                    document.querySelector('#info1 h4').innerHTML = 'Năm ' + display_info[2] + ': ' + display_info[3] + '/' + '50'
+                }
+
+                var score_now =  display_info[0] >= 2021 ? parseFloat(display_info[1])/30 : parseFloat(display_info[1])/50
+                var score_prev =  display_info[2] >= 2021 ? parseFloat(display_info[3])/30 : parseFloat(display_info[3])/50
+
+                var compare = ''
+                if (score_now >= score_prev) {
+                    document.querySelector('#info1 p').innerHTML = '➚ Tăng ' + ((score_now-score_prev)*100).toFixed(2) + '% so với năm trước'
+                    document.querySelector('#info1 p').style.color = "green"
+                } else {
+                    document.querySelector('#info1 p').innerHTML = '➘ Giảm ' + ((score_prev-score_now)*100).toFixed(2) + '% so với năm trước'
+                    document.querySelector('#info1 p').style.color = "red"
+                }
+            </script>
+        </div>
+
+        <div id="info2">
+            <h2 style="margin: 15px 0; color: green; font-weight: 500"></h2>
+            <ul style="display:inline-block; font-size: 1.1em">
+                <li>Toán </li>
+                <li>Văn </li>
+                <li>Anh </li>
+            </ul>
+
+            <script>
+
+                var datas = <?php echo json_encode($datas); ?>;
+                var year = '<?php echo $year; ?>';
+                var wish = '<?php echo $wish; ?>';
+                var display_info = []
+
+                for (i=0; i <= datas.length; i++) {
+                    try {
+                        if (datas[i][0] == year) {
+                            if (wish == 'NV1') {
+                                display_info.push(parseInt(datas[i][0]))
+                                display_info.push(datas[i][3]['NV1'])
+                                display_info.push(parseInt(datas[i-1][0]))
+                                display_info.push(datas[i-1][3]['NV1'])
+                                break;
+                            } else if (wish == 'NV2') {
+                                display_info.push(parseInt(datas[i][0]))
+                                display_info.push(datas[i][3]['NV2'])
+                                display_info.push(parseInt(datas[i-1][0]))
+                                display_info.push(datas[i-1][3]['NV2'])
+                                break;
+                            } else if (wish == 'NV3') {
+                                display_info.push(parseInt(datas[i][0]))
+                                display_info.push(datas[i][3]['NV3'])
+                                display_info.push(parseInt(datas[i-1][0]))
+                                display_info.push(datas[i-1][3]['NV3'])
+                                break;
+                            }
+                        }
+
+                    } catch (e) {}
+                }
 
 
-        if (display_info[0] >= 2021) {
-            document.querySelector('#info2 h2').innerHTML = 'Để đạt được: ' + display_info[1] + '/' + '30'
-            var averageScore = (parseFloat(display_info[1])/3).toFixed(2)
-            document.querySelectorAll('#info2 ul li').forEach(i => {
-                i.innerHTML += '≥ ' + averageScore.toString()
-            });
+                if (display_info[0] >= 2021) {
+                    document.querySelector('#info2 h2').innerHTML = 'Để đạt được: ' + display_info[1] + '/' + '30'
+                    var averageScore = (parseFloat(display_info[1])/3).toFixed(2)
+                    document.querySelectorAll('#info2 ul li').forEach(i => {
+                        i.innerHTML += '≥ ' + averageScore.toString()
+                    });
 
-        } else {
-            document.querySelector('#info2 h2').innerHTML = 'Để đạt được: ' + display_info[1] + '/' + '50'
-            var averageScore = (parseFloat(display_info[1])/5).toFixed(2)
-            document.querySelectorAll('#info2 ul li').forEach(i => {
-                i.innerHTML += '≥ ' + averageScore.toString()
-            });
-        }
+                } else {
+                    document.querySelector('#info2 h2').innerHTML = 'Để đạt được: ' + display_info[1] + '/' + '50'
+                    var averageScore = (parseFloat(display_info[1])/5).toFixed(2)
+                    document.querySelectorAll('#info2 ul li').forEach(i => {
+                        i.innerHTML += '≥ ' + averageScore.toString()
+                    });
+                }
 
-    </script>
-</div>
+            </script>
+        </div>
+    <?php
+    } else {?>
+
+        <div id="info1">
+            <h4 style="color:red; text-align:center;">*Kết quả không khớp*</h4>
+        </div>
+
+        <div id="info2">
+            <h4 style="color:red; text-align:center;">*Kết quả không khớp*</h4>
+        </div>
+        <?php
+    }?>

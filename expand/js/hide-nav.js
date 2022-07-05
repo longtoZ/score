@@ -17,6 +17,10 @@ window.onscroll = function() {
             document.querySelector('.floating-container').style.transition = "all ease 0.5s"
         }
 
+        if (document.querySelector('.main-container .menu-container')) {
+            document.querySelector('.main-container .menu-container').style.left = "0em"
+        }
+
     } else {
         if (document.getElementById('main-header')) {
             document.getElementById('main-header').style.top = "-100px";
@@ -29,6 +33,10 @@ window.onscroll = function() {
         if (document.querySelector('.floating-container')) {
             document.querySelector('.floating-container').style.right = "-100px";
             document.querySelector('.floating-container').style.transition = "all ease 0.5s"
+        }
+
+        if (document.querySelector('.main-container .menu-container')) {
+            document.querySelector('.main-container .menu-container').style.left = "-6em"
         }
     }
     prevScrollpos = currentScrollPos;

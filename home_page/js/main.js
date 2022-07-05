@@ -8,8 +8,83 @@ const section1_desc = document.querySelector('.section1 .desc');
 const section2_part = document.querySelectorAll('.section2 .part');
 const section3_card = document.querySelectorAll('.section3 .card');
 const section5_card = document.querySelectorAll('.section5 .card');
-
 const section4_percent = document.querySelectorAll('.section4 .percent');
+
+function getLanguages(url) {
+    var symbols = {
+        'HTML': '<i class="fi fi-brands-html5"></i>',
+        'CSS': '<i class="fi fi-brands-css3-alt"></i>',
+        'PHP': '<i class="fi fi-brands-php"></i>',
+        'Hack': '',
+        'JavaScript': '<i class="fi fi-brands-js"></i>',
+        'Python': '<i class="fi fi-brands-python"></i>',
+        'Procfile': '<i class="fi fi-br-file-spreadsheet"></i>'
+
+    }
+    var languages = {}
+    var total = 0
+    var xhr = new XMLHttpRequest();
+
+    xhr.open("GET", url, true)
+    // xhr.responseType = "json";
+
+    xhr.onload = function() {
+        var lst = (xhr.responseText.replace("{", "").replace("}", "").replaceAll("\n", "").replaceAll('"', '')).split(",")
+        for (i of lst) {
+            languages[i.split(":")[0].trim()] = i.split(":")[1]
+            total += parseInt(i.split(":")[1])
+        }
+
+        var content = document.querySelector('.section4 .content')
+
+        for (i in languages) {
+            var card = document.createElement('div')
+            var card_title = document.createElement('div')
+            var bar = document.createElement('div')
+            var percent = document.createElement('div')
+
+            card.className = 'card'
+
+            card_title.className = 'card-title'
+            bar.className = 'bar'
+            percent.className = 'percent'
+    
+            card_title.innerHTML = symbols[i] + " " + i
+
+            percent.style.width = ((languages[i]/total)*100).toFixed(1).toString() + "%"
+            percent.innerHTML = ((languages[i]/total)*100).toFixed(1).toString() + "%"
+
+            bar.appendChild(percent)
+
+            card.appendChild(card_title)
+            card.appendChild(bar)
+
+            content.append(card)
+
+        }
+
+        var find_more = document.createElement('div')
+        var link = document.createElement('a')
+
+        find_more.className = 'find-more'
+
+        link.setAttribute('href', 'https://github.com/longtoZ/score')
+        link.setAttribute('target', '_blank')
+        link.innerHTML = "Tìm hiểu thêm &rarr;"
+
+        find_more.appendChild(link)
+        content.appendChild(find_more)
+
+    }
+
+    xhr.onerror = function() {
+        console.error(xhr.status, xhr.statusText)
+    }
+
+    xhr.send()
+}
+
+getLanguages("https://api.github.com/repos/longtoZ/score/languages")
 
 const observerFade = new IntersectionObserver(entries => {
     entries.forEach(entry => {

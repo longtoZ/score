@@ -350,7 +350,7 @@
                 });
 
                 $.ajax({
-                    url:"ratio_firgue.php",
+                    url:"ratio_figure.php",
                     method:"POST",
                     data:{title:default_school, year:default_year},
                     success:function(data) {
@@ -360,7 +360,7 @@
                 });
 
                 $.ajax({
-                    url:"../printing_page/ratio_firgue.php",
+                    url:"../printing_page/ratio_figure.php",
                     method:"POST",
                     data:{title:default_school, start: default_start, end:default_end, type:'chart'},
                     success: function(data) {
@@ -477,7 +477,7 @@
                     });
 
                     $.ajax({
-                        url:"ratio_firgue.php",
+                        url:"ratio_figure.php",
                         method:"POST",
                         data:{title:school_input, year:default_year},
                         success:function(data) {
@@ -487,7 +487,7 @@
                     });
 
                     $.ajax({
-                        url:"../printing_page/ratio_firgue.php",
+                        url:"../printing_page/ratio_figure.php",
                         method:"POST",
                         data:{title:school_input, start:default_start, end:default_end, type:'chart'},
                         success:function(data) {
@@ -543,7 +543,7 @@
                     } else {
 
                         $.ajax({
-                            url:"../printing_page/ratio_firgue.php",
+                            url:"../printing_page/ratio_figure.php",
                             method:"POST",
                             data:{title:school_input, start:start_r, end:end_r, type:'chart'},
                             success:function(data) {
