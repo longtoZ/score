@@ -9,7 +9,7 @@
         <link rel='stylesheet' href='../expand/css/uicons-regular-rounded.css'>
         <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-solid-straight/css/uicons-solid-straight.css'>
         <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-solid-rounded/css/uicons-solid-rounded.css'>
-        <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-bold-rounded/css/uicons-bold-rounded.css'>
+        <link rel='stylesheet' href='../expand/css/uicons-bold-rounded.css'>
         <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-brands/css/uicons-brands.css'>
         <title>Thống kê</title>
     </head>
@@ -449,7 +449,7 @@
                                 document.querySelector('.score-nv2 p').innerHTML = display_full[3]
                                 document.querySelector('.score-nv3 p').innerHTML = display_full[4]
 
-                                console.log(display_full)
+                                // console.log(display_full)
 
                                 $.ajax({
                                     url:"group_comparision.php",

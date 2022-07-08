@@ -18,70 +18,69 @@ function getLanguages(url) {
         'Hack': '',
         'JavaScript': '<i class="fi fi-brands-js"></i>',
         'Python': '<i class="fi fi-brands-python"></i>',
-        'Procfile': '<i class="fi fi-br-file-spreadsheet"></i>'
+        'Procfile': '<i class="fi fi-rr-file-spreadsheet"></i>'
 
     }
     var languages = {}
     var total = 0
-    var xhr = new XMLHttpRequest();
 
-    xhr.open("GET", url, true)
-    // xhr.responseType = "json";
+    languages = JSON.parse('{"HTML": 347877, "CSS": 197815, "PHP": 129769, "Hack": 77188, "JavaScript": 47982, "Python": 3029}')
 
-    xhr.onload = function() {
-        var lst = (xhr.responseText.replace("{", "").replace("}", "").replaceAll("\n", "").replaceAll('"', '')).split(",")
-        for (i of lst) {
-            languages[i.split(":")[0].trim()] = i.split(":")[1]
-            total += parseInt(i.split(":")[1])
-        }
+    for (const i in languages) {
+        total += languages[i]
+    }
 
-        var content = document.querySelector('.section4 .content')
 
-        for (i in languages) {
-            var card = document.createElement('div')
-            var card_title = document.createElement('div')
-            var bar = document.createElement('div')
-            var percent = document.createElement('div')
+    // var xhr = new XMLHttpRequest();
+    // xhr.open("GET", url, true)
 
-            card.className = 'card'
+    // xhr.onload = xhrToObj(xhr.responseText)
+    // xhr.onerror = function() {
+    //     console.error(xhr.status, xhr.statusText)
+    // }
 
-            card_title.className = 'card-title'
-            bar.className = 'bar'
-            percent.className = 'percent'
-    
-            card_title.innerHTML = symbols[i] + " " + i
+    // xhr.send()
 
-            percent.style.width = ((languages[i]/total)*100).toFixed(1).toString() + "%"
-            percent.innerHTML = ((languages[i]/total)*100).toFixed(1).toString() + "%"
+    var content = document.querySelector('.section4 .content')
 
-            bar.appendChild(percent)
+    for (i in languages) {
+        var card = document.createElement('div')
+        var card_title = document.createElement('div')
+        var bar = document.createElement('div')
+        var percent = document.createElement('div')
 
-            card.appendChild(card_title)
-            card.appendChild(bar)
+        card.className = 'card'
 
-            content.append(card)
+        card_title.className = 'card-title'
+        bar.className = 'bar'
+        percent.className = 'percent'
 
-        }
+        card_title.innerHTML = symbols[i] + " " + i
 
-        var find_more = document.createElement('div')
-        var link = document.createElement('a')
+        percent.style.width = ((languages[i]/total)*100).toFixed(1).toString() + "%"
+        percent.innerHTML = ((languages[i]/total)*100).toFixed(1).toString() + "%"
 
-        find_more.className = 'find-more'
+        bar.appendChild(percent)
 
-        link.setAttribute('href', 'https://github.com/longtoZ/score')
-        link.setAttribute('target', '_blank')
-        link.innerHTML = "Tìm hiểu thêm &rarr;"
+        card.appendChild(card_title)
+        card.appendChild(bar)
 
-        find_more.appendChild(link)
-        content.appendChild(find_more)
+        content.append(card)
 
     }
 
-    xhr.onerror = function() {
-        console.error(xhr.status, xhr.statusText)
-    }
+    var find_more = document.createElement('div')
+    var link = document.createElement('a')
 
-    xhr.send()
+    find_more.className = 'find-more'
+
+    link.setAttribute('href', 'https://github.com/longtoZ/score')
+    link.setAttribute('target', '_blank')
+    link.innerHTML = "Tìm hiểu thêm &rarr;"
+
+    find_more.appendChild(link)
+    content.appendChild(find_more)
+
 }
 
 getLanguages("https://api.github.com/repos/longtoZ/score/languages")
@@ -150,5 +149,3 @@ section4_percent.forEach(item => {
 section5_card.forEach(item => {
     observerMoveUp.observe(item)
 })
-
-

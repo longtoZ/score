@@ -76,7 +76,7 @@
                 <canvas id="myChartBar2"></canvas>  
             </div>
 
-            <i id="arrow-left" class="fi fi-br-angle-left" style="
+            <i id="arrow-left" class="fi fi-rr-angle-left" style="
                 display: flex;
                 align-items: center;
                 height: 100%;
@@ -86,7 +86,7 @@
                 font-size: 200%;"></i>
 
 
-            <i id="arrow-right" class="fi fi-br-angle-right" style="
+            <i id="arrow-right" class="fi fi-rr-angle-right" style="
                 display: flex;
                 align-items: center;
                 height: 100%;
@@ -427,6 +427,9 @@
                                     display: true,
                                     text: 'Năm',
                                     color: textColor
+                                },
+                                grid: {
+                                    display: false
                                 }
                             },
                             y: {

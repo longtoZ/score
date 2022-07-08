@@ -182,7 +182,7 @@
                         <label for="simplify-mode">Chế độ đơn giản</label>
                     </div>
                     <div class="exportxlsx" style="background-color: #33C481;">
-                        <i class="fi fi-br-download"></i>
+                        <i class="fi fi-rr-download"></i>
                         Excel
                     </div>
                     <div class="print">

@@ -55,7 +55,7 @@
                         <span class="desc">Trường được thành lập vào năm 1962-1963,...</span>
                     </div>
                     <div class="visit">
-                        <i class="fi fi-br-angle-right"></i>
+                        <i class="fi fi-rr-angle-right"></i>
                     </div>
                 </div>
             </a>
@@ -66,7 +66,7 @@
             <a href="https://www.facebook.com/truongthptNguyenHuuHuan/" target="_blank" style="text-decoration: none; color: var(--text-color);">
                 <div class="fanpage">
                     <div class="logo">
-                        <i class="fi fi-brands-facebook"></i>
+                        <i class="fi fi-rrands-facebook"></i>
                     </div>
                     <div class="detail">
                         <span class="title">Fanpage trường</span>
@@ -74,7 +74,7 @@
                         <span class="desc">Là một trong top 10 trường có chất lượng...</span>
                     </div>
                     <div class="visit">
-                        <i class="fi fi-br-angle-right"></i>
+                        <i class="fi fi-rr-angle-right"></i>
                     </div>
                 </div>
             </a>
@@ -91,7 +91,7 @@
                         <span class="desc">Giáo dục và Đào tạo Thành phố...</span>
                     </div>
                     <div class="visit">
-                        <i class="fi fi-br-angle-right"></i>
+                        <i class="fi fi-rr-angle-right"></i>
                     </div>
                 </div>
             </a>

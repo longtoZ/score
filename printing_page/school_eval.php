@@ -188,16 +188,12 @@
         </div>
 
         <script>
-            console.log('here')
             var score_nv1 = parseInt('<?php echo $current[1][2]['NV1']?>')
         </script>
     <?php
     } else {?>
         <h2 style="text-align:center; margin-bottom: 30px; font-weight: 500;">Top</h2>
         <table class="search-table" id="search-table-area"></table>
-        <script>
-            console.log('none')
-        </script>
     <?php
     }
     ?>

@@ -19,6 +19,4 @@ minimizeBtn.forEach(item => {
     item.onclick = function() {
         this.parentElement.parentElement.classList.toggle('minimize')
     }
-})
-
-
+});

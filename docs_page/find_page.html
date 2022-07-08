@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests"> -->
+        <link rel="icon" type="image/png" href="../img/logo.png">
+        <link rel="stylesheet" type="text/css" href="./assets/css/style.css">
+        <link rel="stylesheet" type="text/css" href="../expand/css/root.css">
+        <link rel='stylesheet' href='../expand/css/uicons-regular-rounded.css'>
+        <link rel='stylesheet' href='../expand/css/uicons-bold-rounded.css'>
+        <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-brands/css/uicons-brands.css'>
+        <title>About Score</title>
+    </head>
+
+    <style>
+        p {
+            margin: 0 0 15px 0;
+        }
+
+        .page-header {
+            font-weight: 400;
+            margin: 20px 0;
+            padding-bottom: 10px;
+            border-bottom: 1px solid black;
+        }
+
+        section > a {
+            font-size: 1.2em;
+        }
+    </style>
+
+    <body>
+        <div id="main">
+            <header>
+            </header>
+
+            <div class="main-container">
+                <div class="menu-container"></div>
+    
+                <div class="content-container">
+                </div>
+            </div>
+
+            <div id="scroll-button">
+                <i class="fi fi-rr-angle-up"></i>
+            </div>
+
+            <footer>
+            </footer>
+        </div>
+    </body>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script type="text/javascript" src="./js/find.js"></script>
+    <script type="text/javascript" src="../expand/js/hide-nav.js"></script>
+    <script>
+        $(function(){
+            $(".menu-container").load("../expand/menu.html");
+            $("header").load("../expand/mini-header.html"); 
+            $("footer").load("../expand/mini-footer.html");  
+        });
+    </script>
+
+</html>

@@ -1,5 +1,19 @@
 <a href="../home_page/">
     <img src="../img/logo-title-dark (2).png" alt="logo" class="brand-logo" width="auto" height="40px">
 </a>
-<input type="text" placeholder="Tìm kiếm...">
-<i class="fi fi-rr-search"></i>
+<input type="text" placeholder="Tìm trong tài liệu..." id="query">
+<i class="search-btn fi fi-rr-search"></i>
+
+<script>
+    document.getElementById('query').addEventListener("keypress", function(event) {
+        if (event.key === "Enter") {
+            event.preventDefault();
+            document.querySelector('.search-btn').click();
+        }
+    });
+
+    document.querySelector('.search-btn').addEventListener('click', function() {
+        const query = document.getElementById('query').value
+        location.href = "../docs_page/find_page.html?q=" + encodeURIComponent(query)
+    })
+</script>

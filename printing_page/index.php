@@ -10,7 +10,7 @@
         <link rel='stylesheet' href='../expand/css/uicons-regular-rounded.css'>
         <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-solid-straight/css/uicons-solid-straight.css'>
         <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-solid-rounded/css/uicons-solid-rounded.css'>
-        <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-bold-rounded/css/uicons-bold-rounded.css'>
+        <link rel='stylesheet' href='../expand/css/uicons-bold-rounded.css'>
         <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-brands/css/uicons-brands.css'>
         <!-- CSS only -->
         <title>Tổng hợp</title>
@@ -44,8 +44,8 @@
             <div id="score-area">
                 <div class="score-title">Điểm nguyện vọng</div>
                 <label class="hide-btn" for="sec1">
-                    <i class="close fi fi-br-cross"></i>
-                    <i class="open fi fi-br-check"></i>
+                    <i class="close fi fi-rr-cross"></i>
+                    <i class="open fi fi-rr-check"></i>
                 </label>
                 <div class="score-range">
                     <div class="title" style="float:left;">
@@ -65,8 +65,8 @@
             <div id="ratio-area">
                 <div class="ratio-title">Tỉ lệ chọi</div>
                 <label class="hide-btn" for="sec2">
-                    <i class="close fi fi-br-cross"></i>
-                    <i class="open fi fi-br-check"></i>
+                    <i class="close fi fi-rr-cross"></i>
+                    <i class="open fi fi-rr-check"></i>
                 </label>
                 <div class="ratio-range">
                     <div class="title" style="float:left">Dãy năm
@@ -85,8 +85,8 @@
             <div id="comparision-area">
                 <div class="comparision-title">Khu vực</div>
                 <label class="hide-btn" for="sec3">
-                    <i class="close fi fi-br-cross"></i>
-                    <i class="open fi fi-br-check"></i>
+                    <i class="close fi fi-rr-cross"></i>
+                    <i class="open fi fi-rr-check"></i>
                 </label>
                 <div class="comparision-range">
                     <div class="title" style="float:left;">Chọn năm
@@ -104,8 +104,8 @@
             <div id="eval-area">
                 <div class="eval-title">Xếp hạng</div>
                 <label class="hide-btn" for="sec4">
-                    <i class="close fi fi-br-cross"></i>
-                    <i class="open fi fi-br-check"></i>
+                    <i class="close fi fi-rr-cross"></i>
+                    <i class="open fi fi-rr-check"></i>
                 </label>
                 <div class="eval-range">
                     <div class="title" style="float:left;">
@@ -127,8 +127,8 @@
             <div id="average-area">
                 <div class="average-title">Điểm trung bình</div>
                 <label class="hide-btn" for="sec5">
-                    <i class="close fi fi-br-cross"></i>
-                    <i class="open fi fi-br-check"></i>
+                    <i class="close fi fi-rr-cross"></i>
+                    <i class="open fi fi-rr-check"></i>
                 </label>
                 <div class="average-range">
                     <div class="title" style="float:left;">
@@ -181,7 +181,7 @@
                         <label for="simplify-mode">Chế độ đơn giản</label>
                     </div>
                     <div class="exportxlsx" style="background-color: #33C481;">
-                        <i class="fi fi-br-download"></i>
+                        <i class="fi fi-rr-download"></i>
                         Excel
                     </div>
                     <div class="print">

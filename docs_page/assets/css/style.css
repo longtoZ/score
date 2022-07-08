@@ -71,19 +71,25 @@ header input {
     float: right;
     padding: 5px 0 5px 5px;
     margin-right: 5%;
-    background-color: transparent;
+    background-color: transparent !important;
     border: none;
     border-bottom: 2px solid white;
-    color: white;
+    color: white !important;
     width: 200px;
+    transition: all ease 0.3s;
 }
 
 header input::placeholder {
     color: white;
+    opacity: 0.8;
 }
 
 header input:focus-visible {
     outline: none;
+}
+
+header input:focus {
+    border-color: #00ffcb;
 }
 
 header i {
@@ -91,6 +97,7 @@ header i {
     color: white;
     right: 6%;
     top: 30%;
+    cursor: pointer;
 }
 
 .left-pannel {
