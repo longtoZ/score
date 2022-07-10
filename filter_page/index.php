@@ -43,7 +43,7 @@
                                     <input type="" class="score-maths primary-box" placeholder="Nhập điểm toán...">
                                     <input type="text" class="score-literature primary-box" placeholder="Nhập điểm văn...">
                                     <input type="text" class="score-english primary-box" placeholder="Nhập điểm anh...">
-                                    <input type="text" class="score-average primary-box" placeholder="Điểm trung bình" disabled="disabled" style="font-weight:bold; color:rgba(0, 152, 121, 1);">
+                                    <input type="text" class="score-average primary-box" placeholder="Điểm tổng" disabled="disabled" style="font-weight:bold; color:rgba(0, 152, 121, 1);">
                                     <input type="button" class="score-cal" onclick="showScore()" value="Tính">
                                 </div>
                             </div>
@@ -139,7 +139,7 @@
                                 <h3 class="filter-between-title">Lọc trong khoảng</h3>
                                 <input type="text" class="start advanced-input" placeholder="Đầu..." style="margin: 0 10px;">
                                 <input type="text" class="end advanced-input" placeholder="Cuối..." style="margin: 0 10px;">
-                                <input type="text" class="between-search advanced-input" value="Lọc" style="margin: 0 10px;">
+                                <input type="button" class="between-search advanced-input" value="Lọc" style="margin: 0 10px;">
                             </div>
                         </div>
                         <div class="filter-more-box" style="display:flex; justify-content: center; gap: 10%">

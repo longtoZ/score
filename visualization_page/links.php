@@ -47,7 +47,7 @@
             <a href="https://thptnguyenhuuhuan.hcm.edu.vn/" target="_blank" style="text-decoration: none; color: var(--text-color);">
                 <div class="main-page">
                     <div class="logo">
-                        <i class="fi fi-ss-form"></i>
+                        <i class="fi fi-rr-form"></i>
                     </div>                              
                     <div class="detail">
                         <span class="title">Trang chính thức</span>
@@ -66,7 +66,7 @@
             <a href="https://www.facebook.com/truongthptNguyenHuuHuan/" target="_blank" style="text-decoration: none; color: var(--text-color);">
                 <div class="fanpage">
                     <div class="logo">
-                        <i class="fi fi-rrands-facebook"></i>
+                        <i class="fi fi-brands-facebook"></i>
                     </div>
                     <div class="detail">
                         <span class="title">Fanpage trường</span>
@@ -83,7 +83,7 @@
             <a href="https://hcm.edu.vn/homehcm" target="_blank" style="text-decoration: none; color: var(--text-color);">
                 <div class="curriculum-page">
                     <div class="logo">
-                    <i class="fi fi-sr-graduation-cap"></i>
+                    <i class="fi fi-rr-graduation-cap"></i>
                     </div>
                     <div class="detail">
                         <span class="title">Cổng thông tin</span>

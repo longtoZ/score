@@ -55,10 +55,26 @@
     --divider-color: invert(0.88);
 }
 
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Lato', sans-serif;
+    font-family: 'MuseoModerno', cursive;
+    font-weight: 300;
+}
+
+@keyframes transitionIn {
+    from {
+        opacity: 0;
+    } to {
+        opacity: 1;
+    }
+}
 
 
 html {
-    animation: transitionIn 1.5s;
+    animation: transitionIn 1s;
     scroll-behavior: smooth;
 }
 
@@ -375,5 +391,9 @@ body::-webkit-scrollbar-thumb {
 
     .hide-btn.active {
         width: 15%;
+    }
+
+    .overlay {
+        backdrop-filter: blur(0px) brightness(0.9);
     }
 }

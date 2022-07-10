@@ -24,7 +24,7 @@ function getLanguages(url) {
     var languages = {}
     var total = 0
 
-    languages = JSON.parse('{"HTML": 347877, "CSS": 197815, "PHP": 129769, "Hack": 77188, "JavaScript": 47982, "Python": 3029}')
+    languages = JSON.parse('{"HTML": 588306, "CSS": 329724, "PHP": 130474, "Hack": 84093, "JavaScript": 52295, "Python": 3029}')
 
     for (const i in languages) {
         total += languages[i]
@@ -53,7 +53,7 @@ function getLanguages(url) {
 
         card_title.className = 'card-title'
         bar.className = 'bar'
-        percent.className = 'percent'
+        percent.className = 'percent hide-percent'
 
         card_title.innerHTML = symbols[i] + " " + i
 
@@ -116,7 +116,7 @@ const observerPercent = new IntersectionObserver(entries => {
         }
     })
 }, {
-    threshold: 1
+    threshold: 0.5
 });
 
 observerFade.observe(section1_title)

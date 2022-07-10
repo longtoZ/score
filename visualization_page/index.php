@@ -11,14 +11,14 @@
         <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-solid-rounded/css/uicons-solid-rounded.css'>
         <link rel='stylesheet' href='../expand/css/uicons-bold-rounded.css'>
         <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-brands/css/uicons-brands.css'>
-        <title>Thống kê</title>
+        <title>Phân tích</title>
     </head>
 
     <body>
         <div class="main">
             <div id="header-container"></div>
 
-            <h1 class="main-title">Thống kê và trực quan hoá điểm số</h1>
+            <h1 class="main-title">Phân tích và trực quan hoá điểm số</h1>
             <h4 class="subtitle">
                 Đây là nơi cho bạn một góc nhìn tổng quát nhất về một trường thông qua
                 các biểu đồ và tuỳ biến đa dạng.
@@ -31,7 +31,7 @@
                 <div class="main-data-container">
                     <div class="title-container">
                         <div class="school-search-box">
-                            <input type="text" class="school-search" placeholder="Tìm trường">
+                            <input type="text" class="school-search" placeholder="Tìm trường...">
                             <i class="fi fi-rr-search"></i>
 
                         </div>

@@ -13,7 +13,7 @@
         <link rel='stylesheet' href='../expand/css/uicons-bold-rounded.css'>
         <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-brands/css/uicons-brands.css'>
         <!-- CSS only -->
-        <title>Tổng hợp</title>
+        <title>Báo cáo</title>
     </head>
 
     <body>
@@ -21,7 +21,7 @@
 
             <div id="header-container"></div>
 
-            <h1 class="main-title-1">Tổng hợp và xuất dữ liệu</h1>
+            <h1 class="main-title-1">Báo cáo và xuất dữ liệu</h1>
             <h4 class="subtitle-1">
                 Một vài bước chuẩn bị trước khi bạn quyết định lưu những gì cần thiết.
                 <p style="font-weight: 400;">
@@ -31,7 +31,7 @@
 
             <div id="search-area">
                 <div class="search-box" style="display:flex; justify-content:center">
-                    <input type="text" class="school-search" placeholder="Tìm trường">
+                    <input type="text" class="school-search" placeholder="Tìm trường...">
                     <i class="fi fi-rr-search"></i>
                 </div>
             </div>

@@ -16,7 +16,7 @@
 
 		<!-- <div class="line-divider"></div> -->
 
-		<h1 class="main-title">Tìm trường cơ bản</h1>
+		<h1 class="main-title">Tra cứu cơ bản</h1>
 		<h4 class="subtitle">
 			Tại đây bạn có thể tìm kiếm điểm nguyện vọng 1, 2, 3 và môn chuyên
 			của các trường qua từng năm mà không cần dò thủ công theo danh sách.
@@ -66,7 +66,6 @@
 
 <script src="./js/main.js"></script>
 <script src="../expand/js/create-lists.js"></script>
-
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script>
 	$(function(){
@@ -74,11 +73,10 @@
 		$("#footer-container").load("../expand/footer.html"); 
 		});
 </script>
-
 <script type="text/javascript">
 	$(document).ready(function(){
 
-		$("#live-search").keyup(function(){
+		function liveSearch(){
 			var year = (document.querySelector('.dropdown-select .select').innerHTML).replace("Năm ","");
 			var schoolType = (document.querySelector('.school-type-select .select').innerHTML);
 			if (schoolType=="Trường thường") {
@@ -126,7 +124,11 @@
 			} else {
 				$("#search-result").css("display","none");
 			}
-		});
+		}
+
+		$("#live-search").keyup(liveSearch);
+		$('#live-search').change(liveSearch)
+
 	});
 </script>
 </html>

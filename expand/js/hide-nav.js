@@ -57,5 +57,8 @@ if (document.getElementById('scroll-button')) {
     })
 }
 
-console.error("%c Stop ruining my website...!", "font-size: 2em")
-console.log("%c Dừng lại nào! Score chỉ đơn thuần là một dự nhỏ do một học sinh xây dựng, do đó hiệu suất và bảo mật còn rất kém. Nếu bạn vào đây chỉ muốn khám phá mớ code hỗn độn như này thì... go ahead. Còn nếu bạn muốn Ddos hệ thống thì just donttttt! Hãy để tôi qua năm nay đi rồi làm gì thì làm.", "=color:white; font-size: 1.1em")
+const warningScript = document.createElement('script')
+warningScript.type = 'text/javascript'
+warningScript.src = '../expand/js/warning.js'
+
+document.querySelector('head').appendChild(warningScript)

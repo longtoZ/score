@@ -19,6 +19,6 @@
 }
 
 .hide-percent {
-    width: 0% !important;
-    transition: all ease 1s;
+    transform: scaleX(0);
+    transform-origin: left;
 }

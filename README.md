@@ -6,7 +6,7 @@
 
 
 ## Về dự án
-- `Score` là một dự án mã nguồn mở nhằm mục đích đưa việc lựa chọn trường THPT cho phụ huynh và học sinh trở nên dễ dàng hơn. Với nhiều công cụ và bộ lọc đầy đủ các chức năng, kết hợp biểu đồ thống kê số liệu điểm tuyển sinh qua các năm, `Score` đem lại một cái nhìn tổng quan nhất về điểm số.
+- `Score` là một dự án mã nguồn mở nhằm mục đích đưa việc lựa chọn trường THPT cho phụ huynh và học sinh trở nên dễ dàng hơn. Với nhiều công cụ và bộ lọc đầy đủ các chức năng, kết hợp biểu đồ Phân tích số liệu điểm tuyển sinh qua các năm, `Score` đem lại một cái nhìn tổng quan nhất về điểm số.
 
 - **Lí do ra đời dự án:**
   - Điểm tuyển sinh 10 được đăng tải công khai trên các trang thông tin nhưng chỉ `dừng lại ở hình ảnh`.

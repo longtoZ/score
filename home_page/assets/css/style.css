@@ -22,13 +22,6 @@
     }
 }
 
-* {
-	padding: 0;
-	margin: 0;
-	box-sizing: border-box;
-    font-family: 'MuseoModerno', cursive;
-    font-weight: 300;
-}
 
 
 b {
@@ -39,13 +32,6 @@ ul * {
     text-align: left;
 }
 
-@keyframes transitionIn {
-    from {
-        opacity: 0;
-    } to {
-        opacity: 1;
-    }
-}
 
 #title-container, #section1-container, #section2-container, #section3-container,
 #section4-container, #section5-container {
@@ -359,11 +345,6 @@ ul * {
     transition: all ease-in-out 0.3s;
 }
 
-.section4 .content .card:hover {
-    transform: scale(1.02);
-    margin: 20px 0;
-}
-
 .section4 .content .card-title {
     font-size: var(--fs-desc2);
     font-weight: 500;
@@ -382,12 +363,21 @@ ul * {
 .section4 .bar .percent {
     text-align: center;
     font-size: 90%;
-    color: white;
+    color: transparent;
     background-color: #00d3a8;
     background-clip: padding-box;
     border-radius: 10px;
     transition: width ease-in-out 0.5s;
+    animation: percent 1s cubic-bezier(1,0,0.5,1) forwards;
 }
+
+@keyframes percent {
+    100% {
+        transform: scaleX(1);
+        color: white;
+    }
+}
+
 
 .card-title i {
     font-size: var(--fs-desc);

@@ -24,27 +24,38 @@ window.onload = function () {
     const schoolTypeList = document.querySelector(".school-type-list");
     const schoolTypeItems = document.querySelectorAll(".school-type-list .type");
 
-    dropdownItems.forEach((item) => {
-        item.onclick = function() {
-            document.querySelector('.dropdown-select .select').innerHTML = this.innerHTML
-            dropdownList.classList.remove("active");
-        }
-    });
-
     yearSelected.onclick = function() {
         dropdownList.classList.toggle("active");
     }
 
-    schoolTypeItems.forEach((item) => {
-        item.onclick = function() {
-            document.querySelector('.school-type-select .select').innerHTML = this.innerHTML
-            schoolTypeList.classList.remove("active");
-        }
-    });
-
     schoolTypeSelected.onclick = function() {
         schoolTypeList.classList.toggle("active");
     }
+
+    dropdownItems.forEach((item) => {
+        item.onclick = function() {
+            document.querySelector('.dropdown-select .select').innerHTML = this.innerHTML
+            dropdownList.classList.remove("active");
+            const input = document.getElementById('live-search')
+            input.value += ' '
+            input.dispatchEvent(new Event('change'))
+            setTimeout(() => {input.value = input.value.trim()}, 100)
+        }
+    });
+
+
+    schoolTypeItems.forEach((item) => {
+        item.onclick = function() {
+            document.querySelector('.school-type-select .select').innerHTML = this.innerHTML
+            // $('#live-search').val(' ').change()
+            schoolTypeList.classList.remove("active");
+            const input = document.getElementById('live-search')
+            input.value += ' '
+            input.dispatchEvent(new Event('change'))
+            setTimeout(() => {input.value = input.value.trim()}, 100)
+        }
+    });
+    
 }
 
 
