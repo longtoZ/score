@@ -57,13 +57,13 @@ if (mysqli_num_rows($result) > 0) {
 
     ?>
 
-    <div id="comparisionGraph">
+    <div id="comparisonGraph">
 
         <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.1/dist/chart.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script>
 
         <div class="bar-graph">
-            <canvas id="myChartBarComparision"></canvas>  
+            <canvas id="myChartBarcomparison"></canvas>  
         </div>
 
         <style>
@@ -103,7 +103,7 @@ if (mysqli_num_rows($result) > 0) {
         <script>
             var textColor = '#8a8a8a'
             var defaultBorder = 6
-            var ctx_bar = document.getElementById('myChartBarComparision');
+            var ctx_bar = document.getElementById('myChartBarcomparison');
             var myChartBar = new Chart(ctx_bar, {
                 type: 'bar',
                 data: {
@@ -158,7 +158,7 @@ if (mysqli_num_rows($result) > 0) {
 
     </div>
 
-    <div id="comparisionList">
+    <div id="comparisonList">
         
         <style>
             .score-info {
@@ -217,7 +217,7 @@ if (mysqli_num_rows($result) > 0) {
 
 <?php
 } else {?>
-    <div id="comparisionGraph"></div>
-    <div id="comparisionList"></div>
+    <div id="comparisonGraph"></div>
+    <div id="comparisonList"></div>
 <?php
 } ?>

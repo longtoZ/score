@@ -40,12 +40,12 @@ Total : 36 files,  13218 codes, 24 comments, 2262 blanks, all 15504 lines
 | [printing_page/school_eval.php](/printing_page/school_eval.php) | PHP | 3 | 0 | -2 | 1 |
 | [printing_page/school_list.php](/printing_page/school_list.php) | PHP | 2 | 0 | 2 | 4 |
 | [printing_page/year_range_search.php](/printing_page/year_range_search.php) | PHP | 7 | 0 | 1 | 8 |
-| [visualization_page/group_comparision.php](/visualization_page/group_comparision.php) | PHP | 5 | 0 | 2 | 7 |
+| [visualization_page/group_comparison.php](/visualization_page/group_comparison.php) | PHP | 5 | 0 | 2 | 7 |
 | [visualization_page/index.php](/visualization_page/index.php) | PHP | -1 | 1 | 0 | 0 |
 | [visualization_page/ratio_figure.php](/visualization_page/ratio_figure.php) | PHP | 151 | 0 | 35 | 186 |
 | [visualization_page/ratio_firgue.php](/visualization_page/ratio_firgue.php) | PHP | -144 | 0 | -35 | -179 |
-| [visualization_page/school_comparision.php](/visualization_page/school_comparision.php) | PHP | 5 | 0 | 2 | 7 |
-| [visualization_page/year_range_comparision.php](/visualization_page/year_range_comparision.php) | PHP | 9 | 0 | 2 | 11 |
+| [visualization_page/school_comparison.php](/visualization_page/school_comparison.php) | PHP | 5 | 0 | 2 | 7 |
+| [visualization_page/year_range_comparison.php](/visualization_page/year_range_comparison.php) | PHP | 9 | 0 | 2 | 11 |
 | [visualization_page/year_range_search.php](/visualization_page/year_range_search.php) | PHP | 10 | 0 | -1 | 9 |
 
 [Summary](results.md) / [Details](details.md) / [Diff Summary](diff.md) / Diff Details

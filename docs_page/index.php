@@ -66,7 +66,7 @@
                             <li>
                                 <b>Các mục chính: </b>
                                 <a href="search_page.html">Tra cứu</a> | 
-                                <a href="filter_page.html">Lọc điểm</a> | 
+                                <a href="filter_page.html">Đề xuất</a> | 
                                 <a href="visualization_page.html">Phân tích</a> | 
                                 <a href="printing_page.html">Báo cáo</a> |
                             </li>

@@ -144,14 +144,14 @@ Files
 | c:\xampp\htdocs\search_project\search_page\livesearch.php                    | PHP        |        171 |          2 |         45 |        218 |
 | c:\xampp\htdocs\search_project\visualization_page\assets\css\calendar.css    | CSS        |        215 |          1 |         45 |        261 |
 | c:\xampp\htdocs\search_project\visualization_page\assets\css\style.css       | CSS        |        585 |          4 |        130 |        719 |
-| c:\xampp\htdocs\search_project\visualization_page\group_comparision.php      | PHP        |        225 |          5 |         53 |        283 |
+| c:\xampp\htdocs\search_project\visualization_page\group_comparison.php      | PHP        |        225 |          5 |         53 |        283 |
 | c:\xampp\htdocs\search_project\visualization_page\index.php                  | PHP        |        522 |          2 |         96 |        620 |
 | c:\xampp\htdocs\search_project\visualization_page\js\calendar.js             | JavaScript |         86 |          5 |         35 |        126 |
 | c:\xampp\htdocs\search_project\visualization_page\js\main.js                 | JavaScript |        182 |          0 |         57 |        239 |
 | c:\xampp\htdocs\search_project\visualization_page\links.php                  | PHP        |         92 |          0 |         16 |        108 |
 | c:\xampp\htdocs\search_project\visualization_page\ratio_figure.php           | PHP        |        151 |          0 |         35 |        186 |
-| c:\xampp\htdocs\search_project\visualization_page\school_comparision.php     | PHP        |        188 |          0 |         35 |        223 |
-| c:\xampp\htdocs\search_project\visualization_page\year_range_comparision.php | PHP        |        170 |          1 |         35 |        206 |
+| c:\xampp\htdocs\search_project\visualization_page\school_comparison.php     | PHP        |        188 |          0 |         35 |        223 |
+| c:\xampp\htdocs\search_project\visualization_page\year_range_comparison.php | PHP        |        170 |          1 |         35 |        206 |
 | c:\xampp\htdocs\search_project\visualization_page\year_range_search.php      | PHP        |        481 |          9 |         87 |        577 |
 | Total                                                                        |            |     35,833 |        188 |      6,556 |     42,577 |
 +------------------------------------------------------------------------------+------------+------------+------------+------------+------------+

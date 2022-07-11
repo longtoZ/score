@@ -69,7 +69,7 @@
 }
 
 #score-area, #ratio-area, 
-#comparision-area, #eval-area,
+#comparison-area, #eval-area,
 #average-area {
     position: relative;
     display: flex;
@@ -83,14 +83,14 @@
 }
 
 #score-area div:not(:first-child), #ratio-area div:not(:first-child), 
-#comparision-area div:not(:first-child), #eval-area div:not(:first-child),
+#comparison-area div:not(:first-child), #eval-area div:not(:first-child),
 #average-area div:not(:first-child) {
     overflow: hidden;
     transition: all ease-in-out 0.4s;
 }
 
 #score-area .score-title, #ratio-area .ratio-title, 
-#comparision-area .comparision-title, #eval-area .eval-title,
+#comparison-area .comparison-title, #eval-area .eval-title,
 #average-area .average-title {
     font-size: 170%;
     font-weight: 500;
@@ -98,12 +98,12 @@
 }
 
 .score-range, .ratio-range, 
-.comparision-range, .eval-range, .average-range {
+.comparison-range, .eval-range, .average-range {
     margin: 40px 0;
 }
 
 .score-range *, .ratio-range *, 
-.comparision-range *, .eval-range *, .average-range *{
+.comparison-range *, .eval-range *, .average-range *{
     font-size: 110%;
     font-weight: 500;
 }
@@ -178,12 +178,12 @@
 }
 
 @media only screen and (max-width: 46.1875em) {
-    #score-area, #ratio-area, #comparision-area, #eval-area, #average-area {
+    #score-area, #ratio-area, #comparison-area, #eval-area, #average-area {
         margin: 50px 5% 0 5%;
         padding: 30px 15px;
     }
 
-    .score-chart, .ratio-table, .comparision-table, .eval-table, .average-table {
+    .score-chart, .ratio-table, .comparison-table, .eval-table, .average-table {
         overflow-x: scroll !important;
     }
 

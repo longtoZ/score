@@ -9,7 +9,7 @@
         <link rel="stylesheet" type="text/css" href="../expand/css/root.css">
         <link rel='stylesheet' href='../expand/css/uicons-regular-rounded.css'>
         <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-brands/css/uicons-brands.css'>
-        <title>Lọc điểm</title>
+        <title>Đề xuất</title>
     </head>
 
     <body>
@@ -19,7 +19,7 @@
 
             <!-- <div class="line-divider"></div> -->
 
-            <h1 class="main-title">Lọc điểm phù hợp</h1>
+            <h1 class="main-title">Đề xuất phù hợp</h1>
             <h4 class="subtitle">
                 Bạn có thể tuỳ chỉnh các bộ lọc từ đơn giản đến chi tiết
                 để lựa chọn và xem xét trường có số điểm phù hợp với nguyện vọng

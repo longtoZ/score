@@ -66,12 +66,12 @@ Files
 | c:\xampp\htdocs\search_project\printing_page\school_eval.php                 | PHP        |          3 |          0 |         -2 |          1 |
 | c:\xampp\htdocs\search_project\printing_page\school_list.php                 | PHP        |          2 |          0 |          2 |          4 |
 | c:\xampp\htdocs\search_project\printing_page\year_range_search.php           | PHP        |          7 |          0 |          1 |          8 |
-| c:\xampp\htdocs\search_project\visualization_page\group_comparision.php      | PHP        |          5 |          0 |          2 |          7 |
+| c:\xampp\htdocs\search_project\visualization_page\group_comparison.php      | PHP        |          5 |          0 |          2 |          7 |
 | c:\xampp\htdocs\search_project\visualization_page\index.php                  | PHP        |         -1 |          1 |          0 |          0 |
 | c:\xampp\htdocs\search_project\visualization_page\ratio_figure.php           | PHP        |        151 |          0 |         35 |        186 |
 | c:\xampp\htdocs\search_project\visualization_page\ratio_firgue.php           | PHP        |       -144 |          0 |        -35 |       -179 |
-| c:\xampp\htdocs\search_project\visualization_page\school_comparision.php     | PHP        |          5 |          0 |          2 |          7 |
-| c:\xampp\htdocs\search_project\visualization_page\year_range_comparision.php | PHP        |          9 |          0 |          2 |         11 |
+| c:\xampp\htdocs\search_project\visualization_page\school_comparison.php     | PHP        |          5 |          0 |          2 |          7 |
+| c:\xampp\htdocs\search_project\visualization_page\year_range_comparison.php | PHP        |          9 |          0 |          2 |         11 |
 | c:\xampp\htdocs\search_project\visualization_page\year_range_search.php      | PHP        |         10 |          0 |         -1 |          9 |
 | Total                                                                        |            |     13,218 |         24 |      2,262 |     15,504 |
 +------------------------------------------------------------------------------+------------+------------+------------+------------+------------+

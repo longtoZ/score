@@ -83,7 +83,7 @@
                                 <input class="year-input-nv" type="number" value="2021" min="2015">
                             </h3>
                             
-                            <div class="comparision">
+                            <div class="comparison">
                                 <div class="navigation">
                                     <div class="nav-wrap">
                                         <div class="select-nv1">NV1</div>
@@ -136,11 +136,11 @@
                         </div>
                     </div>
 
-                    <div class="comparision-data-container">
-                        <div class="comparision-data">
-                            <div class="comparision-graph-container"></div>
-                            <div class="comparision-detail">
-                                <div class="comparision-detail-container">
+                    <div class="comparison-data-container">
+                        <div class="comparison-data">
+                            <div class="comparison-graph-container"></div>
+                            <div class="comparison-detail">
+                                <div class="comparison-detail-container">
                                     <div class="filter-box">
                                         <h3 style="text-align:center; font-weight: bold; margin-top: 40px;">Trường trong khu vực</h3>
                                         <div class="filter-detail">
@@ -325,11 +325,11 @@
                 });
 
                 $.ajax({
-                    url:"year_range_comparision.php",
+                    url:"year_range_comparison.php",
                     method:"POST",
                     data:{title:default_school, year:default_year, wish:default_wish},
                     success:function(data) {
-                        $('.comparision .info').html($(data).filter('#info1'))
+                        $('.comparison .info').html($(data).filter('#info1'))
                         $('.calculation').html($(data).filter('#info2'))
 
                         document.querySelector('.school-to-compare h3').innerHTML = display_full[0]
@@ -338,7 +338,7 @@
                         document.querySelector('.score-nv3 p').innerHTML = display_full[4]
 
                         $.ajax({
-                            url:"group_comparision.php",
+                            url:"group_comparison.php",
                             method:"POST",
                             data:{title:default_school, year:default_year, score:display_full[2]},
                             success:function(data) {
@@ -369,12 +369,12 @@
                 })
 
                 $.ajax({
-                    url:"school_comparision.php",
+                    url:"school_comparison.php",
                     method:"POST",
                     data:{year:default_year, district:default_district},
                     success:function(data) {
-                        $('.comparision-graph-container').html($(data).filter('#comparisionGraph'));
-                        $('.school-list').html($(data).filter('#comparisionList'));
+                        $('.comparison-graph-container').html($(data).filter('#comparisonGraph'));
+                        $('.school-list').html($(data).filter('#comparisonList'));
                     }
                 });
                 
@@ -416,17 +416,17 @@
                             // $('.schoolcity p').html($(data).filter('#schoolID').text());
 
                             $.ajax({
-                                url:"year_range_comparision.php",
+                                url:"year_range_comparison.php",
                                 method:"POST",
                                 data:{title:school_input, year:year_input, wish:default_wish},
                                 success:function(data) {
-                                    $('.comparision .info').html($(data).filter('#info1'))
+                                    $('.comparison .info').html($(data).filter('#info1'))
                                     $('.calculation').html($(data).filter('#info2'))
 
                                     async function run() {
                                         await districtClick();
                                         await yearClick();
-                                        await groupComparisionDisplay();
+                                        await groupcomparisonDisplay();
                                     }
 
                                     run()
@@ -443,7 +443,7 @@
                                 }
                             }
 
-                            function groupComparisionDisplay() {
+                            function groupcomparisonDisplay() {
                                 document.querySelector('.school-to-compare h3').innerHTML = document.querySelector('.schoolname p').innerHTML
                                 document.querySelector('.score-nv1 p').innerHTML = display_full[2]
                                 document.querySelector('.score-nv2 p').innerHTML = display_full[3]
@@ -452,7 +452,7 @@
                                 // console.log(display_full)
 
                                 $.ajax({
-                                    url:"group_comparision.php",
+                                    url:"group_comparison.php",
                                     method:"POST",
                                     data:{title:document.querySelector('.schoolname p').innerHTML, year:default_year, score:display_full[2]},
                                     success:function(data) {
@@ -600,11 +600,11 @@
                 var year_input = document.querySelector('.year-input-nv').value
 
                 $.ajax({
-                    url:"year_range_comparision.php",
+                    url:"year_range_comparison.php",
                     method:"POST",
                     data:{title:school_input, year:year_input, wish:default_wish},
                     success:function(data) {
-                        $('.comparision .info').html($(data).filter('#info1'))
+                        $('.comparison .info').html($(data).filter('#info1'))
                         $('.calculation').html($(data).filter('#info2'))
                     }
                 });

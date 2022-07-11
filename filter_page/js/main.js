@@ -1,13 +1,13 @@
 districtsList.unshift("Tất cả")
 
 for (let i of yearsList) {
-    var item = document.createElement('div')
+    const item = document.createElement('div')
     
     item.className = "year"
     item.innerHTML = "Năm " + i.toString()
 
     document.querySelector('.filter-year-list').appendChild(item)
-    document.querySelector('.filter-year-advanced-list').appendChild(item)
+    document.querySelector('.filter-year-advanced-list').appendChild(item.cloneNode(true))
 }
 
 // for (let i of yearsList) {
@@ -20,23 +20,23 @@ for (let i of yearsList) {
 // }
 
 for (let i of districtsList) {
-    var item = document.createElement('div')
+    const item = document.createElement('div')
     
     item.className = "district"
     item.innerHTML = i.toString()
 
     document.querySelector('.filter-district-list').appendChild(item)
-    document.querySelector('.filter-district-advanced-list').appendChild(item)
+    document.querySelector('.filter-district-advanced-list').appendChild(item.cloneNode(true))
 }
 
 for (let i of wishsList) {
-    var item = document.createElement('div')
+    const item = document.createElement('div')
     
     item.className = "wish"
     item.innerHTML = i.toString()
 
     document.querySelector('.filter-wish-list').appendChild(item)
-    document.querySelector('.filter-wish-advanced-list').appendChild(item)
+    document.querySelector('.filter-wish-advanced-list').appendChild(item.cloneNode(true))
 }
 
 // for (let i of wishsList) {

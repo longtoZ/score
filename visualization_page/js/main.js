@@ -82,25 +82,25 @@ function changeYear() {
     });
 
     $.ajax({
-        url:"school_comparision.php",
+        url:"school_comparison.php",
         method:"POST",
         data:{year:year, district:district},
         beforeSend:function() {
             
         },
         success:function(data) {
-            $('.comparision-graph-container').html($(data).filter('#comparisionGraph'));
-            $('.school-list').html($(data).filter('#comparisionList'));
+            $('.comparison-graph-container').html($(data).filter('#comparisonGraph'));
+            $('.school-list').html($(data).filter('#comparisonList'));
         }
     });
 
 
     $.ajax({
-        url:"year_range_comparision.php",
+        url:"year_range_comparison.php",
         method:"POST",
         data:{title:document.querySelector('.schoolname p').innerHTML, year:year_input, wish:default_wish},
         success:function(data) {
-            $('.comparision .info').html($(data).filter('#info1'))
+            $('.comparison .info').html($(data).filter('#info1'))
             $('.calculation').html($(data).filter('#info2'))
 
             document.querySelector('.score-nv1 p').innerHTML = display_full[2]
@@ -108,7 +108,7 @@ function changeYear() {
             document.querySelector('.score-nv3 p').innerHTML = display_full[4]
 
             $.ajax({
-                url:"group_comparision.php",
+                url:"group_comparison.php",
                 method:"POST",
                 data:{title:document.querySelector('.schoolname p').innerHTML, year:year, score:display_full[2]},
                 success:function(data) {
@@ -127,15 +127,15 @@ $('.filter-district-list .district').on('click', function () {
     var year = (document.querySelector('.filter-year-select .select').innerHTML).replace("Năm ", "");
     var district = document.querySelector('.filter-district-select .select').innerHTML;
     $.ajax({
-        url:"school_comparision.php",
+        url:"school_comparison.php",
         method:"POST",
         data:{year:year, district:district},
         beforeSend:function() {
             
         },
         success:function(data) {
-            $('.comparision-graph-container').html($(data).filter('#comparisionGraph'));
-            $('.school-list').html($(data).filter('#comparisionList'));
+            $('.comparison-graph-container').html($(data).filter('#comparisonGraph'));
+            $('.school-list').html($(data).filter('#comparisonList'));
         }
     });
 
@@ -183,11 +183,11 @@ function displayScore(wish) {
     var year_input = document.querySelector('.year-input-nv').value
 
     $.ajax({
-        url:"year_range_comparision.php",
+        url:"year_range_comparison.php",
         method:"POST",
         data:{title:school_input, year:year_input, wish:wish},
         success:function(data) {
-            $('.comparision .info').html($(data).filter('#info1'))
+            $('.comparison .info').html($(data).filter('#info1'))
             $('.calculation').html($(data).filter('#info2'))
         }
     });

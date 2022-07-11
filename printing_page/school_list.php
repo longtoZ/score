@@ -136,7 +136,7 @@
             <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script>
 
             <div class="bar-horizontal" style="height: 470px; width:auto; margin: 0 30px; display:block;">
-                <canvas id="myChartBarComparision"></canvas>  
+                <canvas id="myChartBarcomparison"></canvas>  
             </div>
 
             <script>
@@ -170,8 +170,8 @@
             <script>
                 var textColor = '#8a8a8a'
                 var defaultBorder = 6
-                var ctx_bar = document.getElementById('myChartBarComparision');
-                var myChartComparision = new Chart(ctx_bar, {
+                var ctx_bar = document.getElementById('myChartBarcomparison');
+                var myChartcomparison = new Chart(ctx_bar, {
                     type: 'bar',
                     data: {
                         labels: schools,

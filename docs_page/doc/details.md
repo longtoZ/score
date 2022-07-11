@@ -92,14 +92,14 @@ Total : 90 files,  35833 codes, 188 comments, 6556 blanks, all 42577 lines
 | [search_page/livesearch.php](/search_page/livesearch.php) | PHP | 171 | 2 | 45 | 218 |
 | [visualization_page/assets/css/calendar.css](/visualization_page/assets/css/calendar.css) | CSS | 215 | 1 | 45 | 261 |
 | [visualization_page/assets/css/style.css](/visualization_page/assets/css/style.css) | CSS | 585 | 4 | 130 | 719 |
-| [visualization_page/group_comparision.php](/visualization_page/group_comparision.php) | PHP | 225 | 5 | 53 | 283 |
+| [visualization_page/group_comparison.php](/visualization_page/group_comparison.php) | PHP | 225 | 5 | 53 | 283 |
 | [visualization_page/index.php](/visualization_page/index.php) | PHP | 522 | 2 | 96 | 620 |
 | [visualization_page/js/calendar.js](/visualization_page/js/calendar.js) | JavaScript | 86 | 5 | 35 | 126 |
 | [visualization_page/js/main.js](/visualization_page/js/main.js) | JavaScript | 182 | 0 | 57 | 239 |
 | [visualization_page/links.php](/visualization_page/links.php) | PHP | 92 | 0 | 16 | 108 |
 | [visualization_page/ratio_figure.php](/visualization_page/ratio_figure.php) | PHP | 151 | 0 | 35 | 186 |
-| [visualization_page/school_comparision.php](/visualization_page/school_comparision.php) | PHP | 188 | 0 | 35 | 223 |
-| [visualization_page/year_range_comparision.php](/visualization_page/year_range_comparision.php) | PHP | 170 | 1 | 35 | 206 |
+| [visualization_page/school_comparison.php](/visualization_page/school_comparison.php) | PHP | 188 | 0 | 35 | 223 |
+| [visualization_page/year_range_comparison.php](/visualization_page/year_range_comparison.php) | PHP | 170 | 1 | 35 | 206 |
 | [visualization_page/year_range_search.php](/visualization_page/year_range_search.php) | PHP | 481 | 9 | 87 | 577 |
 
 [Summary](results.md) / Details / [Diff Summary](diff.md) / [Diff Details](diff-details.md)

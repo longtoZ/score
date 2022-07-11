@@ -82,13 +82,13 @@
                 <div class="ratio-table"></div>
             </div>
 
-            <div id="comparision-area">
-                <div class="comparision-title">Khu vực</div>
+            <div id="comparison-area">
+                <div class="comparison-title">Khu vực</div>
                 <label class="hide-btn" for="sec3">
                     <i class="close fi fi-rr-cross"></i>
                     <i class="open fi fi-rr-check"></i>
                 </label>
-                <div class="comparision-range">
+                <div class="comparison-range">
                     <div class="title" style="float:left;">Chọn năm
                         <i class="fi fi-rr-shuffle"></i>
                     </div>
@@ -98,7 +98,7 @@
                     </div>
 
                 </div>
-                <div class="comparision-table"></div>
+                <div class="comparison-table"></div>
             </div>
 
             <div id="eval-area">
@@ -270,7 +270,7 @@
                     method:"POST",
                     data:{year:year_end, district:default_district, school:default_school, type:'table'},
                     success:function(data) {
-                        $('.comparision-table').html(data);
+                        $('.comparison-table').html(data);
                     }
                 });
 
@@ -331,7 +331,7 @@
                                             school:school_input,
                                             type:'table'},
                                         success:function(data) {
-                                            $('.comparision-table').html(data);
+                                            $('.comparison-table').html(data);
                                         }
                                     });
 
@@ -353,7 +353,7 @@
                                         }
                                     });
                                 } else {
-                                    $('.comparision-table').html('<div></div>');
+                                    $('.comparison-table').html('<div></div>');
                                     $('.eval-table').html('<div></div>');
                                     $('.average-table').html('<div></div>');
                                 }
@@ -440,7 +440,7 @@
                             school:school_input,
                             type:'table'},
                         success:function(data) {
-                            $('.comparision-table').html(data);
+                            $('.comparison-table').html(data);
                         }
                     });
                             

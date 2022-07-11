@@ -16,7 +16,7 @@ const print = document.querySelector('.print');
 
 const changeType1 = document.querySelector('#score-area .title i');
 const changeType2 = document.querySelector('#ratio-area .title i');
-const changeType3 = document.querySelector('#comparision-area .title i');
+const changeType3 = document.querySelector('#comparison-area .title i');
 
 function hideSection(i) {
     i.classList.toggle("active");
@@ -96,7 +96,7 @@ function exportXLSX() {
 
     var tableSec1 = document.querySelector('.score-chart .search-table');
     var tableSec2 = document.querySelector('.ratio-table .search-table');
-    var tableSec3 = document.querySelector('.comparision-table .search-table');
+    var tableSec3 = document.querySelector('.comparison-table .search-table');
     var tableSec4 = document.querySelector('.eval-table .search-table');
 
     const wb = XLSX.utils.book_new();
@@ -114,7 +114,7 @@ function exportXLSX() {
     }
 
     if (tableSec3) {
-        var tableSec3Title = document.querySelector('.comparision-title').innerHTML;
+        var tableSec3Title = document.querySelector('.comparison-title').innerHTML;
         var ws3= XLSX.utils.table_to_sheet(tableSec3);
         XLSX.utils.book_append_sheet(wb, ws3, tableSec3Title);
     }
@@ -139,7 +139,7 @@ section2.addEventListener('click', function() {
 });
 
 section3.addEventListener('click', function() {
-    hideSection(document.querySelector('#comparision-area .hide-btn'))
+    hideSection(document.querySelector('#comparison-area .hide-btn'))
 });
 
 section4.addEventListener('click', function() {
@@ -227,7 +227,7 @@ changeType3.addEventListener('click', function () {
                 school:school_input,
                 type:'chart'},
             success:function(data) {
-                $('.comparision-table').html(data);
+                $('.comparison-table').html(data);
             }
         });
     } else {
@@ -240,7 +240,7 @@ changeType3.addEventListener('click', function () {
                 school:school_input,
                 type:'table'},
             success:function(data) {
-                $('.comparision-table').html(data);
+                $('.comparison-table').html(data);
             }
         });
     }

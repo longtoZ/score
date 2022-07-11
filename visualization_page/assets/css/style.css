@@ -126,7 +126,7 @@
     flex: 1;
 }
 
-.year-range-data, .year-range-detail > div, .comparision-data, .group-data{
+.year-range-data, .year-range-detail > div, .comparison-data, .group-data{
     border-radius: 25px;
 	padding: 8px;
     padding-bottom: 50px;
@@ -181,12 +181,12 @@
     color: var(--text-color-light);
 }
 
-.comparision, .calculation {
+.comparison, .calculation {
     border-bottom: 5px solid #00a6a5;
 }
 
 
-.comparision .info, .calculation {
+.comparison .info, .calculation {
     text-align: center;
     margin-top: 15px;
 }
@@ -277,7 +277,7 @@
     width: 50%;
 }
 
-.comparision-data, .group-data {
+.comparison-data, .group-data {
     width: 85%;
 }
 
@@ -391,19 +391,19 @@
     border-radius: 8px;
 }
 
-.comparision-graph-container, .group-graph-container {
+.comparison-graph-container, .group-graph-container {
     width: 50%;
     float: left;
 }
 
-.comparision-detail-container, .group-detail-container {
+.comparison-detail-container, .group-detail-container {
     float: left;
     width: 50%;
     display: flex;
     justify-content: center;
 }
 
-.comparision-detail-container .filter-box, .group-detail-container .filter-box {
+.comparison-detail-container .filter-box, .group-detail-container .filter-box {
     float: left;
 }
 
@@ -589,13 +589,13 @@
     }
 
     .year-range-container, .win-ratio-container, 
-    .comparision-data-container, .group-data-container {
+    .comparison-data-container, .group-data-container {
         flex-direction: column;
         padding: 0 7.5%;
     }
 
     .year-range-data, .year-range-detail, .win-ratio-data, .ratio-graph-container, 
-    .comparision-data, .group-data {
+    .comparison-data, .group-data {
         width: auto;
     }
 
@@ -619,7 +619,7 @@
 
 @media only screen and (max-width: 46.1875em) {
     .year-range-container, .win-ratio-container, 
-    .comparision-data-container, .group-data-container, .more-container {
+    .comparison-data-container, .group-data-container, .more-container {
         flex-direction: column;
         padding: 0 0;
     }
@@ -667,7 +667,7 @@
         padding: 30px 0;;
     }
 
-    .comparision-graph-container, .comparision-detail-container,
+    .comparison-graph-container, .comparison-detail-container,
     .group-graph-container, .group-detail-container {
         width: 100%;
         float: none;
