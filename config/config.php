@@ -15,7 +15,7 @@ $dbname = $json_data["dbname"];
 // $dbpassword = "";
 // $dbname = "scoredb";
 
-$con = mysqli_connect($dbhost, $dbuser, $dbpassword, $dbname);
+$con = mysqli_connect($dbhost, $dbuser, $dbpassword, $dbname) or die(mysqli_error($con));
 $con -> set_charset("utf8");
 
 

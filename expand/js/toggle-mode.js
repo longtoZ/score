@@ -7,17 +7,41 @@ switcher.addEventListener('click', function() {
         toggle.style.transform = "translateX(100%)"
         toggle.style.transition = "transform 0.3s ease-in-out"
         document.body.classList.add("dark-mode")
-        logo.src = "../img/logo-full-dark (2).png"
+        if (logo) {
+            logo.src = "../img/logo-full-dark.png"
+        }
         localStorage.setItem("mode", "dark-mode")
     } else {
         toggle.style.transform = "translateX(0%)"
         toggle.style.transition = "transform 0.3s ease-in-out"
         document.body.classList.remove("dark-mode")
-        logo.src = "../img/logo-full-light (2).png"
+        if (logo) {
+            logo.src = "../img/logo-full-light.png"
+        }
         localStorage.setItem("mode", "light-mode")
     }
 
 });
+
+function checkmode() {
+    if (localStorage.getItem("mode") == "dark-mode") {
+        document.querySelector('.toggle-box').style.transform = "translateX(100%)"
+        document.querySelector('.toggle-box').style.transition = "transform 0.3s ease-in-out"
+        if (document.querySelector('header .brand-logo')) {
+            document.querySelector('header .brand-logo').src = "../img/logo-full-dark.png"
+        }
+        document.body.classList.add("dark-mode")
+    } else {
+        document.querySelector('.toggle-box').style.transform = "translateX(0%)"
+        document.querySelector('.toggle-box').style.transition = "transform 0.3s ease-in-out"
+        if (document.querySelector('header .brand-logo')) {
+            document.querySelector('header .brand-logo').src = "../img/logo-full-light.png"
+        }
+        document.body.classList.remove("dark-mode")
+    }
+}
+
+checkmode()
 
 
 // if (typeof(Storage) !== "undefined") {

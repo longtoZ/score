@@ -2,7 +2,7 @@
 
 include("../config/config.php");
 
-$input = $_POST['input'];
+$input = mysqli_real_escape_string($con, $_POST['input']);
 $schoolType = $_POST['schoolType'];
 $year = $_POST['year'];
 

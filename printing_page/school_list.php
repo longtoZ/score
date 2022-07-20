@@ -1,6 +1,6 @@
 <?php
     include("../config/config.php");
-    $school = $_POST['school'];
+    $school = mysqli_real_escape_string($con, $_POST['school']);
     $district = $_POST['district'];
     $year = $_POST['year'];
     $type = $_POST['type'];

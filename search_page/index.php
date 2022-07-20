@@ -6,7 +6,8 @@
 	<link rel="icon" type="image/png" href="../img/logo.png">
 	<link rel="stylesheet" type="text/css" href="./assets/css/style.css" media="all">
 	<link rel='stylesheet' href='../expand/css/uicons-regular-rounded.css'>
-	<link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-brands/css/uicons-brands.css'>
+	<link rel='stylesheet' href='../expand/css/uicons-brands.css'>
+	<title>Tra cứu</title>
 </head>
 
 <body>

@@ -1,8 +1,24 @@
 <a href="../home_page/">
-    <img src="../img/logo-title-dark (2).png" alt="logo" class="brand-logo" width="auto" height="40px">
+    <img src="../img/logo-title-dark.png" alt="logo" class="brand-logo" width="auto" height="40px">
 </a>
 <input type="text" placeholder="Tìm trong tài liệu..." id="query">
 <i class="search-btn fi fi-rr-search"></i>
+
+<script>
+    const logo = document.querySelector('.content-container .main-logo')
+    const mode = localStorage.getItem("mode")
+    if (mode=="dark-mode") {
+        document.body.classList.add("dark-mode")
+        if (logo) {
+            logo.src = "../img/logo-full-dark.png"
+        }
+    } else {
+        document.body.classList.remove("dark-mode")
+        if (logo) {
+            logo.src = "../img/logo-full-light.png"
+        }
+    }
+</script>
 
 <script>
     document.getElementById('query').addEventListener("keypress", function(event) {

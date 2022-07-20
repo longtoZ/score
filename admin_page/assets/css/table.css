@@ -1,0 +1,47 @@
+.search-table {
+    border-collapse: collapse;
+    width: 100%;
+    animation-name: fadeInOpacity;
+    animation-timing-function: ease;
+    animation-duration: 0.3s;
+}
+
+.search-table tbody tr:hover {
+    transform: scale(1.02);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    background-color: var(--row-hover-color);
+    color: #000000;
+    font-weight: bold;
+    transition: ease 0.3s;
+}
+
+@keyframes fadeInOpacity {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+th {
+    padding: 20px 0;
+    font-weight: 600;
+    opacity: 0.6;
+    text-align: center;
+}
+
+td {
+    padding: 20px 0;
+    border-bottom: 1px solid var(--third-primary-color);
+    text-align: center;
+    transition: all ease 0.3s;
+}
+
+th:first-child, td:first-child {
+    padding-left: 50px;
+}
+
+th:last-child, td:last-child {
+    padding-right: 50px;
+}

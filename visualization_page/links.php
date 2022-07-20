@@ -1,7 +1,7 @@
 <?php
 
     include("../config/config.php");
-    $school = $_POST['title'];
+    $school = mysqli_real_escape_string($con, $_POST['title']);
     $sql = "SELECT * FROM `links` WHERE `TÊN TRƯỜNG` LIKE '%$school%';";
 
     $result = mysqli_query($con,$sql);

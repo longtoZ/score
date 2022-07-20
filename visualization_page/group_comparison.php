@@ -1,7 +1,7 @@
 <?php
 include("../config/config.php");
 
-$title = $_POST['title'];
+$title = mysqli_real_escape_string($con, $_POST['title']);
 $year = $_POST['year'];
 $score = $_POST['score'];
 

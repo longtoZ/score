@@ -1,6 +1,6 @@
 <?php
     include("../config/config.php");
-    $school = $_POST['title'];
+    $school = mysqli_real_escape_string($con, $_POST['title']);
     $start = $_POST['start'];
     $end = $_POST['end'];
     $type = $_POST['type'];

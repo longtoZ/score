@@ -9,7 +9,7 @@
         <link rel="stylesheet" type="text/css" href="../expand/css/root.css">
         <link rel='stylesheet' href='../expand/css/uicons-regular-rounded.css'>
         <link rel='stylesheet' href='../expand/css/uicons-bold-rounded.css'>
-        <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-brands/css/uicons-brands.css'>
+        <link rel='stylesheet' href='../expand/css/uicons-brands.css'>
         <title>About Score</title>
     </head>
 
@@ -22,7 +22,7 @@
                 <div class="menu-container"></div>
     
                 <div class="content-container">
-                    <img src="../img/logo-full-light (2).png" alt="main-logo" class="main-logo">
+                    <img src="../img/logo-full-light.png" alt="main-logo" class="main-logo">
                     <h1 style="text-align: center; padding: 40px 0; margin-bottom: 50px; font-weight: 500; letter-spacing: 1px;">Score - Phân tích điểm tuyển sinh 10</h1>
 
                     <section id="introduction">
@@ -47,7 +47,7 @@
                             </li>
                             <li>Trực quan hoá bằng biểu đồ, tuỳ chỉnh trực tiếp trên biểu đồ hiển thị theo yêu cầu.</li>
                             <li>Hỗ trợ xuất dữ liệu (pdf, excel) có thể tuỳ biến hiển thị.</li>
-                            <li>Giao diện hiện đại, bố cục rõ ràng, thích ứng với nhiều loại thiết bị (máy tính, ipad, điện thoại,...).</li>
+                            <li>Giao diện hiện đại, bố cục rõ ràng, tương thích với nhiều loại thiết bị (máy tính, ipad, điện thoại,...).</li>
                         </ul>
                     </section>
 

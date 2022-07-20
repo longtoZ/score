@@ -8,7 +8,7 @@
         <link rel="stylesheet" type="text/css" href="./assets/css/printing.css">
         <link rel="stylesheet" type="text/css" href="../expand/css/root.css">
         <link rel='stylesheet' href='../expand/css/uicons-regular-rounded.css'>
-        <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-brands/css/uicons-brands.css'>
+        <link rel='stylesheet' href='../expand/css/uicons-brands.css'>
         <title>Đề xuất</title>
     </head>
 
@@ -101,7 +101,7 @@
                         <i class="fi fi-rr-caret-down"></i>
                     </div>
                     <div class="filter-advanced-container">
-                        <div class="filter-tool-box" style="display:flex; justify-content: center;">
+                        <div class="filter-tool-box">
                             <div class="filter-year-advanced primary-margin" style="margin: 0 10px;">
                                 <h3 class="filter-between-title">Chọn năm</h3>
                                 <div class="filter-year-advanced-select primary-box select-margin select-hover">

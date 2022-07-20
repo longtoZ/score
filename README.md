@@ -22,7 +22,7 @@
 - **Đề xuất trường phù hợp** dựa trên tiêu chí mà bạn đưa ra (điểm trên bao nhiêu, trong khoảng nào, khu vực nào,...).
 - **Trực quan hoá** bằng biểu đồ, tuỳ chỉnh trực tiếp trên biểu đồ hiển thị theo yêu cầu.
 - Hỗ trợ **xuất dữ liệu** (pdf, excel) có thể tuỳ biến hiển thị.
-- Giao diện hiện đại, bố cục rõ ràng, **thích ứng với nhiều loại thiết bị** (máy tính, ipad, điện thoại,...).
+- Giao diện hiện đại, bố cục rõ ràng, **tương thích với nhiều loại thiết bị** (máy tính, ipad, điện thoại,...).
 
 ## Công cụ xây dựng
 1. [HTML](https://developer.mozilla.org/en-US/docs/Web/HTML) - *Ngôn ngữ đánh dấu được thiết kế ra để tạo nên các trang web.*

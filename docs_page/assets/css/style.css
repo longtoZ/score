@@ -1,5 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato&family=MuseoModerno:wght@200;300;500&family=Open+Sans:wght@600&display=swap');
 
+.dark-mode {
+    --primary-color: #262626 !important;
+}
 
 ::selection {
     color: black;
@@ -247,6 +250,7 @@ header i {
     padding: 10px;
     text-transform: uppercase;
     background-color: #ffffa1;
+    color: black;
 }
 
 .main-logo {
@@ -295,6 +299,7 @@ h2 span i{
     display: block;
     position: relative;
     top: 0;
+    color: var(--text-color);
 }
 
 .minimize > h2 span i{

@@ -8,7 +8,7 @@
         <link rel="stylesheet" type="text/css" href="../expand/css/root.css">
         <link rel='stylesheet' href='../expand/css/uicons-regular-rounded.css'>
         <link rel='stylesheet' href='../expand/css/uicons-bold-rounded.css'>
-        <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-brands/css/uicons-brands.css'>
+        <link rel='stylesheet' href='../expand/css/uicons-brands.css'>
         <title>Changelog</title>
     </head>
 
@@ -36,6 +36,11 @@
             padding: 10px;
             background-color: #ffffa1;
             font-size: 1.8em;
+            color: black;
+        }
+
+        h2 span i, section h2 > a{
+            color: black;
         }
 
     </style>
@@ -50,119 +55,28 @@
                 <div class="content-container">
                     <h1 style="font-weight: 500; font-size: 2.2em; text-align: center; margin: 50px 0 10px 0;">Các phiên bản của SCORE</h1>
 
-                    <section id="v0.1">
+                    <section id="v1.0.2">
                         <h2>
-                            v0.1
+                            v1.0.2
                             <a href="#headers" class="headerlink">¶</a>
                         </h2>
 
-                        <em>25/5/2022</em>
-
-                        <p>
-                            Phiên bản đầu tiên của <a href="../home_page/">Score</a> với 2 chức năng cơ bản là
-                            <a href="search_page.html">Tra cứu</a> và <a href="filter_page.html">Đề xuất</a>. 
-                        </p>
+                        <em>4/7/2022</em>
 
                         <h3>Tính năng mới: </h3>
                         <ul>
-                            <li>Nhập tên trường để xem điểm nguyện vọng qua các năm của trường đó.</li>
+                            <li>Bổ sung thẻ so sánh các trường có điểm số cạnh tranh nhau trong khu vực.</li>
+                            <li>Bổ sung thẻ xếp loại trường và nhóm có điểm chuẩn dưới trung bình hay trên trung bình.</li>
                             <li>
-                                Nhập điểm 3 môn chính và tính điểm tổng; tuỳ chọn <b>năm, nguyện vọng, 
-                                khu vực</b> để hiển thị trường phù hợp.
-                            </li>
-                            <li>Thêm chức năng <b>sort</b> vào các bảng trong phần <a href="filter_page.html">Đề xuất</a>.</li>
-                        </ul>
-
-                        <h3>Cải tiến: </h3>
-                        <ul>
-                            <li>Cải thiện tốc độ truy vấn dữ liệu.</li>
-                            <li>Sửa đổi giao diện <b>header và footer</b>.</li>
-                        </ul>
-                    </section>
-
-                    <section id="v0.3">
-                        <h2>
-                            v0.3
-                            <a href="#headers" class="headerlink">¶</a>
-                        </h2>
-
-                        <em>29/5/2022</em>
-
-                        <h3>Tính năng mới: </h3>
-
-                        <ul>
-                            <li>
-                                Thêm giao diện <b>responsive (tương thích)</b> cho diện thoại và ipad.
-                            </li>
-                            <li>
-                                <b>Darkmode (chế độ tối)</b> được thử nghiệm và cải tiến.
-                            </li>
-                            <li>
-                                Thêm trang <a href="visualization_page.html">Phân tích</a> - biểu diễn số 
-                                liệu bằng nhiều dạng biểu đồ.
-                            </li>
-                            <li>
-                                Thêm tuỳ chỉnh chuyển đổi giữa <b>biểu đồ cột</b> và <b>biểu đồ đường</b> 
-                                trong thẻ điểm nguyện vọng theo dãy năm.
-                            </li>
-                        </ul>
-
-                        <h3>Vá lỗi: </h3>
-                        <ul>
-                            <li>Khắc phục lỗi biểu đồ bị chồng lặp khi chuyển dạng.</li>
-                        </ul>
-
-                    </section>
-
-                    <section id="v0.5">
-                        <h2>
-                            v0.5
-                            <a href="#headers" class="headerlink">¶</a>
-                        </h2>
-
-                        <em>8/6/2022</em>
-
-                        <h3>Cải tiến: </h3>
-                        <ul>
-                            <li>Thiết kế logo cho <a href="../home_page/">Score</a>.</li>
-                            <li>Thiết kế giao diện cho trang giới thiệu.</li>
-                            <li>
-                                Cấu trúc <b>database</b> được thay đổi hoàn toàn nhằm mục
-                                đích sử dụng lâu dài và dễ dàng sửa đổi khi nhập dữ liệu.
-                            </li>
-                        </ul>
-
-                        <h3>Vá lỗi: </h3>
-                        <ul>
-                            <li>Sửa lỗi nhỏ ở thẻ so sánh các trường cùng khu vực.</li>
-                        </ul>
-                    </section>
-
-                    <section id="v0.7">
-                        <h2>
-                            v0.7
-                            <a href="#headers" class="headerlink">¶</a>
-                        </h2>
-
-                        <em>12/6/2022</em>
-
-                        <h3>Tính năng mới: </h3>
-                        <ul>
-                            <li>
-                                Trang <a href="printing_page.html">Báo cáo</a> đã được thêm. 
-                                Đây là nơi người dùng có thể chọn những thông tin cần thiết để 
-                                in hoặc xuất file pdf, excel.
-                            </li>
-                            <li>
-                                Tuỳ chọn hiển thị dạng bảng hoặc biểu đồ có số liệu.
+                                Thêm trang <a href="../docs_page/">Tài liệu</a> nhằm giới thiệu chi tiết về dự án 
+                                cũng như định hướng rõ ràng cho người dùng các chức năng và lỗi khi gặp trên <a href="../home_page/">Score</a>.
                             </li>
                         </ul>
 
                         <h3>Cải tiến: </h3>
                         <ul>
-                            <li>Thêm <b>animations</b> để nâng cao trải nghiệm người dùng.</li>
+                            <li>Cập nhật truy vấn database để lọc dữ liệu chính xác và tuỳ biến hơn.</li>
                         </ul>
-
                     </section>
 
                     <section id="v1.0">
@@ -203,27 +117,118 @@
                         </ul>
                     </section>
 
-                    <section id="v1.0.2">
+                    <section id="v0.7">
                         <h2>
-                            v1.0.2
+                            v0.7
                             <a href="#headers" class="headerlink">¶</a>
                         </h2>
 
-                        <em>4/7/2022</em>
+                        <em>12/6/2022</em>
 
                         <h3>Tính năng mới: </h3>
                         <ul>
-                            <li>Bổ sung thẻ so sánh các trường có điểm số cạnh tranh nhau trong khu vực.</li>
-                            <li>Bổ sung thẻ xếp loại trường và nhóm có điểm chuẩn dưới trung bình hay trên trung bình.</li>
                             <li>
-                                Thêm trang <a href="../docs_page/">Tài liệu</a> nhằm giới thiệu chi tiết về dự án 
-                                cũng như định hướng rõ ràng cho người dùng các chức năng và lỗi khi gặp trên <a href="../home_page/">Score</a>.
+                                Trang <a href="printing_page.html">Báo cáo</a> đã được thêm. 
+                                Đây là nơi người dùng có thể chọn những thông tin cần thiết để 
+                                in hoặc xuất file pdf, excel.
+                            </li>
+                            <li>
+                                Tuỳ chọn hiển thị dạng bảng hoặc biểu đồ có số liệu.
                             </li>
                         </ul>
 
                         <h3>Cải tiến: </h3>
                         <ul>
-                            <li>Cập nhật truy vấn database để lọc dữ liệu chính xác và tuỳ biến hơn.</li>
+                            <li>Thêm <b>animations</b> để nâng cao trải nghiệm người dùng.</li>
+                        </ul>
+
+                    </section>
+
+                    <section id="v0.5">
+                        <h2>
+                            v0.5
+                            <a href="#headers" class="headerlink">¶</a>
+                        </h2>
+
+                        <em>8/6/2022</em>
+
+                        <h3>Cải tiến: </h3>
+                        <ul>
+                            <li>Thiết kế logo cho <a href="../home_page/">Score</a>.</li>
+                            <li>Thiết kế giao diện cho trang giới thiệu.</li>
+                            <li>
+                                Cấu trúc <b>database</b> được thay đổi hoàn toàn nhằm mục
+                                đích sử dụng lâu dài và dễ dàng sửa đổi khi nhập dữ liệu.
+                            </li>
+                        </ul>
+
+                        <h3>Vá lỗi: </h3>
+                        <ul>
+                            <li>Sửa lỗi nhỏ ở thẻ so sánh các trường cùng khu vực.</li>
+                        </ul>
+                    </section>
+
+                    <section id="v0.3">
+                        <h2>
+                            v0.3
+                            <a href="#headers" class="headerlink">¶</a>
+                        </h2>
+
+                        <em>29/5/2022</em>
+
+                        <h3>Tính năng mới: </h3>
+
+                        <ul>
+                            <li>
+                                Thêm giao diện <b>responsive (tương thích)</b> cho diện thoại và ipad.
+                            </li>
+                            <li>
+                                <b>Darkmode (chế độ tối)</b> được thử nghiệm và cải tiến.
+                            </li>
+                            <li>
+                                Thêm trang <a href="visualization_page.html">Phân tích</a> - biểu diễn số 
+                                liệu bằng nhiều dạng biểu đồ.
+                            </li>
+                            <li>
+                                Thêm tuỳ chỉnh chuyển đổi giữa <b>biểu đồ cột</b> và <b>biểu đồ đường</b> 
+                                trong thẻ điểm nguyện vọng theo dãy năm.
+                            </li>
+                        </ul>
+
+                        <h3>Vá lỗi: </h3>
+                        <ul>
+                            <li>Khắc phục lỗi biểu đồ bị chồng lặp khi chuyển dạng.</li>
+                        </ul>
+
+                    </section>
+
+                    <section id="v0.1">
+                        <h2>
+                            v0.1
+                            <a href="#headers" class="headerlink">¶</a>
+                        </h2>
+
+                        <em>25/5/2022</em>
+
+                        <p>
+                            Phiên bản đầu tiên của <a href="../home_page/">Score</a> với 2 chức năng cơ bản là
+                            <a href="search_page.html">Tra cứu</a> và <a href="filter_page.html">Đề xuất</a>. 
+                        </p>
+
+                        <h3>Tính năng mới: </h3>
+                        <ul>
+                            <li>Nhập tên trường để xem điểm nguyện vọng qua các năm của trường đó.</li>
+                            <li>
+                                Nhập điểm 3 môn chính và tính điểm tổng; tuỳ chọn <b>năm, nguyện vọng, 
+                                khu vực</b> để hiển thị trường phù hợp.
+                            </li>
+                            <li>Thêm chức năng <b>sort</b> vào các bảng trong phần <a href="filter_page.html">Đề xuất</a>.</li>
+                        </ul>
+
+                        <h3>Cải tiến: </h3>
+                        <ul>
+                            <li>Cải thiện tốc độ truy vấn dữ liệu.</li>
+                            <li>Sửa đổi giao diện <b>header và footer</b>.</li>
                         </ul>
                     </section>
                 </div>

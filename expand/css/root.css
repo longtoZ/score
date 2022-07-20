@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato&family=MuseoModerno:wght@200;300;500&family=Open+Sans:wght@600&display=swap');
+
 :root {
     --primary-color: #ffffff;
     --second-primary-color: #ffffff;
@@ -11,8 +13,10 @@
     --thumb-color: rgba(179, 179, 179, 0.7);
     --box-shadow: 0 0 20px rgb(0 0 0 / 10%);
     --box-shadow-light: 0 0 12px rgb(0 0 0 / 7%);
+    --box-shadow-lighter: 0 0 12px rgb(0 0 0 / 4%);
     --text-color: #000000;
     --text-color-light: #252526;
+    --text-color-topic: black;
     --placeholder-color: rgba(0, 0, 0, 0.35);
 
     --table-odd-color: #ffffff;
@@ -22,10 +26,23 @@
 
     --green: #009879;
     --orange: #df7b00;
+    --hover-green: #0098790a;
     --darker-green: #00856a;
     --divider-color: invert(0);
 
     --link-text: #3399ff;
+
+    --col-green-bg: #ebfffb;
+    --col-green-txt: #00735d;
+    --col-yellow-bg: #fffbeb;
+    --col-yellow-txt: #736100;
+    --col-blue-bg: #ebf6ff;
+    --col-blue-txt: #005c73;
+    --edit-bg: #005b9817;
+    --edit-txt: #00406b;
+    --delete-bg: #98000017;
+    --delete-txt:#6b0000;
+
 }
 
 .dark-mode {
@@ -42,8 +59,10 @@
     --thumb-color: rgba(75, 75, 75, 0.7);
     --box-shadow: 0 0 20px rgb(0 0 0 / 30%);
     --box-shadow-light: 0 0 12px rgb(0 0 0 / 21%);
+    --box-shadow-lighter: 0 0 12px rgb(0 0 0 / 15%);
     --text-color: #ffffff;
     --text-color-light: #afafaf;
+    --text-color-topic: white;
     --placeholder-color: rgba(255, 255, 255, 0.35);
     
     color: white !important;
@@ -53,6 +72,20 @@
 
     --row-hover-color: #efe9a8;
     --divider-color: invert(0.88);
+
+    --green: #55dcc0;
+
+    --col-green-bg: rgb(6, 72, 62);
+    --col-green-txt: rgb(106, 220, 198);
+    --col-yellow-bg: rgb(56, 46, 6);
+    --col-yellow-txt: rgb(220, 202, 106);
+    --col-blue-bg: rgb(39, 39, 39);
+    --col-blue-txt: rgb(106, 197, 220);
+    --edit-bg: rgba(6, 67, 108, 0.09);
+    --edit-txt: rgb(110, 175, 220);
+    --delete-bg: rgba(108, 6, 6, 0.09);
+    --delete-txt:rgb(220, 110, 110);
+
 }
 
 * {

@@ -90,7 +90,7 @@
 .filter-container {
     margin-top: 20px;
     display: block;
-    width: 75%;
+    width: 60%;
 }
 
 
@@ -101,10 +101,22 @@
 }
 
 .filter-score-container {
+    justify-content: space-around;
+}
+
+.filter-tool-box {
+    justify-content: center;
+}
+
+
+.filter-score-container, .filter-tool-box {
     margin-top: 20px;
     display: flex;
-    justify-content: space-around;
     flex-wrap: wrap;
+}
+
+.primary-box {
+    margin: 10px 0;
 }
 
 .filter-detail-container {
@@ -144,6 +156,7 @@
     text-align: center;
     font-weight: bold;
     color:white;
+    margin-top: 10px;
 }
 
 
@@ -457,5 +470,13 @@
     .filter-district-select, .filter-district-list, 
     .filter-wish-select, .filter-wish-list {
         margin-right: 10px;
+    }
+
+    .filter-between .between-search {
+        margin-top: 10px !important;
+    }
+
+    .filter-tool-box {
+        justify-content: space-around;
     }
 }

@@ -1,13 +1,14 @@
 <html>
     <head>
         <link rel="stylesheet" type="text/css" href="../expand/css/root.css">
+        <link rel="stylesheet" type="text/css" href="../expand/css/header.css">
         <link rel='stylesheet' href='../expand/css/uicons-bold-rounded.css'>
         <link rel='stylesheet' href='../expand/css/uicons-regular-rounded.css'>
     </head>
     <header id="main-header">
         <div class="logo">
             <a href="../home_page/">
-                <img src="../img/logo-full-light (2).png" alt="" class="brand-logo" height="50px" width="auto">
+                <img src="../img/logo-full-light.png" alt="" class="brand-logo" height="50px" width="auto">
             </a>
         </div>
 
@@ -28,8 +29,7 @@
             </div>
         </nav>
 
-        <div class="switcher">
-            
+        <div class="switcher">         
             <div class="mode">
                 <div class="light">
                     <i class="fi fi-br-sun"></i>
@@ -77,260 +77,11 @@
         </div>
     </header>
 
-    <style>
-
-        header {
-            display: flex;
-            justify-content: space-between;
-            background-color: var(--header-color);
-            padding: 15px 4%;
-            box-shadow: var(--box-shadow);
-            position: fixed;
-            right: 0;
-            left: 0;
-            top: 0;
-            z-index: 5;
-            transition: all ease 0.6s !important;
-        }
-
-        .brand-logo {
-            transition: all ease 0.3s;
-        }
-
-
-        .switcher {
-            width: 100px;
-            height: 40px;
-            border-radius: 40px;
-            background-color: var(--switcher-color);
-            overflow: hidden;
-            margin-top: 10px;
-            cursor: pointer;
-            position: relative;
-        }
-
-        .toggle-box {
-            width: 50px;
-            height: 40px;
-            border-radius: 40px;
-            background-color: var(--primary-color);
-            overflow: hidden;
-            margin-top: 10px;
-            position: absolute;
-            top: -10px;
-            box-shadow: var(--box-shadow);
-            z-index: 1;
-        }
-
-        .mode {
-            width: 100%;
-        }
-
-        .mode .light {
-            font-size: 120%;
-            float: left;
-            width: 50%;
-            text-align: center;
-            line-height: 45px;
-            position: relative;
-            z-index: 2;
-        }
-
-        .mode .dark {
-            font-size: 120%;
-            float: right;
-            width: 50%;
-            text-align: center;
-            line-height: 45px;
-            position: relative;
-            z-index: 2;
-        }
-
-        .nav-bar-btn, .nav-overlay, .nav-mobile {
-            display: none;
-        }
-
-
-        .navbar-select {
-            padding: 0 20px;
-            margin: 0 10px;
-            float: left;
-
-        }
-
-        .navbar-select a {
-            line-height: 2.5;
-            text-decoration: none;
-            color: var(--text-color);
-            font-size: 120%;
-        }
-
-        .navbar-select:hover {
-            /* background-color: var(--hover-color);
-            box-shadow: var(--box-shadow);
-            border-radius: 30px; */
-            border-bottom: 2px solid #009879;
-        }
-
-        .navbar-select:hover > a {
-            color: #009879;
-        }
-
-        @media only screen and (max-width: 64em) {
-            .contact-us, nav {
-                display: none;
-
-            }
-
-            .nav-title {
-                position: absolute;
-                right: 20px;
-                top: 20px;
-                font-size: 200%;
-                font-weight: 500;
-                letter-spacing: 2px;
-            }
-
-            .nav-line-top {
-                border: 1px solid rgb(129, 129, 129);
-                position: absolute;
-                margin-top: 90px;
-                right: 20px;
-                left: 30px;
-            }
-
-            .nav-bar-btn {
-                display: block;
-                width: 28px;
-                height: 28px;
-                padding-top: 12px;
-                font-size: 170%;
-                cursor: pointer;
-            }
-
-            .nav-overlay {
-                position: fixed;
-                top: 0;
-                right: 0;
-                left: 0;
-                bottom: 0;
-                background-color: rgba(0,0,0,0.3);
-                display: none;
-                animation: swipIn linear 0.3s;
-                backdrop-filter: blur(1px);
-                
-            }
-
-            .nav-mobile {
-                display: block;
-                position: fixed;
-                top: 0;
-                bottom: 0;
-                right: 0;
-                background-color: var(--primary-color);
-                width: 60%;
-                transform: translateX(100%);
-                transition: transform ease-in-out 0.3s, opacity linear 0.3s;
-                opacity: 0;
-                border-radius: 30px 0 0 25px;
-                z-index: 5;
-            }
-
-            .nav-list {
-                margin-top: 110px;
-                list-style-type: none;
-                font-size: 120%;
-            }
-
-            .nav-links {
-                text-decoration: none;
-                color: var(--text-color);
-                display: block;
-                padding: 10px 22px;
-                text-align: right;
-                font-weight: 400;
-            }
-
-            .nav-list li {
-                margin: 0 10px;
-            }
-
-            .nav-list li:hover {
-                background-color: rgba(0,0,0,0.03);
-                border-radius: 20px;
-                transition: all ease-in-out 0.2s;
-            }
-
-            .nav-close {
-                color: var(--text-color);
-                position: absolute;
-                top: 32px;
-                left: 20px;
-                width: 20px;
-                height: 20px;
-                font-size: 120%;
-                cursor: pointer;
-            }
-
-            #nav-input:checked ~ .nav-overlay {
-                display: block;
-            }
-
-            #nav-input:checked ~ .nav-mobile {
-                transform: translateX(0%);
-                opacity: 1;
-            }
-
-            .switcher {
-                margin-left: 50%;
-            }
-
-
-            @keyframes swipeIn {
-                from {
-                    opacity: 0;
-                } to {
-                    opacity: 1;
-                }
-            }
-        }
-
-        @media only screen and (max-width: 46.1875em) {
-            header {
-                padding: 8px 4%;
-            }
-
-            .switcher {
-                margin-top: 10%;
-                position: absolute;
-                right: 5%;
-            }
-
-            .nav-overlay {
-                backdrop-filter: blur(0px);
-            }
-
-        }
-
-
-    </style>
 
     <script src="../expand/js/toggle-mode.js"></script>
     <script src="../expand/js/hide-nav.js"></script>
 
     <script>
-
-        if (localStorage.getItem("mode") == "dark-mode") {
-            document.querySelector('.toggle-box').style.transform = "translateX(100%)"
-            document.querySelector('.toggle-box').style.transition = "transform 0.3s ease-in-out"
-            document.querySelector('header .brand-logo').src = "../img/logo-full-dark (2).png"
-            document.body.classList.add("dark-mode")
-        } else {
-            document.querySelector('.toggle-box').style.transform = "translateX(0%)"
-            document.querySelector('.toggle-box').style.transition = "transform 0.3s ease-in-out"
-            document.querySelector('header .brand-logo').src = "../img/logo-full-light (2).png"
-            document.body.classList.remove("dark-mode")
-        }
     </script>
 
 </html>
