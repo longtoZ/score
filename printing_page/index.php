@@ -39,6 +39,7 @@
             <div id="main-title">
                 <div class="school-title">THPT Nguyễn Hữu Huân</div>
                 <div class="school-area">Thủ Đức</div>
+                <div class="school-type" style="display:none; pointer-events:none">L02</div>
             </div>
 
             <div id="score-area">
@@ -91,10 +92,19 @@
                 <div class="comparison-range">
                     <div class="title" style="float:left;">Chọn năm
                         <i class="fi fi-rr-shuffle"></i>
+                        <br>
+                        <br>
+                        Chọn khu vực
                     </div>
-                    <div class="range" style="float:right;">
+                    <div class="range" style="float:right; padding-left:10px">
                         <span class="green-dot"></span>
                         <input class="end-c" value="2021" type="number" min="2015"></input>
+                        <br>
+                        <br>
+                        <select class="district-list">
+                            <option>Trong khu vực</option>
+                            <option>Tất cả</option>
+                        </select>
                     </div>
 
                 </div>
@@ -102,7 +112,7 @@
             </div>
 
             <div id="eval-area">
-                <div class="eval-title">Xếp hạng</div>
+                <div class="eval-title">Xếp hạng <br> <span style="font-size: 80%; font-weight:400">(Lớp thường)</span></div>
                 <label class="hide-btn" for="sec4">
                     <i class="close fi fi-rr-cross"></i>
                     <i class="open fi fi-rr-check"></i>
@@ -124,8 +134,34 @@
                 <div class="eval-table"></div>
             </div>
 
-            <div id="average-area">
-                <div class="average-title">Điểm trung bình</div>
+            <div id="prosub-area">
+                <div class="prosub-title">Xếp hạng <br> <span style="font-size: 80%; font-weight:400">(Lớp chuyên)</span></div>
+                <label class="hide-btn" for="sec5">
+                    <i class="close fi fi-rr-cross"></i>
+                    <i class="open fi fi-rr-check"></i>
+                </label>
+                <div class="prosub-range">
+                    <div class="title" style="float:left;">Chọn năm
+                        <i class="fi fi-rr-shuffle" style="color:#006398"></i>
+                        <br>
+                        <br>
+                        Chọn môn
+                    </div>
+                    <div class="range" style="float:right; padding-left:10px; text-align:right;">
+                        <span class="green-dot"></span>
+                        <input class="end-ps" value="2021" type="number" min="2015"></input>
+                        <br>
+                        <br>
+                        <select class="prosub-list" style="width:14em">
+                        </select>
+                    </div>
+
+                </div>
+                <div class="prosub-table"></div>
+            </div>
+
+            <!-- <div id="average-area">
+                <div class="average-title">Xếp hạng <br> <span style="font-size: 80%; font-weight:400">(Chi tiết)</span></div>
                 <label class="hide-btn" for="sec5">
                     <i class="close fi fi-rr-cross"></i>
                     <i class="open fi fi-rr-check"></i>
@@ -136,21 +172,20 @@
                         <br>
                         <br>
                         Chọn khu vực
-                        <!-- <i class="fi fi-rr-shuffle"></i> -->
                     </div>
                     <div class="range" style="float:right;">
                         <span class="green-dot"></span>
                         <input class="end-a" value="2021" type="number" min="2015"></input>
                         <br>
                         <select class="district-list">
-                            <option>Tất cả</option>
                             <option>Trong khu vực</option>
+                            <option>Tất cả</option>
                         </select>
                     </div>
 
                 </div>
                 <div class="average-table"></div>
-            </div>
+            </div> -->
 
             <div class="floating-container">
                 <input type="checkbox" name="" id="floating-checkbox" hidden >
@@ -170,11 +205,11 @@
                     </div>
                     <div class="section4">
                         <input type="checkbox" id="sec4" value="" checked>
-                        <label for="sec4">Xếp hạng</label>
+                        <label for="sec4">Xếp hạng (Tổng quan)</label>
                     </div>
                     <div class="section5">
                         <input type="checkbox" id="sec5" value="" checked>
-                        <label for="sec5">Điểm trung bình</label>
+                        <label for="sec5">Xếp hạng (Môn chuyên)</label>
                     </div>
                     <div class="simplify" style="border-top: 1px solid var(--text-color); padding-top: 15px;">
                         <input type="checkbox" id="simplify-mode" value="">
@@ -225,6 +260,7 @@
 
         const default_school = document.querySelector('.school-title').innerHTML;
         const default_district = document.querySelector('.school-area').innerHTML;
+        const default_subject = document.querySelector('.prosub-list').value;
         
         const year_start = document.querySelector('.start').value
         const year_end = document.querySelector('.end').value
@@ -281,231 +317,285 @@
                     success:function(data) {
                         $('.eval-table').html(data);
 
-                        $.ajax({
-                            url:"average.php",
-                            method:"POST",
-                            data:{school:default_school, year:year_end, district: ''},
-                            success: function (data) {
-                                $(".average-table").html(data);
-                            }
-                        });
+                        // $.ajax({
+                        //     url:"average.php",
+                        //     method:"POST",
+                        //     data:{school:default_school, year:year_end, district:default_district},
+                        //     success: function (data) {
+                        //         $(".average-table").html(data);
+                        //     }
+                        // });
+                    }
+                });
+
+                $.ajax({
+                    url:"prosub_list.php",
+                    method:"POST",
+                    data:{year:year_end, school:default_school, orgSubject:default_subject, subject:proSubjectsObj[default_subject], type:'table', column:proSubjectColumn()},
+                    success:function(data) {
+                        $('.prosub-table').html(data);
                     }
                 });
 
             }
 
             window.onload = showOnLoad();
-          
-            $(document).ready(function() {
-                $(document).on('click', '.search-box i', function() {
 
-                    document.querySelector('.start').value = default_start
-                    document.querySelector('.end').value = default_end
-                    document.querySelector('.start-r').value = default_start
-                    document.querySelector('.end-r').value = default_end
-                    document.querySelector('.end-c').value = default_end
-                    document.querySelector('.top-p').value = default_top.toString()
-                    document.querySelector('.end-a').value = default_end
-                    document.querySelector('.district-list').value = 'Tất cả'
+            $(document).on('click', '.search-box i', function() {
 
-                    var school_input = document.querySelector('.school-search').value;
+                document.querySelector('.start').value = default_start
+                document.querySelector('.end').value = default_end
+                document.querySelector('.start-r').value = default_start
+                document.querySelector('.end-r').value = default_end
+                document.querySelector('.end-c').value = default_end
+                document.querySelector('.end-ps').value = default_end
+                document.querySelector('.top-p').value = default_top.toString()
+                // document.querySelector('.end-a').value = default_end
+                document.querySelector('.district-list').value = 'Trong khu vực'
 
-                    if (school_input != '') {
-                    
+                var school_input = document.querySelector('.school-search').value
+
+                if (school_input != '') {
+                
+                    $.ajax({
+                        url:"year_range_search.php",
+                        method:"POST",
+                        data:{title:school_input, start:year_start, end:year_end, type:'table'},
+                        success:function(data) {
+                            $('.score-chart').html(data);
+
+                            school_input = document.querySelector('.school-title').innerHTML
+
+                            if (school_input != "Không tìm thấy trường") {
+
+                                $.ajax({
+                                    url:"school_list.php",
+                                    method:"POST",
+                                    data:{year:year_end, 
+                                        district:document.querySelector('.school-area').innerHTML, 
+                                        school:school_input,
+                                        type:'table'},
+                                    success:function(data) {
+                                        $('.comparison-table').html(data);
+                                    }
+                                });
+
+                                $.ajax({
+                                    url:"school_eval.php",
+                                    method:"POST",
+                                    data:{year:year_end, top:default_top, school:school_input},
+                                    success:function(data) {
+                                        $('.eval-table').html(data);
+
+                                        // $.ajax({
+                                        //     url:"average.php",
+                                        //     method:"POST",
+                                        //     data:{school:school_input, year:year_end, district: ''},
+                                        //     success: function (data) {
+                                        //         $(".average-table").html(data);
+                                        //     }
+                                        // });
+                                    }
+                                });
+
+                                var schooltype = document.querySelector('.school-type').textContent
+                                
+                                if (!isNormal(schooltype)) {
+                                    $.ajax({
+                                        url:"prosub_list.php",
+                                        method:"POST",
+                                        data:{year:year_end, school:school_input, orgSubject:default_subject, subject:proSubjectsObj[default_subject], type:'table', column:proSubjectColumn()},
+                                        success:function(data) {
+                                            $('.prosub-table').html(data);
+                                        }
+                                    });
+                                }
+
+                            } else {
+                                $('.comparison-table').html('<div></div>');
+                                $('.eval-table').html('<div></div>');
+                                $('.prosub-table').html('<div></div>');
+                            }
+                        }
+                    });
+
+                    $.ajax({
+                        url:"ratio_figure.php",
+                        method:"POST",
+                        data:{title:school_input, start:year_start, end:year_end, type:'table'},
+                        success:function(data) {
+                            $('.ratio-table').html(data);
+                        }
+                    });
+
+                }
+                
+            });
+
+            function yearRangeChange() {
+                var school_input = document.querySelector('.school-title').innerHTML
+                if (school_input == '') { school_input = default_school }
+
+                var start = parseInt(document.querySelector('.start').value);
+                var end = parseInt(document.querySelector('.end').value);
+
+                if (!isNaN(start) && !isNaN(end)) {
+                    if (start > end) {
+                        alert("Năm đầu phải nhỏ hơn hoặc bằng năm cuối")
+                    } else {
+
                         $.ajax({
                             url:"year_range_search.php",
                             method:"POST",
-                            data:{title:school_input, start:year_start, end:year_end, type:'table'},
+                            data:{title:school_input, start:start, end:end, type:'table'},
+                            beforeSend:function() {
+                                
+                            },
                             success:function(data) {
                                 $('.score-chart').html(data);
-
-                                school_input = document.querySelector('.school-title').innerHTML
-
-                                if (school_input != "Không tìm thấy trường") {
-
-                                    $.ajax({
-                                        url:"school_list.php",
-                                        method:"POST",
-                                        data:{year:year_end, 
-                                            district:document.querySelector('.school-area').innerHTML, 
-                                            school:school_input,
-                                            type:'table'},
-                                        success:function(data) {
-                                            $('.comparison-table').html(data);
-                                        }
-                                    });
-
-                                    $.ajax({
-                                        url:"school_eval.php",
-                                        method:"POST",
-                                        data:{year:year_end, top:default_top, school:school_input},
-                                        success:function(data) {
-                                            $('.eval-table').html(data);
-
-                                            $.ajax({
-                                                url:"average.php",
-                                                method:"POST",
-                                                data:{school:school_input, year:year_end, district: ''},
-                                                success: function (data) {
-                                                    $(".average-table").html(data);
-                                                }
-                                            });
-                                        }
-                                    });
-                                } else {
-                                    $('.comparison-table').html('<div></div>');
-                                    $('.eval-table').html('<div></div>');
-                                    $('.average-table').html('<div></div>');
-                                }
                             }
-                        });
+                        })
+                        
+                    }
+                }
+            }
+
+            function yearRangeChangeR() {
+                var school_input = document.querySelector('.school-title').innerHTML
+                if (school_input == '') { school_input = default_school }
+
+                var start_r = parseInt(document.querySelector('.start-r').value);
+                var end_r = parseInt(document.querySelector('.end-r').value);
+
+                if (!isNaN(start_r) && !isNaN(end_r)) {
+                    if (start_r > end_r) {
+                        alert("Năm đầu phải nhỏ hơn hoặc bằng năm cuối")
+                    } else {
 
                         $.ajax({
                             url:"ratio_figure.php",
                             method:"POST",
-                            data:{title:school_input, start:year_start, end:year_end, type:'table'},
+                            data:{title:school_input, start:start_r, end:end_r, type:'table'},
                             success:function(data) {
                                 $('.ratio-table').html(data);
                             }
                         });
-
+                        
                     }
-                    
+                }
+            }
+
+            function yearRangeChangeC() {
+                changeType3.classList.remove('clicked')
+                
+                var school_input = document.querySelector('.school-title').innerHTML
+                if (school_input == '') { school_input = default_school }
+
+                var end_c = parseInt(document.querySelector('.end-c').value);
+                var district_c = document.querySelector('.district-list').value;
+
+                if (district_c == "Tất cả") {
+                    district_c = ""
+                } else {
+                    district_c = document.querySelector('.school-area').innerHTML
+                }
+
+                $.ajax({
+                    url:"school_list.php",
+                    method:"POST",
+                    data:{school:school_input, year:end_c, district: district_c, type:'table'},
+                    success: function (data) {
+                        $(".comparison-table").html(data);
+                    }
                 });
+                        
+        
+            }
 
-                function yearRangeChange() {
-                    var school_input = document.querySelector('.school-title').innerHTML
-                    if (school_input == '') { school_input = default_school }
+            function yearRangeChangeE() {
+                var school_input = document.querySelector('.school-title').innerHTML
+                if (school_input == '') { school_input = default_school }
 
-                    var start = parseInt(document.querySelector('.start').value);
-                    var end = parseInt(document.querySelector('.end').value);
+                var end_e = parseInt(document.querySelector('.end-e').value);
+                var top_p = parseInt(document.querySelector('.top-p').value);
 
-                    if (!isNaN(start) && !isNaN(end)) {
-                        if (start > end) {
-                            alert("Năm đầu phải nhỏ hơn hoặc bằng năm cuối")
-                        } else {
-
-                            $.ajax({
-                                url:"year_range_search.php",
-                                method:"POST",
-                                data:{title:school_input, start:start, end:end, type:'table'},
-                                beforeSend:function() {
-                                    
-                                },
-                                success:function(data) {
-                                    $('.score-chart').html(data);
-                                }
-                            })
-                            
-                        }
+                $.ajax({
+                    url:"school_eval.php",
+                    method:"POST",
+                    data:{year:end_e,
+                        top:top_p, 
+                        school:school_input},
+                    success:function(data) {
+                        $('.eval-table').html(data);
                     }
-                }
+                });
+                        
+            }
 
-                function yearRangeChangeR() {
-                    var school_input = document.querySelector('.school-title').innerHTML
-                    if (school_input == '') { school_input = default_school }
+            function yearRangeChangePS() {
+                changeType5.classList.remove('clicked')
+                
+                var school_input = document.querySelector('.school-title').innerHTML
+                if (school_input == '') { school_input = default_school }
 
-                    var start_r = parseInt(document.querySelector('.start-r').value);
-                    var end_r = parseInt(document.querySelector('.end-r').value);
+                var end_ps = parseInt(document.querySelector('.end-ps').value);
+                var subject = document.querySelector('.prosub-list').value;
 
-                    if (!isNaN(start_r) && !isNaN(end_r)) {
-                        if (start_r > end_r) {
-                            alert("Năm đầu phải nhỏ hơn hoặc bằng năm cuối")
-                        } else {
-
-                            $.ajax({
-                                url:"ratio_figure.php",
-                                method:"POST",
-                                data:{title:school_input, start:start_r, end:end_r, type:'table'},
-                                success:function(data) {
-                                    $('.ratio-table').html(data);
-                                }
-                            });
-                            
-                        }
+                $.ajax({
+                    url:"prosub_list.php",
+                    method:"POST",
+                    data:{year:end_ps, school:school_input, orgSubject:subject, subject:proSubjectsObj[subject], type:'table', column:proSubjectColumn()},
+                    success:function(data) {
+                        $('.prosub-table').html(data);
                     }
-                }
+                });
+                        
+        
+            }
 
-                function yearRangeChangeC() {
-                    var school_input = document.querySelector('.school-title').innerHTML
-                    if (school_input == '') { school_input = default_school }
+            // function yearRangeChangeA() {
+            //     var school_input = document.querySelector('.school-title').innerHTML
+            //     if (school_input == '') { school_input = default_school }
 
-                    var end_c = parseInt(document.querySelector('.end-c').value);
+            //     var end_a = parseInt(document.querySelector('.end-a').value);
+            //     var district_a = document.querySelector('.district-list').value;
 
-                    $.ajax({
-                        url:"school_list.php",
-                        method:"POST",
-                        data:{year:end_c, 
-                            district:document.querySelector('.school-area').innerHTML, 
-                            school:school_input,
-                            type:'table'},
-                        success:function(data) {
-                            $('.comparison-table').html(data);
-                        }
-                    });
-                            
+            //     if (district_a == "Tất cả") {
+            //         district_a = ""
+            //     } else {
+            //         district_a = document.querySelector('.school-area').innerHTML
+            //     }
+
+            //     $.ajax({
+            //         url:"school_list.php",
+            //         method:"POST",
+            //         data:{school:school_input, year:end_a, district: district_a, type:'table'},
+            //         success: function (data) {
+            //             $(".comparison-table").html(data);
+            //         }
+            //     });
+            // }
             
-                }
+            
+            $('.start').on('change', yearRangeChange);
+            $('.end').on('change', yearRangeChange);
 
-                function yearRangeChangeE() {
-                    var school_input = document.querySelector('.school-title').innerHTML
-                    if (school_input == '') { school_input = default_school }
+            $('.start-r').on('change', yearRangeChangeR);
+            $('.end-r').on('change', yearRangeChangeR);
 
-                    var end_e = parseInt(document.querySelector('.end-e').value);
-                    var top_p = parseInt(document.querySelector('.top-p').value);
+            $('.end-c').on('change', yearRangeChangeC);
+            $('.district-list').on('change', yearRangeChangeC);
 
-                    $.ajax({
-                        url:"school_eval.php",
-                        method:"POST",
-                        data:{year:end_e,
-                            top:top_p, 
-                            school:school_input},
-                        success:function(data) {
-                            $('.eval-table').html(data);
-                        }
-                    });
-                            
-                }
+            $('.end-e').on('change', yearRangeChangeE);
+            $('.top-p').on('change', yearRangeChangeE);
 
-                function yearRangeChangeA() {
-                    var school_input = document.querySelector('.school-title').innerHTML
-                    if (school_input == '') { school_input = default_school }
+            $('.end-ps').on('change', yearRangeChangePS);
+            $('.prosub-list').on('change', yearRangeChangePS);
 
-                    var end_a = parseInt(document.querySelector('.end-a').value);
-                    var district_a = document.querySelector('.district-list').value;
+            // $('.end-a').on('change', yearRangeChangeA);
 
-                    if (district_a == "Tất cả") {
-                        district_a = ""
-                    } else {
-                        district_a = document.querySelector('.school-area').innerHTML
-                    }
 
-                    $.ajax({
-                        url:"average.php",
-                        method:"POST",
-                        data:{school:school_input, year:end_a, district: district_a},
-                        success: function (data) {
-                            $(".average-table").html(data);
-                        }
-                    });
-                }
-                
-                
-                $('.start').on('change', yearRangeChange);
-                $('.end').on('change', yearRangeChange);
 
-                $('.start-r').on('change', yearRangeChangeR);
-                $('.end-r').on('change', yearRangeChangeR);
-
-                $('.end-c').on('change', yearRangeChangeC);
-
-                $('.end-e').on('change', yearRangeChangeE);
-                $('.top-p').on('change', yearRangeChangeE);
-
-                $('.end-a').on('change', yearRangeChangeA);
-                $('.district-list').on('change', yearRangeChangeA);
-
-            });
 
         });
 

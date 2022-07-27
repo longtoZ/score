@@ -72,7 +72,7 @@
                             </li>
 
                             <li>
-                                <b>Nền móng: </b>
+                                <b>Xây dựng: </b>
                                 <a href="references.html">Tài liệu và công cụ</a> | 
                             </li>
                         </ul>
@@ -90,7 +90,7 @@
                         <br>
                         <ul>
                             <li><a href="changelog.html">Changelog</a></li>
-                            <li><a href="https://github.com/longtoZ/score" target="_blank">Mã nguồn</a></li>
+                            <li><a href="#" target="_blank">Mã nguồn</a></li>
                         </ul>
                         
                     </section>

@@ -31,8 +31,10 @@ window.onscroll = function() {
         }
 
         if (document.querySelector('.floating-container')) {
-            document.querySelector('.floating-container').style.right = "-100px";
-            document.querySelector('.floating-container').style.transition = "all ease 0.5s"
+            if (!document.querySelector('.floating-container #floating-button').className.includes('active')){
+                document.querySelector('.floating-container').style.right = "-100px";
+                document.querySelector('.floating-container').style.transition = "all ease 0.5s"
+            }
         }
 
         if (document.querySelector('.main-container .menu-container')) {

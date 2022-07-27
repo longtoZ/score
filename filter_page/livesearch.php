@@ -6,6 +6,8 @@ $average= $_POST['average'];
 $year = $_POST['year'];
 $district =  $_POST['district'];
 $wish =  $_POST['wish'];
+$isNormal = $_POST['isNormal'];
+$column = $_POST['column'];
 
 // print_r([$average, $year, $district, $wish]);
 $query = <<<EOD
@@ -78,7 +80,7 @@ if (mysqli_num_rows($result) > 0){
 
 	<link rel="stylesheet" type="text/css" href="./assets/css/table.css">
 
-	<h1 style="text-align:center; margin-bottom: 30px; font-weight: 500">Điểm <?php echo $wish; ?>: <?php echo $average; ?></h1>
+	<h1 style="text-align:center; margin-bottom: 30px; font-weight: 500">Điểm <?php echo $wish; ?>: <?php echo $average; ?>đ</h1>
 
 	<table class="search-table">
 		<thead>
@@ -86,9 +88,20 @@ if (mysqli_num_rows($result) > 0){
 				<th>STT</th>
 				<th>TÊN TRƯỜNG</th>
 				<th>TÊN QUẬN</th>
-				<th onclick="sortTable(3)">ĐIỂM NV1  ⇩</th>
-				<th onclick="sortTable(4)">ĐIỂM NV2  ⇩</th>
-				<th onclick="sortTable(5)">ĐIỂM NV3  ⇩</th>
+				<?php 
+				if ($isNormal == 'true') {?>
+					<th onclick="sortTable(3)">ĐIỂM NV1  ⇩</th>
+					<th onclick="sortTable(4)">ĐIỂM NV2  ⇩</th>
+					<th onclick="sortTable(5)">ĐIỂM NV3  ⇩</th>
+				<?php
+				} else {
+					$column = explode(",", $column);
+					?>
+					<th onclick="sortTable(3)">ĐIỂM <?php echo $column[0] ?> ⇩</th>
+					<th onclick="sortTable(4)">ĐIỂM <?php echo $column[1] ?> ⇩</th>
+				<?php
+				}
+				?>
 			</tr>
 		</thead>
 
@@ -96,51 +109,74 @@ if (mysqli_num_rows($result) > 0){
 			<?php
 
 			$stt = 1;
-			foreach ($datas as $row) {
 
-				$schoolname = $row[0];
-				$district = $row[1];
-				$nv1 = $row[2]['NV1'];
-				$nv2 = $row[2]['NV2'];
-				$nv3 = $row[2]['NV3'];	
-				
-				if (substr($wish, -1) == "1") { ?>
-					<tr>
-						<td><?php echo $stt; ?></td>
-						<td><?php echo $schoolname; ?></td>
-						<td><?php echo $district; ?></td>
-						<td style="background-color: var(--row-hover-color);color: #000000;"><?php echo $nv1; ?></td>
-						<td><?php echo $nv2; ?></td>
-						<td><?php echo $nv3; ?></td>
-					</tr>	
+			if ($isNormal == 'true') {
+				foreach ($datas as $row) {
 
-				<?php
-				} else if (substr($wish, -1) == "2") { ?>
-					<tr>
-						<td><?php echo $stt; ?></td>
-						<td><?php echo $schoolname; ?></td>
-						<td><?php echo $district; ?></td>
-						<td><?php echo $nv1; ?></td>
-						<td style="background-color: var(--row-hover-color);color: #000000;"><?php echo $nv2; ?></td>
-						<td><?php echo $nv3; ?></td>
-					</tr>	
+					$schoolname = $row[0];
+					$district = $row[1];
+					$nv1 = $row[2]['NV1'];
+					$nv2 = $row[2]['NV2'];
+					$nv3 = $row[2]['NV3'];	
+					
+					if (substr($wish, -1) == "1") { ?>
+						<tr>
+							<td><?php echo $stt; ?></td>
+							<td><?php echo $schoolname; ?></td>
+							<td><?php echo $district; ?></td>
+							<td style="background-color: var(--row-hover-color);color: #000000;"><?php echo $nv1; ?></td>
+							<td><?php echo $nv2; ?></td>
+							<td><?php echo $nv3; ?></td>
+						</tr>	
+
 					<?php
-				} else { ?>
-					<tr>
-						<td><?php echo $stt; ?></td>
-						<td><?php echo $schoolname; ?></td>
-						<td><?php echo $district; ?></td>
-						<td><?php echo $nv1; ?></td>
-						<td><?php echo $nv2; ?></td>
-						<td style="background-color: var(--row-hover-color);color: #000000;"><?php echo $nv3; ?></td>
-					</tr>	
-					<?php
+					} else if (substr($wish, -1) == "2") { ?>
+						<tr>
+							<td><?php echo $stt; ?></td>
+							<td><?php echo $schoolname; ?></td>
+							<td><?php echo $district; ?></td>
+							<td><?php echo $nv1; ?></td>
+							<td style="background-color: var(--row-hover-color);color: #000000;"><?php echo $nv2; ?></td>
+							<td><?php echo $nv3; ?></td>
+						</tr>	
+						<?php
+					} else { ?>
+						<tr>
+							<td><?php echo $stt; ?></td>
+							<td><?php echo $schoolname; ?></td>
+							<td><?php echo $district; ?></td>
+							<td><?php echo $nv1; ?></td>
+							<td><?php echo $nv2; ?></td>
+							<td style="background-color: var(--row-hover-color);color: #000000;"><?php echo $nv3; ?></td>
+						</tr>	
+						<?php
+					}
+
+					$stt++;
+					?>
+
+					<?php	
 				}
+			} else {
+				foreach ($datas as $row) {
+					
+					$schoolname = $row[0];
+					$district = $row[1];
+					$nv1 = $row[2][$column[0]];
+					$nv2 = $row[2][$column[1]];
 
-				$stt++;
-				?>
+					?>
+					<tr>
+						<td><?php echo $stt; ?></td>
+						<td><?php echo $schoolname; ?></td>
+						<td><?php echo $district; ?></td>
+						<td><?php echo $nv1; ?></td>
+						<td><?php echo $nv2; ?></td>
+					</tr>	
 
-				<?php	
+					<?php
+					$stt++;
+				}
 			}
 			?>
 		</tbody>
@@ -148,6 +184,7 @@ if (mysqli_num_rows($result) > 0){
 	</table>
 
 	<script src="./js/sort.js"></script>
+	<script src="./js/table-type.js"></script>
 
 
 <?php 

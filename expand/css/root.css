@@ -50,7 +50,7 @@
     --second-primary-color:	#252526;
     --third-primary-color: #2d2d30;
     --fourth-primary-color: #3e3e42;
-    --fifth-primary-color: #252526;
+    --fifth-primary-color: #2e2e2f;
 
     --header-color: #262626;
     --switcher-color: #2d2d30;
@@ -133,6 +133,10 @@ body::-webkit-scrollbar-thumb {
     color: var(--placeholder-color);
 }
 
+input[type=number]:hover::-webkit-inner-spin-button {  
+   opacity: 1 ;
+}
+
 .primary-margin {
     margin-top: 40px;
     padding: 20px 10px;
@@ -149,7 +153,7 @@ body::-webkit-scrollbar-thumb {
 }
 
 .select-hover:hover {
-    box-shadow: var(--hover-color);
+    /* box-shadow: var(--hover-color); */
     transition: ease-in-out 0.2s;
     cursor: pointer;
 }
@@ -168,7 +172,7 @@ body::-webkit-scrollbar-thumb {
     height: 40px;
     /* width: auto; */
     background-color: var(--fourth-primary-color);
-    box-shadow: var(--box-shadow);
+    box-shadow: var(--box-shadow-light);
     margin-right: 10px;
     padding-left: 15px;
     color: var(--text-color);
@@ -365,10 +369,14 @@ body::-webkit-scrollbar-thumb {
     display: block;
 }
 
+.main.simplify h2 {
+    color: var(--text-color) !important;
+}
+
 .main.simplify table *{
     background-color: transparent !important;
     color: var(--text-color) !important;
-    box-shadow: none;
+    box-shadow: none !important;
 }
 
 .main.simplify table tr, .main.simplify table th, .main.simplify table td {

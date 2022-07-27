@@ -30,6 +30,17 @@
             </h4>
 
             <div class="filter-box">
+                <div class="school-type-container">
+                    <div class="school-type">
+                        <div class="school__normal school-active">
+                            <h3>Lớp thường</h3>
+                        </div>
+                        <div class="school__pro">
+                            <h3>Lớp chuyên</h3>
+                        </div>
+                    </div>
+                </div>
+
                 <div class="filter-container">
                     <div class="filter-basic-header">
                         <span class="title">Cơ bản</span>
@@ -40,10 +51,10 @@
                             <div class="filter-score">
                                 <h3 class="score-title">Nhập điểm</h3>
                                 <div class="filter-score-container">
-                                    <input type="" class="score-maths primary-box" placeholder="Nhập điểm toán...">
-                                    <input type="text" class="score-literature primary-box" placeholder="Nhập điểm văn...">
-                                    <input type="text" class="score-english primary-box" placeholder="Nhập điểm anh...">
-                                    <input type="text" class="score-average primary-box" placeholder="Điểm tổng" disabled="disabled" style="font-weight:bold; color:rgba(0, 152, 121, 1);">
+                                    <input type="number" class="score-maths primary-box" placeholder="Nhập điểm toán...">
+                                    <input type="number" class="score-literature primary-box" placeholder="Nhập điểm văn...">
+                                    <input type="number" class="score-english primary-box" placeholder="Nhập điểm anh...">
+                                    <input type="number" class="score-average primary-box" placeholder="Điểm tổng" disabled="disabled" style="font-weight:bold; color:rgba(0, 152, 121, 1);">
                                     <input type="button" class="score-cal" onclick="showScore()" value="Tính">
                                 </div>
                             </div>
@@ -167,6 +178,7 @@
 
                     </div>
                 </div>
+
             </div>
 
             <h1 class="year-chosen"></h1>
@@ -212,11 +224,14 @@
 
     <script type="text/javascript" src="../expand/js/create-lists.js"></script>
     <script type="text/javascript" src="./js/main.js"></script>
+    <script type="text/javascript" src="./js/switch-type.js"></script>
     <script src="https://cdn.sheetjs.com/xlsx-latest/package/dist/xlsx.full.min.js"></script>
 
     <script type="text/javascript">
         
         $(document).ready(function() {
+
+            document.querySelector('.district-all').click()
 
             $(document).on('click', '#submit', function() {
 
@@ -227,25 +242,19 @@
                 var district = document.querySelector('.filter-district-select .select').innerHTML;
                 var wish = document.querySelector('.filter-wish-select .select').innerHTML;
 
+                wish = wish.includes('Chuyên') ?  proSubjectsObj[wish] : normalSubjectsObj[wish]
+
                 if (!isNaN(average) && year != "Chọn năm" && district != "Chọn quận/TP" && wish != "Chọn nguyện vọng") {
                     
                     if (district ==  "Tất cả"){
                         district = "";
                     }
 
-                    if (wish=="Nguyện vọng 1") {
-                        wish = "NV1";
-                    } else if (wish=="Nguyện vọng 2") {
-                        wish = "NV2";
-                    } else {
-                        wish= "NV3";
-                    }
-
                     $.ajax({
                         
                         url:"livesearch.php",
                         method:"POST",
-                        data:{average:average, year:year, district:district, wish:wish},
+                        data:{average:average, year:year, district:district, wish:wish, isNormal:isNormal(), column:proSubjectColumn()},
                         beforeSend:function() {
                             $(function(){
                                 $("#search-result").load("../expand/loader.html"); 
@@ -262,15 +271,16 @@
 
             $(document).on('click', '.between-search', function() {
                 var year = (document.querySelector('.filter-year-advanced-select .select').innerHTML).replace('Năm ', '');
-                var wish = (document.querySelector('.filter-wish-advanced-select .select').innerHTML).replace('Nguyện vọng ', 'NV');
-                var district = document.querySelector('.filter-district-advanced-select .select').innerHTML;
+                var wish = document.querySelector('.filter-wish-advanced-select .select').innerHTML;
+                var district = districtList.join(' OR ')
                 if (district == 'Tất cả') {
-                    district = '';
+                    district = "`QUAN/HUYEN` LIKE '%'";
                 }
 
                 var start = parseFloat(document.querySelector('.filter-between .start').value);
                 var end = parseFloat(document.querySelector('.filter-between .end').value);            
 
+                wish = wish.includes('Chuyên') ?  proSubjectsObj[wish] : normalSubjectsObj[wish]
 
                 if (isNaN(start) || isNaN(end)) {
                     alert("Vui lòng nhập điểm hợp lệ")
@@ -281,7 +291,7 @@
                         $.ajax({
                             url:"between.php",
                             method:"POST",
-                            data:{start:start, end:end, year:year, wish:wish, district:district},
+                            data:{start:start, end:end, year:year, wish:wish, district:district, isNormal:isNormal(), column:proSubjectColumn()},
                             beforeSend:function() {
                                 $(function(){
                                     $("#search-result").load("../expand/loader.html"); 
@@ -300,9 +310,9 @@
                 $("#search-result").css("display","flex");
                 var year = (document.querySelector('.filter-year-advanced-select .select').innerHTML).replace('Năm ', '');
                 var wish = (document.querySelector('.filter-wish-advanced-select .select').innerHTML).replace('Nguyện vọng ', 'NV');
-                var district = document.querySelector('.filter-district-advanced-select .select').innerHTML;
+                var district = districtList.join(' OR ')
                 if (district == 'Tất cả') {
-                    district = '';
+                    district = "`QUAN/HUYEN` LIKE '%'";
                 }
 
                 var input = parseInt(document.querySelector('.top').value);
@@ -337,9 +347,9 @@
                 $("#search-result").css("display","flex");
                 var year = (document.querySelector('.filter-year-advanced-select .select').innerHTML).replace('Năm ', '');
                 var wish = (document.querySelector('.filter-wish-advanced-select .select').innerHTML).replace('Nguyện vọng ', 'NV');
-                var district = document.querySelector('.filter-district-advanced-select .select').innerHTML;
+                var district = districtList.join(' OR ')
                 if (district == 'Tất cả') {
-                    district = '';
+                    district = "`QUAN/HUYEN` LIKE '%'";
                 }
 
                 $.ajax({
@@ -361,12 +371,11 @@
                 $("#search-result").css("display","flex");
                 var year = (document.querySelector('.filter-year-advanced-select .select').innerHTML).replace('Năm ', '');
                 var wish = (document.querySelector('.filter-wish-advanced-select .select').innerHTML).replace('Nguyện vọng ', 'NV');
-                var district = document.querySelector('.filter-district-advanced-select .select').innerHTML;
+                var district = districtList.join(' OR ')
                 if (district == 'Tất cả') {
-                    district = '';
+                    district = "`QUAN/HUYEN` LIKE '%'";
                 }
 
-                console.log([year,wish])
                 $.ajax({
                         url:"average.php",
                         method:"POST",

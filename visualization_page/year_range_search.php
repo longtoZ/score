@@ -8,7 +8,7 @@
     $chartClicked = $_POST['chartClicked'];
 
     $query = <<<EOD
-    SELECT `diem_chuan`.`NAM_HOC`, `truong`.`TEN_TRUONG`, `diem_chuan`.`MA_TRUONG`, `truong`.`QUAN/HUYEN`, `diem_chuan`.`MA_NV`, `diem_chuan`.`DIEM`
+    SELECT `diem_chuan`.`NAM_HOC`, `truong`.`TEN_TRUONG`, `diem_chuan`.`MA_TRUONG`, `truong`.`QUAN/HUYEN`, `diem_chuan`.`MA_NV`, `diem_chuan`.`DIEM`, `truong`.`MA_LOAI`
     FROM `diem_chuan` 
     LEFT OUTER JOIN `truong` on `truong`.`MA_TRUONG` = `diem_chuan`.`MA_TRUONG`
     WHERE `TEN_TRUONG` LIKE '%$school%' AND (`truong`.`MA_LOAI` = 'L02' OR `truong`.`MA_LOAI` = 'L03');
@@ -34,19 +34,19 @@
             if ($code == '') {
     
                 if ($i != 0) {
-                    array_push($schools, $rawLst[$i-1]['NAM_HOC'], $rawLst[$i-1]['TEN_TRUONG'], $rawLst[$i-1]['QUAN/HUYEN']);
-                    $schools[3][$rawLst[$i-1]['MA_NV']] = $rawLst[$i-1]['DIEM'];
-                    $schools[3][$rawLst[$i]['MA_NV']] = $rawLst[$i]['DIEM'];
+                    array_push($schools, $rawLst[$i-1]['NAM_HOC'], $rawLst[$i-1]['TEN_TRUONG'], $rawLst[$i-1]['QUAN/HUYEN'], $rawLst[$i-1]['MA_LOAI']);
+                    $schools[4][$rawLst[$i-1]['MA_NV']] = $rawLst[$i-1]['DIEM'];
+                    $schools[4][$rawLst[$i]['MA_NV']] = $rawLst[$i]['DIEM'];
                     $code = $rawLst[$i-1]['NAM_HOC'];
     
                 } else {
-                    array_push($schools, $rawLst[$i]['NAM_HOC'], $rawLst[$i]['TEN_TRUONG'], $rawLst[$i]['QUAN/HUYEN']);
-                    $schools[3][$rawLst[$i]['MA_NV']] = $rawLst[$i]['DIEM'];
+                    array_push($schools, $rawLst[$i]['NAM_HOC'], $rawLst[$i]['TEN_TRUONG'], $rawLst[$i]['QUAN/HUYEN'], $rawLst[$i]['MA_LOAI']);
+                    $schools[4][$rawLst[$i]['MA_NV']] = $rawLst[$i]['DIEM'];
                     $code = $rawLst[$i]['NAM_HOC'];
                 }
                 
             } else if ($rawLst[$i]['NAM_HOC'] == $code) {
-                $schools[3][$rawLst[$i]['MA_NV']] = $rawLst[$i]['DIEM'];
+                $schools[4][$rawLst[$i]['MA_NV']] = $rawLst[$i]['DIEM'];
             } else if ($rawLst[$i]['NAM_HOC'] != $code){
                 array_push($datas, $schools);
                 $schools = array();
@@ -64,7 +64,7 @@
 
         <p id="schoolTitle"><?php echo $datas[0][1]; ?></p>
         <p id="schoolDistrict"><?php echo $datas[0][2]; ?></p>
-        <p id="schoolID"><?php echo $SCHOOL_ID[$schoolID]?></p>
+        <p id="schoolType"><?php echo $datas[0][3]; ?></p>
 
 
         <div id="yearGraphContainer">
@@ -154,9 +154,9 @@
                 var nv3 = []
 
                 for (let i of datas) {
-                    nv1.push(i[3]['NV1'])
-                    nv2.push(i[3]['NV2'])
-                    nv3.push(i[3]['NV3'])
+                    nv1.push(i[4]['NV1'])
+                    nv2.push(i[4]['NV2'])
+                    nv3.push(i[4]['NV3'])
                 }
 
 

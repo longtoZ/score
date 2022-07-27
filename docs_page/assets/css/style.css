@@ -93,8 +93,9 @@ header i {
 .left-pannel {
     float: left;
     width: 80%;
+    height: 70vh;
     position: relative;
-    overflow: hidden;
+    overflow-y: scroll;
     transition: all ease 0.4s;
 }
 
@@ -149,12 +150,13 @@ header i {
     background-color: var(--fifth-primary-color);
     position: fixed;
     max-height: 70%;
-    overflow-y: scroll;
+    overflow-y: hidden;
     transition: all ease 0.4s;
     z-index: 3;
 }
 
-.menu-container::-webkit-scrollbar {
+.menu-container::-webkit-scrollbar, 
+.left-pannel::-webkit-scrollbar {
     display: none;
 }
 

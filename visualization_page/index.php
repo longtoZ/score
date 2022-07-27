@@ -43,7 +43,7 @@
                             </div>
                             <div class="schooltype" style="background-color: #00C6A6;box-shadow: 0 0 15px #00C6A696">
                                 <h1>Loại trường</h1>
-                                <p>Đang cập nhật...</p>
+                                <p>Trường có lớp chuyên, tích hợp</p>
                             </div>
                             <div class="schoolcity" style="background-color: #00A6A5;box-shadow: 0 0 15px #00A6A596">
                                 <h1>Thành phố</h1>
@@ -218,6 +218,28 @@
                         </div>
                     </div>
 
+                    <div class="prosub-data-container">
+                        <div class="prosub-data">
+                            <div class="prosub-graph-container"></div>
+                            <div class="prosub-detail-container">
+                                <div class="prosub-list">
+                                    <h3>Môn chuyên</h3>
+
+                                </div>
+                                <div class="filter-year">
+                                    <h4 class="year-title" style="text-align:center">Chọn năm</h4>
+                                    <div class="filter-year-select" style="width:140px; margin: 5px auto; display:block;">
+                                        <span class="select" style="color:#0064b3">Chọn năm</span>
+                                        <i class="fi fi-rr-caret-down"></i>
+                                    </div>
+
+                                    <div class="filter-year-list" style="width:140px; margin: 10px auto; display:block;">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                     <div class="more-container">
                         <div class="more-info-data">
 
@@ -266,6 +288,8 @@
                 </div>
             </div>
 
+            <!-- <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d62698.550966336945!2d106.72863821038315!3d10.837353324725134!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x317527a052f90a59%3A0x9f677485994c6eac!2zVHLGsOG7nW5nIFRIUFQgTmd1eeG7hW4gSOG7r3UgSHXDom4!5e0!3m2!1svi!2s!4v1658413326868!5m2!1svi!2s" width="85%" height="450" style="border:0;display: block;margin: 50px auto;border-radius: 20px;box-shadow: var(--box-shadow);border: 2px solid lightgrey;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe> -->
+
             <div id="footer-container"></div>
             
         </div>
@@ -273,6 +297,8 @@
     </body>
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.1/dist/chart.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.1/dist/chart.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-trendline"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -287,12 +313,15 @@
     </script>
     <script type="text/javascript">
 
-        const default_school = document.querySelector('.schoolname p').innerHTML;
-        const default_district = document.querySelector('.schooldistrict p').innerHTML;
+        document.querySelector('.prosub-select').classList.remove('select-disable')
+
+        const default_school = document.querySelector('.schoolname p').textContent;
+        const default_district = document.querySelector('.schooldistrict p').textContent;
         const default_year = "2021";
         const default_wish = "NV1";
         const default_start = '2015';
         const default_end = '2021';
+        const default_subject = document.querySelector('.prosub-select span').textContent
 
         for (let i of document.querySelectorAll('.filter-year-select .select')) {
             i.innerHTML = "Năm " + default_year;
@@ -304,6 +333,8 @@
             
         $(document).ready(function() {
             function showOnLoad() {
+
+
 
                 $.ajax({
                     url:"links.php",
@@ -346,6 +377,19 @@
                                 $('.school-group-list').html($(data).filter('#groupList'));
                             }
                         });
+
+                        if (!isNormalSchool()) {
+                            $.ajax({
+                                url:"prosub_comparison.php",
+                                method:"POST",
+                                data:{year:default_year, orgSubject:default_subject, subject:proSubjectsObj[default_subject]},
+                                success:function(data) {
+                                    $('.prosub-graph-container').html($(data).filter('#prosubComparisonGraph'));
+                                }
+                            });
+                        }
+
+
                     }
                 });
 
@@ -413,7 +457,7 @@
                             $('.year-range-graph-container').html($(data).filter('#yearGraphContainer'));
                             $('.schoolname p').html($(data).filter('#schoolTitle').text());
                             $('.schooldistrict p').html($(data).filter('#schoolDistrict').text());
-                            // $('.schoolcity p').html($(data).filter('#schoolID').text());
+                            $('.schooltype p').html(schoolTypesObjRev[$(data).filter('#schoolType').text()]);
 
                             $.ajax({
                                 url:"year_range_comparison.php",
@@ -423,10 +467,12 @@
                                     $('.comparison .info').html($(data).filter('#info1'))
                                     $('.calculation').html($(data).filter('#info2'))
 
-                                    async function run() {
-                                        await districtClick();
-                                        await yearClick();
-                                        await groupcomparisonDisplay();
+                                    function run() {
+                                        districtClick();
+                                        yearClick();
+                                        groupcomparisonDisplay();
+                                        prosubComparisionDisplay()
+                                        
                                     }
 
                                     run()
@@ -462,6 +508,19 @@
                                 });
                             }
 
+                            function prosubComparisionDisplay() {
+                                if (!isNormalSchool()) {
+                                    $.ajax({
+                                        url:"prosub_comparison.php",
+                                        method:"POST",
+                                        data:{year:default_year, orgSubject:default_subject, subject:proSubjectsObj[default_subject]},
+                                        success:function(data) {
+                                            $('.prosub-graph-container').html($(data).filter('#prosubComparisonGraph'));
+                                        }
+                                    });
+                                }
+                            }
+
                             function yearClick() {
                                 document.querySelector('.filter-year-select').click();
                                 for (let i of document.querySelectorAll('.filter-year-list .year')) {
@@ -470,8 +529,6 @@
                                     }
                                 }
                             }
-
-
 
                         }
                     });
@@ -498,7 +555,6 @@
                 }
                 
             });
-
 
             function yearRangeChange() {
                 var school_input = document.querySelector('.school-search').value
@@ -589,8 +645,6 @@
                     chartClicked = 'no'
                 }
 
-                console.log(chartClicked)
-
                 
             });
 
@@ -609,9 +663,7 @@
                     }
                 });
             });
-
-
-                
+    
                 
         })
     </script>

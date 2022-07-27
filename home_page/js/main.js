@@ -8,7 +8,6 @@ const section1_desc = document.querySelector('.section1 .desc');
 const section2_part = document.querySelectorAll('.section2 .part');
 const section3_card = document.querySelectorAll('.section3 .card');
 const section5_card = document.querySelectorAll('.section5 .card');
-const section4_percent = document.querySelectorAll('.section4 .percent');
 
 function getLanguages(url) {
     var symbols = {
@@ -53,7 +52,7 @@ function getLanguages(url) {
 
         card_title.className = 'card-title'
         bar.className = 'bar'
-        percent.className = 'percent hide-percent'
+        percent.className = 'percent'
 
         card_title.innerHTML = symbols[i] + " " + i
 
@@ -74,7 +73,7 @@ function getLanguages(url) {
 
     find_more.className = 'find-more'
 
-    link.setAttribute('href', 'https://github.com/longtoZ/score')
+    link.setAttribute('href', '#')
     link.setAttribute('target', '_blank')
     link.innerHTML = "Tìm hiểu thêm &rarr;"
 
@@ -107,22 +106,32 @@ const observerMoveUp = new IntersectionObserver(entries => {
     threshold: 0.5
 });
 
+function observerPercent() {
+    const section4_percent = document.querySelectorAll('.section4 .percent');
+    const observerPercent = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.toggle('hide-percent');
+                observerPercent.unobserve(entry.target);
+            }
+        })
+    }, {
+        threshold: 0.5
+    });
 
-const observerPercent = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.remove('hide-percent');
-            observerPercent.unobserve(entry.target);
-        }
+    observerFade.observe(section4_title)
+
+    section4_percent.forEach(item => {
+        observerPercent.observe(item)
     })
-}, {
-    threshold: 0.5
-});
+}
+
+observerPercent()
+
 
 observerFade.observe(section1_title)
 observerFade.observe(section2_title)
 observerFade.observe(section3_title)
-observerFade.observe(section4_title)
 observerFade.observe(section5_title)
 
 
@@ -140,10 +149,6 @@ section2_part.forEach(item => {
 
 section3_card.forEach(item => {
     observerMoveUp.observe(item)
-})
-
-section4_percent.forEach(item => {
-    observerPercent.observe(item)
 })
 
 section5_card.forEach(item => {

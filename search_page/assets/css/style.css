@@ -1,6 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato&family=MuseoModerno:wght@200;300;500&display=swap');
 
 
+a {
+    color: var(--link-text);
+}
+
 .main-title {
     margin-top: 130px;
     text-align: center;

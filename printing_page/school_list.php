@@ -17,7 +17,10 @@
 
     if (mysqli_num_rows($result) > 0) {
         $datas = array();
+        $total = 0;
         $count = 0;
+        $current_pos = 1;
+        $current = array();
         while($row = mysqli_fetch_assoc($result)) {
     
             $query2 = <<<EOD
@@ -41,6 +44,10 @@
             for ($i = 0; $i < sizeof($rawLst); $i++) {
         
                 if ($code == '') {
+
+                    if ($rawLst[$i]['MA_NV'] == "NV1") {
+                        $total += $rawLst[$i]['DIEM'];
+                    }
         
                     if ($i != 0) {
                         array_push($schools, $rawLst[$i-1]['TEN_TRUONG'], $rawLst[$i-1]['QUAN/HUYEN']);
@@ -57,25 +64,64 @@
                 } else if ($rawLst[$i]['MA_TRUONG'] == $code) {
                     $schools[2][$rawLst[$i]['MA_NV']] = $rawLst[$i]['DIEM'];
                 } else if ($rawLst[$i]['MA_TRUONG'] != $code){
+
+                    if ($schools[0] == $school) {
+                        $current = [$current_pos, $schools[2]['NV1']];
+                    }
+
                     array_push($datas, $schools);
                     $schools = array();
                     $code = '';
+
+                    $count++;
                 }
         
                 if ($i == sizeof($rawLst)-1) {
+
+                    if ($schools[0] == $school) {
+                        $current = [$current_pos, $schools[2]['NV1']];
+                    }
+
                     array_push($datas, $schools);
                     $schools = array();
                     $code = '';
+
+                    $count++;
                 }
             }
 
+            $current_pos++;
+
             // print_r($datas);
             
-
         }
 
-        if ($type=='table') {?>
+        if (sizeof($current) > 1) {
+            $score = $current[1];
+        } else {
+            $score = 999;
+        }
+    
+        $compare = '';    
+        $average = round($total/$count, 2);
+    
+        if ($score >= $average) {
+            $compare = 'above';
+        } else {
+            $compare = 'below';
+        }
+
+        if ($type=='table' || ($type=='chart' && $district=='')) {?>
             <link rel="stylesheet" type="text/css" href="./assets/css/table.css">
+
+            <?php if ($compare == "above") {?>
+                <h2 style="text-align:center; margin: 30px 0; font-weight: 500; color:#009879"></h2>
+            <?php
+            } else {?>
+                <h2 style="text-align:center; margin: 30px 0; font-weight: 500; color:goldenrod"></h2>
+            <?php
+            }
+            ?>
             
             <script src="./js/sort.js"></script>
 
@@ -96,36 +142,76 @@
 
                     $stt = 1;
                     foreach ($datas as $row) {
-                        
+
                         $schoolname = $row[0];
                         $district = $row[1];
                         $nv1 = $row[2]['NV1'];
                         $nv2 = $row[2]['NV2'];
-                        $nv3 = $row[2]['NV3'];	
+                        $nv3 = $row[2]['NV3'];
 
-                        if ($schoolname == $school) {?>
-                            <tr style="background-color: var(--row-hover-color)">
-                                <td style="font-weight: bold;"><?php echo $stt; ?></td>
-                                <td style="font-weight: 500;"><?php echo $schoolname; ?></td>
-                                <td style="font-weight: 500;"><?php echo $district; ?></td>
-                                <td style="font-weight: 500;"><?php echo $nv1; ?></td>
-                                <td style="font-weight: 500;"><?php echo $nv2; ?></td>
-                                <td style="font-weight: 500;"><?php echo $nv3; ?></td>
-                            </tr>	
-                        <?php
-                        } else {?>
-                        <tr>
-                            <td><?php echo $stt; ?></td>
-                            <td><?php echo $schoolname; ?></td>
-                            <td><?php echo $district; ?></td>
-                            <td><?php echo $nv1; ?></td>
-                            <td><?php echo $nv2; ?></td>
-                            <td><?php echo $nv3; ?></td>
-                        </tr>	
-                        <?php
+                        if ($compare == "above" && $nv1 >= $average) {
+                            if ($schoolname == $school) {
+                                $current[0] = $stt;
+                                ?>
+                                
+                                <script>
+                                    document.querySelector('.comparison-table h2').innerHTML = "Trường xếp hạng <?php echo $current[0]; ?>, thuộc nhóm điểm trên trung bình: <?php echo $average; ?>"
+                                </script>
+
+                                <tr style="background-color: var(--row-hover-color)">
+                                    <td style="font-weight: bold;"><?php echo $stt; ?></td>
+                                    <td style="font-weight: 500;"><?php echo $schoolname; ?></td>
+                                    <td style="font-weight: 500;"><?php echo $district; ?></td>
+                                    <td style="font-weight: 500;"><?php echo $nv1; ?></td>
+                                    <td style="font-weight: 500;"><?php echo $nv2; ?></td>
+                                    <td style="font-weight: 500;"><?php echo $nv3; ?></td>
+                                </tr>	
+                            <?php 
+                            } else {?>
+                                <tr>
+                                    <td><?php echo $stt; ?></td>
+                                    <td><?php echo $schoolname; ?></td>
+                                    <td><?php echo $district; ?></td>
+                                    <td><?php echo $nv1; ?></td>
+                                    <td><?php echo $nv2; ?></td>
+                                    <td><?php echo $nv3; ?></td>
+                                </tr>	
+                            <?php
+                            }
+
+                            $stt++;
+                        } else if ($compare == "below" && $nv1 <= $average) {
+                            if ($schoolname == $school) {
+                                $current[0] = $stt;
+                                ?>
+
+                                <script>
+                                    document.querySelector('.comparison-table h2').innerHTML = "Trường xếp hạng <?php echo $current[0]; ?>, thuộc nhóm điểm dưới trung bình: <?php echo $average; ?>"
+                                </script>
+
+                                <tr style="background-color: var(--row-hover-color)">
+                                    <td style="font-weight: bold; color:goldenrod"><?php echo $stt; ?></td>
+                                    <td style="font-weight: 500;"><?php echo $schoolname; ?></td>
+                                    <td style="font-weight: 500;"><?php echo $district; ?></td>
+                                    <td style="font-weight: 500;"><?php echo $nv1; ?></td>
+                                    <td style="font-weight: 500;"><?php echo $nv2; ?></td>
+                                    <td style="font-weight: 500;"><?php echo $nv3; ?></td>
+                                </tr>	
+                            <?php 
+                            } else {?>
+                                <tr>
+                                    <td style="color:goldenrod"><?php echo $stt; ?></td>
+                                    <td><?php echo $schoolname; ?></td>
+                                    <td><?php echo $district; ?></td>
+                                    <td><?php echo $nv1; ?></td>
+                                    <td><?php echo $nv2; ?></td>
+                                    <td><?php echo $nv3; ?></td>
+                                </tr>	
+                            <?php
+                            }
+                            $stt++;
                         }
-                        $stt++;
-                    } 
+                    }
                     ?>
                 </tbody>
         
@@ -135,7 +221,7 @@
             <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.1/dist/chart.min.js"></script>
             <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script>
 
-            <div class="bar-horizontal" style="height: 470px; width:auto; margin: 0 30px; display:block;">
+            <div class="bar-horizontal" style="height: 470px; width:auto; display:block;">
                 <canvas id="myChartBarcomparison"></canvas>  
             </div>
 

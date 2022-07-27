@@ -18,7 +18,7 @@
     }
 
 
-    #score-area, #ratio-area, #comparison-area, #eval-area, #average-area {
+    #score-area, #ratio-area, #comparison-area, #eval-area, #average-area, #prosub-area {
         margin: 70px 0 0 0 !important;
         box-shadow: none !important;
         background-color: transparent !important;

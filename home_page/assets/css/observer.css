@@ -21,4 +21,12 @@
 .hide-percent {
     transform: scaleX(0);
     transform-origin: left;
+    animation: percent 1s cubic-bezier(1,0,0.5,1) forwards;
+}
+
+@keyframes percent {
+    100% {
+        transform: scaleX(1);
+        color: white;
+    }
 }

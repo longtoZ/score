@@ -1,5 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato&family=MuseoModerno:wght@200;300;500&display=swap');
 
+a {
+    color: var(--link-text);
+}
 
 .main-title-1 {
     margin-top: 190px;
@@ -70,7 +73,7 @@
 
 #score-area, #ratio-area, 
 #comparison-area, #eval-area,
-#average-area {
+#average-area, #prosub-area {
     position: relative;
     display: flex;
     justify-content: center;
@@ -84,26 +87,27 @@
 
 #score-area div:not(:first-child), #ratio-area div:not(:first-child), 
 #comparison-area div:not(:first-child), #eval-area div:not(:first-child),
-#average-area div:not(:first-child) {
+#average-area div:not(:first-child), #prosub-area div:not(:first-child) {
     overflow: hidden;
     transition: all ease-in-out 0.4s;
 }
 
 #score-area .score-title, #ratio-area .ratio-title, 
 #comparison-area .comparison-title, #eval-area .eval-title,
-#average-area .average-title {
+#average-area .average-title, #prosub-area .prosub-title {
     font-size: 170%;
     font-weight: 500;
     text-align: center;
 }
 
 .score-range, .ratio-range, 
-.comparison-range, .eval-range, .average-range {
+.comparison-range, .eval-range, .average-range, .prosub-range {
     margin: 40px 0;
 }
 
 .score-range *, .ratio-range *, 
-.comparison-range *, .eval-range *, .average-range *{
+.comparison-range *, .eval-range *, 
+.average-range *, .prosub-range *{
     font-size: 110%;
     font-weight: 500;
 }
@@ -116,12 +120,12 @@
 }
 
 .start, .end, .start-r, .end-r, 
-.end-c, .end-e, .top-p, .end-a {
+.end-c, .end-e, .top-p, .end-a, .end-ps {
     border: none;
     outline: none;
     font-weight: bold;
     font-size: 110%;
-    width: 60px;
+    width: 70px;
     margin: 0 10px;
     background: none;
     color: var(--text-color-light);
@@ -146,44 +150,49 @@
 }
 
 .bar-graph1, .ratio-chart, .bar-horizontal {
-    margin: 30px !important;
+    margin: 30px 10px !important;
 }
 
-.average-range select {
+.comparison-range select, .prosub-range select {
     border-radius: 8px;
     font-size: 100%;
     border: 2px solid var(--text-color-light);
     background-color: transparent;
     color: var(--text-color);
-    margin-top: 20%;
+    cursor: pointer;
 }
 
-
-.average-range option {
+.comparison-range option, .prosub-range option {
     font-size: 100%;
     font-weight: 300;
     background-color: var(--third-primary-color);
     color: var(--text-color);
+    cursor: pointer;
 }
 
-.average-range select::-webkit-scrollbar {
+.comparison-range select::-webkit-scrollbar, .prosub-range select::-webkit-scrollbar{
     background-color: var(--primary-color);
     width: 8px;
     border-radius: 8px;
 }
 
-.average-range select::-webkit-scrollbar-thumb {
+.comparison-range select::-webkit-scrollbar-thumb, .prosub-range select::-webkit-scrollbar-thumb {
     background-color: var(--thumb-color);
     border-radius: 8px;
 }
 
 @media only screen and (max-width: 46.1875em) {
+    .school-search {
+        width: 70% !important;
+    }
+
     #score-area, #ratio-area, #comparison-area, #eval-area, #average-area {
         margin: 50px 5% 0 5%;
         padding: 30px 15px;
     }
 
-    .score-chart, .ratio-table, .comparison-table, .eval-table, .average-table {
+    .score-chart, .ratio-table, .comparison-table, .eval-table, 
+    .average-table, .prosub-table {
         overflow-x: scroll !important;
     }
 

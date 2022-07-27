@@ -198,7 +198,7 @@
                                 title: {
                                     display: true,
                                     color: textColor,
-                                    text: '<?php echo $school ?>'
+                                    text: datas[0][1]
                                 }
                             },
                             scales: {

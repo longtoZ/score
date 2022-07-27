@@ -29,7 +29,7 @@ $.get("https://freeipapi.com/api/json", function (datas) {
             time: time
         },
         success: function(data) {
-            console.log(data)
+            
         }
     })
 

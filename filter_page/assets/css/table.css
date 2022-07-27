@@ -76,6 +76,19 @@
     transition: ease-in-out 0.15s;
 }
 
+.search-table thead.switch-type {
+    background-color: #006398;
+    box-shadow: 0 0 20px rgba(0, 99, 152, 0.3);
+}
+
+.search-table tbody tr td:first-of-type.switch-type {
+    color: #006398;
+}
+
+.search-table tbody tr:last-of-type.switch-type {
+    border-bottom: 2px solid #006398;
+}
+
 
 @media only screen and (max-width: 46.1875em) {
     /* Tables */

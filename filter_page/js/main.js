@@ -10,15 +10,6 @@ for (let i of yearsList) {
     document.querySelector('.filter-year-advanced-list').appendChild(item.cloneNode(true))
 }
 
-// for (let i of yearsList) {
-//     var item = document.createElement('div')
-    
-//     item.className = "year"
-//     item.innerHTML = "Năm " + i.toString()
-
-    
-// }
-
 for (let i of districtsList) {
     const item = document.createElement('div')
     
@@ -29,15 +20,29 @@ for (let i of districtsList) {
     document.querySelector('.filter-district-advanced-list').appendChild(item.cloneNode(true))
 }
 
-for (let i of wishsList) {
-    const item = document.createElement('div')
-    
-    item.className = "wish"
-    item.innerHTML = i.toString()
+function createWishList() {
+    const wish_list = document.querySelector('.filter-wish-list')
+    const advanced_wish_list = document.querySelector('.filter-wish-advanced-list')
 
-    document.querySelector('.filter-wish-list').appendChild(item)
-    document.querySelector('.filter-wish-advanced-list').appendChild(item.cloneNode(true))
+    document.querySelectorAll('.filter-wish-list .wish').forEach(i => {i.remove()})
+    document.querySelectorAll('.filter-wish-advanced-list .wish').forEach(i => {i.remove()})
+
+    for (const i in normalSubjectsObj) {
+        const item = document.createElement('div')
+        
+        item.className = "wish"
+        item.innerHTML = i.toString()
+    
+        wish_list.appendChild(item)
+        advanced_wish_list.appendChild(item.cloneNode(true))
+    }
+
+    wish_list.parentNode.querySelector('.filter-wish-select .select').innerHTML = "Nguyện vọng 1"
+    advanced_wish_list.parentNode.querySelector('.filter-wish-advanced-select .select').innerHTML = "Nguyện vọng 1"
 }
+
+createWishList()
+
 
 // for (let i of wishsList) {
 //     var item = document.createElement('div')
@@ -55,19 +60,15 @@ const yearsItem = document.querySelectorAll('.filter-year-list .year');
 const districtSelected = document.querySelector(".filter-district-select");
 const filterDistrictList = document.querySelector(".filter-district-list");
 const districtsItem = document.querySelectorAll('.filter-district-list .district');
-const wishSelected = document.querySelector(".filter-wish-select");
-const filterWishList = document.querySelector(".filter-wish-list");
-const wishsItem = document.querySelectorAll('.filter-wish-list .wish');
 
 const yearAdvancedSelected = document.querySelector(".filter-year-advanced-select");
 const filterYearAdvancedList = document.querySelector(".filter-year-advanced-list");
 const yearsAdvancedItem = document.querySelectorAll('.filter-year-advanced-list .year');
-const wishAdvancedSelected = document.querySelector(".filter-wish-advanced-select");
-const filterWishAdvancedList = document.querySelector(".filter-wish-advanced-list");
-const wishsAdvancedItem = document.querySelectorAll('.filter-wish-advanced-list .wish');
 const districtAdvancedSelected = document.querySelector(".filter-district-advanced-select");
 const filterDistrictAdvancedList = document.querySelector(".filter-district-advanced-list");
 const districtsAdvancedItem = document.querySelectorAll('.filter-district-advanced-list .district');
+
+districtsAdvancedItem[0].classList.toggle('district-all')
 
 yearsItem.forEach((item) => {
     item.onclick = function() {
@@ -91,16 +92,39 @@ districtSelected.onclick = function() {
     filterDistrictList.classList.toggle("active");
 }
 
-wishsItem.forEach((item) => {
-    item.onclick = function() {
-        document.querySelector('.filter-wish-select .select').innerHTML = this.innerHTML
-        filterWishList.classList.remove("active");
-    }
-});
+function recreateWishList() {
+    const wishSelected = document.querySelector(".filter-wish-select");
+    const filterWishList = document.querySelector(".filter-wish-list");
+    const wishsItem = document.querySelectorAll('.filter-wish-list .wish');
+    const wishAdvancedSelected = document.querySelector(".filter-wish-advanced-select");
+    const filterWishAdvancedList = document.querySelector(".filter-wish-advanced-list");
+    const wishsAdvancedItem = document.querySelectorAll('.filter-wish-advanced-list .wish');
 
-wishSelected.onclick = function() {
-    filterWishList.classList.toggle("active");
+    wishsItem.forEach((item) => {
+        item.onclick = function() {
+            document.querySelector('.filter-wish-select .select').innerHTML = this.innerHTML
+            filterWishList.classList.remove("active");
+        }
+    });
+    
+    wishSelected.onclick = function() {
+        filterWishList.classList.toggle("active");
+    }
+
+    wishsAdvancedItem.forEach((item) => {
+        item.onclick = function() {
+            document.querySelector('.filter-wish-advanced-select .select').innerHTML = this.innerHTML
+            filterWishAdvancedList.classList.remove("active");
+        }
+    });
+    
+    wishAdvancedSelected.onclick = function() {
+        filterWishAdvancedList.classList.toggle("active");
+    }
 }
+
+recreateWishList()
+
 
 yearsAdvancedItem.forEach((item) => {
     item.onclick = function() {
@@ -113,28 +137,58 @@ yearAdvancedSelected.onclick = function() {
     filterYearAdvancedList.classList.toggle("active");
 }
 
-wishsAdvancedItem.forEach((item) => {
-    item.onclick = function() {
-        document.querySelector('.filter-wish-advanced-select .select').innerHTML = this.innerHTML
-        filterWishAdvancedList.classList.remove("active");
-    }
-});
+var districtCount = 0
+var districtList = []
 
-wishAdvancedSelected.onclick = function() {
-    filterWishAdvancedList.classList.toggle("active");
+function advancedDistrictSelect() {
+
+    districtsAdvancedItem.forEach((item) => {
+        item.onclick = function() {
+
+            if (item.className.includes('district-all')) {
+                districtsAdvancedItem.forEach(i => {
+                    i.classList.remove('adv-select')
+                })
+
+                item.classList.toggle('adv-select')
+                districtCount = 0
+                districtList.length = 0
+                districtList.push(item.textContent)
+
+            } else {
+
+                document.querySelector('.district-all').classList.remove('adv-select')
+                if (districtList[0] == 'Tất cả') {districtList = districtList.slice(1)}
+
+                if (!item.className.includes('adv-select')) {
+                    districtCount++
+                    districtList.push("`QUAN/HUYEN` LIKE '%" + item.textContent + "'")
+                } else {
+                    districtCount--
+                    districtList.pop()
+                }
+    
+                item.classList.toggle('adv-select')
+            }
+
+            if (districtCount < 2) {
+                document.querySelector('.filter-district-advanced-select .select').innerHTML = this.innerHTML;
+            } else {
+                document.querySelector('.filter-district-advanced-select .select').innerHTML = `${this.innerHTML}, <b style="font-weight:400;">+${districtCount.toString()}</b>`;
+            }
+
+            // console.log(districtList)
+
+            // filterDistrictAdvancedList.classList.remove("active");
+        }
+    });
+    
+    districtAdvancedSelected.onclick = function() {
+        filterDistrictAdvancedList.classList.toggle("active");
+    }
 }
 
-districtsAdvancedItem.forEach((item) => {
-    item.onclick = function() {
-        document.querySelector('.filter-district-advanced-select .select').innerHTML = this.innerHTML;
-        filterDistrictAdvancedList.classList.remove("active");
-    }
-});
-
-districtAdvancedSelected.onclick = function() {
-    filterDistrictAdvancedList.classList.toggle("active");
-}
-
+advancedDistrictSelect()
 
 
 const basicChoose = document.querySelector('.filter-basic-header');
@@ -160,14 +214,13 @@ const filterMoreLeft = document.querySelectorAll('.filter-more-box .left-box *')
 const filterMoreRight = document.querySelectorAll('.filter-more-box .right-box *');
 
 function showScore() {
-    if (document.querySelector(".filter-year-select .select").innerHTML == "Chọn năm") {
-        alert("Vui lòng chọn năm!");  
-    } else {
+    if (!document.querySelector('.score-pro')) {
         // alert("here")
-        if (document.querySelector('.score-maths').value != "" && document.querySelector('.score-literature').value !="" && document.querySelector('.score-english').value != "") {
-            maths = document.querySelector('.score-maths').value;
-            literature = document.querySelector('.score-literature').value;
-            english = document.querySelector('.score-english').value;
+        maths = document.querySelector('.score-maths').value;
+        literature = document.querySelector('.score-literature').value;
+        english = document.querySelector('.score-english').value;
+
+        if (maths != "" && literature !="" && english != "") {
 
             var average = 0;
             if (parseFloat((document.querySelector(".filter-year-select .select").innerHTML).replace("Năm ", "")) <= 2020) {
@@ -177,7 +230,21 @@ function showScore() {
             }
             document.querySelector('.score-average').value = average.toString();
         }
-        
+    } else {
+        maths = document.querySelector('.score-maths').value;
+        literature = document.querySelector('.score-literature').value;
+        english = document.querySelector('.score-english').value;
+        pro = document.querySelector('.score-pro').value;
+
+        if (maths != "" && literature !="" && english != "" && pro != "") {
+            var average = 0;
+            if (parseFloat((document.querySelector(".filter-year-select .select").innerHTML).replace("Năm ", "")) <= 2020) {
+                average = parseFloat(maths)*2 + parseFloat(literature)*2 + parseFloat(english) + parseFloat(pro)*2;
+            } else {
+                average = parseFloat(maths) + parseFloat(literature) + parseFloat(english) + parseFloat(pro)*2;
+            }
+            document.querySelector('.score-average').value = average.toString();
+        }
     }
     
 }  
@@ -356,7 +423,6 @@ function exportXLSX() {
     } else {
         alert("Chưa có kết quả để in");
     }
-  }
+}
 
 exportxlsx.addEventListener('click', exportXLSX);
-

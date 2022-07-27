@@ -60,11 +60,11 @@
         }
     })
 
-    menu_resize.addEventListener('click', async function () {
+    menu_resize.addEventListener('click', function () {
         right_pannel.classList.toggle('reduce')
         left_pannel.classList.toggle('reduce')
         menu_container.classList.toggle('reduce')
-        await document.querySelector('.content-container').classList.toggle('reduce')
+        document.querySelector('.content-container').classList.toggle('reduce')
     })
 
     if (window.matchMedia('(max-width: 64em)').matches) {

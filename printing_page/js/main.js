@@ -17,6 +17,7 @@ const print = document.querySelector('.print');
 const changeType1 = document.querySelector('#score-area .title i');
 const changeType2 = document.querySelector('#ratio-area .title i');
 const changeType3 = document.querySelector('#comparison-area .title i');
+const changeType5 = document.querySelector('#prosub-area .title i');
 
 function hideSection(i) {
     i.classList.toggle("active");
@@ -147,7 +148,7 @@ section4.addEventListener('click', function() {
 });
 
 section5.addEventListener('click', function() {
-    hideSection(document.querySelector('#average-area .hide-btn'))
+    hideSection(document.querySelector('#prosub-area .hide-btn'))
 });
 
 
@@ -214,8 +215,11 @@ changeType2.addEventListener('click', function () {
 
 changeType3.addEventListener('click', function () {
 
-    var end_c = parseInt(document.querySelector('.end-c').value);
+    var end_c = parseInt(document.querySelector('.end-c').value)
     var school_input = document.querySelector('.school-title').innerHTML
+    var district = document.querySelector('.district-list').value
+
+    district = district == "Tất cả" ? "" : document.querySelector('.school-area').innerHTML
 
     if(!(this.className).includes('clicked')) {
         this.classList.toggle('clicked');
@@ -223,7 +227,7 @@ changeType3.addEventListener('click', function () {
             url:"school_list.php",
             method:"POST",
             data:{year:end_c, 
-                district:document.querySelector('.school-area').innerHTML, 
+                district:district, 
                 school:school_input,
                 type:'chart'},
             success:function(data) {
@@ -236,7 +240,7 @@ changeType3.addEventListener('click', function () {
             url:"school_list.php",
             method:"POST",
             data:{year:end_c, 
-                district:document.querySelector('.school-area').innerHTML, 
+                district:district, 
                 school:school_input,
                 type:'table'},
             success:function(data) {
@@ -246,4 +250,81 @@ changeType3.addEventListener('click', function () {
     }
 });
 
+changeType5.addEventListener('click', function () {
+
+    var end_ps = parseInt(document.querySelector('.end-ps').value)
+    var school_input = document.querySelector('.school-title').innerHTML
+    var subject = document.querySelector('.prosub-list').value
+
+    if(!(this.className).includes('clicked')) {
+        this.classList.toggle('clicked');
+        $.ajax({
+            url:"prosub_list.php",
+            method:"POST",
+            data:{year:end_ps, 
+                school:school_input,
+                orgSubject:subject, 
+                subject:proSubjectsObj[subject],
+                column:proSubjectColumn(),
+                type:'chart'},
+            success:function(data) {
+                $('.prosub-table').html(data);
+            }
+        });
+    } else {
+        this.classList.remove('clicked');
+        $.ajax({
+            url:"prosub_list.php",
+            method:"POST",
+            data:{year:end_ps, 
+                school:school_input,
+                orgSubject:subject, 
+                subject:proSubjectsObj[subject],
+                column:proSubjectColumn(),
+                type:'table'},
+            success:function(data) {
+                $('.prosub-table').html(data);
+            }
+        });
+    }
+});
+
+function createProSubSelect() {
+    const prosub_list = document.querySelector('.prosub-list')
+
+    for (const i in proSubjectsObj) {
+        const prosub_select = document.createElement('option')
+        
+        prosub_select.innerHTML = i
+
+        prosub_list.appendChild(prosub_select)
+    }
+}
+
+createProSubSelect()
+
+function proSubjectColumn() {
+    const filter_wish_select = document.querySelector('.prosub-list').value
+
+    if (filter_wish_select.includes('Chuyên')) {
+        const col1 = proSubjectsObj[filter_wish_select]
+        const col2 = proSubjectsObj[filter_wish_select].replace('1', '2')
+    
+        return `${col1},${col2}`
+    } else {
+        return normalSubjectsObj[filter_wish_select]
+    }
+
+}
+
+function isNormal(type) {
+    console.log(type)
+    if (type=='L03') {
+        document.getElementById('prosub-area').style.display = 'none'
+        return true
+    } else {
+        document.getElementById('prosub-area').style.display = 'flex'
+        return false
+    }
+}
 

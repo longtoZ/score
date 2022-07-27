@@ -1,5 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato&family=MuseoModerno:wght@200;300;500&display=swap');
 
+a {
+    color: var(--link-text);
+}
 
 .main-title {
     margin-top: 190px;
@@ -126,7 +129,8 @@
     flex: 1;
 }
 
-.year-range-data, .year-range-detail > div, .comparison-data, .group-data{
+.year-range-data, .year-range-detail > div, 
+.comparison-data, .group-data, .prosub-data{
     border-radius: 25px;
 	padding: 8px;
     padding-bottom: 50px;
@@ -277,7 +281,7 @@
     width: 50%;
 }
 
-.comparison-data, .group-data {
+.comparison-data, .group-data, .prosub-data {
     width: 85%;
 }
 
@@ -309,6 +313,10 @@
     padding: 10px;
 }
 
+.year-title, .district-title {
+    font-weight: 400;
+}
+
 .filter-year-select, .filter-district-select {
     margin-top: 20px;
     height: 40px;
@@ -324,7 +332,7 @@
 }
 
 .filter-year-select:hover, .filter-district-select:hover {
-    box-shadow: var(--hover-color);
+    /* box-shadow: var(--hover-color); */
     transition: ease-in-out 0.2s;
 }
 
@@ -356,7 +364,7 @@
 }
 
 .filter-district-select, .filter-district-list {
-    width: 140px;
+    width: 160px;
 }
 
 .filter-year-list .year, .filter-district-list .district{
@@ -535,8 +543,8 @@
     padding: 10px;
 }
 
-.group-graph-container {
-    padding-top: 5%;
+.group-graph-container, .comparison-graph-container {
+    margin-top: 5%;
 }
 
 .chart-type i:hover {
@@ -581,7 +589,45 @@
     color: #009879;
 }
 
+.prosub-list {
+    padding: 10px;
+    margin: 30px;
+    border: 1px solid var(--third-primary-color);
+    border-radius: 10px;
+}
 
+.prosub-list h3 {
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.prosub-select {
+    display: inline-block;
+    margin: 5px;
+    cursor: pointer;
+    transition: all ease 0.3s;
+    background-color: var(--col-blue-bg);
+    color: var(--col-blue-txt);
+    width: auto;
+    padding: 0 8px;
+    border-radius: 10px;
+}
+
+.prosub-select.select-disable {
+    filter: grayscale(1);
+    opacity: 0.7;
+}
+
+.prosub-select span {
+    font-weight: 400;
+    font-size: 0.9em;
+}
+
+.prosub-data > div {
+    float: left;
+    width: 50%;
+}
 
 @media only screen and (max-width: 64em) {
     .school-info div {
@@ -589,13 +635,13 @@
     }
 
     .year-range-container, .win-ratio-container, 
-    .comparison-data-container, .group-data-container {
+    .comparison-data-container, .group-data-container, .prosub-data-container {
         flex-direction: column;
         padding: 0 7.5%;
     }
 
     .year-range-data, .year-range-detail, .win-ratio-data, .ratio-graph-container, 
-    .comparison-data, .group-data {
+    .comparison-data, .group-data, .prosub-data {
         width: auto;
     }
 
@@ -607,8 +653,9 @@
         margin-top: 50px;   
     }
 
-    .group-graph-container, .group-detail-container {
-        width: 100%;
+    .group-graph-container, .group-detail-container,
+    .prosub-graph-container, .prosub-detail-container {
+        width: 100% !important;
     }
  
 }

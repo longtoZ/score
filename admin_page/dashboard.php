@@ -144,13 +144,13 @@ if (isset($_SESSION['USERNAME']) && isset($_SESSION['PASSWORD'])) {?>
                                     <div class="input__column">
                                         <span>Số dòng/trang</span>
                                     </div>
-                                    <input type="number" class="input__value" value="30" min="1">
+                                    <input type="number" class="input__value" value="30" min="1" max="30" style="width:45%">
                                 </div>
                                 <div class="page-num input-box">
                                     <div class="input__column">
                                         <span>Trang thứ</span>
                                     </div>
-                                    <input type="number" class="input__value" value="1" min="1">
+                                    <input type="number" class="input__value" value="1" min="1" style="width:45%">
                                 </div>
                                 <div class="sorting-box">
                                     <h3>Sắp xếp theo</h3>
@@ -437,7 +437,6 @@ if (isset($_SESSION['USERNAME']) && isset($_SESSION['PASSWORD'])) {?>
                         }
                     }
 
-                    console.log(query)
 
                     $.ajax({
                         url:"edit.php",
@@ -521,7 +520,6 @@ if (isset($_SESSION['USERNAME']) && isset($_SESSION['PASSWORD'])) {?>
             })
 
             $(document).on('click', '.delete-confirm', function() {
-                console.log(deleteArr)
                 const table = table_dict[$('.board__tab #section.tab-active .title').text()]
                 const col = document.querySelectorAll('#edit-card .input__column span')
                 var query = ''
@@ -537,7 +535,6 @@ if (isset($_SESSION['USERNAME']) && isset($_SESSION['PASSWORD'])) {?>
 
                 }
 
-                console.log(query)
                 
                 $.ajax({
                     url:"delete.php",

@@ -1,28 +1,19 @@
 <?php
 include("../config/config.php");
-
-$title = mysqli_real_escape_string($con, $_POST['title']);
 $year = $_POST['year'];
-$score = $_POST['score'];
-
-if ($year < 2021) {
-    $start = (float)$score - 1;
-    $end = (float)$score + 1;
-} else {
-    $start = (float)$score - 0.5;
-    $end = (float)$score + 0.5;
-}
-
+$orgSubject = $_POST['orgSubject'];
+$subject = $_POST['subject'];
 
 $query = <<<EOD
 SELECT `truong`.`TEN_TRUONG`, `diem_chuan`.`MA_TRUONG`, `truong`.`QUAN/HUYEN`, `diem_chuan`.`MA_NV`, `diem_chuan`.`DIEM`
 FROM `diem_chuan` 
 LEFT OUTER JOIN `truong` on `truong`.`MA_TRUONG` = `diem_chuan`.`MA_TRUONG`
-WHERE `NAM_HOC` = $year  AND `MA_NV` = 'NV1' AND (`DIEM` >= $start AND `DIEM` <= $end)
-AND (`truong`.`MA_LOAI` = 'L02' OR `truong`.`MA_LOAI` = 'L03');
+WHERE `NAM_HOC` = $year AND `MA_NV` = '$subject'
+ORDER BY `DIEM` DESC
 EOD;
 
 $result = mysqli_query($con,$query);
+$datas = array();
 
 if (mysqli_num_rows($result) > 0) {
     $datas = array();
@@ -33,7 +24,7 @@ if (mysqli_num_rows($result) > 0) {
         SELECT `truong`.`TEN_TRUONG`, `diem_chuan`.`MA_TRUONG`, `truong`.`QUAN/HUYEN`, `diem_chuan`.`MA_NV`, `diem_chuan`.`DIEM` 
         FROM `diem_chuan` 
         LEFT OUTER JOIN `truong` on `truong`.`MA_TRUONG` = `diem_chuan`.`MA_TRUONG` 
-        WHERE (`truong`.`MA_TRUONG` = '{$row['MA_TRUONG']}' AND `diem_chuan`.`NAM_HOC` = $year AND (`truong`.`MA_LOAI` = 'L02' OR `truong`.`MA_LOAI` = 'L03'))
+        WHERE (`truong`.`MA_TRUONG` = '{$row['MA_TRUONG']}' AND `diem_chuan`.`NAM_HOC` = $year AND (`truong`.`MA_LOAI` = 'L02' OR `truong`.`MA_LOAI` = 'L01'))
         EOD;
 
         $result2 = mysqli_query($con,$query2);
@@ -85,13 +76,12 @@ if (mysqli_num_rows($result) > 0) {
 
     ?>
 
-    <div id="groupGraph">
+    <div id="prosubComparisonGraph">
 
-        <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.1/dist/chart.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script>
+        <?php // print_r($datas); ?>
 
         <div class="bar-graph">
-            <canvas id="myChartBarGroup"></canvas>  
+            <canvas id="myChartProsubComparison"></canvas>  
         </div>
 
         <style>
@@ -109,50 +99,54 @@ if (mysqli_num_rows($result) > 0) {
         </style>
 
         <script>
-
             function randomRGB() {
                 return (Math.floor(Math.random() * 255) + 1).toString();
             }
-            var datas_g = []
+            var datas_d = []
             var schools = []
             var nv1 = []
-            // var nv2 = []
-            // var nv3 = []
+            var nv2 = []
 
-            schools.push('<?php echo $title; ?>')
-            nv1.push('<?php echo $score; ?>')
 
             for (let i of <?php echo json_encode($datas); ?>) {
-                datas_g.push(i);
-                schools.push(i[0])
-                nv1.push(i[2]['NV1'])
-                // nv2.push(i[2]['NV2'])
-                // nv3.push(i[2]['NV3'])
+                if (i[2]['<?php echo $subject; ?>'] !== undefined) {
+                    datas_d.push(i)
+                    schools.push(i[0])
+                    nv1.push(i[2]['<?php echo $subject; ?>'])
+                    nv2.push(i[2]['<?php echo str_replace('1','2', $subject) ?>'])
+                }
             }
 
+            var col1 = 'rgb(0 144 220)'
+            var col2 = 'rgb(0 96 180)'
+            
+            var bg_nv1 = Array(schools.length).fill(col1)
+            var bg_nv2 = Array(schools.length).fill(col2)
 
-            var rgb_list = [];
-            for (let i=0; i<schools.length; i++) {
-                rgb_list.push(`rgb(${randomRGB()}, ${randomRGB()}, ${randomRGB()})`);
-            }
         </script>
 
         <script>
             var textColor = '#8a8a8a'
             var defaultBorder = 6
-            var ctx_bar = document.getElementById('myChartBarGroup');
+            var ctx_bar = document.getElementById('myChartProsubComparison');
             var myChartBar = new Chart(ctx_bar, {
                 plugins: [ChartDataLabels],
                 type: 'bar',
                 data: {
                     labels: schools,
                     datasets: [{
-                        label: '',
-                        data: nv1,
-                        borderRadius: defaultBorder,
-                        backgroundColor: rgb_list
-                    }
-                ]
+                            label: 'NV1',
+                            data: nv1,
+                            borderRadius: defaultBorder,
+                            backgroundColor: bg_nv1
+                        },
+                        {
+                            label: 'NV2',
+                            data: nv2,
+                            borderRadius: defaultBorder,
+                            backgroundColor: bg_nv2
+                        },
+                    ]
                 },
                 options: {
                     maintainAspectRatio: false,
@@ -161,11 +155,11 @@ if (mysqli_num_rows($result) > 0) {
                     plugins: {
                         title: {
                             display: true,
-                            text: "Năm " + "<?php echo $year ?>",
+                            text: "<?php echo $orgSubject ?> " + "<?php echo $year ?>",
                             color: textColor
                         },
                         legend: {
-                            display: false
+                            display: true
                         },
                         datalabels: {
                             color: textColor,
@@ -177,18 +171,18 @@ if (mysqli_num_rows($result) > 0) {
                             font: {
                                 weight: 'bold',
                                 size: '12px'
-                            }
-                                        
+                            }             
                         }
                     },
                     scales: {
                         x: {
                             title: {
                                 display: true,
-                                text: 'Điểm NV1',
+                                text: 'Điểm',
                                 color: textColor
                             },
                             min: 0,
+                            // max: 60
                         },
                         y: {
                             title: {
@@ -210,75 +204,8 @@ if (mysqli_num_rows($result) > 0) {
 
     </div>
 
-    <div id="groupList">
-        
-        <style>
-            .score-info {
-                background-color: var(--third-primary-color);
-                box-shadow: var(--box-shadow-light);
-                width: 100%;
-                height: 50px;
-                padding: 10px 20px;
-                margin: 10px 0;
-                z-index: 1;
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                border-radius: 8px
-            }
-
-            .score-info:hover {
-                background-color: #FFF9C2;
-                cursor: pointer;
-                color: #000000;
-            }
-
-            .school-name {
-                float: left
-            }
-
-            .school-score {
-                float: right;
-                color: #009879;
-                font-weight: bold;
-            }
-        </style>
-
-        <script>
-
-            function addFirstChild(name, score) {
-
-                var score_info = document.createElement('div')
-                var school_name = document.createElement('div')
-                var school_score = document.createElement('div')
-
-                score_info.className = 'score-info'
-                school_name.className = 'school-name'
-                school_score.className = 'school-score'
-
-                school_name.innerHTML = name
-                school_score.innerHTML = score
-
-                score_info.appendChild(school_name)
-                score_info.appendChild(school_score)
-                document.querySelector('.school-group-list').appendChild(score_info)
-
-            }
-
-            addFirstChild('<?php echo $title; ?>', '<?php echo $score; ?>')
-
-            var child = 1;
-            for (let i of <?php echo json_encode($datas); ?>) {
-
-                addFirstChild(i[0], i[2]['NV1'])
-
-            }
-        </script>
-    </div>
-
 <?php
 } else {?>
-    <div id="groupGraph"></div>
-    <div id="groupList"></div>
+    <div id="prosubComparisonGraph"></div>
 <?php
 } ?>

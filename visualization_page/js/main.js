@@ -1,3 +1,14 @@
+function isNormalSchool() {
+    if (schoolTypesObj[document.querySelector('.schooltype p').textContent] == 'L03') {
+        document.querySelector('.prosub-data-container').style.display = 'none'
+        return true
+    } else {
+        document.querySelector('.prosub-data-container').style.display = 'flex'
+        return false
+    }
+}
+
+
 for (let j of document.querySelectorAll('.filter-year-list')){
     for (let i of yearsList) {
             var item = document.createElement('div')
@@ -116,6 +127,26 @@ function changeYear() {
                     $('.school-group-list').html($(data).filter('#groupList'));
                 }
             });
+
+            if (!isNormalSchool()) {
+                const prosub_select = document.querySelectorAll('.prosub-select')
+                var subject = ''
+                prosub_select.forEach(i => {
+                    if (!i.className.includes('select-disable')) {
+                        subject = i.querySelector('span').textContent
+                    }
+                })
+    
+                $.ajax({
+                    url:"prosub_comparison.php",
+                    method:"POST",
+                    data:{year:year, orgSubject:subject, subject:proSubjectsObj[subject]},
+                    success:function(data) {
+                        $('.prosub-graph-container').html($(data).filter('#prosubComparisonGraph'));
+                    }
+                });
+            }
+
         }
     }); 
     
@@ -236,3 +267,58 @@ navWrapNV3.addEventListener('click', function () {
     displayScore('NV3')
 });
 
+
+const prosub_list = document.querySelector('.prosub-list')
+
+function createProSubSelect() {
+    for (const i in proSubjectsObj) {
+        const prosub_select = document.createElement('div')
+        const icon = document.createElement('i')
+        const title = document.createElement('span')
+
+        prosub_select.setAttribute('class', 'prosub-select select-disable')
+
+        icon.setAttribute('class', 'fi fi-br-circle-small')
+        title.innerHTML = i
+
+        prosub_select.appendChild(icon)
+        prosub_select.appendChild(title)
+
+        prosub_list.appendChild(prosub_select)
+    }
+}
+
+createProSubSelect()
+
+function selectAction() {
+    const prosub_select = document.querySelectorAll('.prosub-select')
+    
+    prosub_select.forEach(i => {
+        i.onclick = function() {
+            const year = (document.querySelector('.filter-year-select .select').innerHTML).replace("Năm ", "")
+
+            if (this.className.includes('select-disable')) {
+                prosub_select.forEach(i => {
+                    if (!i.className.includes('select-disable')) {
+                        i.classList.toggle('select-disable')
+                    }
+                })
+
+                this.classList.toggle('select-disable')
+
+                const subject = this.querySelector('span').textContent
+
+                $.ajax({
+                    url:"prosub_comparison.php",
+                    method:"POST",
+                    data:{year:year, orgSubject:subject, subject:proSubjectsObj[subject]},
+                    success:function(data) {
+                        $('.prosub-graph-container').html($(data).filter('#prosubComparisonGraph'));
+                    }
+                });
+            }
+        }
+    })
+}
+
+selectAction()
