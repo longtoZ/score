@@ -189,6 +189,7 @@ if (mysqli_num_rows($result) > 0) {
                                 color: textColor
                             },
                             min: 0,
+                            max: 50
                         },
                         y: {
                             title: {

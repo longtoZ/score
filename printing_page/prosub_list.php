@@ -1,7 +1,7 @@
 <?php
 include("../config/config.php");
 $year = $_POST['year'];
-$school = $_POST['school'];
+$school = mysqli_real_escape_string($con, $_POST['school']);
 $orgSubject = $_POST['orgSubject'];
 $subject = $_POST['subject'];
 $type = $_POST['type'];
@@ -154,8 +154,6 @@ if (mysqli_num_rows($result) > 0) {
 
         <div id="prosubComparisonGraph">
 
-            <?php // print_r($datas); ?>
-
             <div class="bar-graph">
                 <canvas id="myChartProsubComparison"></canvas>  
             </div>
@@ -258,7 +256,7 @@ if (mysqli_num_rows($result) > 0) {
                                     color: textColor
                                 },
                                 min: 0,
-                                // max: 60
+                                max: 60
                             },
                             y: {
                                 title: {

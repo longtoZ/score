@@ -155,7 +155,7 @@
                                 ?>
                                 
                                 <script>
-                                    document.querySelector('.comparison-table h2').innerHTML = "Trường xếp hạng <?php echo $current[0]; ?>, thuộc nhóm điểm trên trung bình: <?php echo $average; ?>"
+                                    document.querySelector('.comparison-table h2').innerHTML = "Trường xếp hạng <?php echo $current[0]; ?>, thuộc nhóm điểm trên trung bình: <?php echo $average; ?>đ"
                                 </script>
 
                                 <tr style="background-color: var(--row-hover-color)">
@@ -186,7 +186,7 @@
                                 ?>
 
                                 <script>
-                                    document.querySelector('.comparison-table h2').innerHTML = "Trường xếp hạng <?php echo $current[0]; ?>, thuộc nhóm điểm dưới trung bình: <?php echo $average; ?>"
+                                    document.querySelector('.comparison-table h2').innerHTML = "Trường xếp hạng <?php echo $current[0]; ?>, thuộc nhóm điểm dưới trung bình: <?php echo $average; ?>đ"
                                 </script>
 
                                 <tr style="background-color: var(--row-hover-color)">

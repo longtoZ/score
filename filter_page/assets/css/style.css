@@ -8,6 +8,7 @@ a {
     margin-top: 190px;
     text-align: center;
     font-weight: bold;
+    padding: 0 10px;
 }
 
 .subtitle {
@@ -417,6 +418,10 @@ a {
 
 @media only screen and (max-width: 46.1875em) {
 
+    .school-type-container {
+        width: 50%;
+    }
+
     .filter-container {
         width: 80%;
     }
@@ -426,7 +431,7 @@ a {
     }
 
 
-    .score-maths, .score-literature, .score-english, .score-average, 
+    .score-maths, .score-literature, .score-english, .score-average, .score-pro,
     .filter-year-advanced-select, .filter-year-advanced-list, .filter-wish-advanced-select, .filter-wish-advanced-list {
         width: 100%;
         margin: 10px 0;

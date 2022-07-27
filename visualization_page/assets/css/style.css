@@ -8,6 +8,7 @@ a {
     margin-top: 190px;
     text-align: center;
     font-weight: 500;
+    padding: 0 10px;
 }
 
 .subtitle {
@@ -666,7 +667,8 @@ a {
 
 @media only screen and (max-width: 46.1875em) {
     .year-range-container, .win-ratio-container, 
-    .comparison-data-container, .group-data-container, .more-container {
+    .comparison-data-container, .group-data-container, 
+    .prosub-data-container, .more-container {
         flex-direction: column;
         padding: 0 0;
     }

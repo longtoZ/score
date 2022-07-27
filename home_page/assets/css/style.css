@@ -210,7 +210,7 @@ ul * {
     margin: 1%;
     background-color: var(--second-primary-color);
     padding: 40px 60px;
-    box-shadow: var(--box-shadow);
+    box-shadow: var(--box-shadow-light);
     border-radius: 20px;
     flex: 1;
     cursor: pointer;

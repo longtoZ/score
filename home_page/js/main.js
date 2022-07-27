@@ -82,7 +82,7 @@ function getLanguages(url) {
 
 }
 
-getLanguages("https://api.github.com/repos/longtoZ/score/languages")
+getLanguages("#")
 
 const observerFade = new IntersectionObserver(entries => {
     entries.forEach(entry => {

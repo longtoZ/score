@@ -205,11 +205,11 @@
                     </div>
                     <div class="section4">
                         <input type="checkbox" id="sec4" value="" checked>
-                        <label for="sec4">Xếp hạng (Tổng quan)</label>
+                        <label for="sec4">Xếp hạng (Lớp thường)</label>
                     </div>
                     <div class="section5">
                         <input type="checkbox" id="sec5" value="" checked>
-                        <label for="sec5">Xếp hạng (Môn chuyên)</label>
+                        <label for="sec5">Xếp hạng (Lớp chuyên)</label>
                     </div>
                     <div class="simplify" style="border-top: 1px solid var(--text-color); padding-top: 15px;">
                         <input type="checkbox" id="simplify-mode" value="">
