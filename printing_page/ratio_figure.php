@@ -105,10 +105,6 @@
                 <div class="ratio-chart" style="height: 380px; width:auto; margin: 0 30px; display:block;">
                     <canvas id="myRatioChart"></canvas>  
                 </div>
-                <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.1/dist/chart.min.js"></script>
-                <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script>
-                <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-trendline"></script>
-
                 
                 <script>
                     var textColor = '#8a8a8a'

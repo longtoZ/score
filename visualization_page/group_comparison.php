@@ -87,9 +87,6 @@ if (mysqli_num_rows($result) > 0) {
 
     <div id="groupGraph">
 
-        <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.1/dist/chart.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script>
-
         <div class="bar-graph">
             <canvas id="myChartBarGroup"></canvas>  
         </div>

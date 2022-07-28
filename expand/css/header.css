@@ -73,15 +73,16 @@ header {
 .navbar-select {
     padding: 0 20px;
     margin: 0 10px;
+    border-bottom: 2px solid transparent;
     float: left;
-
+    transition: all ease 0.2s;
 }
 
 .navbar-select a {
     line-height: 2.5;
     text-decoration: none;
     color: var(--text-color);
-    font-size: 120%;
+    font-size: 125%;
 }
 
 .navbar-select:hover {

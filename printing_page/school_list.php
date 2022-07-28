@@ -218,8 +218,6 @@
             </table>
         <?php
         } else {?>
-            <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.1/dist/chart.min.js"></script>
-            <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script>
 
             <div class="bar-horizontal" style="height: 470px; width:auto; display:block;">
                 <canvas id="myChartBarcomparison"></canvas>  

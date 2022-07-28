@@ -62,18 +62,19 @@ a {
     border-radius: 10px;
 	padding: 8px;
     height: 45px;
-    width: 50%;
+    width: 40%;
     background-color: var(--fourth-primary-color);
     box-shadow: var(--box-shadow-light);
     color: var(--text-color);
     margin-right: 5px;
     margin-top: 20px;
     padding-left: 15px;
+    transition: all ease 0.3s;
 }
 
-.school-search-box .school-search:focus {
+/* .school-search-box .school-search:focus {
     box-shadow: var(--hover-color);
-}
+} */
 
 .school-search-box i {
     position: relative;

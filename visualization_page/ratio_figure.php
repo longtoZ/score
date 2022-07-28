@@ -50,10 +50,6 @@
                 <canvas id="myChartDoughnut"></canvas>  
             </div>
 
-
-            <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.1/dist/chart.min.js"></script>
-            <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script>
-
             <script>
                 var textColor = '#8a8a8a'
                 var ctx_doughnut = document.getElementById('myChartDoughnut');

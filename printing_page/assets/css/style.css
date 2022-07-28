@@ -59,7 +59,7 @@ a {
     color: var(--text-color);
     margin-top: 20px;
     padding-left: 15px;
-    transition: all ease 0.2s;
+    transition: all ease 0.3s;
 }
 
 .search-box i {
@@ -68,9 +68,9 @@ a {
     top: 2.0625em;
 }
 
-.school-search:focus {
+/* .school-search:focus {
     box-shadow: var(--hover-color);
-}
+} */
 
 #score-area, #ratio-area, 
 #comparison-area, #eval-area,
