@@ -211,6 +211,7 @@ ul * {
     background-color: var(--second-primary-color);
     padding: 40px 60px;
     box-shadow: var(--box-shadow-light);
+    border-bottom: 4px solid transparent;
     border-radius: 20px;
     flex: 1;
     cursor: pointer;
@@ -219,11 +220,19 @@ ul * {
 }
 
 .section2 .content .part:hover {
-    color: #333333 !important;
-    background-color: #00ffcb;
     transform: translateY(-20px);
-    box-shadow: 0 0 15px rgba(0, 255, 203, 0.5);
+}
 
+.section2 .content .part:nth-child(1):hover {
+    border-color: #00E5FF;
+}
+
+.section2 .content .part:nth-child(2):hover {
+    border-color: #00E676;
+}
+
+.section2 .content .part:nth-child(3):hover {
+    border-color: #1EE9B6;
 }
 
 .content .part span {

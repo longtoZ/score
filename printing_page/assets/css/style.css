@@ -1,7 +1,13 @@
-@import url('https://fonts.googleapis.com/css2?family=Lato&family=MuseoModerno:wght@200;300;500&display=swap');
-
 a {
     color: var(--link-text);
+}
+
+.navbar-select:nth-child(4) {
+    border-bottom: 2px solid #009879;
+}
+
+.navbar-select:nth-child(4) > a {
+    color: #009879;
 }
 
 .main-title-1 {
@@ -40,11 +46,14 @@ a {
 
 #search-area {
     margin-top: 100px;
+    padding: 0 15%;
 }
 
 .search-box {
+    display: block;
+    width: 80%;
     position: relative;
-    width: 100%;
+    margin: 50px auto;
 }
 
 .school-search {
@@ -53,7 +62,7 @@ a {
     border-radius: 10px;
 	padding: 8px;
     height: 45px;
-    width: 40%;
+    width: 100%;
     background-color: var(--fourth-primary-color);
     box-shadow: var(--box-shadow-light);
     color: var(--text-color);
@@ -63,9 +72,10 @@ a {
 }
 
 .search-box i {
-    position: relative;
-    right: 2.1875em;
+    position: absolute;
+    right: 1em;
     top: 2.0625em;
+    cursor: context-menu;
 }
 
 /* .school-search:focus {
@@ -183,8 +193,9 @@ a {
 }
 
 @media only screen and (max-width: 46.1875em) {
-    .school-search {
-        width: 70% !important;
+
+    #search-area {
+        padding: 0 8%;
     }
 
     #score-area, #ratio-area, #comparison-area, #eval-area, #average-area, #prosub-area {
@@ -221,7 +232,5 @@ a {
 }
 
 @media only screen and (max-width: 64em) {
-    .school-search {
-        width: 50%;
-    }
+
 }

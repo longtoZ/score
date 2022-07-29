@@ -4,8 +4,8 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="icon" type="image/png" href="../img/logo.png">
-        <link rel="stylesheet" type="text/css" href="./assets/css/style.css">
         <link rel="stylesheet" type="text/css" href="../expand/css/root.css">
+        <link rel="stylesheet" type="text/css" href="./assets/css/style.css">
         <link rel="stylesheet" type="text/css" href="./assets/css/printing.css" media="print">
         <link rel='stylesheet' href='../expand/css/uicons-regular-rounded.css'>
         <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-solid-straight/css/uicons-solid-straight.css'>
@@ -14,6 +14,14 @@
         <link rel='stylesheet' href='../expand/css/uicons-brands.css'>
         <!-- CSS only -->
         <title>Báo cáo</title>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script>
+            $(function(){
+                $("#header-container").load("../expand/header.html"); 
+                $("#footer-container").load("../expand/footer.html"); 
+                });
+        </script>
     </head>
 
     <body>
@@ -30,7 +38,7 @@
             </h4>
 
             <div id="search-area">
-                <div class="search-box" style="display:flex; justify-content:center">
+                <div class="search-box">
                     <input type="text" class="school-search" placeholder="Tìm trường...">
                     <i class="fi fi-rr-search"></i>
                 </div>
@@ -234,19 +242,9 @@
         </div>
     </body>
 
-
-
-
     <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.1/dist/chart.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-trendline"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script>
-        $(function(){
-            $("#header-container").load("../expand/header.html"); 
-            $("#footer-container").load("../expand/footer.html");
-            });
-    </script>
 
     <script src="https://cdn.sheetjs.com/xlsx-latest/package/dist/xlsx.full.min.js"></script>
     <script type="text/javascript" src="../expand/js/create-lists.js"></script>

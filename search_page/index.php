@@ -8,6 +8,14 @@
 	<link rel='stylesheet' href='../expand/css/uicons-regular-rounded.css'>
 	<link rel='stylesheet' href='../expand/css/uicons-brands.css'>
 	<title>Tra cứu</title>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<script>
+        $(function(){
+            $("#header-container").load("../expand/header.html"); 
+            $("#footer-container").load("../expand/footer.html"); 
+            });
+    </script>
 </head>
 
 <body>
@@ -67,13 +75,6 @@
 
 <script src="./js/main.js"></script>
 <script src="../expand/js/create-lists.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<script>
-	$(function(){
-		$("#header-container").load("../expand/header.html"); 
-		$("#footer-container").load("../expand/footer.html"); 
-		});
-</script>
 <script type="text/javascript">
 	$(document).ready(function(){
 
@@ -127,7 +128,7 @@
 			}
 		}
 
-		$("#live-search").keyup(liveSearch);
+		$("#live-search").keyup(liveSearch)
 		$('#live-search').change(liveSearch)
 
 	});

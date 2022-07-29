@@ -11,6 +11,15 @@
         <link rel='stylesheet' href='../expand/css/uicons-bold-rounded.css'>
         <link rel='stylesheet' href='../expand/css/uicons-brands.css'>
         <title>About Score</title>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script>
+            $(function(){
+                $(".menu-container").load("../expand/menu.html");
+                $("header").load("../expand/mini-header.html"); 
+                $("footer").load("../expand/mini-footer.html");  
+            });
+        </script>
     </head>
 
     <body>
@@ -118,18 +127,11 @@
         </div>
     </body>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <!-- <script src="https://requirejs.org/docs/release/2.3.6/minified/require.js"></script> -->
     <script type="text/javascript" src="./js/main.js"></script>
     <script type="text/javascript" src="../expand/js/hide-nav.js"></script>
     <script type="text/javascript" src="../expand/js/activity.js"></script>
-    <script>
-        $(function(){
-            $(".menu-container").load("../expand/menu.html");
-            $("header").load("../expand/mini-header.html"); 
-            $("footer").load("../expand/mini-footer.html");  
-        });
-    </script>
+
 
     <script type="text/javascript">
         // var res = {}

@@ -111,10 +111,10 @@ html {
     scroll-behavior: smooth;
 }
 
+
 body {
     background-color: var(--primary-color);
 }
-
 
 body::-webkit-scrollbar {
     width: 10px;
@@ -134,7 +134,7 @@ body::-webkit-scrollbar-thumb {
 }
 
 input[type=number]:hover::-webkit-inner-spin-button {  
-   opacity: 1 ;
+   opacity: 1;
 }
 
 .primary-margin {

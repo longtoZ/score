@@ -1,7 +1,13 @@
-@import url('https://fonts.googleapis.com/css2?family=Lato&family=MuseoModerno:wght@200;300;500&display=swap');
-
 a {
     color: var(--link-text);
+}
+
+.navbar-select:nth-child(2) {
+    border-bottom: 2px solid #009879;
+}
+
+.navbar-select:nth-child(2) > a {
+    color: #009879;
 }
 
 .main-title {
@@ -32,7 +38,7 @@ a {
     border-radius: 30px;
     width: 100%;
     background-color: var(--second-primary-color);
-    box-shadow: var(--box-shadow);
+    box-shadow: var(--box-shadow-light);
     height: 0px;
     opacity: 0;
     transition: all ease 0.3s;
@@ -72,7 +78,7 @@ a {
     margin: 20px 0;
     width: 100%;
     background-color: var(--second-primary-color);
-    box-shadow: var(--box-shadow);
+    box-shadow: var(--box-shadow-light);
     cursor: pointer;
 }
 

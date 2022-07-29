@@ -37,9 +37,7 @@ window.onload = function () {
             document.querySelector('.dropdown-select .select').innerHTML = this.innerHTML
             dropdownList.classList.remove("active");
             const input = document.getElementById('live-search')
-            input.value += ' '
             input.dispatchEvent(new Event('change'))
-            setTimeout(() => {input.value = input.value.trim()}, 100)
         }
     });
 
@@ -50,29 +48,8 @@ window.onload = function () {
             // $('#live-search').val(' ').change()
             schoolTypeList.classList.remove("active");
             const input = document.getElementById('live-search')
-            input.value += ' '
             input.dispatchEvent(new Event('change'))
-            setTimeout(() => {input.value = input.value.trim()}, 100)
         }
     });
     
 }
-
-
-
-
-
-
-
-
-
-// selected.addEventListener("click", () => {
-//     dropdownList.classList.toggle("active");
-// });
-
-// yearList.forEach(i => {
-//     i.addEventListener("click", () => {
-//         selected.innerHTML = i.querySelector("select").innerHTML;
-//         dropdownList.classList.remove("active");
-//     });
-// });

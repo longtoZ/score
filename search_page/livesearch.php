@@ -212,7 +212,7 @@ if (mysqli_num_rows($result) > 0){
 	}
 
 } else {
-	echo "<h3 style='color:red; text-align:center;'>*Kết quả không khớp*</h3>";
+	echo "<h3 style='color:red; text-align:center;'>*Kết quả không khớp*<br><small><i>Hãy thử chỉnh sửa (hoặc xoá) một vài kí tự...</i></small></h3>";
 }
 	
 ?>
