@@ -73,7 +73,7 @@
                                 <div class="filter-year primary-margin">
                                     <h3 class="year-title">Chọn năm</h3>
                                     <div class="filter-year-select primary-box select-margin select-hover">
-                                        <span class="select">Năm 2021</span>
+                                        <span class="select">Năm 2022</span>
                                         <i class="fi fi-rr-caret-down arrow-pos"></i>
                                     </div>
 
@@ -124,7 +124,7 @@
                             <div class="filter-year-advanced primary-margin" style="margin: 0 10px;">
                                 <h3 class="filter-between-title">Chọn năm</h3>
                                 <div class="filter-year-advanced-select primary-box select-margin select-hover">
-                                    <span class="select">Năm 2021</span>
+                                    <span class="select">Năm 2022</span>
                                     <i class="fi fi-rr-caret-down arrow-pos"></i>
                                 </div>
 

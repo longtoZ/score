@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Lato&family=MuseoModerno:wght@200;300;500&family=Open+Sans:wght@600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=MuseoModerno:wght@300;400;500;600;700&display=swap');
 
 :root {
     --primary-color: #ffffff;
@@ -92,7 +92,6 @@
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-    font-family: 'Lato', sans-serif;
     font-family: 'MuseoModerno', cursive;
     font-weight: 300;
 }
@@ -107,12 +106,12 @@
 
 
 html {
-    animation: transitionIn 1s;
     scroll-behavior: smooth;
 }
 
 
 body {
+    animation: transitionIn 1s;
     background-color: var(--primary-color);
 }
 

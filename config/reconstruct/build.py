@@ -1,4 +1,3 @@
-from dis import dis
 from openpyxl import *
 
 def truong(cityID, city, schoolCol, disCol, type):
@@ -33,9 +32,9 @@ def diemChuan(cityID):
                 ['2018', list('MNO')],
                 ['2019', list('PQR')],
                 ['2020', list('STU')],
-                ['2021', list('VWX')] ]
+                ['2021', list('VWX')],
+                ['2022', 'Y Z AA'.split(' ')]]
     lst = []
-    # scoreData = [f'{scoreIDCol[i]}1' for i in range(len(scoreIDCol))]
     scoreData = [i[1] for i in yearCol]
 
     year = 2015
@@ -73,7 +72,8 @@ def chiTieu(cityID):
                 ['2018', list('NO')],
                 ['2019', list('QR')],
                 ['2020', list('TU')],
-                ['2021', list('WX')] ]
+                ['2021', list('WX')],
+                ['2022', 'Z AA'.split(' ')] ]
     lst = []
     nvData = [i[1] for i in yearCol]
 
@@ -93,17 +93,54 @@ def chiTieu(cityID):
 
     wb.close()
 
-    # wb2 = Workbook()
-    # ws2 = wb2.active
-    # ws2.title = "data"
+    wb2 = Workbook()
+    ws2 = wb2.active
+    ws2.title = "data"
 
-    # for i in lst:
-    #     ws2.append(i)
+    for i in lst:
+        ws2.append(i)
 
-    # wb2.save(r'C:\xampp\htdocs\search_project\config\reconstruct\tlc.xlsx')
+    wb2.save(r'C:\xampp\htdocs\search_project\config\reconstruct\tlc.xlsx')
 
+def diemChuyen():
+    wb = load_workbook(r'C:\xampp\htdocs\search_project\config\reconstruct\chuyen.xlsx')
+    ws = wb.active
+
+    yearCol = [ ['2015', list('BC')],
+                ['2016', list('DE')],
+                ['2017', list('FG')],
+                ['2018', list('HI')],
+                ['2019', list('JK')],
+                ['2020', list('LM')],
+                ['2021', list('NO')],
+                ['2022', list('PQ')]]
+    lst = []
+    scoreData = [i[1] for i in yearCol]
+
+    for i in range(3, ws.max_row+1):
+        for j in scoreData:
+            year = int(str(ws[f'{j[0]}1'].value).replace('Năm', ''))
+            id = ws[f'A{i}'].value
+            nv = ws[f'{j[0]}{i}'].value
+            scores = ws[f'{j[1]}{i}'].value
+            if (nv != None and scores != None):
+                lst.append([year, id, nv, scores])
+
+    print(lst)
+
+    wb.close()
+
+    wb2 = Workbook()
+    ws2 = wb2.active
+    ws2.title = "data"
+
+    for i in lst:
+        ws2.append(i)
+
+    wb2.save(r'C:\xampp\htdocs\search_project\config\reconstruct\diem_chuyen.xlsx')
 
 # truong('HCM_', 'TP Ho Chi Minh', 'B', 'C', 'L02')
 # diemChuan('HCM_')
-chiTieu('HCM_')
+# chiTieu('HCM_')
+diemChuyen()
 

@@ -149,7 +149,7 @@
                         $nv2 = $row[2]['NV2'];
                         $nv3 = $row[2]['NV3'];
 
-                        if ($compare == "above" && $nv1 >= $average) {
+                        if ($compare == "above") {
                             if ($schoolname == $school) {
                                 $current[0] = $stt;
                                 ?>
@@ -180,7 +180,7 @@
                             }
 
                             $stt++;
-                        } else if ($compare == "below" && $nv1 <= $average) {
+                        } else if ($compare == "below") {
                             if ($schoolname == $school) {
                                 $current[0] = $stt;
                                 ?>
