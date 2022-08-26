@@ -1,5 +1,5 @@
-config/archived
-config/database
-config/*.json
+src/config/archived
+src/config/database
+src/config/*.json
 .VSCodeCounter/
 .tmp.driveupload/
