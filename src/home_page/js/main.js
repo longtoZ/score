@@ -76,6 +76,7 @@ function getLanguages(url) {
     link.setAttribute('href', '#')
     link.setAttribute('target', '_blank')
     link.innerHTML = "Tìm hiểu thêm &rarr;"
+    find_more.style.display = 'none'
 
     find_more.appendChild(link)
     content.appendChild(find_more)

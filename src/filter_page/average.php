@@ -1,104 +1,69 @@
 <?php
 include("../config/config.php");
-$year = $_POST['year'];
 $wish = $_POST['wish'];
 $district = $_POST['district'];
 $compare = $_POST['compare'];
 
-// $query = "SELECT * FROM `search_score_{$year}` ORDER BY `{$wish}` DESC";
 $query = <<<EOD
-SELECT `truong`.`TEN_TRUONG`, `diem_chuan`.`MA_TRUONG`, `truong`.`QUAN/HUYEN`, `diem_chuan`.`MA_NV`, `diem_chuan`.`DIEM`
+SELECT `truong`.`TEN_TRUONG`, `diem_chuan`.`MA_TRUONG`, `truong`.`QUAN/HUYEN`, `diem_chuan`.`NAM_HOC` ,`diem_chuan`.`MA_NV`, `diem_chuan`.`DIEM` 
 FROM `diem_chuan` 
-LEFT OUTER JOIN `truong` on `truong`.`MA_TRUONG` = `diem_chuan`.`MA_TRUONG`
-WHERE `NAM_HOC` = $year AND `MA_NV` = '$wish' AND ($district) ORDER BY `DIEM` DESC;
+LEFT OUTER JOIN `truong` on `truong`.`MA_TRUONG` = `diem_chuan`.`MA_TRUONG` 
+WHERE `diem_chuan`.`MA_NV` IN ('NV1', 'NV2', 'NV3') AND ($district) AND `NAM_HOC` <> 2021;
 EOD;
 
 $result = mysqli_query($con,$query);
 
+if (mysqli_num_rows($result) > 0){
 
-if (mysqli_num_rows($result) > 0) {
+	function calcScore(float $score, int $year) {
+		$percentage = ($year <= 2020) ? ($score/50)*100 : ($score/30)*100;
+		return $percentage;
+	}
+	
 	$datas = array();
-    $total = 0;
-    $count = 0;
 	while($row = mysqli_fetch_assoc($result)) {
+		$datas[] = $row;
+	}
 
-		$query2 = <<<EOD
-		SELECT `truong`.`TEN_TRUONG`, `diem_chuan`.`MA_TRUONG`, `truong`.`QUAN/HUYEN`, `diem_chuan`.`MA_NV`, `diem_chuan`.`DIEM` 
-		FROM `diem_chuan` 
-		LEFT OUTER JOIN `truong` on `truong`.`MA_TRUONG` = `diem_chuan`.`MA_TRUONG` 
-		WHERE (`truong`.`MA_TRUONG` = '{$row['MA_TRUONG']}' AND `diem_chuan`.`NAM_HOC` = $year AND (`truong`.`MA_LOAI` = 'L02' OR `truong`.`MA_LOAI` = 'L03'))
-		EOD;
+	$calc = array();
+	for ($i = 0; $i < sizeof($datas); $i++) {
+		$school = $datas[$i];
+		$calc[$school['MA_TRUONG']]['NV1'] = array();	
+		$calc[$school['MA_TRUONG']]['NV2'] = array();		
+		$calc[$school['MA_TRUONG']]['NV3'] = array();	
+		
+		$calc[$school['MA_TRUONG']]['INFO'] = array($school['TEN_TRUONG'], $school['QUAN/HUYEN']);
+	}
 
-		$result2 = mysqli_query($con,$query2);
-
-		$rawLst = array();
-
-		while($row = mysqli_fetch_assoc($result2)) {
-			$rawLst[] = $row;
-		}
-	
-		$code = '';
-		$schools = array();
-	
-		for ($i = 0; $i < sizeof($rawLst); $i++) {
-	
-			if ($code == '') {
-
-                if ($rawLst[$i]['MA_NV'] == "NV1") {
-                    $total += $rawLst[$i]['DIEM'];
-                }
-	
-				if ($i != 0) {
-					array_push($schools, $rawLst[$i-1]['TEN_TRUONG'], $rawLst[$i-1]['QUAN/HUYEN']);
-					$schools[2][$rawLst[$i-1]['MA_NV']] = $rawLst[$i-1]['DIEM'];
-					$schools[2][$rawLst[$i]['MA_NV']] = $rawLst[$i]['DIEM'];
-					$code = $rawLst[$i-1]['MA_TRUONG'];
-
-				} else {
-					array_push($schools, $rawLst[$i]['TEN_TRUONG'], $rawLst[$i]['QUAN/HUYEN']);
-					$schools[2][$rawLst[$i]['MA_NV']] = $rawLst[$i]['DIEM'];
-					$code = $rawLst[$i]['MA_TRUONG'];
-				}
-				
-			} else if ($rawLst[$i]['MA_TRUONG'] == $code) {
-				$schools[2][$rawLst[$i]['MA_NV']] = $rawLst[$i]['DIEM'];
-			} else if ($rawLst[$i]['MA_TRUONG'] != $code){
-				array_push($datas, $schools);
-				$schools = array();
-				$code = '';
-
-                $count++;
-			}
-	
-			if ($i == sizeof($rawLst)-1) {
-				array_push($datas, $schools);
-				$schools = array();
-				$code = '';
-
-                $count++;
-			}
+    $total = 0;
+    $total_count = 0;
+	for ($i = 0; $i < sizeof($datas); $i++) {
+		$school = $datas[$i];
+		if ($school['DIEM'] != 0) {
+			array_push($calc[$school['MA_TRUONG']][$school['MA_NV']], calcScore($school['DIEM'], $school['NAM_HOC']));
+            if ($wish==$school['MA_NV']) {
+                $total += calcScore($school['DIEM'], $school['NAM_HOC']);
+                $total_count++;
+            }
 		}
 	}
 
-    
-    $average = round($total/$count, 2);
-    ?>
+    $average = number_format( ($total/$total_count)*0.3, 2, '.', '');
+    // print_r($total.' '.$total_count.' '.$average);
 
-    <script>
-        document.querySelector('.filter-average-title').innerHTML = 'Trung bình: ' + <?php echo $average ?>;
-    </script>
+	$full = array();
+	foreach ($calc as $value) {
+		$full[] = array($value['INFO'][0], $value['INFO'][1], 
+		number_format(array_sum($value['NV1'])/count($value['NV1']), 2, '.', ''),
+		number_format(array_sum($value['NV2'])/count($value['NV2']), 2, '.', ''),
+		number_format(array_sum($value['NV3'])/count($value['NV3']), 2, '.', ''));
+	}
 
-    <link rel="stylesheet" type="text/css" href="./assets/css/table.css">
+    $compare_display = ($compare=='above') ? "Trên trung bình".": ".$average : "Dưới trung bình".": ".$average
 
-    <?php if ($compare == "above") {?>
-	    <h1 style="text-align:center; margin-bottom: 30px; font-weight: 500">Trên trung bình: <?php echo $average; ?>đ</h1>
-    <?php
-    } else {?>
-	    <h1 style="text-align:center; margin-bottom: 30px; font-weight: 500">Dưới trung bình: <?php echo $average; ?>đ</h1>
-    <?php
-    }
-    ?>
-
+	?>
+	<link rel="stylesheet" type="text/css" href="./assets/css/table.css">
+	<h1 style="text-align:center; margin-bottom: 30px; font-weight: 500"><?php echo $compare_display?></h1>
 
 	<table class="search-table">
 		<thead>
@@ -109,104 +74,83 @@ if (mysqli_num_rows($result) > 0) {
 				<th onclick="sortTable(3)">ĐIỂM NV1  ⇩</th>
 				<th onclick="sortTable(4)">ĐIỂM NV2  ⇩</th>
 				<th onclick="sortTable(5)">ĐIỂM NV3  ⇩</th>
+
 			</tr>
 		</thead>
 
 		<tbody>
 			<?php
 
-            $stt = 1;
-            foreach ($datas as $row) {
+			$stt = 1;
+			
+			foreach ($full as $row) {
 
 				$schoolname = $row[0];
 				$district = $row[1];
-				$nv1 = $row[2]['NV1'];
-				$nv2 = $row[2]['NV2'];
-				$nv3 = $row[2]['NV3'];
+				$nv1 = number_format($row[2]*0.3, 2, '.', '');
+				$nv2 = number_format($row[3]*0.3, 2, '.', '');
+				$nv3 = number_format($row[4]*0.3, 2, '.', '');	
 
-                if ($compare == "above") {
-                    if (substr($wish, -1) == "1" && $nv1 >= $average) { ?>
-                        <tr>
-                            <td><?php echo $stt; ?></td>
-                            <td><?php echo $schoolname; ?></td>
-                            <td><?php echo $district; ?></td>
-                            <td style="background-color: var(--row-hover-color);color: #000000;"><?php echo $nv1; ?></td>
-                            <td><?php echo $nv2; ?></td>
-                            <td><?php echo $nv3; ?></td>
-                        </tr>	
-    
-                    <?php
-                    } else if (substr($wish, -1) == "2" && $nv2 >= $average) { ?>
-                        <tr>
-                            <td><?php echo $stt; ?></td>
-                            <td><?php echo $schoolname; ?></td>
-                            <td><?php echo $district; ?></td>
-                            <td><?php echo $nv1; ?></td>
-                            <td style="background-color: var(--row-hover-color);color: #000000;"><?php echo $nv2; ?></td>
-                            <td><?php echo $nv3; ?></td>
-                        </tr>	
-                        <?php
-                    } else if (substr($wish, -1) == "3" && $nv3 >= $average) { ?>
-                        <tr>
-                            <td><?php echo $stt; ?></td>
-                            <td><?php echo $schoolname; ?></td>
-                            <td><?php echo $district; ?></td>
-                            <td><?php echo $nv1; ?></td>
-                            <td><?php echo $nv2; ?></td>
-                            <td style="background-color: var(--row-hover-color);color: #000000;"><?php echo $nv3; ?></td>
-                        </tr>	
-                        <?php
-                    }
-
-                    $stt++;
-                } else if ($compare == "below") {
-                    if (substr($wish, -1) == "1" && $nv1 <= $average) { ?>
-                        <tr>
-                            <td><?php echo $stt; ?></td>
-                            <td><?php echo $schoolname; ?></td>
-                            <td><?php echo $district; ?></td>
-                            <td style="background-color: var(--row-hover-color);color: #000000;"><?php echo $nv1; ?></td>
-                            <td><?php echo $nv2; ?></td>
-                            <td><?php echo $nv3; ?></td>
-                        </tr>	
-    
-                    <?php
-                    } else if (substr($wish, -1) == "2" && $nv2 <= $average) { ?>
-                        <tr>
-                            <td><?php echo $stt; ?></td>
-                            <td><?php echo $schoolname; ?></td>
-                            <td><?php echo $district; ?></td>
-                            <td><?php echo $nv1; ?></td>
-                            <td style="background-color: var(--row-hover-color);color: #000000;"><?php echo $nv2; ?></td>
-                            <td><?php echo $nv3; ?></td>
-                        </tr>	
-                        <?php
-                    } else if (substr($wish, -1) == "3" && $nv3 <= $average) { ?>
-                        <tr>
-                            <td><?php echo $stt; ?></td>
-                            <td><?php echo $schoolname; ?></td>
-                            <td><?php echo $district; ?></td>
-                            <td><?php echo $nv1; ?></td>
-                            <td><?php echo $nv2; ?></td>
-                            <td style="background-color: var(--row-hover-color);color: #000000;"><?php echo $nv3; ?></td>
-                        </tr>	
-                        <?php
-                    }
-
-                    $stt++;
+                $score = $nv1;
+                if ($wish=='NV2') {
+                    $score = $nv2;
+                } else if ($wish=='NV3') {
+                    $score = $nv3;
                 }
-				
+
+				if (($score >= $average && $compare=='above') || ($score <= $average && $compare=='below')) {
+                
+					if (substr($wish, -1) == "1") { ?>
+						<tr>
+							<td><?php echo $stt; ?></td>
+							<td><?php echo $schoolname; ?></td>
+							<td><?php echo $district; ?></td>
+							<td style="background-color: var(--row-hover-color);color: #000000;"><?php echo $nv1; ?></td>
+							<td><?php echo $nv2; ?></td>
+							<td><?php echo $nv3; ?></td>
+						</tr>	
+
+					<?php
+					} else if (substr($wish, -1) == "2") { ?>
+						<tr>
+							<td><?php echo $stt; ?></td>
+							<td><?php echo $schoolname; ?></td>
+							<td><?php echo $district; ?></td>
+							<td><?php echo $nv1; ?></td>
+							<td style="background-color: var(--row-hover-color);color: #000000;"><?php echo $nv2; ?></td>
+							<td><?php echo $nv3; ?></td>
+						</tr>	
+						<?php
+					} else { ?>
+						<tr>
+							<td><?php echo $stt; ?></td>
+							<td><?php echo $schoolname; ?></td>
+							<td><?php echo $district; ?></td>
+							<td><?php echo $nv1; ?></td>
+							<td><?php echo $nv2; ?></td>
+							<td style="background-color: var(--row-hover-color);color: #000000;"><?php echo $nv3; ?></td>
+						</tr>	
+						<?php
+					}
+
+					$stt++;
+                }
 			}
+
 			?>
 		</tbody>
 
 	</table>
 
-    <script src="./js/sort.js"></script>
-    
+	<script src="./js/sort.js"></script>
+	<script src="./js/table-type.js"></script>
+	<script>
+		sortTable(<?php echo (int)substr($wish,-1) + 2;?>)
+	</script>
 
-<?php
-} else {
-    echo "<h3 style='color:red; text-align:center;'>*Kết quả không khớp*</h3>";
-}
-?>
+	<?php 
+	} else {
+		echo "<h3 style='color:red; text-align:center;'>*Kết quả không khớp*</h3>";
+	}
+
+	?>

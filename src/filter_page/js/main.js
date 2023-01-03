@@ -6,7 +6,6 @@ for (let i of yearsList) {
     item.className = "year"
     item.innerHTML = "Năm " + i.toString()
 
-    document.querySelector('.filter-year-list').appendChild(item)
     document.querySelector('.filter-year-advanced-list').appendChild(item.cloneNode(true))
 }
 
@@ -16,15 +15,12 @@ for (let i of districtsList) {
     item.className = "district"
     item.innerHTML = i.toString()
 
-    document.querySelector('.filter-district-list').appendChild(item)
     document.querySelector('.filter-district-advanced-list').appendChild(item.cloneNode(true))
 }
 
 function createWishList() {
-    const wish_list = document.querySelector('.filter-wish-list')
     const advanced_wish_list = document.querySelector('.filter-wish-advanced-list')
 
-    document.querySelectorAll('.filter-wish-list .wish').forEach(i => {i.remove()})
     document.querySelectorAll('.filter-wish-advanced-list .wish').forEach(i => {i.remove()})
 
     for (const i in normalSubjectsObj) {
@@ -33,33 +29,13 @@ function createWishList() {
         item.className = "wish"
         item.innerHTML = i.toString()
     
-        wish_list.appendChild(item)
         advanced_wish_list.appendChild(item.cloneNode(true))
     }
 
-    wish_list.parentNode.querySelector('.filter-wish-select .select').innerHTML = "Nguyện vọng 1"
     advanced_wish_list.parentNode.querySelector('.filter-wish-advanced-select .select').innerHTML = "Nguyện vọng 1"
 }
 
 createWishList()
-
-
-// for (let i of wishsList) {
-//     var item = document.createElement('div')
-    
-//     item.className = "wish"
-//     item.innerHTML = i.toString()
-
-    
-// }
-
-
-const yearSelected = document.querySelector(".filter-year-select");
-const filterYearList = document.querySelector(".filter-year-list");
-const yearsItem = document.querySelectorAll('.filter-year-list .year');
-const districtSelected = document.querySelector(".filter-district-select");
-const filterDistrictList = document.querySelector(".filter-district-list");
-const districtsItem = document.querySelectorAll('.filter-district-list .district');
 
 const yearAdvancedSelected = document.querySelector(".filter-year-advanced-select");
 const filterYearAdvancedList = document.querySelector(".filter-year-advanced-list");
@@ -68,48 +44,13 @@ const districtAdvancedSelected = document.querySelector(".filter-district-advanc
 const filterDistrictAdvancedList = document.querySelector(".filter-district-advanced-list");
 const districtsAdvancedItem = document.querySelectorAll('.filter-district-advanced-list .district');
 
+districtsAdvancedItem[0].style.borderRadius = '15px'
 districtsAdvancedItem[0].classList.toggle('district-all')
 
-yearsItem.forEach((item) => {
-    item.onclick = function() {
-        document.querySelector('.filter-year-select .select').innerHTML = this.innerHTML
-        filterYearList.classList.remove("active");
-    }
-});
-
-yearSelected.onclick = function() {
-    filterYearList.classList.toggle("active");
-}
-
-districtsItem.forEach((item) => {
-    item.onclick = function() {
-        document.querySelector('.filter-district-select .select').innerHTML = this.innerHTML
-        filterDistrictList.classList.remove("active");
-    }
-});
-
-districtSelected.onclick = function() {
-    filterDistrictList.classList.toggle("active");
-}
-
 function recreateWishList() {
-    const wishSelected = document.querySelector(".filter-wish-select");
-    const filterWishList = document.querySelector(".filter-wish-list");
-    const wishsItem = document.querySelectorAll('.filter-wish-list .wish');
     const wishAdvancedSelected = document.querySelector(".filter-wish-advanced-select");
     const filterWishAdvancedList = document.querySelector(".filter-wish-advanced-list");
     const wishsAdvancedItem = document.querySelectorAll('.filter-wish-advanced-list .wish');
-
-    wishsItem.forEach((item) => {
-        item.onclick = function() {
-            document.querySelector('.filter-wish-select .select').innerHTML = this.innerHTML
-            filterWishList.classList.remove("active");
-        }
-    });
-    
-    wishSelected.onclick = function() {
-        filterWishList.classList.toggle("active");
-    }
 
     wishsAdvancedItem.forEach((item) => {
         item.onclick = function() {
@@ -169,6 +110,7 @@ function advancedDistrictSelect() {
                 }
     
                 item.classList.toggle('adv-select')
+
             }
 
             if (districtCount < 2) {
@@ -177,9 +119,6 @@ function advancedDistrictSelect() {
                 document.querySelector('.filter-district-advanced-select .select').innerHTML = `${this.innerHTML}, <b style="font-weight:400;">+${districtCount.toString()}</b>`;
             }
 
-            // console.log(districtList)
-
-            // filterDistrictAdvancedList.classList.remove("active");
         }
     });
     
@@ -190,77 +129,15 @@ function advancedDistrictSelect() {
 
 advancedDistrictSelect()
 
-
-const basicChoose = document.querySelector('.filter-basic-header');
-const basicBox = document.querySelector('.filter-basic-container');
-const advancedChoose = document.querySelector('.filter-advanced-header');
-const advancedBox = document.querySelector('.filter-advanced-container');
-
 const above = document.querySelector('.filter-above-average');
 const below = document.querySelector('.filter-below-average');
 const aboveAverage = document.querySelector('.above');
 const belowAverage = document.querySelector('.below');
 const position = document.querySelector('.position');
 
-const submitBtn = document.querySelector('.submit-btn');
-
-var maths = 0;
-var literature = 0;
-var english = 0;
-
-
 const filterBetween = document.querySelectorAll('.filter-between *');
 const filterMoreLeft = document.querySelectorAll('.filter-more-box .left-box *');
 const filterMoreRight = document.querySelectorAll('.filter-more-box .right-box *');
-
-function showScore() {
-    if (!document.querySelector('.score-pro')) {
-        // alert("here")
-        maths = document.querySelector('.score-maths').value;
-        literature = document.querySelector('.score-literature').value;
-        english = document.querySelector('.score-english').value;
-
-        if (maths != "" && literature !="" && english != "") {
-
-            var average = 0;
-            if (parseFloat((document.querySelector(".filter-year-select .select").innerHTML).replace("Năm ", "")) <= 2020) {
-                average = parseFloat(maths)*2 + parseFloat(literature)*2 + parseFloat(english);
-            } else {
-                average = parseFloat(maths) + parseFloat(literature) + parseFloat(english);
-            }
-            document.querySelector('.score-average').value = average.toString();
-        }
-    } else {
-        maths = document.querySelector('.score-maths').value;
-        literature = document.querySelector('.score-literature').value;
-        english = document.querySelector('.score-english').value;
-        pro = document.querySelector('.score-pro').value;
-
-        if (maths != "" && literature !="" && english != "" && pro != "") {
-            var average = 0;
-            if (parseFloat((document.querySelector(".filter-year-select .select").innerHTML).replace("Năm ", "")) <= 2020) {
-                average = parseFloat(maths)*2 + parseFloat(literature)*2 + parseFloat(english) + parseFloat(pro)*2;
-            } else {
-                average = parseFloat(maths) + parseFloat(literature) + parseFloat(english) + parseFloat(pro)*2;
-            }
-            document.querySelector('.score-average').value = average.toString();
-        }
-    }
-    
-}  
-
-
-basicChoose.onclick = function() {
-    basicChoose.classList.toggle('active');
-    basicBox.classList.toggle("active");
-}
-
-advancedChoose.onclick = function() {
-    advancedChoose.classList.toggle('active');
-    advancedBox.classList.toggle("active");
-    submitBtn.classList.toggle("inactive");
-}
-
 
 filterBetween.forEach((item) => {
     item.onclick = function () {
@@ -398,17 +275,6 @@ function hidePrintBox() {
     }
 }
 
-floatingBtn.addEventListener('click', hidePrintBox);
-overlay.addEventListener('click', hidePrintBox);
-
-simplify.addEventListener('click', function () {
-    document.querySelector('.main').classList.toggle('simplify')
-});
-
-print.addEventListener('click', function() {
-    window.print()
-});
-
 function exportXLSX() {
 
     var exportTable = document.querySelector('.search-table');
@@ -424,5 +290,16 @@ function exportXLSX() {
         alert("Chưa có kết quả để in");
     }
 }
+
+floatingBtn.addEventListener('click', hidePrintBox);
+overlay.addEventListener('click', hidePrintBox);
+
+simplify.addEventListener('click', function () {
+    document.querySelector('.main').classList.toggle('simplify')
+});
+
+print.addEventListener('click', function() {
+    window.print()
+});
 
 exportxlsx.addEventListener('click', exportXLSX);

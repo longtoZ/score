@@ -99,6 +99,7 @@ function exportXLSX() {
     var tableSec2 = document.querySelector('.ratio-table .search-table');
     var tableSec3 = document.querySelector('.comparison-table .search-table');
     var tableSec4 = document.querySelector('.eval-table .search-table');
+    var tableSec5 = document.querySelector('.prosub-table .search-table');
 
     const wb = XLSX.utils.book_new();
 
@@ -121,9 +122,15 @@ function exportXLSX() {
     }
 
     if (tableSec4) {
-        var tableSec4Title = document.querySelector('.eval-title').innerHTML;
+        var tableSec4Title = document.querySelector('.eval-title').textContent;
         var ws4 = XLSX.utils.table_to_sheet(tableSec4);
         XLSX.utils.book_append_sheet(wb, ws4, tableSec4Title);
+    }
+
+    if (tableSec5) {
+        var tableSec5Title = document.querySelector('.prosub-title').textContent;
+        var ws5 = XLSX.utils.table_to_sheet(tableSec5);
+        XLSX.utils.book_append_sheet(wb, ws5, tableSec5Title);
     }
 
     XLSX.writeFile(wb, "Tong_hop.xlsx");

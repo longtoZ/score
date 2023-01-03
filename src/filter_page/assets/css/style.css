@@ -257,9 +257,9 @@ a {
 }
 
 .filter-between-box, .filter-more-box {
-    margin-top: 90px;
+    /* margin-top: 90px; */
     position: relative;
-    top: -120px;
+    /* top: -120px; */
 }
 
 
@@ -269,7 +269,7 @@ a {
 }
 
 .filter-between h3, .filter-tool-box h3, .filter-top h3, .right-box h3 {
-    margin: 30px 0;
+    margin: 20px 0 30px;
     padding-left: 10px;
     font-weight: bold;
 }
@@ -277,6 +277,7 @@ a {
 .left-box, .right-box {
     display: flex;
     flex-direction: column;
+    margin-bottom: 50px;
 }
 
 .advanced-input {
@@ -517,6 +518,7 @@ a {
 
     .filter-top, .filter-above-average, .filter-below-average, .filter-top-pos {
         padding: 10px;
+        margin-bottom: 0 !important;
     }
 
     .filter-top .top, .filter-above-average .above, .filter-below-average .below, .filter-top-pos .position {

@@ -169,12 +169,13 @@ input[type=number]:hover::-webkit-inner-spin-button {
     border-radius: 10px;
 	padding: 8px;
     height: 40px;
-    /* width: auto; */
+    width: auto;
     background-color: var(--fourth-primary-color);
     box-shadow: var(--box-shadow-light);
     margin-right: 10px;
-    padding-left: 15px;
+    /* padding-left: 15px; */
     color: var(--text-color);
+    text-align: center;
 }
 
 .primary-list {
@@ -195,6 +196,7 @@ input[type=number]:hover::-webkit-inner-spin-button {
 .filter-district-advanced-list .district{
     padding: 5px;
     padding-left: 20px;
+    border-radius: 15px;
 }
 
 .filter-year-list .year:hover, .filter-district-list .district:hover, .filter-wish-list .wish:hover,
@@ -202,6 +204,7 @@ input[type=number]:hover::-webkit-inner-spin-button {
 .filter-district-list .district:hover {
     background-color: var(--third-primary-color);
     background-clip: border-box;
+    transition: all ease 0.5s;
 }
 
 .filter-year-list.active, .filter-district-list.active, .filter-wish-list.active,

@@ -45,4 +45,7 @@ function sortTable(col_num) {
         clicked = false
     }
 
+    for (i = 1; i < rows.length; i++) {
+        rows[i].getElementsByTagName("TD")[0].innerHTML = i;
+    }
 }

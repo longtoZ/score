@@ -273,11 +273,11 @@
         }
 
         document.querySelector('.school-search').addEventListener("keypress", function(event) {
-                if (event.key === "Enter") {
-                    event.preventDefault();
-                    document.querySelector(".search-box i").click();
-                }
-            });
+            if (event.key === "Enter") {
+                event.preventDefault();
+                document.querySelector(".search-box i").click();
+            }
+        });
 
         $(document).ready(function() {
             function showOnLoad() {
@@ -550,30 +550,6 @@
                         
         
             }
-
-            // function yearRangeChangeA() {
-            //     var school_input = document.querySelector('.school-title').innerHTML
-            //     if (school_input == '') { school_input = default_school }
-
-            //     var end_a = parseInt(document.querySelector('.end-a').value);
-            //     var district_a = document.querySelector('.district-list').value;
-
-            //     if (district_a == "Tất cả") {
-            //         district_a = ""
-            //     } else {
-            //         district_a = document.querySelector('.school-area').innerHTML
-            //     }
-
-            //     $.ajax({
-            //         url:"school_list.php",
-            //         method:"POST",
-            //         data:{school:school_input, year:end_a, district: district_a, type:'table'},
-            //         success: function (data) {
-            //             $(".comparison-table").html(data);
-            //         }
-            //     });
-            // }
-            
             
             $('.start').on('change', yearRangeChange);
             $('.end').on('change', yearRangeChange);
@@ -589,11 +565,6 @@
 
             $('.end-ps').on('change', yearRangeChangePS);
             $('.prosub-list').on('change', yearRangeChangePS);
-
-            // $('.end-a').on('change', yearRangeChangeA);
-
-
-
 
         });
 
