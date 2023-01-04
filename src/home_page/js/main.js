@@ -23,7 +23,7 @@ function getLanguages(url) {
     var languages = {}
     var total = 0
 
-    languages = JSON.parse('{"HTML": 588306, "CSS": 329724, "PHP": 130474, "Hack": 84093, "JavaScript": 52295, "Python": 3029}')
+    languages = JSON.parse('{"HTML": 649065,"CSS": 381544,"PHP": 177030,"Hack": 84450,"JavaScript": 77000,"Python": 4093}')
 
     for (const i in languages) {
         total += languages[i]

@@ -32,6 +32,13 @@ ul * {
     text-align: left;
 }
 
+iframe {
+    height: 350px;
+    width: 60%;
+    display: block;
+    margin: 0 auto;
+}
+
 
 #title-container, #section1-container, #section2-container, #section3-container,
 #section4-container, #section5-container {
@@ -448,8 +455,19 @@ ul * {
     text-decoration: none;
 }
 
+.embed-vid {
+    margin: 50px 30px;
+    background: var(--second-primary-color);
+    box-shadow: var(--box-shadow-lighter);
+    border-radius: 20px;
+    transition: all ease 0.5s;
+}
 
 @media only screen and (max-width:64em) {
+    iframe {
+        width: 100%;
+    }
+
     .section2 .content .part {
         margin: 4% 1%;
         flex: auto;
@@ -510,5 +528,9 @@ ul * {
 
     .section5 .content .card {
         padding: 20px;
+    }
+
+    .embed-vid {
+        padding: 0 !important;
     }
 }
