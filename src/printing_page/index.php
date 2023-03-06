@@ -58,14 +58,18 @@
                 </label>
                 <div class="score-range">
                     <div class="title" style="float:left;">
-                        Dãy năm
-                        <i class="fi fi-rr-shuffle"></i>
+                        <div class="chart-type-btn">
+                            <i class="fi fi-rr-shuffle"></i>
+                            Đổi dạng biểu đồ
+                        </div>
                     </div>
                     <div class="range" style="float:right">
-                        <span class="red-dot"></span>
-                        <input class="start" value="2015" type="number" min="2015"></input>
-                        <span class="green-dot"></span>
-                        <input class="end" value="2022" type="number" min="2015"></input>
+                        <div class="year-box">
+                            <span class="red-dot"></span>
+                            <input class="start" value="2015" type="number" min="2015"></input>
+                            <span class="green-dot"></span>
+                            <input class="end" value="2022" type="number" min="2015" style="margin-right: -5px;"></input>
+                        </div>
                     </div>
                 </div>
                 <div class="score-chart"></div>
@@ -78,14 +82,19 @@
                     <i class="open fi fi-rr-check"></i>
                 </label>
                 <div class="ratio-range">
-                    <div class="title" style="float:left">Dãy năm
-                        <i class="fi fi-rr-shuffle"></i>
+                    <div class="title" style="float:left">
+                        <div class="chart-type-btn">
+                            <i class="fi fi-rr-shuffle"></i>
+                            Đổi dạng biểu đồ
+                        </div>
                     </div>
                     <div class="range" style="float:right">
-                        <span class="red-dot"></span>
-                        <input class="start-r" value="2015" type="number" min="2015"></input>
-                        <span class="green-dot"></span>
-                        <input class="end-r" value="2022" type="number" min="2015"></input>
+                        <div class="year-box">
+                            <span class="red-dot"></span>
+                            <input class="start-r" value="2015" type="number" min="2015"></input>
+                            <span class="green-dot"></span>
+                            <input class="end-r" value="2022" type="number" min="2015" style="margin-right: -5px;"></input>
+                        </div>
                     </div>
                 </div>
                 <div class="ratio-table"></div>
@@ -98,15 +107,20 @@
                     <i class="open fi fi-rr-check"></i>
                 </label>
                 <div class="comparison-range">
-                    <div class="title" style="float:left;">Chọn năm
-                        <i class="fi fi-rr-shuffle"></i>
+                    <div class="title" style="float:left;">
+                        <div class="chart-type-btn">
+                            <i class="fi fi-rr-shuffle"></i>
+                            Đổi dạng biểu đồ
+                        </div>
                         <br>
                         <br>
                         Chọn khu vực
                     </div>
                     <div class="range" style="float:right; padding-left:10px">
-                        <span class="green-dot"></span>
-                        <input class="end-c" value="2022" type="number" min="2015"></input>
+                        <div class="year-box">
+                            <span class="green-dot"></span>
+                            <input class="end-c" value="2022" type="number" min="2015"></input>
+                        </div>
                         <br>
                         <br>
                         <select class="district-list">
@@ -126,17 +140,19 @@
                     <i class="open fi fi-rr-check"></i>
                 </label>
                 <div class="eval-range">
-                    <div class="title" style="float:left;">
+                    <div class="title" style="float:left; line-height:2.7">
                         Chọn năm
                         <br>
                         Chọn top
                     </div>
                     <div class="range" style="float:left; padding-left:30px">
-                        <span class="green-dot"></span>
-                        <input class="end-e" value="2022" type="number" min="2015"></input>
-                        <br>
-                        <span class="red-dot"></span>
-                        <input class="top-p" value="5" type="number" min="1"></input>
+                        <div class="year-box" style="">
+                            <span class="green-dot"></span>
+                            <input class="end-e" value="2022" type="number" min="2015"></input>
+                            <br>
+                            <span class="red-dot"></span>
+                            <input class="top-p" value="5" type="number" min="1"></input>
+                        </div>
                     </div>
                 </div>
                 <div class="eval-table"></div>
@@ -149,18 +165,23 @@
                     <i class="open fi fi-rr-check"></i>
                 </label>
                 <div class="prosub-range">
-                    <div class="title" style="float:left;">Chọn năm
-                        <i class="fi fi-rr-shuffle" style="color:#006398"></i>
+                    <div class="title" style="float:left;">
+                        <div class="chart-type-btn" style="color:#006398">
+                            <i class="fi fi-rr-shuffle" style="color:#006398"></i>
+                            Đổi dạng biểu đồ
+                        </div>
                         <br>
                         <br>
                         Chọn môn
                     </div>
                     <div class="range" style="float:right; padding-left:10px; text-align:right;">
-                        <span class="green-dot"></span>
-                        <input class="end-ps" value="2022" type="number" min="2015"></input>
+                        <div class="year-box">
+                            <span class="green-dot"></span>
+                            <input class="end-ps" value="2022" type="number" min="2015"></input>
+                        </div>
                         <br>
                         <br>
-                        <select class="prosub-list" style="width:14em">
+                        <select class="prosub-list" style="width:14em; margin-top: 20px">
                         </select>
                     </div>
 

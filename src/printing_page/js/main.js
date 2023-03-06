@@ -14,10 +14,10 @@ const simplify = document.getElementById('simplify-mode');
 const exportxlsx = document.querySelector('.exportxlsx');
 const print = document.querySelector('.print');
 
-const changeType1 = document.querySelector('#score-area .title i');
-const changeType2 = document.querySelector('#ratio-area .title i');
-const changeType3 = document.querySelector('#comparison-area .title i');
-const changeType5 = document.querySelector('#prosub-area .title i');
+const changeType1 = document.querySelector('#score-area .chart-type-btn');
+const changeType2 = document.querySelector('#ratio-area .chart-type-btn');
+const changeType3 = document.querySelector('#comparison-area .chart-type-btn');
+const changeType5 = document.querySelector('#prosub-area .chart-type-btn');
 
 function hideSection(i) {
     i.classList.toggle("active");

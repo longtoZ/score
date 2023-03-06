@@ -57,10 +57,11 @@ a {
 
 .school-search-box {
     display: block;
-    width: 70%;
+    width: 30%;
     position: relative;
     margin: 50px auto;
 }
+
 
 .school-search-box .school-search {
     border: none;
@@ -210,20 +211,48 @@ a {
     overflow: hidden;
 }
 
-.year-range-data .filter-box .main-title {
+.year-range-data .main-title, .win-ratio-data .main-title, 
+.ratio-graph-container .main-title, .comparison-data .main-title,
+.group-data .main-title, .prosub-data .main-title {
     font-weight: bold;
-    font-size: 110%;
-    float: left;
-    margin-left: 20px;
+    font-size: 120%;
     margin-top: 0px;
+    display: block;
+    padding: 8px 0;
+    background: rgb(20, 195, 142);
+    color: white;
+    margin: -8px -8px 15px -8px;
+    border-radius: 25px 25px 0 0;
 }
 
 .filter-box .chart-type {
     display: inline-block;
+    display: inline-block;
+    background: var(--fourth-primary-color);
+    box-shadow: var(--box-shadow-light);
+    margin: 8px;
+    padding: 5px 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    color: var(--green);
+    font-weight: 400;
+    transition: all ease-in-out 0.2s;
 }
 
-.year-range-data .filter-box .year-box {
+/* input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button {  
+
+   opacity: 1;
+
+} */
+
+.year-range-data .filter-box .year-box, .ratio-graph-container .range {
     float: right;
+    background: var(--fourth-primary-color);
+    box-shadow: var(--box-shadow-light);
+    margin: 10px 5px;
+    padding: 5px 10px;
+    border-radius: 10px;
 }
 
 .year-start, .year-end {
@@ -259,6 +288,7 @@ a {
 }
 
 .win-ratio-data, .ratio-graph-container{
+    padding: 8px 0;
     border: none;
     outline: none;
     border-radius: 25px;
@@ -267,7 +297,7 @@ a {
     background-color: var(--second-primary-color);
     box-shadow: var(--box-shadow-light);
     margin: 25px;
-    padding: 30px 10px;
+    padding-bottom: 70px;
     overflow: hidden;
     transition: all ease 0.3s;
 }
@@ -542,21 +572,22 @@ a {
 }
 
 .chart-type i{
-    color: var(--green);
-    margin: 0 10px;
-    cursor: pointer;
+
     font-size: 120%;
     position: relative;
     top: 2px;
-    padding: 10px;
+    padding: 5px;
 }
 
 .group-graph-container, .comparison-graph-container {
     margin-top: 5%;
 }
 
-.chart-type i:hover {
-    color: rgb(20, 195, 142);
+.chart-type:hover {
+    /* color: rgb(20, 195, 142); */
+    background: rgb(20, 195, 142);
+    color: white;
+    transition: all ease-in-out 0.2s;
 }
 
 .school-to-compare {
@@ -669,7 +700,15 @@ a {
 }
 
 @media only screen and (max-width: 64em) and (min-width: 46.25em) {
-
+    .school-search-box {
+        width: 50%;
+        transition: all ease 0.2s;
+    }
+    
+    .school-search-box:focus-within {
+        width: 70%;
+        transition: all ease 0.2s;
+    }
 }
 
 @media only screen and (max-width: 46.1875em) {
@@ -680,8 +719,8 @@ a {
         padding: 0 0;
     }
 
-    .school-search-box .school-search {
-        width: 100%;
+    .school-search-box {
+        width: 90%;
     }
 
 
@@ -707,6 +746,10 @@ a {
         padding: 30px 20px;
     }
 
+    .year-range-data .filter-box .year-box {
+        float: left;
+    }
+
     .year-box {
         flex-direction: column;
     }
@@ -720,7 +763,7 @@ a {
     }
 
     .ratio-graph-container {
-        padding: 30px 0;;
+        padding-bottom: 80px;
     }
 
     .comparison-graph-container, .comparison-detail-container,

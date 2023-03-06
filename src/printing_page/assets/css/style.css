@@ -82,6 +82,55 @@ a {
     box-shadow: var(--hover-color);
 } */
 
+.chart-type-btn {
+    display: inline-block;
+    display: inline-block;
+    background: var(--fourth-primary-color);
+    box-shadow: var(--box-shadow-thick);
+    margin: 8px;
+    padding: 5px 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    color: var(--green);
+    font-weight: 400;
+    transition: all ease-in-out 0.2s;
+    font-size: 100% !important;
+}
+
+.chart-type-btn:hover {
+    background: rgb(20, 195, 142);
+    color: white !important;
+    transition: all ease-in-out 0.2s;
+}
+
+.prosub-range .chart-type-btn:hover {
+    background: #0F90DC;
+    color: white !important;
+    transition: all ease-in-out 0.2s;
+}
+
+.chart-type-btn:hover > i {
+    color: white !important;
+    transition: all ease-in-out 0.2s;
+}
+
+.year-box {
+    float: right;
+    background: var(--fourth-primary-color);
+    box-shadow: var(--box-shadow-thick);
+    margin: 10px 5px;
+    padding: 5px 10px;
+    border-radius: 10px;
+}
+
+.title i {
+    margin: 0 !important;
+    padding: 10px 5px !important;
+    transition: all ease-in-out 0.2s;
+}
+
+
+
 #score-area, #ratio-area, 
 #comparison-area, #eval-area,
 #average-area, #prosub-area {
@@ -216,12 +265,24 @@ a {
     .score-range .title, .ratio-range .title {
         width: 100%;
     }
-
+    
     .score-range .range, .ratio-range .range {
         float: left;
         width: 100%;
         margin-top: 20px;
         margin-left: 10px;
+    }
+
+    .score-range .year-box, .ratio-range .year-box {
+        float: left;
+    }
+
+    .comparison-range .title {
+        width: 50%;
+    }
+
+    .district-list {
+        margin-top: 50px;
     }
 
     .overlay {

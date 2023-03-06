@@ -42,7 +42,6 @@ def diemChuan(cityID):
         count = 1
         for k in j:
             for i in range(3, ws.max_row+1):
-                # lst.append([cityID + str(ws[f'A{i}'].value), [ws[f'{scores}{i}'].value for scores in j]])
                 id = cityID + str(ws[f'A{i}'].value)
                 scores = ws[f'{k}{i}'].value
                 lst.append([year, id, f'NV{count}', scores])

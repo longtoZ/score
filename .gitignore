@@ -3,3 +3,4 @@ src/config/database
 src/config/*.json
 .VSCodeCounter/
 .tmp.driveupload/
+.prettierrc

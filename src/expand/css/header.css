@@ -148,7 +148,7 @@ header {
         bottom: 0;
         right: 0;
         background-color: var(--primary-color);
-        width: 60%;
+        width: 40%;
         transform: translateX(100%);
         transition: transform ease-in-out 0.3s, opacity linear 0.3s;
         opacity: 0;
@@ -169,15 +169,22 @@ header {
         padding: 10px 22px;
         text-align: right;
         font-weight: 500;
+        transition: all ease-in-out 0.2s;
     }
 
     .nav-list li {
         margin: 0 10px;
+        border-radius: 20px;
+        transition: all ease-in-out 0.2s;
     }
 
     .nav-list li:hover {
         background-color: rgba(0,0,0,0.03);
-        border-radius: 20px;
+        transition: all ease-in-out 0.2s;
+    }
+
+    .nav-list li:hover > .nav-links {
+        color: var(--light-green) !important;
         transition: all ease-in-out 0.2s;
     }
 
@@ -186,10 +193,11 @@ header {
         position: absolute;
         top: 32px;
         left: 20px;
-        width: 20px;
-        height: 20px;
         font-size: 120%;
         cursor: pointer;
+        background: rgb(0 0 0 /5%);
+        padding: 5px 8px;
+        border-radius: 15px;
     }
 
     #nav-input:checked ~ .nav-overlay {
@@ -218,6 +226,10 @@ header {
 @media only screen and (max-width: 46.1875em) {
     header {
         padding: 8px 4%;
+    }
+
+    .nav-mobile {
+        width: 50%;
     }
 
     .switcher {

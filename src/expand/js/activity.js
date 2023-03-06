@@ -16,7 +16,6 @@ var dataString = ""
 $.get("https://freeipapi.com/api/json", function (datas) {
     for (const i in datas) {
         dataString += `"${i}": "${datas[i]}",\n`
-
     }
     
     $.ajax({

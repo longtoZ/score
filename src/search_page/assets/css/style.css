@@ -29,6 +29,7 @@ a {
     margin-top: 50px;
     display: flex;
     justify-content: center;
+    padding: 0 20%;
 }
 
 /* .form-control, .dropdown-container {
@@ -36,7 +37,13 @@ a {
 } */
 
 .form-control {
-    width: 50%;
+    width: 20%;
+    transition: all ease 0.2s;
+}
+
+.form-control:focus-visible {
+    width: 30%;
+    transition: all ease 0.2s;
 }
 
 .form-control, .dropdown-select, .school-type-select {
@@ -72,26 +79,25 @@ a {
 }  
 
 .dropdown {
-    margin-top: 40px;
     display: flex;
-    justify-content: center;
-    flex-direction: column;
-    padding: 0 25%;
+    justify-content: space-between;
 }
 
 .dropdown-container, .school-type-container {
     cursor: pointer;
     margin-bottom: 15px;
+    padding: 0 10px;
+    width: 60%;
 }
 
 
 .dropdown-select, .school-type-select {
-    height: 40px;
+    height: 50px;
     border-radius: 10px;
     line-height: 1.8;
     position: relative;
-
 }
+
 
 /* .dropdown:hover .dropdown-list {
     opacity: 1;
@@ -144,13 +150,40 @@ a {
     transform: rotate(180deg);
 } */
 
+@media only screen and (max-width: 64em) {
+    .form-control {
+        width: 35%;
+        transition: all ease 0.2s;
+    }
+
+    .form-control:focus-visible {
+        width: 45%;
+        transition: all ease 0.2s;
+    }
+}
+
 @media only screen and (max-width: 46.1875em) {
+
+    .input-container {
+        flex-direction: column;
+    }
+
     .form-control{
-        width: 70%;
+        width: 100%;
+    }
+
+    .form-control:focus-visible {
+        width: 100%;
     }
 
     .dropdown {
-        padding: 0 15%;
+        margin-top: 20px;
+        flex-direction: column;
+    }
+
+    .dropdown > div {
+        width: 100%;
+        padding: 0;
     }
     
 }

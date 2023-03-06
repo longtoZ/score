@@ -68,10 +68,11 @@
 
                     <div class="year-range-container">
                         <div class="year-range-data">
-                            <div class="filter-box">
-                                <span class="main-title">Dãy năm</span>
+                            <span class="main-title">Điểm (các năm)</span>
+                            <div class="filter-box">                            
                                 <div class="chart-type">
-                                    <i class="fi fi-rr-shuffle"></i>
+                                    <i class="fi fi-rr-shuffle"></i> 
+                                    Đổi dạng biểu đồ
                                 </div>
                                 <div class="year-box">
                                     <div class="year-start">
@@ -80,7 +81,7 @@
                                     </div>
                                     <div class="year-end">
                                         <span class="green-dot"></span>
-                                        <input class="year-end-input" value="2022" type="number" min="2015"></input>
+                                        <input class="year-end-input" value="2022" type="number" min="2015" style="margin-right:-5px"></input>
                                     </div>
                                 </div>
                             </div>
@@ -88,7 +89,7 @@
                         </div>
                         <div class="year-range-detail">
                             <h3>Chọn năm
-                                <input class="year-input-nv" type="number" value="2022" min="2015">
+                                <input class="year-input-nv" type="number" value="2022" min="2015" max="2022">
                             </h3>
                             
                             <div class="comparison">
@@ -108,10 +109,11 @@
 
                     <div class="win-ratio-container">
                         <div class="win-ratio-data">
+                            <span class="main-title">Tỉ lệ chọi</span>
                             <div class="win-ratio-graph-container"></div>
                             <div class="win-ratio-detail">
                                 <div class="year-box" style="overflow:hidden; display:flex; justify-content:center;">
-                                    <h3 style="text-align:center; margin-top:40px; margin-right: 40px; float:left">Tỉ lệ chọi</h3>
+                                    <!-- <h3 style="text-align:center; margin-top:40px; margin-right: 40px; float:left">Tỉ lệ chọi</h3> -->
                                     <div class="filter-year-container" style="float:left">
                                         <div class="filter-year">
                                             <div class="filter-year-select">
@@ -132,11 +134,12 @@
                         </div>
                         
                         <div class="ratio-graph-container">
-                            <div class="range" style="float:right">
+                            <span class="main-title">Tỉ lệ chọi (các năm)</span>
+                            <div class="range" style="float:right; margin-right: 20px">
                                 <span class="red-dot"></span>
                                 <input class="start-r" value="2015" type="number" min="2015"></input>
                                 <span class="green-dot"></span>
-                                <input class="end-r" value="2022" type="number" min="2015"></input>
+                                <input class="end-r" value="2022" type="number" min="2015" style="margin-right: -5px;"></input>
                             </div>
                             <div class="ratio-graph">
 
@@ -146,11 +149,11 @@
 
                     <div class="comparison-data-container">
                         <div class="comparison-data">
+                            <span class="main-title">Trường trong khu vực</span>
                             <div class="comparison-graph-container"></div>
                             <div class="comparison-detail">
                                 <div class="comparison-detail-container">
-                                    <div class="filter-box">
-                                        <h3 style="text-align:center; font-weight: bold; margin-top: 40px;">Trường trong khu vực</h3>
+                                    <div class="filter-box">    
                                         <div class="filter-detail">
                                             <div class="filter-year" style="float: left">
                                                 <h4 class="year-title" style="text-align:center">Chọn năm</h4>
@@ -184,11 +187,11 @@
 
                     <div class="group-data-container">
                         <div class="group-data">
+                        <span class="main-title">Trường cùng nhóm điểm</span>
                             <div class="group-graph-container"></div>
                             <div class="group-detail">
                                 <div class="group-detail-container">
                                     <div class="filter-box">
-                                        <h3 style="text-align:center; font-weight: bold; margin-top: 40px;">Trường cùng nhóm điểm</h3>
                                         <div class="school-to-compare">
                                             <h3></h3>
                                             <div class="score-group">
@@ -228,6 +231,7 @@
 
                     <div class="prosub-data-container">
                         <div class="prosub-data">
+                        <span class="main-title" style="background: #0F90DC">Trường có lớp chuyên</span>
                             <div class="prosub-graph-container"></div>
                             <div class="prosub-detail-container">
                                 <div class="prosub-list">

@@ -37,11 +37,7 @@
 
 		<div class="input-container">
 			<input type="text" class="form-control" id="live-search" placeholder="Tìm kiếm...">
-		</div>
-
-
-		
-		<div class="dropdown">
+			<div class="dropdown">
 			<div class="school-type-container">
 				<div class="school-type-select">
 					<span class="select">Trường thường</span>
@@ -61,8 +57,8 @@
 
 			</div>
 		</div>
+		</div>
 
-		
 	</div>
 
 	<h1 class="year-chosen"></h1>

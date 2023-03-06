@@ -14,6 +14,7 @@
     --box-shadow: 0 0 20px rgb(0 0 0 / 10%);
     --box-shadow-light: 0 0 12px rgb(0 0 0 / 7%);
     --box-shadow-lighter: 0 0 12px rgb(0 0 0 / 4%);
+    --box-shadow-thick: 0 0 10px rgb(0 0 0 /8%);
     --text-color: #000000;
     --text-color-light: #252526;
     --text-color-topic: black;
@@ -27,6 +28,7 @@
     --green: #009879;
     --orange: #df7b00;
     --hover-green: #0098790a;
+    --light-green: rgb(20, 195, 142);
     --darker-green: #00856a;
     --divider-color: invert(0);
 
@@ -79,7 +81,7 @@
     --col-green-txt: rgb(106, 220, 198);
     --col-yellow-bg: rgb(56, 46, 6);
     --col-yellow-txt: rgb(220, 202, 106);
-    --col-blue-bg: rgb(39, 39, 39);
+    --col-blue-bg: rgb(34, 34, 34);
     --col-blue-txt: rgb(106, 197, 220);
     --edit-bg: rgba(6, 67, 108, 0.09);
     --edit-txt: rgb(110, 175, 220);

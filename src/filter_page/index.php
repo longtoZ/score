@@ -33,7 +33,7 @@
                 để lựa chọn và xem xét trường có số điểm phù hợp với nguyện vọng
                 của mình.
                 <p style="font-weight: 400;">
-                    Chưa rõ? <a href="#">Đọc tài liệu &rarr;</a>
+                    Chưa rõ? <a href="../docs_page/filter_page.html">Đọc tài liệu &rarr;</a>
                 </p>
             </h4>
 

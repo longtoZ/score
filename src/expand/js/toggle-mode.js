@@ -58,9 +58,3 @@ checkmode()
 // } else {
 //     alert("Sorry, your browser does not support Web Storage...");
 // }
-
-
-
-
-
-

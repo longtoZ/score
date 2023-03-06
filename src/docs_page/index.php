@@ -127,26 +127,7 @@
         </div>
     </body>
 
-    <!-- <script src="https://requirejs.org/docs/release/2.3.6/minified/require.js"></script> -->
     <script type="text/javascript" src="./js/main.js"></script>
     <script type="text/javascript" src="../expand/js/hide-nav.js"></script>
     <script type="text/javascript" src="../expand/js/activity.js"></script>
-
-
-    <script type="text/javascript">
-        // var res = {}
-        // var ip = ''; // Leave blank to lookup current IP address
-        // var XMLHttp = new XMLHttpRequest();
-        // XMLHttp.onreadystatechange = function() {
-        //     if(this.readyState == 4 && this.status == 200) {
-        //         res = JSON.parse(this.responseText);
-        //     }
-        // };
-        // XMLHttp.open('GET', 'https://ipwho.is/' + ip, true);
-        // XMLHttp.send();
-
-        // console.log(activityUsers)
-
-
-    </script>
 </html>
