@@ -48,7 +48,7 @@
 
 			<div class="dropdown-container">
 				<div class="dropdown-select">
-					<span class="select">Năm 2022</span>
+					<span class="select">Năm 2023</span>
 					<i class="fi fi-rr-caret-down"></i>
 				</div>
 				<div class="dropdown-list">
@@ -126,7 +126,20 @@
 
 		$("#live-search").keyup(liveSearch)
 		$('#live-search').change(liveSearch)
+		
+		function waitForElementToExist() {
+			if ($('.dropdown-list .year:first').length) {
+				// Element exists, click it
+				$('.dropdown-list .year:first').click();
+				$('.dropdown-list .year:first').click();
+			} else {
+				// Element doesn't exist yet, wait and check again
+				setTimeout(waitForElementToExist, 100);
+			}
+		}
 
+		waitForElementToExist();
 	});
+
 </script>
 </html>

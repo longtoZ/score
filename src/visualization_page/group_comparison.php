@@ -110,11 +110,20 @@ if (mysqli_num_rows($result) > 0) {
             function randomRGB() {
                 return (Math.floor(Math.random() * 255) + 1).toString();
             }
+
+            var max_value_column = 0
+            var year = <?php echo $year ?>;
             var datas_g = []
             var schools = []
             var nv1 = []
             // var nv2 = []
             // var nv3 = []
+
+            if (year >= 2021) {
+                max_value_column = 30
+            } else {
+                max_value_column = 50
+            }
 
             schools.push('<?php echo $title; ?>')
             nv1.push('<?php echo $score; ?>')
@@ -130,7 +139,8 @@ if (mysqli_num_rows($result) > 0) {
 
             var rgb_list = [];
             for (let i=0; i<schools.length; i++) {
-                rgb_list.push(`rgb(${randomRGB()}, ${randomRGB()}, ${randomRGB()})`);
+                // rgb_list.push(`rgb(${randomRGB()}, ${randomRGB()}, ${randomRGB()})`);
+                rgb_list.push('rgb(20, 195, 142)')
             }
         </script>
 
@@ -186,7 +196,7 @@ if (mysqli_num_rows($result) > 0) {
                                 color: textColor
                             },
                             min: 0,
-                            max: 50
+                            max: max_value_column
                         },
                         y: {
                             title: {

@@ -138,7 +138,7 @@
                 var col3 = 'rgb(184, 241, 176)'
 
                 var first = 2015;
-                var last = 2022;
+                var last = 2023;
                 var start = <?php echo $start?>;
                 var end = <?php echo $end?>;
                 var labels = []

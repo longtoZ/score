@@ -81,7 +81,7 @@
                                     </div>
                                     <div class="year-end">
                                         <span class="green-dot"></span>
-                                        <input class="year-end-input" value="2022" type="number" min="2015" style="margin-right:-5px"></input>
+                                        <input class="year-end-input" value="2023" type="number" min="2015" style="margin-right:-5px"></input>
                                     </div>
                                 </div>
                             </div>
@@ -89,7 +89,7 @@
                         </div>
                         <div class="year-range-detail">
                             <h3>Chọn năm
-                                <input class="year-input-nv" type="number" value="2022" min="2015" max="2022">
+                                <input class="year-input-nv" type="number" value="2023" min="2015" max="2023">
                             </h3>
                             
                             <div class="comparison">
@@ -139,7 +139,7 @@
                                 <span class="red-dot"></span>
                                 <input class="start-r" value="2015" type="number" min="2015"></input>
                                 <span class="green-dot"></span>
-                                <input class="end-r" value="2022" type="number" min="2015" style="margin-right: -5px;"></input>
+                                <input class="end-r" value="2023" type="number" min="2015" style="margin-right: -5px;"></input>
                             </div>
                             <div class="ratio-graph">
 
@@ -267,7 +267,7 @@
                                                 <span class="year-change" id="prev-year">
                                                     <pre><</pre>
                                                 </span>
-                                                <span id="year">2022</span>
+                                                <span id="year">2023</span>
                                                 <span class="year-change" id="next-year">
                                                     <pre>></pre>
                                                 </span>
@@ -320,10 +320,10 @@
 
         const default_school = document.querySelector('.schoolname p').textContent;
         const default_district = document.querySelector('.schooldistrict p').textContent;
-        const default_year = "2022";
+        const default_year = "2023";
         const default_wish = "NV1";
         const default_start = '2015';
-        const default_end = '2022';
+        const default_end = '2023';
         const default_subject = document.querySelector('.prosub-select span').textContent
 
         for (let i of document.querySelectorAll('.filter-year-select .select')) {
@@ -436,7 +436,7 @@
             $(document).on('click', '.school-search-box i', function() {
                 var school_input = document.querySelector('.school-search').value
                 var year_input = document.querySelector('.year-input-nv').value
-                document.querySelector('.filter-year-select .select').innerHTML = "Năm 2022"
+                document.querySelector('.filter-year-select .select').innerHTML = "Năm 2023"
                 document.querySelector('.start-r').value = default_start
                 document.querySelector('.end-r').value = default_end
 

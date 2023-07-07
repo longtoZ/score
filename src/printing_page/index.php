@@ -68,7 +68,7 @@
                             <span class="red-dot"></span>
                             <input class="start" value="2015" type="number" min="2015"></input>
                             <span class="green-dot"></span>
-                            <input class="end" value="2022" type="number" min="2015" style="margin-right: -5px;"></input>
+                            <input class="end" value="2023" type="number" min="2015" style="margin-right: -5px;"></input>
                         </div>
                     </div>
                 </div>
@@ -93,7 +93,7 @@
                             <span class="red-dot"></span>
                             <input class="start-r" value="2015" type="number" min="2015"></input>
                             <span class="green-dot"></span>
-                            <input class="end-r" value="2022" type="number" min="2015" style="margin-right: -5px;"></input>
+                            <input class="end-r" value="2023" type="number" min="2015" style="margin-right: -5px;"></input>
                         </div>
                     </div>
                 </div>
@@ -119,7 +119,7 @@
                     <div class="range" style="float:right; padding-left:10px">
                         <div class="year-box">
                             <span class="green-dot"></span>
-                            <input class="end-c" value="2022" type="number" min="2015"></input>
+                            <input class="end-c" value="2023" type="number" min="2015"></input>
                         </div>
                         <br>
                         <br>
@@ -148,7 +148,7 @@
                     <div class="range" style="float:left; padding-left:30px">
                         <div class="year-box" style="">
                             <span class="green-dot"></span>
-                            <input class="end-e" value="2022" type="number" min="2015"></input>
+                            <input class="end-e" value="2023" type="number" min="2015"></input>
                             <br>
                             <span class="red-dot"></span>
                             <input class="top-p" value="5" type="number" min="1"></input>
@@ -177,7 +177,7 @@
                     <div class="range" style="float:right; padding-left:10px; text-align:right;">
                         <div class="year-box">
                             <span class="green-dot"></span>
-                            <input class="end-ps" value="2022" type="number" min="2015"></input>
+                            <input class="end-ps" value="2023" type="number" min="2015"></input>
                         </div>
                         <br>
                         <br>
@@ -275,7 +275,7 @@
     <script type="text/javascript">
 
         const default_start = '2015'
-        const default_end = '2022'
+        const default_end = '2023'
 
         const default_school = document.querySelector('.school-title').innerHTML;
         const default_district = document.querySelector('.school-area').innerHTML;
